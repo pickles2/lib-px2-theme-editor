@@ -1,14 +1,5 @@
 {
-  "name": "@pickles2/pickles2-theme-editor",
-  "version": "0.0.1-alpha.1+dev",
   "private": true,
-  "description": "",
-  "main": "node/main.js",
-  "scripts": {
-    "test": "mocha --ui tdd ./tests/"
-  },
-  "author": "Tomoya Koyanagi",
-  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "gulp": "^4.0.2",
@@ -20,7 +11,6 @@
     "gulp-sass": "^3.1.0",
     "gulp-uglify": "^2.1.2",
     "html-loader": "^0.5.5",
-    "mocha": "^3.2.0",
     "webpack": "^4.39.2",
     "webpack-stream": "^5.2.1"
   }
