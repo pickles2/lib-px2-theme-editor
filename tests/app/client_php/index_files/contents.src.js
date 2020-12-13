@@ -61,16 +61,7 @@ $(window).load(function(){
 			windowResized(function(){
 				pickles2ThemeEditor.init(
 					{
-						'page_path': params.page_path ,
 						'elmCanvas': $canvas.get(0),
-						'preview':{
-							'origin': '/tests/htdocs2/htdocs/subapp/.px_execute.php/sample_pages/page3/'
-						},
-						'customFields':{
-							'custom1': function(broccoli){
-								// カスタムフィールドを実装
-							}
-						},
 						'lang': 'ja',
 						'gpiBridge': function(input, callback){
 							// GPI(General Purpose Interface) Bridge
@@ -89,26 +80,17 @@ $(window).load(function(){
 								}
 							});
 							return;
-						},
-						'complete': function(){
-							alert('完了しました。');
-						},
-						'onClickContentsLink': function( uri, data ){
-							alert('編集: ' +  uri);
-						},
-						'onMessage': function( message ){
-							console.info('message: '+message);
 						}
 					},
 					function(){
 
-						$(window).resize(function(){
-							// このメソッドは、canvasの再描画を行います。
-							// ウィンドウサイズが変更された際に、UIを再描画するよう命令しています。
-							windowResized(function(){
-								pickles2ThemeEditor.redraw();
-							});
-						});
+						// $(window).resize(function(){
+						// 	// このメソッドは、canvasの再描画を行います。
+						// 	// ウィンドウサイズが変更された際に、UIを再描画するよう命令しています。
+						// 	windowResized(function(){
+						// 		pickles2ThemeEditor.redraw();
+						// 	});
+						// });
 
 						console.info('standby!!');
 						it1.next(arg);

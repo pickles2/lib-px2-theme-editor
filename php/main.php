@@ -76,4 +76,28 @@ class main{
 		return $rtn;
 	}
 
+	/**
+	 * クライアントリソースの一覧を取得する
+	 * 
+	 * @param string $realpath_dist リソースファイルの出力先。
+	 * 省略時は、各ファイルのサーバー内部パスを返す。
+	 * @return object css および js ファイルの一覧
+	 */
+	public function get_client_resources($realpath_dist = null){
+		$rtn = json_decode('{"css": [], "js": []}');
+
+		// px2te
+		if(is_string($realpath_dist) && is_dir($realpath_dist)){
+			$this->fs->copy_r(__DIR__.'/../dist/', $realpath_dist.'/px2te/');
+			array_push($rtn->js, 'px2te/pickles2-theme-editor.min.js');
+			array_push($rtn->css, 'px2te/pickles2-theme-editor.min.css');
+		}else{
+			array_push($rtn->js, realpath(__DIR__.'/../dist/pickles2-theme-editor.min.js'));
+			array_push($rtn->css, realpath(__DIR__.'/../dist/pickles2-theme-editor.min.css'));
+		}
+
+
+		return $rtn;
+	}
+
 }

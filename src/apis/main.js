@@ -18,6 +18,7 @@
 
 		var _this = this;
 		var it79 = require('iterate79');
+		var $canvas;
 
 		/**
 		 * broccoli-client を初期化する
@@ -30,10 +31,13 @@
 			options.gpiBridge = options.gpiBridge || function(){};
 			this.options = options;
 
+			$canvas = $(options.elmCanvas);
+			$canvas.addClass('pickles2-theme-editor');
+
 			it79.fnc(
 				{},
 				[
-					function(it1, data){
+					function(it1){
 						// リソースファイルの読み込み
 						var css = [
 							__dirname+'/pickles2-theme-editor.css',
@@ -53,12 +57,16 @@
 								link.setAttribute('data-pickles2-theme-editor-resource', true);
 							},
 							function(){
-								it1.next(data);
+								it1.next();
 							}
 						);
 					} ,
-					function(it1, data){
-						console.log('broccoli: init done.');
+					function(it1){
+						$canvas.html('').append('<p>開発中です</p>');
+						it1.next();
+					},
+					function(it1){
+						console.log('Pickles2 Theme Editor: init done.');
 					}
 				]
 			);
