@@ -11,8 +11,13 @@ class mainTest extends PHPUnit_Framework_TestCase{
 	 * インスタンス初期化
 	 */
 	public function testInitialize(){
-		$main = new \pickles2ThemeEditor\main();
+		$main = new \pickles2\libs\themeEditor\main();
+		$main->init();
 		$this->assertEquals(is_object($main), true);
+
+		$bootupInfomations = $main->gpi(array('api'=>'getBootupInfomations'));
+		// var_dump($bootupInfomations);
+		$this->assertEquals($bootupInfomations['conf']['appMode'], 'web');
 	}
 
 

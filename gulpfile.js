@@ -8,6 +8,7 @@ let uglify = require("gulp-uglify");//JavaScriptファイルの圧縮ツール
 let concat = require('gulp-concat');//ファイルの結合ツール
 let plumber = require("gulp-plumber");//コンパイルエラーが起きても watch を抜けないようになる
 let rename = require("gulp-rename");//ファイル名の置き換えを行う
+let browserify = require("gulp-browserify");//NodeJSのコードをブラウザ向けコードに変換
 let packageJson = require(__dirname+'/package.json');
 
 // src 中の *.css.scss を処理
@@ -59,6 +60,18 @@ gulp.task("pickles2-theme-editor.js", function() {
 	;
 });
 
+// *.js を処理
+gulp.task("test/contents.js:php", function() {
+	return gulp.src(["tests/app/client_php/index_files/contents.src.js"])
+		.pipe(plumber())
+		.pipe(browserify({
+		}))
+		// .pipe(uglify())
+		.pipe(concat('contents.js'))
+		.pipe(gulp.dest( 'tests/app/client_php/index_files/' ))
+	;
+});
+
 // ブラウザを立ち上げてプレビューする
 gulp.task("preview", function(next) {
 	require('child_process').spawn('open',['http://127.0.0.1:3000/']);
@@ -67,12 +80,13 @@ gulp.task("preview", function(next) {
 
 let _tasks = gulp.parallel(
 	'pickles2-theme-editor.js',
-	'.css.scss'
+	'.css.scss',
+	'test/contents.js:php'
 );
 
 // src 中のすべての拡張子を監視して処理
 gulp.task("watch", function() {
-	gulp.watch(["src/**/*"], _tasks);
+	gulp.watch(["src/**/*", "tests/app/client_php/**/*.src.js"], _tasks);
 });
 
 // src 中のすべての拡張子を処理(default)
