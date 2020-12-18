@@ -11,6 +11,8 @@ class main{
 	/** LangBank object */
 	private $lb;
 
+	/** px2agent */
+	private $px2proj;
 
 	/**
 	 * Constructor
@@ -36,6 +38,13 @@ class main{
 	}
 
 	/**
+	 * px2agent
+	 */
+	public function px2agent(){
+		return $this->px2proj;
+	}
+
+	/**
 	 * Initialize
 	 * @param array $options オプション
 	 */
@@ -46,6 +55,10 @@ class main{
 		$this->options = $options;
 
 		$this->lb = new \tomk79\LangBank(__DIR__.'/../data/language.csv');
+
+		$px2agent = new \picklesFramework2\px2agent\px2agent();
+		$this->px2proj = $px2agent->createProject( $options['entryScript'] );
+
 	}
 
 	/**

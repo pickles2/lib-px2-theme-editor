@@ -46,6 +46,17 @@ class gpi{
 				$bootup['conf']['appMode'] = $this->main->getAppMode();
 				$bootup['languageCsv'] = file_get_contents( __DIR__.'/../data/language.csv' );
 				return $bootup;
+				break;
+
+			case "px2agent":
+				$result = $this->main->px2agent()->query(
+					$query['pxcmd'],
+					array(
+						"output" => "json",
+					)
+				);
+				return $result;
+				break;
 
 			default:
 				return true;
