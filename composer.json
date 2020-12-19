@@ -48,7 +48,8 @@
     "autoload": {
         "files": [
             "php/main.php",
-            "php/gpi.php"
+            "php/gpi.php",
+            "php/themecollection.php"
         ]
     }
 }

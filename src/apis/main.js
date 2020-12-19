@@ -29,7 +29,6 @@
 			realpathThemeCollectionDir_exists,
 			multithemePluginOptions;
 		var $elms = {'editor': $('<div>')};
-		// var realpathDefaultThumb = 'data:image/png;base64,'+main.fs.readFileSync( main.path.resolve( './app/common/images/no-image.png' ) ).toString('base64');
 		var $canvas;
 		var templates = {
 			'form-layout-delete': require('../templates/form-layout-delete.html'),
@@ -164,23 +163,20 @@
 				return;
 			}
 
-			$canvas.html('<p>開発中です。</p>');
-			return;
+			var html = bindTwig(
+				templates['list'],
+				{
+					'themePluginList': themePluginList,
+					'themeCollection': bootupInfomations.listThemeCollection,
+					'realpathThemeCollectionDir': realpathThemeCollectionDir,
+					'default_theme_id': multithemePluginOptions.default_theme_id
+				}
+			);
+			$canvas.html( html );
 
-			// テーマコレクションをリスト化
-			listThemeCollection(function(themeCollection){
-
-				var html = bindTwig(
-					templates['list'],
-					{
-						'themePluginList': themePluginList,
-						'themeCollection': themeCollection,
-						'realpathThemeCollectionDir': realpathThemeCollectionDir,
-						'default_theme_id': multithemePluginOptions.default_theme_id
-					}
-				);
-				$canvas.html( html );
-
+			$canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
+				_this.pageThemeHome($(this).attr('data-theme-id'));
+				return false;
 			});
 			return;
 		}
@@ -189,8 +185,8 @@
 		 * テーマのホーム画面を開く
 		 */
 		this.pageThemeHome = function(themeId){
-			// console.log('Theme: '+themeId);
-			$('h1').text('テーマ "'+themeId+'"');
+			console.log('Theme: '+themeId);
+
 			it79.fnc({}, [
 				function(it1, arg){
 					// レイアウトをリスト化
@@ -285,108 +281,104 @@
 		 * 新規テーマを作成またはリネームする
 		 */
 		this.addNewTheme = function(theme_id){
-			// テーマコレクションをリスト化
-			listThemeCollection(function(themeCollection){
 
-				var html = bindTwig(
-					templates['form-theme'],
-					{
-						'themeId': theme_id,
-						'themePluginList': themePluginList,
-						'themeCollection': themeCollection
-					}
-				);
-				var $body = $('<div>').append( html );
-				var $form = $body.find('form');
+			var html = bindTwig(
+				templates['form-theme'],
+				{
+					'themeId': theme_id,
+					'themePluginList': themePluginList,
+					'themeCollection': bootupInfomations.listThemeCollection
+				}
+			);
+			var $body = $('<div>').append( html );
+			var $form = $body.find('form');
 
-				px2style.modal(
-					{
-						'title': (theme_id ? 'テーマのリネーム' : '新規テーマ作成'),
-						'body': $body,
-						'buttons': [
-							$('<button class="px2-btn">')
-								.text('キャンセル')
-								.on('click', function(e){
-									px2style.closeModal();
-								}),
-							$('<button class="px2-btn px2-btn--primary">')
-								.text('OK')
-								.on('click', function(e){
-									$form.submit();
-								})
-						]
-					},
-					function(){}
-				);
+			px2style.modal(
+				{
+					'title': (theme_id ? 'テーマのリネーム' : '新規テーマ作成'),
+					'body': $body,
+					'buttons': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
+							}),
+						$('<button class="px2-btn px2-btn--primary">')
+							.text('OK')
+							.on('click', function(e){
+								$form.submit();
+							})
+					]
+				},
+				function(){}
+			);
 
-				$form.on('submit', function(e){
-					var newThemeId = $form.find('input[name=themeId]').val();
-					var importFrom = $form.find('input[name=import_from]:checked').val();
-					var $errMsg = $form.find('[data-form-column-name=themeId] .cont-error-message')
-					if( !newThemeId.length ){
-						$errMsg.text('テーマIDを指定してください。');
+			$form.on('submit', function(e){
+				var newThemeId = $form.find('input[name=themeId]').val();
+				var importFrom = $form.find('input[name=import_from]:checked').val();
+				var $errMsg = $form.find('[data-form-column-name=themeId] .cont-error-message')
+				if( !newThemeId.length ){
+					$errMsg.text('テーマIDを指定してください。');
+					return;
+				}
+				if( !newThemeId.match(/^[a-zA-Z0-9\_\-]+$/) ){
+					$errMsg.text('テーマIDに使えない文字が含まれています。');
+					return;
+				}
+				if( newThemeId.length > 128 ){
+					$errMsg.text('テーマIDが長すぎます。');
+					return;
+				}
+				if( theme_id ){
+					if( theme_id == newThemeId ){
+						$errMsg.text('テーマIDが変更されていません。');
 						return;
 					}
-					if( !newThemeId.match(/^[a-zA-Z0-9\_\-]+$/) ){
-						$errMsg.text('テーマIDに使えない文字が含まれています。');
-						return;
-					}
-					if( newThemeId.length > 128 ){
-						$errMsg.text('テーマIDが長すぎます。');
-						return;
-					}
-					if( theme_id ){
-						if( theme_id == newThemeId ){
-							$errMsg.text('テーマIDが変更されていません。');
-							return;
-						}
-					}
+				}
 
 
-					var realpathTheme = realpathThemeCollectionDir+encodeURIComponent(newThemeId)+'/';
-					if( main.utils79.is_dir( realpathTheme ) ){
-						$errMsg.text('テーマID '+newThemeId+' は、すでに存在します。');
-						return;
-					}
+				var realpathTheme = realpathThemeCollectionDir+encodeURIComponent(newThemeId)+'/';
+				if( main.utils79.is_dir( realpathTheme ) ){
+					$errMsg.text('テーマID '+newThemeId+' は、すでに存在します。');
+					return;
+				}
 
-					if( theme_id ){
-						// フォルダ名変更
-						main.fs.renameSync( realpathThemeCollectionDir+theme_id+'/', realpathTheme );
+				if( theme_id ){
+					// フォルダ名変更
+					main.fs.renameSync( realpathThemeCollectionDir+theme_id+'/', realpathTheme );
+				}else{
+					// フォルダ生成
+					main.fsEx.mkdirsSync( realpathTheme );
+					if( !importFrom ){
+						main.fs.writeFileSync( realpathTheme+'/default.html', '' );
+						main.fs.writeFileSync( realpathTheme+'/plain.html', '' );
+						main.fs.writeFileSync( realpathTheme+'/naked.html', '' );
+						main.fs.writeFileSync( realpathTheme+'/popup.html', '' );
+						main.fs.writeFileSync( realpathTheme+'/top.html', '' );
 					}else{
-						// フォルダ生成
-						main.fsEx.mkdirsSync( realpathTheme );
-						if( !importFrom ){
-							main.fs.writeFileSync( realpathTheme+'/default.html', '' );
-							main.fs.writeFileSync( realpathTheme+'/plain.html', '' );
-							main.fs.writeFileSync( realpathTheme+'/naked.html', '' );
-							main.fs.writeFileSync( realpathTheme+'/popup.html', '' );
-							main.fs.writeFileSync( realpathTheme+'/top.html', '' );
-						}else{
-							importFrom.match(/^(themeCollection|themePlugin)\:([\S]+)$/);
-							var fromDiv = RegExp.$1;
-							var fromId = RegExp.$2;
-							if( fromDiv == 'themeCollection' ){
-								main.utils.copy_r(
-									realpathThemeCollectionDir+fromId,
-									realpathTheme
-								);
-							}else if(fromDiv == 'themePlugin'){
-								var pluginInfo = themePluginList[fromId];
-								main.utils.copy_r(
-									pluginInfo.path,
-									realpathTheme
-								);
-							}
+						importFrom.match(/^(themeCollection|themePlugin)\:([\S]+)$/);
+						var fromDiv = RegExp.$1;
+						var fromId = RegExp.$2;
+						if( fromDiv == 'themeCollection' ){
+							main.utils.copy_r(
+								realpathThemeCollectionDir+fromId,
+								realpathTheme
+							);
+						}else if(fromDiv == 'themePlugin'){
+							var pluginInfo = themePluginList[fromId];
+							main.utils.copy_r(
+								pluginInfo.path,
+								realpathTheme
+							);
 						}
 					}
+				}
 
-					var msg = (theme_id ? 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。' : 'テーマ '+newThemeId+' を作成しました。')
-					main.message(msg);
-					px2style.closeModal();
-					pj.updateGitStatus();
-					_this.pageThemeHome(newThemeId);
-				});
-
+				var msg = (theme_id ? 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。' : 'テーマ '+newThemeId+' を作成しました。')
+				main.message(msg);
+				px2style.closeModal();
+				pj.updateGitStatus();
+				_this.pageThemeHome(newThemeId);
 			});
 
 			return;
@@ -773,32 +765,6 @@
 			pj.updateGitStatus();
 		}
 
-		/**
-		 * テーマコレクションをリスト化
-		 */
-		function listThemeCollection(callback){
-			callback = callback || function(){};
-			var themeCollection = [];
-			var ls = main.fs.readdirSync(realpathThemeCollectionDir);
-			// console.log(ls);
-			for( var idx in ls ){
-				if( !main.utils79.is_dir( realpathThemeCollectionDir+ls[idx]+'/' ) ){
-					continue;
-				}
-				var themeInfo = {};
-				themeInfo.id = ls[idx];
-				themeInfo.name = ls[idx];
-				themeInfo.thumb = realpathDefaultThumb;
-
-				if( main.utils79.is_file( realpathThemeCollectionDir+ls[idx]+'/thumb.png' ) ){
-					themeInfo.thumb = 'data:image/png;base64,'+main.fs.readFileSync( main.path.resolve( realpathThemeCollectionDir+ls[idx]+'/thumb.png' ) ).toString('base64');
-				}
-
-				themeCollection.push( themeInfo );
-			}
-			callback(themeCollection);
-			return;
-		} // listThemeCollection();
 
 		/**
 		 * twig テンプレートにデータをバインドする

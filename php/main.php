@@ -14,6 +14,9 @@ class main{
 	/** px2agent */
 	private $px2proj;
 
+	/** px2all */
+	private $px2all;
+
 	/**
 	 * Constructor
 	 */
@@ -42,6 +45,17 @@ class main{
 	 */
 	public function px2agent(){
 		return $this->px2proj;
+	}
+
+	/**
+	 * Get $px2all
+	 */
+	public function px2all(){
+		if( $this->px2all ){
+			return $this->px2all;
+		}
+		$this->px2all = $this->px2agent()->query('/?PX=px2dthelper.get.all', array("output" => "json"));
+		return $this->px2all;
 	}
 
 	/**
