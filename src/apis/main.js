@@ -19,7 +19,7 @@
 		var _this = this;
 		var $ = require('jquery');
 		var it79 = require('iterate79');
-		var multithemePluginFunctionName = 'tomk79\\pickles2\\multitheme\\theme::exec';
+		var bootupInfomations;
 		var px2all,
 			themePluginList,
 			realpathThemeCollectionDir,
@@ -85,51 +85,30 @@
 						_this.gpi({
 							'api': 'getBootupInfomations'
 						}, function(result){
-							console.log(result);
-							it1.next();
-							return;
-						});
-					},
-					function(it1){
-						// --------------------------------------
-						// Pickles 2 の各種情報から、
-						// テーマプラグインの一覧を取得
-						_this.gpi({
-							'api': 'px2agent',
-							'pxcmd': '/?PX=px2dthelper.get.all'
-						}, function(result){
-							px2all = result;
-							console.log(px2all);
+							// console.log(result);
+							bootupInfomations = result;
+							px2all = bootupInfomations.px2all;
+
 							themePluginList = [];
 							try {
 								themePluginList = px2all.packages.package_list.themes;
 							} catch (e) {
 							}
-							console.log(themePluginList);
+							// console.log(themePluginList);
 
 							// テーマコレクションディレクトリのパスを求める
 							realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
 
-							it1.next();
-							return;
-						});
-					},
-					function(it1){
-						// --------------------------------------
-						// テーマプラグインのオプションを取得する
-						_this.gpi({
-							'api': 'px2agent',
-							'pxcmd': '/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='+encodeURIComponent(multithemePluginFunctionName)
-						}, function(result){
 							try {
-								multithemePluginOptions = result[0].options;
+								multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
 							} catch (e) {
 								console.error(e);
 							}
-							console.log(multithemePluginOptions);
-							it1.next();
-						});
+							// console.log(multithemePluginOptions);
 
+							it1.next();
+							return;
+						});
 					},
 					function(it1){
 						$(window).on('resize', function(){
@@ -165,8 +144,8 @@
 
 
 		/**
-		* ホーム画面を開く
-		*/
+		 * ホーム画面を開く
+		 */
 		this.pageHome = function(){
 			$canvas.html('<p>開発中です。</p>');
 			return;
@@ -199,8 +178,8 @@
 		}
 
 		/**
-		* テーマのホーム画面を開く
-		*/
+		 * テーマのホーム画面を開く
+		 */
 		this.pageThemeHome = function(themeId){
 			// console.log('Theme: '+themeId);
 			$('h1').text('テーマ "'+themeId+'"');
@@ -295,8 +274,8 @@
 		}
 
 		/**
-		* 新規テーマを作成またはリネームする
-		*/
+		 * 新規テーマを作成またはリネームする
+		 */
 		this.addNewTheme = function(theme_id){
 			// テーマコレクションをリスト化
 			listThemeCollection(function(themeCollection){
@@ -406,15 +385,15 @@
 		}
 
 		/**
-		* テーマをリネームする
-		*/
+		 * テーマをリネームする
+		 */
 		this.renameTheme = function(theme_id){
 			return this.addNewTheme(theme_id);
 		}
 
 		/**
-		* テーマを削除する
-		*/
+		 * テーマを削除する
+		 */
 		this.deleteTheme = function(theme_id){
 			var html = main.utils.bindEjs(
 				templates['form-theme-delete'],
@@ -459,8 +438,8 @@
 		}
 
 		/**
-		* 新規レイアウトを作成またはリネームする
-		*/
+		 * 新規レイアウトを作成またはリネームする
+		 */
 		this.addNewLayout = function(theme_id, layout_id){
 			if( !theme_id ){
 				return;
@@ -570,15 +549,15 @@
 		}
 
 		/**
-		* レイアウトをリネームする
-		*/
+		 * レイアウトをリネームする
+		 */
 		this.renameLayout = function(theme_id, layout_id){
 			return this.addNewLayout(theme_id, layout_id);
 		}
 
 		/**
-		* レイアウトを削除する
-		*/
+		 * レイアウトを削除する
+		 */
 		this.deleteLayout = function(theme_id, layout_id){
 			var html = main.utils.bindEjs(
 				templates['form-layout-delete'],
@@ -630,8 +609,8 @@
 		}
 
 		/**
-		* APIバージョンが不十分(旧画面)
-		*/
+		 * APIバージョンが不十分(旧画面)
+		 */
 		this.pageNotEnoughApiVersion = function( errors ){
 			// ↓このケースでは、 `realpathThemeCollectionDir` を返すAPIが利用できないため、
 			// 　古い方法でパスを求める。
@@ -645,8 +624,8 @@
 		}
 
 		/**
-		* broccoli-html-editor-php が利用不可
-		*/
+		 * broccoli-html-editor-php が利用不可
+		 */
 		this.pageBroccoliHtmlEditorPhpIsNotAvailable = function( errors ){
 			// ↓このケースでは、 `realpathThemeCollectionDir` を返すAPIが利用できないため、
 			// 　古い方法でパスを求める。
@@ -660,8 +639,8 @@
 		}
 
 		/**
-		* エディター画面を開く
-		*/
+		 * エディター画面を開く
+		 */
 		this.openEditor = function( themeId, layoutId ){
 			var realpathLayout = realpathThemeCollectionDir+themeId+'/'+layoutId+'.html';
 			if( !main.utils79.is_file( realpathLayout ) ){
@@ -750,9 +729,9 @@
 		} // openEditor()
 
 		/**
-		* エディター画面を閉じる
-		* 単に閉じるだけです。編集内容の保存などの処理は、editor.html 側に委ねます。
-		*/
+		 * エディター画面を閉じる
+		 * 単に閉じるだけです。編集内容の保存などの処理は、editor.html 側に委ねます。
+		 */
 		this.closeEditor = function(){
 			$elms.editor.remove();
 			$('body')
@@ -763,8 +742,8 @@
 		} // closeEditor()
 
 		/**
-		* フォルダを開く
-		*/
+		 * フォルダを開く
+		 */
 		this.openInFinder = function( theme_id ){
 			var url = realpathThemeCollectionDir;
 			if(theme_id){
@@ -776,8 +755,8 @@
 		}
 
 		/**
-		* 外部テキストエディタで開く
-		*/
+		 * 外部テキストエディタで開く
+		 */
 		this.openInTextEditor = function( theme_id, layout_id ){
 			var url = realpathThemeCollectionDir;
 			if(theme_id){
@@ -791,8 +770,8 @@
 		}
 
 		/**
-		* テーマコレクションをリスト化
-		*/
+		 * テーマコレクションをリスト化
+		 */
 		function listThemeCollection(callback){
 			callback = callback || function(){};
 			var themeCollection = [];
@@ -818,8 +797,8 @@
 		} // listThemeCollection();
 
 		/**
-		* ウィンドウリサイズイベントハンドラ
-		*/
+		 * ウィンドウリサイズイベントハンドラ
+		 */
 		function onWindowResize(){
 			$elms.editor
 				.css({

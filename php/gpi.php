@@ -45,18 +45,20 @@ class gpi{
 				$bootup['conf'] = array();
 				$bootup['conf']['appMode'] = $this->main->getAppMode();
 				$bootup['languageCsv'] = file_get_contents( __DIR__.'/../data/language.csv' );
+				$bootup['px2all'] = $this->main->px2agent()->query('/?PX=px2dthelper.get.all', array("output" => "json"));
+				$bootup['multithemePluginOptions'] = $this->main->px2agent()->query('/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec'), array("output" => "json"));
 				return $bootup;
 				break;
 
-			case "px2agent":
-				$result = $this->main->px2agent()->query(
-					$query['pxcmd'],
-					array(
-						"output" => "json",
-					)
-				);
-				return $result;
-				break;
+			// case "px2agent":
+			// 	$result = $this->main->px2agent()->query(
+			// 		$query['pxcmd'],
+			// 		array(
+			// 			"output" => "json",
+			// 		)
+			// 	);
+			// 	return $result;
+			// 	break;
 
 			default:
 				return true;

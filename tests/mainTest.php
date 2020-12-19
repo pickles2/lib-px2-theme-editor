@@ -12,7 +12,9 @@ class mainTest extends PHPUnit_Framework_TestCase{
 	 */
 	public function testInitialize(){
 		$main = new \pickles2\libs\themeEditor\main();
-		$main->init();
+		$main->init(array(
+			'entryScript' => __DIR__.'/app/src_px2/.px_execute.php',
+		));
 		$this->assertEquals(is_object($main), true);
 
 		$bootupInfomations = $main->gpi(array('api'=>'getBootupInfomations'));
