@@ -19,10 +19,14 @@
 		var _this = this;
 		var $ = require('jquery');
 		var it79 = require('iterate79');
+		var twig = require('twig');
+		var px2style = new(require('px2style'))();
+		px2style.setConfig('additionalClassName', 'pickles2-theme-editor');
 		var bootupInfomations;
 		var px2all,
 			themePluginList,
 			realpathThemeCollectionDir,
+			realpathThemeCollectionDir_exists,
 			multithemePluginOptions;
 		var $elms = {'editor': $('<div>')};
 		// var realpathDefaultThumb = 'data:image/png;base64,'+main.fs.readFileSync( main.path.resolve( './app/common/images/no-image.png' ) ).toString('base64');
@@ -51,6 +55,8 @@
 
 			$canvas = $(options.elmCanvas);
 			$canvas.addClass('pickles2-theme-editor');
+
+			px2style.loading();
 
 			it79.fnc(
 				{},
@@ -85,7 +91,7 @@
 						_this.gpi({
 							'api': 'getBootupInfomations'
 						}, function(result){
-							// console.log(result);
+							console.log(result);
 							bootupInfomations = result;
 							px2all = bootupInfomations.px2all;
 
@@ -98,6 +104,7 @@
 
 							// テーマコレクションディレクトリのパスを求める
 							realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
+							realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
 
 							try {
 								multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
@@ -117,6 +124,7 @@
 						it1.next();
 					},
 					function(it1){
+						px2style.closeLoading();
 						_this.pageHome();
 						console.log('Pickles2 Theme Editor: init done.');
 					}
@@ -147,11 +155,8 @@
 		 * ホーム画面を開く
 		 */
 		this.pageHome = function(){
-			$canvas.html('<p>開発中です。</p>');
-			return;
-			$('h1').text('テーマ');
 
-			if( !main.utils79.is_dir(realpathThemeCollectionDir) ){
+			if( !realpathThemeCollectionDir_exists ){
 				// テーマコレクションディレクトリが存在しなければ終了
 				var err = 'Theme Collection Dir is NOT exists.';
 				console.log(err, realpathThemeCollectionDir);
@@ -159,10 +164,13 @@
 				return;
 			}
 
+			$canvas.html('<p>開発中です。</p>');
+			return;
+
 			// テーマコレクションをリスト化
 			listThemeCollection(function(themeCollection){
 
-				var html = main.utils.bindEjs(
+				var html = bindTwig(
 					templates['list'],
 					{
 						'themePluginList': themePluginList,
@@ -171,7 +179,7 @@
 						'default_theme_id': multithemePluginOptions.default_theme_id
 					}
 				);
-				$('.contents').html( html );
+				$canvas.html( html );
 
 			});
 			return;
@@ -232,7 +240,7 @@
 				},
 				function(it1, arg){
 					// テンプレート描画
-					var html = main.utils.bindEjs(
+					var html = bindTwig(
 						templates['theme-home'],
 						{
 							'themeId': themeId,
@@ -243,20 +251,20 @@
 							'default_theme_id': multithemePluginOptions.default_theme_id
 						}
 					);
-					$('.contents').html( html );
+					$canvas.html( html );
 					it1.next(arg);
 				},
 				function(it1, arg){
 					// イベント処理登録
-					$('.contents').find('.cont-layout-list a button').on('click', function(e){
+					$canvas.find('.cont-layout-list a button').on('click', function(e){
 						e.stopPropagation();
 					});
-					$('.contents').find('a').on('click', function(e){
+					$canvas.find('a').on('click', function(e){
 						var href = this.href;
 						main.utils.openURL( href );
 						return false;
 					});
-					$('.contents').find('.cont-theme-home-set-default__btn-set-default').on('click', function(e){
+					$canvas.find('.cont-theme-home-set-default__btn-set-default').on('click', function(e){
 						pj.configEditor().setDefaultTheme(themeId, function(result){
 							if(!result.result){
 								alert(result.message);
@@ -280,7 +288,7 @@
 			// テーマコレクションをリスト化
 			listThemeCollection(function(themeCollection){
 
-				var html = main.utils.bindEjs(
+				var html = bindTwig(
 					templates['form-theme'],
 					{
 						'themeId': theme_id,
@@ -395,7 +403,7 @@
 		 * テーマを削除する
 		 */
 		this.deleteTheme = function(theme_id){
-			var html = main.utils.bindEjs(
+			var html = bindTwig(
 				templates['form-theme-delete'],
 				{
 					'themeId': theme_id
@@ -444,7 +452,7 @@
 			if( !theme_id ){
 				return;
 			}
-			var html = main.utils.bindEjs(
+			var html = bindTwig(
 				templates['form-layout'],
 				{
 					'themeId': theme_id,
@@ -559,7 +567,7 @@
 		 * レイアウトを削除する
 		 */
 		this.deleteLayout = function(theme_id, layout_id){
-			var html = main.utils.bindEjs(
+			var html = bindTwig(
 				templates['form-layout-delete'],
 				{
 					'themeId': theme_id,
@@ -612,15 +620,11 @@
 		 * APIバージョンが不十分(旧画面)
 		 */
 		this.pageNotEnoughApiVersion = function( errors ){
-			// ↓このケースでは、 `realpathThemeCollectionDir` を返すAPIが利用できないため、
-			// 　古い方法でパスを求める。
-			realpathThemeCollectionDir = pj.get('path')+'/'+pj.get('home_dir')+'/themes/';
-
-			var html = main.utils.bindEjs(
+			var html = bindTwig(
 				templates['not-enough-api-version'],
 				{'errors': errors}
 			);
-			$('.contents').html( html );
+			$canvas.html( html );
 		}
 
 		/**
@@ -631,11 +635,11 @@
 			// 　古い方法でパスを求める。
 			realpathThemeCollectionDir = pj.get('path')+'/'+pj.get('home_dir')+'/themes/';
 
-			var html = main.utils.bindEjs(
+			var html = bindTwig(
 				templates['broccoli-html-editor-php-is-not-available'],
 				{'errors': errors}
 			);
-			$('.contents').html( html );
+			$canvas.html( html );
 		}
 
 		/**
@@ -795,6 +799,24 @@
 			callback(themeCollection);
 			return;
 		} // listThemeCollection();
+
+		/**
+		 * twig テンプレートにデータをバインドする
+		 */
+		function bindTwig( tpl, data, options ){
+			var rtn = '';
+			try {
+				rtn = new twig.twig({
+					'data': tpl
+				}).render(data);
+			} catch (e) {
+				var errorMessage = 'TemplateEngine "Twig" Rendering ERROR.';
+				console.log( errorMessage );
+				rtn = errorMessage;
+			}
+
+			return rtn;
+		}
 
 		/**
 		 * ウィンドウリサイズイベントハンドラ

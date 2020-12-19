@@ -1,7 +1,5 @@
 @charset "UTF-8";
 .pickles2-theme-editor {
-  background-color: #eee;
-  height: 300px;
   overflow: auto;
   display: -ms-flexbox;
   display: flex; }
