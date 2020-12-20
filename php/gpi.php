@@ -84,10 +84,10 @@ class gpi{
 				// READMEを取得
 				$rtn['readme'] = '';
 				if( is_file( $realpath_theme_root.'/'.'/README.md' ) ){
-					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.md' ).toString();
+					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.md' );
 					$rtn['readme'] = \Michelf\MarkdownExtra::defaultTransform($rtn['readme']);
 				}else if( is_file( $realpath_theme_root.'/'.'/README.html' ) ){
-					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.html' ).toString();
+					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.html' );
 				}
 
 				// サムネイルを取得

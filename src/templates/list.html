@@ -12,14 +12,14 @@
 	{% if themeCollection.length %}
 		<ul class="listview cont-theme-list">
 		{% for themeRow in themeCollection %}
-			<li><a href="javascript:;" data-theme-id="{{ themeRow.id }}">
+			<li><a href="javascript:;" data-theme-id="{{ themeRow.id | e }}">
 				<div class="cont-theme-list__unit">
 					<div class="cont-theme-list__unit-thumb">
-						<img src="{{ themeRow.thumb }}" alt="" />
+						<img src="{{ themeRow.thumb | e }}" alt="" />
 					</div>
 					<div class="cont-theme-list__unit-body">
 						<p>
-							{{ themeRow.id }}
+							{{ themeRow.id | e }}
 							{% if default_theme_id == themeRow.id %} <span style="color: #da0;">★</span>{% endif %}
 						</p>
 					</div>
