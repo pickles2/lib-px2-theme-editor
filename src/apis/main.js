@@ -326,49 +326,56 @@
 					}
 				}
 
-
-				var realpathTheme = realpathThemeCollectionDir+encodeURIComponent(newThemeId)+'/';
-				if( main.utils79.is_dir( realpathTheme ) ){
-					$errMsg.text('テーマID '+newThemeId+' は、すでに存在します。');
-					return;
-				}
-
 				if( theme_id ){
-					// フォルダ名変更
-					main.fs.renameSync( realpathThemeCollectionDir+theme_id+'/', realpathTheme );
-				}else{
-					// フォルダ生成
-					main.fsEx.mkdirsSync( realpathTheme );
-					if( !importFrom ){
-						main.fs.writeFileSync( realpathTheme+'/default.html', '' );
-						main.fs.writeFileSync( realpathTheme+'/plain.html', '' );
-						main.fs.writeFileSync( realpathTheme+'/naked.html', '' );
-						main.fs.writeFileSync( realpathTheme+'/popup.html', '' );
-						main.fs.writeFileSync( realpathTheme+'/top.html', '' );
-					}else{
-						importFrom.match(/^(themeCollection|themePlugin)\:([\S]+)$/);
-						var fromDiv = RegExp.$1;
-						var fromId = RegExp.$2;
-						if( fromDiv == 'themeCollection' ){
-							main.utils.copy_r(
-								realpathThemeCollectionDir+fromId,
-								realpathTheme
-							);
-						}else if(fromDiv == 'themePlugin'){
-							var pluginInfo = themePluginList[fromId];
-							main.utils.copy_r(
-								pluginInfo.path,
-								realpathTheme
-							);
+					// --------------------
+					// テーマ名の変更
+					_this.gpi({
+						'api': 'renameTheme',
+						'newThemeId': newThemeId,
+						'renameFrom': theme_id,
+					}, function(result){
+						console.log(result);
+						if( result === false ){
+							alert('[FATAL] Unknown Error.');
+							return;
 						}
-					}
+						if( !result.result ){
+							alert(result.message);
+							return;
+						}
+
+						var msg = 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。';
+						_this.message(msg);
+						px2style.closeModal();
+						_this.pageThemeHome(newThemeId);
+						return;
+					});
+				}else{
+					// --------------------
+					// 新規テーマ
+					_this.gpi({
+						'api': 'addNewTheme',
+						'newThemeId': newThemeId,
+						'importFrom': importFrom,
+					}, function(result){
+						console.log(result);
+						if( result === false ){
+							alert('[FATAL] Unknown Error.');
+							return;
+						}
+						if( !result.result ){
+							alert(result.message);
+							return;
+						}
+
+						var msg = 'テーマ '+newThemeId+' を作成しました。';
+						_this.message(msg);
+						px2style.closeModal();
+						_this.pageThemeHome(newThemeId);
+						return;
+					});
 				}
 
-				var msg = (theme_id ? 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。' : 'テーマ '+newThemeId+' を作成しました。')
-				main.message(msg);
-				px2style.closeModal();
-				pj.updateGitStatus();
-				_this.pageThemeHome(newThemeId);
 			});
 
 			return;
@@ -418,7 +425,7 @@
 				// フォルダを削除
 				main.fsEx.removeSync( realpathThemeCollectionDir+theme_id+'/' );
 
-				main.message('テーマ ' + theme_id + ' を削除しました。');
+				_this.message('テーマ ' + theme_id + ' を削除しました。');
 				px2style.closeModal();
 				pj.updateGitStatus();
 				_this.pageHome();
@@ -529,7 +536,7 @@
 				}
 
 				var msg = (layout_id ? 'レイアウト '+layout_id+' を '+newLayoutId+' にリネームしました。' : 'レイアウト '+newLayoutId+' を作成しました。')
-				main.message(msg);
+				_this.message(msg);
 				px2style.closeModal();
 				pj.updateGitStatus();
 				_this.pageThemeHome(theme_id);
@@ -589,7 +596,7 @@
 					main.fsEx.removeSync( realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(layout_id)+'/' );
 				}
 
-				main.message('レイアウト ' + layout_id + ' を削除しました。');
+				_this.message('レイアウト ' + layout_id + ' を削除しました。');
 				px2style.closeModal();
 				pj.updateGitStatus();
 				_this.pageThemeHome(theme_id);
@@ -636,7 +643,7 @@
 
 			main.preview.serverStandby( function(result){
 				if(result === false){
-					main.message('プレビューサーバーの起動に失敗しました。');
+					_this.message('プレビューサーバーの起動に失敗しました。');
 					return;
 				}
 
@@ -763,6 +770,14 @@
 			// }
 			// main.openInTextEditor( url );
 			// pj.updateGitStatus();
+		}
+
+		/**
+		 * ユーザーにメッセージを伝える
+		 */
+		this.message = function(msg){
+			// TODO: このメッセージは、本来、画面に表示されるべきものです。
+			console.info(msg);
 		}
 
 
