@@ -195,4 +195,40 @@ class themecollection{
 		return $rtn;
 	}
 
+	/**
+	 * テーマを削除する
+	 */
+	public function delete_theme( $theme_id ){
+		$rtn = array(
+			'result' => null,
+			'message' => '',
+		);
+		$px2all = $this->main->px2all();
+		$realpath_theme_root = $px2all->realpath_theme_collection_dir.urlencode($theme_id).'/';
+
+		if( !is_dir( $realpath_theme_root ) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマID '.$theme_id.' は、すでに存在しません。',
+			);
+			return $rtn;
+		}
+
+		$result = $this->main->fs()->rm( $realpath_theme_root );
+
+		if( !$result ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマディレクトリの削除に失敗しました。',
+			);
+			return $rtn;
+		}
+
+		$rtn = array(
+			'result' => true,
+			'message' => 'OK',
+		);
+		return $rtn;
+	}
+
 }

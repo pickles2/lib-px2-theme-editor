@@ -88,36 +88,8 @@
 					function(it1){
 						// --------------------------------------
 						// 初期化に必要な諸情報を取得する
-						_this.gpi({
-							'api': 'getBootupInfomations'
-						}, function(result){
-							console.log(result);
-							bootupInfomations = result;
-							px2all = bootupInfomations.px2all;
-
-							themePluginList = [];
-							try {
-								themePluginList = px2all.packages.package_list.themes;
-							} catch (e) {
-							}
-							// console.log(themePluginList);
-
-							// appMode
-							appMode = result.conf.appMode;
-
-							// テーマコレクションディレクトリのパスを求める
-							realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
-							realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
-
-							try {
-								multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
-							} catch (e) {
-								console.error(e);
-							}
-							// console.log(multithemePluginOptions);
-
+						updateBootupInfomations(function(){
 							it1.next();
-							return;
 						});
 					},
 					function(it1){
@@ -240,6 +212,22 @@
 					it1.next(arg);
 				},
 				function(it1, arg){
+					// Events
+					// $canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
+					// 	_this.pageThemeHome($(this).attr('data-theme-id'));
+					// 	return false;
+					// });
+					$canvas.find('[data-pickles2-theme-editor-action=pageHome]').on('click', function(){
+						_this.pageHome();
+						return false;
+					});
+					$canvas.find('[data-pickles2-theme-editor-action=deleteTheme]').on('click', function(){
+						var strOptions = $(this).attr('data-pickles2-theme-editor-options');
+						var options = JSON.parse( strOptions );
+						_this.deleteTheme(options.themeId);
+						return false;
+					});
+
 					// イベント処理登録
 					$canvas.find('.cont-layout-list a button').on('click', function(e){
 						e.stopPropagation();
@@ -347,7 +335,9 @@
 						var msg = 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。';
 						_this.message(msg);
 						px2style.closeModal();
-						_this.pageThemeHome(newThemeId);
+						updateBootupInfomations(function(){
+							_this.pageThemeHome(newThemeId);
+						});
 						return;
 					});
 				}else{
@@ -371,7 +361,9 @@
 						var msg = 'テーマ '+newThemeId+' を作成しました。';
 						_this.message(msg);
 						px2style.closeModal();
-						_this.pageThemeHome(newThemeId);
+						updateBootupInfomations(function(){
+							_this.pageThemeHome(newThemeId);
+						});
 						return;
 					});
 				}
@@ -392,6 +384,7 @@
 		 * テーマを削除する
 		 */
 		this.deleteTheme = function(theme_id){
+
 			var html = bindTwig(
 				templates['form-theme-delete'],
 				{
@@ -422,13 +415,30 @@
 			);
 
 			$form.on('submit', function(e){
-				// フォルダを削除
-				main.fsEx.removeSync( realpathThemeCollectionDir+theme_id+'/' );
+				// --------------------
+				// テーマを削除
+				_this.gpi({
+					'api': 'deleteTheme',
+					'themeId': theme_id,
+				}, function(result){
+					console.log(result);
+					if( result === false ){
+						alert('[FATAL] Unknown Error.');
+						return;
+					}
+					if( !result.result ){
+						alert(result.message);
+						return;
+					}
 
-				_this.message('テーマ ' + theme_id + ' を削除しました。');
-				px2style.closeModal();
-				pj.updateGitStatus();
-				_this.pageHome();
+					var msg = 'テーマ '+theme_id+' を削除しました。';
+					_this.message(msg);
+					px2style.closeModal();
+					updateBootupInfomations(function(){
+						_this.pageHome();
+					});
+					return;
+				});
 			});
 
 			return;
@@ -780,6 +790,44 @@
 			console.info(msg);
 		}
 
+
+		/**
+		 * 初期化に必要なデータを更新する
+		 */
+		function updateBootupInfomations(callback){
+			callback = callback || function(){};
+			_this.gpi({
+				'api': 'getBootupInfomations'
+			}, function(result){
+				console.log(result);
+				bootupInfomations = result;
+				px2all = bootupInfomations.px2all;
+
+				themePluginList = [];
+				try {
+					themePluginList = px2all.packages.package_list.themes;
+				} catch (e) {
+				}
+				// console.log(themePluginList);
+
+				// appMode
+				appMode = result.conf.appMode;
+
+				// テーマコレクションディレクトリのパスを求める
+				realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
+				realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
+
+				try {
+					multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
+				} catch (e) {
+					console.error(e);
+				}
+				// console.log(multithemePluginOptions);
+
+				callback();
+				return;
+			});
+		}
 
 		/**
 		 * twig テンプレートにデータをバインドする

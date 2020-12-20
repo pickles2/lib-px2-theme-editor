@@ -59,8 +59,8 @@
 
 	<div class="cont-footer-menu">
 		<div>
-			<div><button class="px2-btn" onclick="contApp.pageHome();">テーマコレクションへ戻る</button></div>
-			<div><button class="px2-btn px2-btn--danger" onclick="contApp.deleteTheme('{{ themeId | e }}');return false;">テーマを削除する</button></div>
+			<div><button class="px2-btn" data-pickles2-theme-editor-action="pageHome">テーマコレクションへ戻る</button></div>
+			<div><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;: &quot;{{ themeId | e }}&quot;}">テーマを削除する</button></div>
 		</div>
 	</div>
 </div>

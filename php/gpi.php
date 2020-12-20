@@ -75,7 +75,15 @@ class gpi{
 				$themecollection = new themecollection($this->main);
 				$rtn = $themecollection->rename_theme(
 					$query['newThemeId'],
-					$query['renameFrom'],
+					$query['renameFrom']
+				);
+				return $rtn;
+				break;
+
+			case "deleteTheme":
+				$themecollection = new themecollection($this->main);
+				$rtn = $themecollection->delete_theme(
+					$query['themeId']
 				);
 				return $rtn;
 				break;
