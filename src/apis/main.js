@@ -186,53 +186,23 @@
 		 */
 		this.pageThemeHome = function(themeId){
 			console.log('Theme: '+themeId);
+			var themeInfo;
 
 			it79.fnc({}, [
 				function(it1, arg){
-					// レイアウトをリスト化
-					var ls = main.fs.readdirSync(realpathThemeCollectionDir+encodeURIComponent(themeId));
-					arg.layouts = [];
-					for( var idx in ls ){
-						var layoutId = ls[idx];
-						if( !main.utils79.is_file( realpathThemeCollectionDir+encodeURIComponent(themeId)+'/'+encodeURIComponent(layoutId) ) ){
-							continue;
-						}
-						if( !layoutId.match(/\.html$/) ){
-							continue;
-						}
-						var layoutId = layoutId.replace(/\.[a-zA-Z0-9]+$/i, '');
-						var editMode = 'html';
-						if( main.utils79.is_file( realpathThemeCollectionDir+encodeURIComponent(themeId)+'/guieditor.ignore/'+encodeURIComponent(layoutId)+'/data/data.json' ) ){
-							editMode = 'html.gui';
-						}
-
-						arg.layouts.push( {
-							'id': layoutId,
-							'editMode': editMode
-						} );
-					}
-					it1.next(arg);
-				},
-				function(it1, arg){
-					// README 取得
-					arg.readme = '';
-					if( main.utils79.is_file( realpathThemeCollectionDir+themeId+'/README.md' ) ){
-						arg.readme = main.fs.readFileSync( realpathThemeCollectionDir+themeId+'/README.md' ).toString();
-						arg.readme = main.utils.markdown( arg.readme );
-					}else if( main.utils79.is_file( realpathThemeCollectionDir+themeId+'/README.html' ) ){
-						arg.readme = main.fs.readFileSync( realpathThemeCollectionDir+themeId+'/README.html' ).toString();
-					}
-					it1.next(arg);
-				},
-				function(it1, arg){
-					// サムネイル取得
-					arg.thumb = '';
-					var realpathImage = main.path.resolve( './app/common/images/no-image.png' );
-					if( main.utils79.is_file( realpathThemeCollectionDir+themeId+'/thumb.png' ) ){
-						realpathImage = main.path.resolve( realpathThemeCollectionDir+themeId+'/thumb.png' );
-					}
-					arg.thumb = 'data:image/png;base64,'+main.fs.readFileSync( realpathImage ).toString('base64');
-					it1.next(arg);
+					// テーマの情報を取得する
+					_this.gpi({
+						'api': 'getThemeInfo',
+						'themeId': themeId,
+					}, function(result){
+						console.log(result);
+						themeInfo = result;
+						arg.layouts = themeInfo.layouts;
+						arg.readme = themeInfo.readme;
+						arg.thumb = themeInfo.thumb;
+						it1.next(arg);
+						return;
+					});
 				},
 				function(it1, arg){
 					// テンプレート描画

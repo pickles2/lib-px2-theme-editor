@@ -54,6 +54,53 @@ class gpi{
 				return $bootup;
 				break;
 
+			case "getThemeInfo":
+				$themeId = $query['themeId'];
+				$rtn = array();
+				$px2all = $this->main->px2all();
+				$realpath_theme_root = $px2all->realpath_theme_collection_dir.$themeId;
+
+				$rtn['layouts'] = array();
+				$ls = $this->main->fs()->ls($realpath_theme_root.'/');
+				foreach( $ls as $layoutId ){
+					if( !is_file( $realpath_theme_root.'/'.$layoutId ) ){
+						continue;
+					}
+					if( !preg_match('/\.html$/', $layoutId) ){
+						continue;
+					}
+					$layoutId = preg_replace('/\.[a-zA-Z0-9]+$/i', '', $layoutId);
+					$editMode = 'html';
+					if( is_file( $realpath_theme_root.'/'.$layoutId.'/guieditor.ignore/'.$layoutId.'/data/data.json' ) ){
+						$editMode = 'html.gui';
+					}
+
+					array_push( $rtn['layouts'], array(
+						'id' => $layoutId,
+						'editMode' => $editMode,
+					) );
+				}
+
+				// READMEを取得
+				$rtn['readme'] = '';
+				if( is_file( $realpath_theme_root.'/'.'/README.md' ) ){
+					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.md' ).toString();
+					$rtn['readme'] = \Michelf\MarkdownExtra::defaultTransform($rtn['readme']);
+				}else if( is_file( $realpath_theme_root.'/'.'/README.html' ) ){
+					$rtn['readme'] = file_get_contents( $realpath_theme_root.'/'.'/README.html' ).toString();
+				}
+
+				// サムネイルを取得
+				$rtn['thumb'] = '';
+				$realpathImage = __DIR__.'/../resources/no-image.png';
+				if( is_file( $realpath_theme_root.'/thumb.png' ) ){
+					$realpathImage = $realpath_theme_root.'/thumb.png';
+				}
+				$rtn['thumb'] = 'data:image/png;base64,'.base64_encode(file_get_contents( $realpathImage ));
+
+				return $rtn;
+				break;
+
 			// case "px2agent":
 			// 	$result = $this->main->px2agent()->query(
 			// 		$query['pxcmd'],
