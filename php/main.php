@@ -64,7 +64,7 @@ class main{
 	 */
 	public function init( $options = array() ){
 		$options = (is_array($options) ? $options : array());
-		$options['appMode'] = (@$options['appMode'] ? $options['appMode'] : 'web'); // web | desktop
+		$options['appMode'] = (array_key_exists('appMode', $options)&&$options['appMode'] ? $options['appMode'] : 'web'); // web | desktop
 
 		$this->options = $options;
 

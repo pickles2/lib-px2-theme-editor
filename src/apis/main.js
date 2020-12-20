@@ -30,6 +30,7 @@
 			multithemePluginOptions;
 		var $elms = {'editor': $('<div>')};
 		var $canvas;
+		var appMode;
 		var templates = {
 			'form-layout-delete': require('../templates/form-layout-delete.html'),
 			'form-layout': require('../templates/form-layout.html'),
@@ -101,6 +102,9 @@
 							}
 							// console.log(themePluginList);
 
+							// appMode
+							appMode = result.conf.appMode;
+
 							// テーマコレクションディレクトリのパスを求める
 							realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
 							realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
@@ -166,6 +170,7 @@
 			var html = bindTwig(
 				templates['list'],
 				{
+					'appMode': appMode,
 					'themePluginList': themePluginList,
 					'themeCollection': bootupInfomations.listThemeCollection,
 					'realpathThemeCollectionDir': realpathThemeCollectionDir,
@@ -174,8 +179,21 @@
 			);
 			$canvas.html( html );
 
+			// Events
 			$canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
 				_this.pageThemeHome($(this).attr('data-theme-id'));
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
+				_this.openInFinder();
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=openInTextEditor]').on('click', function(){
+				_this.openInTextEditor();
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=addNewTheme]').on('click', function(){
+				_this.addNewTheme();
 				return false;
 			});
 			return;
@@ -209,6 +227,7 @@
 					var html = bindTwig(
 						templates['theme-home'],
 						{
+							'appMode': appMode,
 							'themeId': themeId,
 							'layouts': arg.layouts,
 							'thumb': arg.thumb,
@@ -255,6 +274,7 @@
 			var html = bindTwig(
 				templates['form-theme'],
 				{
+					'appMode': appMode,
 					'themeId': theme_id,
 					'themePluginList': themePluginList,
 					'themeCollection': bootupInfomations.listThemeCollection
@@ -711,28 +731,38 @@
 		 * フォルダを開く
 		 */
 		this.openInFinder = function( theme_id ){
-			var url = realpathThemeCollectionDir;
-			if(theme_id){
-				url += theme_id+'/';
+			if( appMode == 'web' ){
+				alert('ウェブモードではフォルダを開けません。');
+				return;
 			}
-			main.fsEx.mkdirsSync( url );
-			main.utils.openURL( url );
-			pj.updateGitStatus();
+			alert('TODO: 開発中です。');
+			// var url = realpathThemeCollectionDir;
+			// if(theme_id){
+			// 	url += theme_id+'/';
+			// }
+			// main.fsEx.mkdirsSync( url );
+			// main.utils.openURL( url );
+			// pj.updateGitStatus();
 		}
 
 		/**
 		 * 外部テキストエディタで開く
 		 */
 		this.openInTextEditor = function( theme_id, layout_id ){
-			var url = realpathThemeCollectionDir;
-			if(theme_id){
-				url += theme_id+'/';
+			if( appMode == 'web' ){
+				alert('ウェブモードでは外部テキストエディタを利用できません。');
+				return;
 			}
-			if(layout_id){
-				url += layout_id+'.html';
-			}
-			main.openInTextEditor( url );
-			pj.updateGitStatus();
+			alert('TODO: 開発中です。');
+			// var url = realpathThemeCollectionDir;
+			// if(theme_id){
+			// 	url += theme_id+'/';
+			// }
+			// if(layout_id){
+			// 	url += layout_id+'.html';
+			// }
+			// main.openInTextEditor( url );
+			// pj.updateGitStatus();
 		}
 
 
@@ -763,7 +793,6 @@
 					'height': $(window).innerHeight() - 0
 				})
 			;
-
 		}
 
 	}

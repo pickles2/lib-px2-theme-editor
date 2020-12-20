@@ -5,7 +5,7 @@
 				<tr data-form-column-name="themeId">
 					<th>テーマID</th>
 					<td>
-						<div><input type="text" name="themeId" value="<%= themeId %>" class="form-control" /></div>
+						<div><input type="text" name="themeId" value="{{ themeId | e}}" class="form-control" /></div>
 						<div class="cont-error-message"></div>
 					</td>
 				</tr>
@@ -13,7 +13,7 @@
 		</table>
 	</div>
 
-	<% if( !themeId ){ %>
+	{% if not themeId %}
 		<div class="px2-p">
 			<h2>インポート</h2>
 			<ul>
@@ -21,17 +21,17 @@
 			</ul>
 			<h3>テーマコレクション</h3>
 			<ul>
-			<% for( var idx in themeCollection ){ %>
-				<li><label><input type="radio" name="import_from" value="themeCollection:<%= themeCollection[idx].id %>" /> <%= themeCollection[idx].name %></label></li>
-			<% } %>
+			{% for themeCollectionRow in themeCollection %}
+				<li><label><input type="radio" name="import_from" value="themeCollection:{{ themeCollectionRow.id | e }}" /> {{ themeCollectionRow.name | e }}</label></li>
+			{% endfor %}
 			</ul>
 			<h3>テーマパッケージ</h3>
 			<ul>
-			<% for( var idx in themePluginList ){ %>
-				<li><label><input type="radio" name="import_from" value="themePlugin:<%= idx %>" /> <%= themePluginList[idx].name %></label></li>
-			<% } %>
+			{% for themePluginListRow in themePluginList %}
+				<li><label><input type="radio" name="import_from" value="themePlugin:{{ loop.index | e }}" /> {{ themePluginListRow.name | e }}</label></li>
+			{% endfor %}
 			</ul>
 		</div>
-	<% } %>
+	{% endif %}
 
 </form>
