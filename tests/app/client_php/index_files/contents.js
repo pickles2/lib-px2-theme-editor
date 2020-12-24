@@ -1235,7 +1235,7 @@ function assert (test, message) {
   if (!test) throw new Error(message || 'Failed assertion')
 }
 
-},{"base64-js":1,"ieee754":9}],3:[function(require,module,exports){
+},{"base64-js":1,"ieee754":10}],3:[function(require,module,exports){
 var Buffer = require('buffer').Buffer;
 var intSize = 4;
 var zeroBuffer = new Buffer(intSize); zeroBuffer.fill(0);
@@ -1754,468 +1754,6 @@ module.exports = function sha256(buf) {
 };
 
 },{"./helpers":3}],9:[function(require,module,exports){
-exports.read = function (buffer, offset, isLE, mLen, nBytes) {
-  var e, m
-  var eLen = (nBytes * 8) - mLen - 1
-  var eMax = (1 << eLen) - 1
-  var eBias = eMax >> 1
-  var nBits = -7
-  var i = isLE ? (nBytes - 1) : 0
-  var d = isLE ? -1 : 1
-  var s = buffer[offset + i]
-
-  i += d
-
-  e = s & ((1 << (-nBits)) - 1)
-  s >>= (-nBits)
-  nBits += eLen
-  for (; nBits > 0; e = (e * 256) + buffer[offset + i], i += d, nBits -= 8) {}
-
-  m = e & ((1 << (-nBits)) - 1)
-  e >>= (-nBits)
-  nBits += mLen
-  for (; nBits > 0; m = (m * 256) + buffer[offset + i], i += d, nBits -= 8) {}
-
-  if (e === 0) {
-    e = 1 - eBias
-  } else if (e === eMax) {
-    return m ? NaN : ((s ? -1 : 1) * Infinity)
-  } else {
-    m = m + Math.pow(2, mLen)
-    e = e - eBias
-  }
-  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
-}
-
-exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
-  var e, m, c
-  var eLen = (nBytes * 8) - mLen - 1
-  var eMax = (1 << eLen) - 1
-  var eBias = eMax >> 1
-  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
-  var i = isLE ? 0 : (nBytes - 1)
-  var d = isLE ? 1 : -1
-  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
-
-  value = Math.abs(value)
-
-  if (isNaN(value) || value === Infinity) {
-    m = isNaN(value) ? 1 : 0
-    e = eMax
-  } else {
-    e = Math.floor(Math.log(value) / Math.LN2)
-    if (value * (c = Math.pow(2, -e)) < 1) {
-      e--
-      c *= 2
-    }
-    if (e + eBias >= 1) {
-      value += rt / c
-    } else {
-      value += rt * Math.pow(2, 1 - eBias)
-    }
-    if (value * c >= 2) {
-      e++
-      c /= 2
-    }
-
-    if (e + eBias >= eMax) {
-      m = 0
-      e = eMax
-    } else if (e + eBias >= 1) {
-      m = ((value * c) - 1) * Math.pow(2, mLen)
-      e = e + eBias
-    } else {
-      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
-      e = 0
-    }
-  }
-
-  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
-
-  e = (e << mLen) | m
-  eLen += mLen
-  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
-
-  buffer[offset + i - d] |= s * 128
-}
-
-},{}],10:[function(require,module,exports){
-/**
- * node-iterate79/ary.js
- */
-(function(module){
-	var Promise = require('es6-promise').Promise;
-
-	/**
-	 * 配列の直列処理
-	 */
-	module.exports = function( ary, fnc, fncComplete ){
-		var bundle = 1;
-		if( arguments.length >= 4 ){
-			ary = arguments[0];
-			bundle = arguments[1];
-			fnc = arguments[arguments.length-2];
-			fncComplete = arguments[arguments.length-1];
-		}
-		bundle = bundle || 1;
-
-		return new (function( ary, bundle, fnc, fncComplete ){
-			var _this = this;
-			this.idx = -1;
-			this.idxs = []; // <- array keys
-			for( var i in ary ){
-				this.idxs.push(i);
-			}
-			this.bundle = bundle||1;
-			this.bundleProgress = 1;
-			this.ary = ary||[];
-			this.fnc = fnc||function(){};
-			this.completed = false;
-			this.fncComplete = fncComplete||function(){};
-
-			this.next = function(){
-				var _this = this;
-				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
-					_this.bundleProgress --;
-					if( _this.bundleProgress > 0 ){
-						// bundleごとの処理が終わっていない
-						return;
-					}
-					if( _this.idx+1 >= _this.idxs.length && _this.bundleProgress<=0 ){
-						_this.destroy();
-						return;
-					}
-					var tmp_idx = _this.idx;
-					_this.idx = _this.idx+_this.bundle;
-					for(var i = 0; i<_this.bundle; i++){
-						tmp_idx ++;
-						if( tmp_idx >= _this.idxs.length ){
-							// 端数があった場合、bundleの数に欠員が出る可能性がある。
-							break;
-						}
-						_this.bundleProgress ++;
-						_this.fnc( _this, _this.ary[_this.idxs[tmp_idx]], _this.idxs[tmp_idx] );
-					}
-					return;
-				}); });
-				return this;
-			}
-			this.break = function(){
-				var _this = this;
-				_this.destroy();
-				return;
-			}
-			this.destroy = function(){
-				var _this = this;
-				_this.idx = _this.idxs.length - 1;
-				_this.bundleProgress = 0;
-				if(_this.completed){return;}
-				_this.completed = true;
-				_this.fncComplete();
-				return;
-			}
-			this.next();
-			return;
-		})(ary, bundle, fnc, fncComplete);
-	}
-
-})(module);
-
-},{"es6-promise":14}],11:[function(require,module,exports){
-/**
- * node-iterate79/fnc.js
- */
-(function(module){
-	var Promise = require('es6-promise').Promise;
-
-	/**
-	 * 関数の直列処理
-	 */
-	module.exports = function(aryFuncs){
-		var mode = 'explicit';
-		var defaultArg = undefined;
-		if( arguments.length >= 2 ){
-			mode = 'implicit';
-			defaultArg = arguments[0];
-			aryFuncs = arguments[arguments.length-1];
-		}
-
-
-		function iterator( aryFuncs ){
-			aryFuncs = aryFuncs||[];
-			var _this = this;
-
-			_this.idx = 0;
-			_this.idxs = []; // <- array keys
-			for( var i in aryFuncs ){
-				_this.idxs.push(i);
-			}
-			_this.idxsidxs = {}; // <- array keys keys
-			for( var i in _this.idxs ){
-				_this.idxsidxs[_this.idxs[i]] = i;
-			}
-			_this.funcs = aryFuncs;
-			var isStarted = false;//2重起動防止
-
-			this.start = function(arg){
-				var _this = this;
-				if(isStarted){return;}
-				isStarted = true;
-				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
-					_this.next(arg);
-				}); });
-				return;
-			}
-			this.next = function(arg){
-				var _this = this;
-				arg = arg||{};
-				if(_this.idxs.length <= _this.idx){return;}
-				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
-					(_this.funcs[_this.idxs[_this.idx++]])(_this, arg);
-				}); });
-				return;
-			};
-			this.goto = function(key, arg){
-				var _this = this;
-				_this.idx = _this.idxsidxs[key];
-				arg = arg||{};
-				if(_this.idxs.length <= _this.idx){return;}
-				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
-					(_this.funcs[_this.idxs[_this.idx++]])(_this, arg);
-				}); });
-				return;
-			};
-			this.break = function(){
-				this.destroy();
-				return;
-			}
-			this.destroy = function(){
-				return;
-			}
-			return;
-		}
-		var rtn = new iterator(aryFuncs);
-		if( mode == 'implicit' ){
-			rtn.start(defaultArg);
-			return rtn;
-		}
-		return rtn;
-	}
-
-
-})(module);
-
-},{"es6-promise":14}],12:[function(require,module,exports){
-/**
- * node-iterate79
- */
-(function(module){
-
-	/**
-	 * 配列の直列処理
-	 */
-	module.exports.ary = require('./ary.js');
-
-	/**
-	 * 関数の直列処理
-	 */
-	module.exports.fnc = require('./fnc.js');
-
-	/**
-	 * キュー処理
-	 */
-	module.exports.queue = require('./queue.js');
-
-
-})(module);
-
-},{"./ary.js":10,"./fnc.js":11,"./queue.js":13}],13:[function(require,module,exports){
-/**
- * node-iterate79/queue.js
- */
-var Promise = require('es6-promise').Promise;
-
-/**
- * construct
- */
-module.exports = function(_options){
-	var _this = this,
-		options = {},
-		queue = [],
-		threads = [],
-		status = {},
-		timerRunQueue;
-
-	options = _options || {};
-	options.process = _options.process || function(data, done){ done(); };
-	options.threadLimit = _options.threadLimit || 1;
-	for( var i = 0; i < options.threadLimit; i ++ ){
-		threads.push({
-			'active': false
-		});
-	}
-
-	/**
-	 * QueueItemを追加する
-	 */
-	this.push = function(data){
-		var newQueueItemId;
-		while(1){
-			var microtimestamp = (new Date).getTime();
-			newQueueItemId = microtimestamp + '-' + md5( microtimestamp );
-			if( status[newQueueItemId] ){
-				// 登録済みの Queue Item ID は発行不可
-				continue;
-			}
-			break;
-		}
-
-		queue.push({
-			'id': newQueueItemId,
-			'data': data
-		});
-		status[newQueueItemId] = 1; // 1 = 実行待ち, 2 = 実行中, undefined = 未登録 または 実行済み
-
-		runQueue(); // キュー処理をキックする
-		return newQueueItemId;
-	}
-
-	/**
-	 * QueueItemを更新する
-	 */
-	this.update = function(queueItemId, data){
-		var st = this.checkStatus(queueItemId);
-		if(st != 'waiting'){
-			// 待ち状態でなければ更新できない
-			return false;
-		}
-		for(var idx in queue){
-			if(queue[idx].id == queueItemId){
-				queue[idx].data = data;
-				break;
-			}
-		}
-		return true;
-	}
-
-	/**
-	 * QueueItemを削除する
-	 */
-	this.remove = function(queueItemId){
-		var st = this.checkStatus(queueItemId);
-		if(st != 'waiting'){
-			// 待ち状態でなければ削除できない
-			return false;
-		}
-		status[queueItemId] = 99; // <- removed
-		return true;
-	}
-
-	/**
-	 * 状態を確認する
-	 */
-	this.checkStatus = function(queueItemId){
-		var st = status[queueItemId];
-		switch(status[queueItemId]){
-			case 1:
-				return 'waiting'; break;
-			case 2:
-				return 'progressing'; break;
-			case 99:
-				return 'removed'; break;
-		}
-		return 'undefined'; // <- 未定義および完了済みを含む
-	}
-
-	/**
-	 * 状態管理情報を取得する
-	 */
-	this.getAllStatus = function(){
-		return status;
-	}
-
-	/**
-	 * md5ハッシュを求める
-	 */
-	function md5( str ){
-		str = str.toString();
-		var crypto = require('crypto');
-		var md5 = crypto.createHash('md5');
-		md5.update(str, 'utf8');
-		return md5.digest('hex');
-	}
-
-	/**
-	 * 先頭から1件取り出す
-	 */
-	function shift(){
-		// console.log('----- shift');
-		var rtn = queue.shift();
-		// console.log(rtn);
-		return rtn;
-	}
-
-	/**
-	 * キュー処理をキックする
-	 */
-	function runQueue(){
-		clearTimeout(timerRunQueue);
-		if( !queue.length ){
-			// 誰も待っていない場合
-			return;
-		}
-
-		new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
-			var threadNumber = false;
-
-			// 空きスレッドを検索
-			for( var idx in threads ){
-				if( !threads[idx].active ){
-					threadNumber = idx;
-					threads[threadNumber].active = true; // スレッドを予約
-					break;
-				}
-			}
-			if( threadNumber === false ){
-				// スレッドがあいてない場合ポーリング
-				timerRunQueue = setTimeout(function(){
-					runQueue();
-				}, 10);
-				return;
-			}
-
-			var currentData = shift();
-
-			if(status[currentData.id] == 99){
-				// 削除された Queue Item
-				status[currentData.id] = undefined; delete(status[currentData.id]); // <- 処理済み にステータスを変更
-				threads[threadNumber].active = false; // 予約したスレッドを解放
-				runQueue();
-				return;
-			}
-
-
-			// ステータスを 実行中 に変更
-			status[currentData.id] = 2;
-
-			// 予約したスレッドに、Queue Item ID を記憶する
-			threads[threadNumber].active = currentData.id;
-
-			// 実行
-			options.process(currentData.data, function(){
-				status[currentData.id] = undefined; delete(status[currentData.id]); // <- 処理済み にステータスを変更
-				threads[threadNumber].active = false;
-				runQueue();
-			}, {
-				'id': currentData.id
-			});
-		}); });
-		return;
-	}
-
-}
-
-},{"crypto":4,"es6-promise":14}],14:[function(require,module,exports){
 (function (process,global){
 /*!
  * @overview es6-promise - a tiny implementation of Promises/A+.
@@ -3372,7 +2910,469 @@ return Promise;
 })));
 //# sourceMappingURL=es6-promise.map
 }).call(this,require("r7L21G"),typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"r7L21G":15}],15:[function(require,module,exports){
+},{"r7L21G":15}],10:[function(require,module,exports){
+exports.read = function (buffer, offset, isLE, mLen, nBytes) {
+  var e, m
+  var eLen = (nBytes * 8) - mLen - 1
+  var eMax = (1 << eLen) - 1
+  var eBias = eMax >> 1
+  var nBits = -7
+  var i = isLE ? (nBytes - 1) : 0
+  var d = isLE ? -1 : 1
+  var s = buffer[offset + i]
+
+  i += d
+
+  e = s & ((1 << (-nBits)) - 1)
+  s >>= (-nBits)
+  nBits += eLen
+  for (; nBits > 0; e = (e * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+
+  m = e & ((1 << (-nBits)) - 1)
+  e >>= (-nBits)
+  nBits += mLen
+  for (; nBits > 0; m = (m * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+
+  if (e === 0) {
+    e = 1 - eBias
+  } else if (e === eMax) {
+    return m ? NaN : ((s ? -1 : 1) * Infinity)
+  } else {
+    m = m + Math.pow(2, mLen)
+    e = e - eBias
+  }
+  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
+}
+
+exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+  var e, m, c
+  var eLen = (nBytes * 8) - mLen - 1
+  var eMax = (1 << eLen) - 1
+  var eBias = eMax >> 1
+  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
+  var i = isLE ? 0 : (nBytes - 1)
+  var d = isLE ? 1 : -1
+  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
+
+  value = Math.abs(value)
+
+  if (isNaN(value) || value === Infinity) {
+    m = isNaN(value) ? 1 : 0
+    e = eMax
+  } else {
+    e = Math.floor(Math.log(value) / Math.LN2)
+    if (value * (c = Math.pow(2, -e)) < 1) {
+      e--
+      c *= 2
+    }
+    if (e + eBias >= 1) {
+      value += rt / c
+    } else {
+      value += rt * Math.pow(2, 1 - eBias)
+    }
+    if (value * c >= 2) {
+      e++
+      c /= 2
+    }
+
+    if (e + eBias >= eMax) {
+      m = 0
+      e = eMax
+    } else if (e + eBias >= 1) {
+      m = ((value * c) - 1) * Math.pow(2, mLen)
+      e = e + eBias
+    } else {
+      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
+      e = 0
+    }
+  }
+
+  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
+
+  e = (e << mLen) | m
+  eLen += mLen
+  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
+
+  buffer[offset + i - d] |= s * 128
+}
+
+},{}],11:[function(require,module,exports){
+/**
+ * node-iterate79/ary.js
+ */
+(function(module){
+	var Promise = require('es6-promise').Promise;
+
+	/**
+	 * 配列の直列処理
+	 */
+	module.exports = function( ary, fnc, fncComplete ){
+		var bundle = 1;
+		if( arguments.length >= 4 ){
+			ary = arguments[0];
+			bundle = arguments[1];
+			fnc = arguments[arguments.length-2];
+			fncComplete = arguments[arguments.length-1];
+		}
+		bundle = bundle || 1;
+
+		return new (function( ary, bundle, fnc, fncComplete ){
+			var _this = this;
+			this.idx = -1;
+			this.idxs = []; // <- array keys
+			for( var i in ary ){
+				this.idxs.push(i);
+			}
+			this.bundle = bundle||1;
+			this.bundleProgress = 1;
+			this.ary = ary||[];
+			this.fnc = fnc||function(){};
+			this.completed = false;
+			this.fncComplete = fncComplete||function(){};
+
+			this.next = function(){
+				var _this = this;
+				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
+					_this.bundleProgress --;
+					if( _this.bundleProgress > 0 ){
+						// bundleごとの処理が終わっていない
+						return;
+					}
+					if( _this.idx+1 >= _this.idxs.length && _this.bundleProgress<=0 ){
+						_this.destroy();
+						return;
+					}
+					var tmp_idx = _this.idx;
+					_this.idx = _this.idx+_this.bundle;
+					for(var i = 0; i<_this.bundle; i++){
+						tmp_idx ++;
+						if( tmp_idx >= _this.idxs.length ){
+							// 端数があった場合、bundleの数に欠員が出る可能性がある。
+							break;
+						}
+						_this.bundleProgress ++;
+						_this.fnc( _this, _this.ary[_this.idxs[tmp_idx]], _this.idxs[tmp_idx] );
+					}
+					return;
+				}); });
+				return this;
+			}
+			this.break = function(){
+				var _this = this;
+				_this.destroy();
+				return;
+			}
+			this.destroy = function(){
+				var _this = this;
+				_this.idx = _this.idxs.length - 1;
+				_this.bundleProgress = 0;
+				if(_this.completed){return;}
+				_this.completed = true;
+				_this.fncComplete();
+				return;
+			}
+			this.next();
+			return;
+		})(ary, bundle, fnc, fncComplete);
+	}
+
+})(module);
+
+},{"es6-promise":9}],12:[function(require,module,exports){
+/**
+ * node-iterate79/fnc.js
+ */
+(function(module){
+	var Promise = require('es6-promise').Promise;
+
+	/**
+	 * 関数の直列処理
+	 */
+	module.exports = function(aryFuncs){
+		var mode = 'explicit';
+		var defaultArg = undefined;
+		if( arguments.length >= 2 ){
+			mode = 'implicit';
+			defaultArg = arguments[0];
+			aryFuncs = arguments[arguments.length-1];
+		}
+
+
+		function iterator( aryFuncs ){
+			aryFuncs = aryFuncs||[];
+			var _this = this;
+
+			_this.idx = 0;
+			_this.idxs = []; // <- array keys
+			for( var i in aryFuncs ){
+				_this.idxs.push(i);
+			}
+			_this.idxsidxs = {}; // <- array keys keys
+			for( var i in _this.idxs ){
+				_this.idxsidxs[_this.idxs[i]] = i;
+			}
+			_this.funcs = aryFuncs;
+			var isStarted = false;//2重起動防止
+
+			this.start = function(arg){
+				var _this = this;
+				if(isStarted){return;}
+				isStarted = true;
+				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
+					_this.next(arg);
+				}); });
+				return;
+			}
+			this.next = function(arg){
+				var _this = this;
+				arg = arg||{};
+				if(_this.idxs.length <= _this.idx){return;}
+				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
+					(_this.funcs[_this.idxs[_this.idx++]])(_this, arg);
+				}); });
+				return;
+			};
+			this.goto = function(key, arg){
+				var _this = this;
+				_this.idx = _this.idxsidxs[key];
+				arg = arg||{};
+				if(_this.idxs.length <= _this.idx){return;}
+				new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
+					(_this.funcs[_this.idxs[_this.idx++]])(_this, arg);
+				}); });
+				return;
+			};
+			this.break = function(){
+				this.destroy();
+				return;
+			}
+			this.destroy = function(){
+				return;
+			}
+			return;
+		}
+		var rtn = new iterator(aryFuncs);
+		if( mode == 'implicit' ){
+			rtn.start(defaultArg);
+			return rtn;
+		}
+		return rtn;
+	}
+
+
+})(module);
+
+},{"es6-promise":9}],13:[function(require,module,exports){
+/**
+ * node-iterate79
+ */
+(function(module){
+
+	/**
+	 * 配列の直列処理
+	 */
+	module.exports.ary = require('./ary.js');
+
+	/**
+	 * 関数の直列処理
+	 */
+	module.exports.fnc = require('./fnc.js');
+
+	/**
+	 * キュー処理
+	 */
+	module.exports.queue = require('./queue.js');
+
+
+})(module);
+
+},{"./ary.js":11,"./fnc.js":12,"./queue.js":14}],14:[function(require,module,exports){
+/**
+ * node-iterate79/queue.js
+ */
+var Promise = require('es6-promise').Promise;
+
+/**
+ * construct
+ */
+module.exports = function(_options){
+	var _this = this,
+		options = {},
+		queue = [],
+		threads = [],
+		status = {},
+		timerRunQueue;
+
+	options = _options || {};
+	options.process = _options.process || function(data, done){ done(); };
+	options.threadLimit = _options.threadLimit || 1;
+	for( var i = 0; i < options.threadLimit; i ++ ){
+		threads.push({
+			'active': false
+		});
+	}
+
+	/**
+	 * QueueItemを追加する
+	 */
+	this.push = function(data){
+		var newQueueItemId;
+		while(1){
+			var microtimestamp = (new Date).getTime();
+			newQueueItemId = microtimestamp + '-' + md5( microtimestamp );
+			if( status[newQueueItemId] ){
+				// 登録済みの Queue Item ID は発行不可
+				continue;
+			}
+			break;
+		}
+
+		queue.push({
+			'id': newQueueItemId,
+			'data': data
+		});
+		status[newQueueItemId] = 1; // 1 = 実行待ち, 2 = 実行中, undefined = 未登録 または 実行済み
+
+		runQueue(); // キュー処理をキックする
+		return newQueueItemId;
+	}
+
+	/**
+	 * QueueItemを更新する
+	 */
+	this.update = function(queueItemId, data){
+		var st = this.checkStatus(queueItemId);
+		if(st != 'waiting'){
+			// 待ち状態でなければ更新できない
+			return false;
+		}
+		for(var idx in queue){
+			if(queue[idx].id == queueItemId){
+				queue[idx].data = data;
+				break;
+			}
+		}
+		return true;
+	}
+
+	/**
+	 * QueueItemを削除する
+	 */
+	this.remove = function(queueItemId){
+		var st = this.checkStatus(queueItemId);
+		if(st != 'waiting'){
+			// 待ち状態でなければ削除できない
+			return false;
+		}
+		status[queueItemId] = 99; // <- removed
+		return true;
+	}
+
+	/**
+	 * 状態を確認する
+	 */
+	this.checkStatus = function(queueItemId){
+		var st = status[queueItemId];
+		switch(status[queueItemId]){
+			case 1:
+				return 'waiting'; break;
+			case 2:
+				return 'progressing'; break;
+			case 99:
+				return 'removed'; break;
+		}
+		return 'undefined'; // <- 未定義および完了済みを含む
+	}
+
+	/**
+	 * 状態管理情報を取得する
+	 */
+	this.getAllStatus = function(){
+		return status;
+	}
+
+	/**
+	 * md5ハッシュを求める
+	 */
+	function md5( str ){
+		str = str.toString();
+		var crypto = require('crypto');
+		var md5 = crypto.createHash('md5');
+		md5.update(str, 'utf8');
+		return md5.digest('hex');
+	}
+
+	/**
+	 * 先頭から1件取り出す
+	 */
+	function shift(){
+		// console.log('----- shift');
+		var rtn = queue.shift();
+		// console.log(rtn);
+		return rtn;
+	}
+
+	/**
+	 * キュー処理をキックする
+	 */
+	function runQueue(){
+		clearTimeout(timerRunQueue);
+		if( !queue.length ){
+			// 誰も待っていない場合
+			return;
+		}
+
+		new Promise(function(rlv){rlv();}).then(function(){ return new Promise(function(rlv, rjt){
+			var threadNumber = false;
+
+			// 空きスレッドを検索
+			for( var idx in threads ){
+				if( !threads[idx].active ){
+					threadNumber = idx;
+					threads[threadNumber].active = true; // スレッドを予約
+					break;
+				}
+			}
+			if( threadNumber === false ){
+				// スレッドがあいてない場合ポーリング
+				timerRunQueue = setTimeout(function(){
+					runQueue();
+				}, 10);
+				return;
+			}
+
+			var currentData = shift();
+
+			if(status[currentData.id] == 99){
+				// 削除された Queue Item
+				status[currentData.id] = undefined; delete(status[currentData.id]); // <- 処理済み にステータスを変更
+				threads[threadNumber].active = false; // 予約したスレッドを解放
+				runQueue();
+				return;
+			}
+
+
+			// ステータスを 実行中 に変更
+			status[currentData.id] = 2;
+
+			// 予約したスレッドに、Queue Item ID を記憶する
+			threads[threadNumber].active = currentData.id;
+
+			// 実行
+			options.process(currentData.data, function(){
+				status[currentData.id] = undefined; delete(status[currentData.id]); // <- 処理済み にステータスを変更
+				threads[threadNumber].active = false;
+				runQueue();
+			}, {
+				'id': currentData.id
+			});
+		}); });
+		return;
+	}
+
+}
+
+},{"crypto":4,"es6-promise":9}],15:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -3563,4 +3563,4 @@ var parseUriParam = function(url){
 	return paramsArray;
 }
 
-},{"iterate79":12}]},{},[16])
+},{"iterate79":13}]},{},[16])

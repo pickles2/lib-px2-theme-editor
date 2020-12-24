@@ -38,7 +38,7 @@ gulp.task('.css.scss', function(){
 // pickles2-theme-editor.js (frontend) を処理
 gulp.task("pickles2-theme-editor.js", function() {
 	return webpackStream({
-		mode: 'development',
+		mode: 'production',
 		entry: "./src/pickles2-theme-editor.js",
 		output: {
 			filename: "pickles2-theme-editor.js"
@@ -55,7 +55,7 @@ gulp.task("pickles2-theme-editor.js", function() {
 		.pipe(plumber())
 		.pipe(gulp.dest( './dist/' ))
 		.pipe(concat('pickles2-theme-editor.min.js'))
-		.pipe(uglify())
+		// .pipe(uglify())
 		.pipe(gulp.dest( './dist/' ))
 	;
 });

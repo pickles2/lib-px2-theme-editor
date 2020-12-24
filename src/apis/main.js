@@ -834,6 +834,10 @@
 		 */
 		function bindTwig( tpl, data, options ){
 			var rtn = '';
+			data = data || {};
+			if( templates[tpl] ){
+				tpl = templates[tpl];
+			}
 			try {
 				rtn = new twig.twig({
 					'data': tpl
