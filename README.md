@@ -91,7 +91,7 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/pickles2-theme-editor v0.0.1 (リリース日未定)
+### pickles2/pickles2-theme-editor v0.0.1 (2020年12月30日)
 
 - 初回リリース
 
