@@ -818,8 +818,8 @@
 		 * ユーザーにメッセージを伝える
 		 */
 		this.message = function(msg){
-			// TODO: このメッセージは、本来、画面に表示されるべきものです。
 			console.info(msg);
+			px2style.flashMessage(msg);
 		}
 
 
