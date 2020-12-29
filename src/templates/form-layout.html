@@ -5,17 +5,17 @@
 				<tr data-form-column-name="themeId">
 					<th>テーマID</th>
 					<td>
-						<div><%= themeId %></div>
+						<div>{{ themeId }}</div>
 					</td>
 				</tr>
 				<tr data-form-column-name="layoutId">
 					<th>レイアウトID</th>
 					<td>
-						<div><input type="text" name="layoutId" value="<%= layoutId %>" class="form-control" /></div>
+						<div><input type="text" name="layoutId" value="{{ layoutId }}" class="form-control" /></div>
 						<div class="cont-error-message"></div>
 					</td>
 				</tr>
-				<% if( !layoutId ){ %>
+				{% if not layoutId %}
 					<tr data-form-column-name="editMode">
 						<th>編集方法</th>
 						<td>
@@ -24,7 +24,7 @@
 							<div class="cont-error-message"></div>
 						</td>
 					</tr>
-				<% } %>
+				{% endif %}
 			</tbody>
 		</table>
 	</div>

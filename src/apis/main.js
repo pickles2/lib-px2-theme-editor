@@ -480,7 +480,8 @@
 			$form.on('submit', function(e){
 				var newLayoutId = $form.find('input[name=layoutId]').val();
 				var editMode = $form.find('input[name=editMode]:checked').val();
-				var $errMsg = $form.find('[data-form-column-name=layoutId] .cont-error-message')
+				var $errMsg = $form.find('[data-form-column-name=layoutId] .cont-error-message');
+
 				if( !newLayoutId.length ){
 					$errMsg.text('レイアウトIDを指定してください。');
 					return;
@@ -510,42 +511,66 @@
 					}
 				}
 
-
-				var realpathLayout = realpathThemeCollectionDir+theme_id+'/'+encodeURIComponent(newLayoutId)+'.html';
-				if( main.utils79.is_file( realpathLayout ) ){
-					$errMsg.text('レイアウトID '+newLayoutId+' は、すでに存在します。');
-					return;
-				}
-
 				if( layout_id ){
-					// ファイル名変更
-					main.fs.renameSync( realpathThemeCollectionDir+theme_id+'/'+encodeURIComponent(layout_id)+'.html', realpathLayout );
-					if( main.utils79.is_dir( realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(layout_id)+'/' ) ){
-						main.fs.renameSync(
-							realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(layout_id)+'/',
-							realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(newLayoutId)+'/'
-						);
-					}
-					if( main.utils79.is_dir( realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(layout_id)+'/' ) ){
-						main.fs.renameSync(
-							realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(layout_id)+'/',
-							realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(newLayoutId)+'/'
-						);
-					}
+					// --------------------
+					// レイアウト名の変更
+					_this.gpi({
+						'api': 'renameLayout',
+						'themeId': theme_id,
+						'newLayoutId': newLayoutId,
+						'renameFrom': layout_id,
+					}, function(result){
+						// console.log(result);
+						if( !result ){
+							alert( 'ERROR' );
+							_this.pageThemeHome(theme_id);
+							return;
+						}
+						if( !result.result ){
+							alert( result.message );
+							_this.pageThemeHome(theme_id);
+							return;
+						}
+
+						var msg = 'レイアウト '+layout_id+' を '+newLayoutId+' にリネームしました。';
+						_this.message(msg);
+						px2style.closeModal();
+						updateBootupInfomations(function(){
+							_this.pageThemeHome(theme_id);
+						});
+						return;
+					});
 				}else{
-					// ファイル生成
-					main.fs.writeFileSync( realpathLayout, '<!DOCTYPE html>'+"\n" );
-					if( editMode == 'html.gui' ){
-						main.fsEx.mkdirsSync( realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(newLayoutId)+'/data/' );
-						main.fs.writeFileSync( realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(newLayoutId)+'/data/data.json', '{}'+"\n" );
-					}
+					// --------------------
+					// 新規レイアウト
+					_this.gpi({
+						'api': 'addNewLayout',
+						'themeId': theme_id,
+						'newLayoutId': newLayoutId,
+						'editMode': editMode,
+					}, function(result){
+						// console.log(result);
+						if( !result ){
+							alert( 'ERROR' );
+							_this.pageThemeHome(theme_id);
+							return;
+						}
+						if( !result.result ){
+							alert( result.message );
+							_this.pageThemeHome(theme_id);
+							return;
+						}
+
+						var msg = 'レイアウト '+newLayoutId+' を作成しました。';
+						_this.message(msg);
+						px2style.closeModal();
+						updateBootupInfomations(function(){
+							_this.pageThemeHome(theme_id);
+						});
+						return;
+					});
 				}
 
-				var msg = (layout_id ? 'レイアウト '+layout_id+' を '+newLayoutId+' にリネームしました。' : 'レイアウト '+newLayoutId+' を作成しました。')
-				_this.message(msg);
-				px2style.closeModal();
-				pj.updateGitStatus();
-				_this.pageThemeHome(theme_id);
 			});
 
 			return;
@@ -825,6 +850,19 @@
 				var options = parseOptions($(this));
 				options.themeId = options.themeId || undefined;
 				_this.setDefaultTheme( options.themeId );
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=addNewLayout]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				_this.addNewLayout( options.themeId );
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=renameLayout]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				options.layoutId = options.layoutId || undefined;
+				_this.renameLayout( options.themeId, options.layoutId );
 				return false;
 			});
 		}

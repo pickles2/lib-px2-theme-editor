@@ -96,6 +96,26 @@ class gpi{
 				return $rtn;
 				break;
 
+			case "addNewLayout":
+				$themecollection = new themeCollection($this->main);
+				$rtn = $themecollection->add_new_layout(
+					$query['themeId'],
+					$query['newLayoutId'],
+					$query['editMode']
+				);
+				return $rtn;
+				break;
+
+			case "renameLayout":
+				$themecollection = new themeCollection($this->main);
+				$rtn = $themecollection->rename_layout(
+					$query['themeId'],
+					$query['renameFrom'],
+					$query['newLayoutId']
+				);
+				return $rtn;
+				break;
+
 			// case "px2agent":
 			// 	$result = $this->main->px2agent()->query(
 			// 		$query['pxcmd'],
