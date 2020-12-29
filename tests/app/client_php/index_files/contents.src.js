@@ -1,6 +1,7 @@
+var $ = require('jquery');
 var it79 = require('iterate79');
 
-$(window).load(function(){
+$(window).on('load', function(){
 	var params = parseUriParam(window.location.href);
 	// console.log(params);
 	var $canvas = $('#canvas');
