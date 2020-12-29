@@ -36,7 +36,7 @@
 			'form-layout': require('../templates/form-layout.html'),
 			'form-theme-delete': require('../templates/form-theme-delete.html'),
 			'form-theme': require('../templates/form-theme.html'),
-			'list': require('../templates/list.html'),
+			'index': require('../templates/index.html'),
 			'not-enough-api-version': require('../templates/not-enough-api-version.html'),
 			'theme-home': require('../templates/theme-home.html'),
 		};
@@ -140,7 +140,7 @@
 			}
 
 			var html = bindTwig(
-				templates['list'],
+				templates['index'],
 				{
 					'appMode': appMode,
 					'themePluginList': themePluginList,
@@ -152,20 +152,9 @@
 			$canvas.html( html );
 
 			// Events
+			setStandardEventHandlers($canvas);
 			$canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
 				_this.pageThemeHome($(this).attr('data-theme-id'));
-				return false;
-			});
-			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
-				_this.openInFinder();
-				return false;
-			});
-			$canvas.find('[data-pickles2-theme-editor-action=openInTextEditor]').on('click', function(){
-				_this.openInTextEditor();
-				return false;
-			});
-			$canvas.find('[data-pickles2-theme-editor-action=addNewTheme]').on('click', function(){
-				_this.addNewTheme();
 				return false;
 			});
 			return;
@@ -229,6 +218,7 @@
 					});
 
 					// イベント処理登録
+					setStandardEventHandlers($canvas);
 					$canvas.find('.cont-layout-list a button').on('click', function(e){
 						e.stopPropagation();
 					});
@@ -747,15 +737,15 @@
 		/**
 		 * フォルダを開く
 		 */
-		this.openInFinder = function( theme_id ){
+		this.openInFinder = function( path ){
 			if( appMode == 'web' ){
 				alert('ウェブモードではフォルダを開けません。');
 				return;
 			}
 			alert('TODO: 開発中です。');
 			// var url = realpathThemeCollectionDir;
-			// if(theme_id){
-			// 	url += theme_id+'/';
+			// if(path){
+			// 	url += path;
 			// }
 			// main.fsEx.mkdirsSync( url );
 			// main.utils.openURL( url );
@@ -765,18 +755,15 @@
 		/**
 		 * 外部テキストエディタで開く
 		 */
-		this.openInTextEditor = function( theme_id, layout_id ){
+		this.openInTextEditor = function( path ){
 			if( appMode == 'web' ){
 				alert('ウェブモードでは外部テキストエディタを利用できません。');
 				return;
 			}
 			alert('TODO: 開発中です。');
 			// var url = realpathThemeCollectionDir;
-			// if(theme_id){
-			// 	url += theme_id+'/';
-			// }
-			// if(layout_id){
-			// 	url += layout_id+'.html';
+			// if(path){
+			// 	url += path;
 			// }
 			// main.openInTextEditor( url );
 			// pj.updateGitStatus();
@@ -788,6 +775,41 @@
 		this.message = function(msg){
 			// TODO: このメッセージは、本来、画面に表示されるべきものです。
 			console.info(msg);
+		}
+
+
+		/**
+		 * 標準的なイベントハンドラをセットする
+		 */
+		function setStandardEventHandlers($canvas){
+			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
+				var options = {};
+				try{
+					var strOptions = $(this).attr('data-pickles2-theme-editor-options');
+					options = JSON.parse(strOptions);
+					options = options || {};
+				}catch(e){
+				}
+				options.path = options.path || '/';
+				_this.openInFinder(options.path);
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=openInTextEditor]').on('click', function(){
+				var options = {};
+				try{
+					var strOptions = $(this).attr('data-pickles2-theme-editor-options');
+					options = JSON.parse(strOptions);
+					options = options || {};
+				}catch(e){
+				}
+				options.path = options.path || '/';
+				_this.openInTextEditor(options.path);
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=addNewTheme]').on('click', function(){
+				_this.addNewTheme();
+				return false;
+			});
 		}
 
 
