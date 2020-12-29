@@ -782,32 +782,37 @@
 		 * 標準的なイベントハンドラをセットする
 		 */
 		function setStandardEventHandlers($canvas){
-			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
+			function parseOptions($this){
 				var options = {};
 				try{
-					var strOptions = $(this).attr('data-pickles2-theme-editor-options');
+					var strOptions = $this.attr('data-pickles2-theme-editor-options');
 					options = JSON.parse(strOptions);
-					options = options || {};
 				}catch(e){
+					console.error('JSON parse error', e);
 				}
+				options = options || {};
+				return options;
+			}
+			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
+				var options = parseOptions($(this));
 				options.path = options.path || '/';
 				_this.openInFinder(options.path);
 				return false;
 			});
 			$canvas.find('[data-pickles2-theme-editor-action=openInTextEditor]').on('click', function(){
-				var options = {};
-				try{
-					var strOptions = $(this).attr('data-pickles2-theme-editor-options');
-					options = JSON.parse(strOptions);
-					options = options || {};
-				}catch(e){
-				}
+				var options = parseOptions($(this));
 				options.path = options.path || '/';
 				_this.openInTextEditor(options.path);
 				return false;
 			});
 			$canvas.find('[data-pickles2-theme-editor-action=addNewTheme]').on('click', function(){
 				_this.addNewTheme();
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=renameTheme]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				_this.renameTheme( options.themeId );
 				return false;
 			});
 		}
