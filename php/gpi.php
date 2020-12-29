@@ -49,7 +49,7 @@ class gpi{
 				$bootup['multithemePluginOptions'] = $this->main->px2agent()->query('/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec'), array("output" => "json"));
 				$bootup['theme_collection_dir_exists'] = is_dir($bootup['px2all']->realpath_theme_collection_dir);
 
-				$themecollection = new themecollection($this->main);
+				$themecollection = new themeCollection($this->main);
 				$bootup['listThemeCollection'] = $themecollection->get_list();
 				return $bootup;
 				break;
@@ -57,13 +57,13 @@ class gpi{
 			case "getThemeInfo":
 				$theme_id = $query['themeId'];
 
-				$themecollection = new themecollection($this->main);
+				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->get_theme_info( $theme_id );
 				return $rtn;
 				break;
 
 			case "addNewTheme":
-				$themecollection = new themecollection($this->main);
+				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->add_new_theme(
 					$query['newThemeId'],
 					array('importFrom' => $query['importFrom'])
@@ -72,7 +72,7 @@ class gpi{
 				break;
 
 			case "renameTheme":
-				$themecollection = new themecollection($this->main);
+				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->rename_theme(
 					$query['newThemeId'],
 					$query['renameFrom']
@@ -80,8 +80,16 @@ class gpi{
 				return $rtn;
 				break;
 
+			case "setDefaultTheme":
+				$configeditor = new configEditor($this->main);
+				$rtn = $configeditor->set_default_theme(
+					$query['themeId']
+				);
+				return $rtn;
+				break;
+
 			case "deleteTheme":
-				$themecollection = new themecollection($this->main);
+				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->delete_theme(
 					$query['themeId']
 				);

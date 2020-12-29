@@ -227,17 +227,6 @@
 						main.utils.openURL( href );
 						return false;
 					});
-					$canvas.find('.cont-theme-home-set-default__btn-set-default').on('click', function(e){
-						pj.configEditor().setDefaultTheme(themeId, function(result){
-							if(!result.result){
-								alert(result.message);
-								return;
-							}
-							multithemePluginOptions.default_theme_id = themeId;
-							_this.pageThemeHome(themeId);
-							pj.updateGitStatus();
-						});
-					});
 					it1.next(arg);
 				}
 			]);
@@ -368,6 +357,23 @@
 		 */
 		this.renameTheme = function(theme_id){
 			return this.addNewTheme(theme_id);
+		}
+
+		/**
+		 * デフォルトテーマをセットする
+		 */
+		this.setDefaultTheme = function(theme_id){
+			_this.gpi({
+				'api': 'setDefaultTheme',
+				'themeId': theme_id,
+			}, function(result){
+				console.log(result);
+				updateBootupInfomations(function(){
+					_this.pageThemeHome(theme_id);
+				});
+				return;
+			});
+			return false;
 		}
 
 		/**
@@ -815,6 +821,12 @@
 				_this.renameTheme( options.themeId );
 				return false;
 			});
+			$canvas.find('[data-pickles2-theme-editor-action=setDefaultTheme]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				_this.setDefaultTheme( options.themeId );
+				return false;
+			});
 		}
 
 
@@ -826,7 +838,7 @@
 			_this.gpi({
 				'api': 'getBootupInfomations'
 			}, function(result){
-				console.log(result);
+				// console.log(result);
 				bootupInfomations = result;
 				px2all = bootupInfomations.px2all;
 

@@ -19,7 +19,7 @@
 		{% if default_theme_id == themeId %}
 			<p>このテーマを採用しています。</p>
 		{% else %}
-			<p><button class="px2-btn px2-btn--primary cont-theme-home-set-default__btn-set-default">このテーマを採用する</button></p>
+			<p><button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="setDefaultTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">このテーマを採用する</button></p>
 		{% endif %}
 	</div>
 

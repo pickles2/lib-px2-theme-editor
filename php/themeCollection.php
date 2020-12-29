@@ -1,6 +1,6 @@
 <?php
 namespace pickles2\libs\themeEditor;
-class themecollection{
+class themeCollection{
 
 	/** $main */
 	private $main;
