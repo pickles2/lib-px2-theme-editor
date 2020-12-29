@@ -51,6 +51,9 @@
 		this.init = function(options, callback){
 			options = options || {};
 			options.gpiBridge = options.gpiBridge || function(){};
+			options.themeLayoutEditor = options.themeLayoutEditor || function(){};
+			options.openInFinder = options.openInFinder || function(){};
+			options.openInTextEditor = options.openInTextEditor || function(){};
 			this.options = options;
 
 			$canvas = $(options.elmCanvas);
@@ -662,107 +665,10 @@
 		}
 
 		/**
-		 * broccoli-html-editor-php が利用不可
-		 */
-		this.pageBroccoliHtmlEditorPhpIsNotAvailable = function( errors ){
-			// ↓このケースでは、 `realpathThemeCollectionDir` を返すAPIが利用できないため、
-			// 　古い方法でパスを求める。
-			realpathThemeCollectionDir = pj.get('path')+'/'+pj.get('home_dir')+'/themes/';
-
-			var html = bindTwig(
-				templates['broccoli-html-editor-php-is-not-available'],
-				{'errors': errors}
-			);
-			$canvas.html( html );
-		}
-
-		/**
 		 * エディター画面を開く
 		 */
 		this.openEditor = function( themeId, layoutId ){
-			var realpathLayout = realpathThemeCollectionDir+themeId+'/'+layoutId+'.html';
-			if( !main.utils79.is_file( realpathLayout ) ){
-				alert('ERROR: Layout '+themeId + '/' + layoutId + ' is NOT exists.');
-				return;
-			}
-
-			main.preview.serverStandby( function(result){
-				if(result === false){
-					_this.message('プレビューサーバーの起動に失敗しました。');
-					return;
-				}
-
-				_this.closeEditor();//一旦閉じる
-
-				// プログレスモード表示
-				main.progress.start({
-					'blindness':true,
-					'showProgressBar': true
-				});
-
-				$elms.editor = $('<div>')
-					.css({
-						'position':'fixed',
-						'top':0,
-						'left':0 ,
-						'z-index': '1000',
-						'width':'100%',
-						'height':$(window).height()
-					})
-					.append(
-						$('<iframe>')
-							//↓エディタ自体は別のHTMLで実装
-							.attr( 'src', '../../mods/editor/index.html'
-								+'?theme_id='+encodeURIComponent( themeId )
-								+'&layout_id='+encodeURIComponent( layoutId )
-							)
-							.css({
-								'border':'0px none',
-								'width':'100%',
-								'height':'100%'
-							})
-					)
-					.append(
-						$('<a>')
-							.html('&times;')
-							.attr('href', 'javascript:;')
-							.on( 'click', function(){
-								// if(!confirm('編集中の内容は破棄されます。エディタを閉じますか？')){ return false; }
-								_this.closeEditor();
-							} )
-							.css({
-								'position':'absolute',
-								'bottom':5,
-								'right':5,
-								'font-size':'18px',
-								'color':'#333',
-								'background-color':'#eee',
-								'border-radius':'0.5em',
-								'border':'1px solid #333',
-								'text-align':'center',
-								'opacity':0.4,
-								'width':'1.5em',
-								'height':'1.5em',
-								'text-decoration': 'none'
-							})
-							.hover(function(){
-								$(this).animate({
-									'opacity':1
-								});
-							}, function(){
-								$(this).animate({
-									'opacity':0.4
-								});
-							})
-					)
-				;
-				$('body')
-					.append($elms.editor)
-					.css({'overflow':'hidden'})
-				;
-			} );
-
-			// main.progress.close();
+			this.options.themeLayoutEditor( themeId, layoutId );
 			return;
 		} // openEditor()
 
@@ -783,35 +689,16 @@
 		 * フォルダを開く
 		 */
 		this.openInFinder = function( path ){
-			if( appMode == 'web' ){
-				alert('ウェブモードではフォルダを開けません。');
-				return;
-			}
-			alert('TODO: 開発中です。');
-			// var url = realpathThemeCollectionDir;
-			// if(path){
-			// 	url += path;
-			// }
-			// main.fsEx.mkdirsSync( url );
-			// main.utils.openURL( url );
-			// pj.updateGitStatus();
+			this.options.openInFinder( path );
+			return;
 		}
 
 		/**
 		 * 外部テキストエディタで開く
 		 */
 		this.openInTextEditor = function( path ){
-			if( appMode == 'web' ){
-				alert('ウェブモードでは外部テキストエディタを利用できません。');
-				return;
-			}
-			alert('TODO: 開発中です。');
-			// var url = realpathThemeCollectionDir;
-			// if(path){
-			// 	url += path;
-			// }
-			// main.openInTextEditor( url );
-			// pj.updateGitStatus();
+			this.options.openInTextEditor( path );
+			return;
 		}
 
 		/**
@@ -884,6 +771,13 @@
 				options.themeId = options.themeId || undefined;
 				options.layoutId = options.layoutId || undefined;
 				_this.deleteLayout( options.themeId, options.layoutId );
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=openEditor]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				options.layoutId = options.layoutId || undefined;
+				_this.openEditor( options.themeId, options.layoutId );
 				return false;
 			});
 		}

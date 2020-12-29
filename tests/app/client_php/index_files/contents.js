@@ -14395,6 +14395,15 @@ $(window).on('load', function(){
 								}
 							});
 							return;
+						},
+						'themeLayoutEditor': function(themeId, layoutId){
+							alert('themeLayoutEditor: '+themeId+'/'+layoutId);
+						},
+						'openInFinder': function(path){
+							alert('openInFinder: '+path);
+						},
+						'openInTextEditor': function(path){
+							alert('openInTextEditor: '+path);
 						}
 					},
 					function(){
