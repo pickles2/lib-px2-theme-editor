@@ -18,7 +18,13 @@ class themeCollection{
 	public function get_list(){
 		$themeCollection = array();
 		$px2all = $this->main->px2all();
+		if( !is_dir($px2all->realpath_theme_collection_dir) ){
+			return false;
+		}
 		$ls = $this->main->fs()->ls($px2all->realpath_theme_collection_dir);
+		if( !is_array($ls) || !count($ls) ){
+			return $themeCollection;
+		}
 
 		$realpathDefaultThumb = 'data:image/png;base64,'.base64_encode( file_get_contents( __DIR__.'/../resources/no-image.png' ) );
 
