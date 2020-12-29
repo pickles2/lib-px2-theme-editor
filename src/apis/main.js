@@ -618,19 +618,33 @@
 			);
 
 			$form.on('submit', function(e){
-				// ファイルを削除
-				main.fs.unlinkSync( realpathThemeCollectionDir+theme_id+'/'+encodeURIComponent(layout_id)+'.html' );
-				if( main.utils79.is_dir( realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(layout_id)+'/' ) ){
-					main.fsEx.removeSync( realpathThemeCollectionDir+theme_id+'/guieditor.ignore/'+encodeURIComponent(layout_id)+'/' );
-				}
-				if( main.utils79.is_dir( realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(layout_id)+'/' ) ){
-					main.fsEx.removeSync( realpathThemeCollectionDir+theme_id+'/theme_files/layouts/'+encodeURIComponent(layout_id)+'/' );
-				}
+				// --------------------
+				// レイアウトを削除
+				_this.gpi({
+					'api': 'deleteLayout',
+					'themeId': theme_id,
+					'layoutId': layout_id,
+				}, function(result){
+					// console.log(result);
+					if( !result ){
+						alert( 'ERROR' );
+						_this.pageThemeHome(theme_id);
+						return;
+					}
+					if( !result.result ){
+						alert( result.message );
+						_this.pageThemeHome(theme_id);
+						return;
+					}
 
-				_this.message('レイアウト ' + layout_id + ' を削除しました。');
-				px2style.closeModal();
-				pj.updateGitStatus();
-				_this.pageThemeHome(theme_id);
+					var msg = 'レイアウト ' + layout_id + ' を削除しました。';
+					_this.message(msg);
+					px2style.closeModal();
+					updateBootupInfomations(function(){
+						_this.pageThemeHome(theme_id);
+					});
+					return;
+				});
 			});
 
 			return;
@@ -863,6 +877,13 @@
 				options.themeId = options.themeId || undefined;
 				options.layoutId = options.layoutId || undefined;
 				_this.renameLayout( options.themeId, options.layoutId );
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=deleteLayout]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				options.layoutId = options.layoutId || undefined;
+				_this.deleteLayout( options.themeId, options.layoutId );
 				return false;
 			});
 		}

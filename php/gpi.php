@@ -116,6 +116,15 @@ class gpi{
 				return $rtn;
 				break;
 
+			case "deleteLayout":
+				$themecollection = new themeCollection($this->main);
+				$rtn = $themecollection->delete_layout(
+					$query['themeId'],
+					$query['layoutId']
+				);
+				return $rtn;
+				break;
+
 			// case "px2agent":
 			// 	$result = $this->main->px2agent()->query(
 			// 		$query['pxcmd'],

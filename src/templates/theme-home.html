@@ -43,7 +43,7 @@
 				<ul class="cont-layout-menu">
 					<li><button class="px2-btn px2-btn--primary" data-theme-id="{{ themeId | e }}" data-layout-id="{{ layout.id | e }}" onclick="contApp.openEditor($(this).attr('data-theme-id'), $(this).attr('data-layout-id'));return false;">編集する</button></li>
 					<li><button class="px2-btn" data-pickles2-theme-editor-action="renameLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">リネームする</button></li>
-					<li><button class="px2-btn px2-btn--danger" data-theme-id="{{ themeId | e }}" data-layout-id="{{ layout.id | e }}" onclick="contApp.deleteLayout($(this).attr('data-theme-id'), $(this).attr('data-layout-id'));return false;">削除する</button></li>
+					<li><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}" data-theme-id="{{ themeId | e }}" data-layout-id="{{ layout.id | e }}">削除する</button></li>
 				</ul>
 			</a></li>
 		{% endfor %}

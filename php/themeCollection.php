@@ -249,26 +249,26 @@ class themeCollection{
 		}
 
 		$px2all = $this->main->px2all();
-		$realpathLayout = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
+		$realpath_theme_root = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
 
-		if( !is_dir($realpathLayout) ){
+		if( !is_dir($realpath_theme_root) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマが存在しません。',
 			);
 		}
-		if( is_file($realpathLayout.$new_layout_id.'.html') ){
+		if( is_file($realpath_theme_root.$new_layout_id.'.html') ){
 			return array(
 				'result' => false,
 				'message' => 'レイアウトID '.$new_layout_id.' は、すでに存在します。',
 			);
 		}
 
-		$this->main->fs()->save_file( $realpathLayout.$new_layout_id.'.html', '<!DOCTYPE html>'."\n" );
+		$this->main->fs()->save_file( $realpath_theme_root.$new_layout_id.'.html', '<!DOCTYPE html>'."\n" );
 
 		if( $editMode == 'html.gui' ){
-			$this->main->fs()->mkdir_r( $realpathLayout.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/' );
-			$this->main->fs()->save_file( $realpathLayout.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/data.json', '{}'."\n" );
+			$this->main->fs()->mkdir_r( $realpath_theme_root.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/' );
+			$this->main->fs()->save_file( $realpath_theme_root.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/data.json', '{}'."\n" );
 		}
 
 		return array(
@@ -301,21 +301,21 @@ class themeCollection{
 		}
 
 		$px2all = $this->main->px2all();
-		$realpathLayout = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
+		$realpath_theme_root = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
 
-		if( !is_dir($realpathLayout) ){
+		if( !is_dir($realpath_theme_root) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマが存在しません。',
 			);
 		}
-		if( !is_file($realpathLayout.$layout_id.'.html') ){
+		if( !is_file($realpath_theme_root.$layout_id.'.html') ){
 			return array(
 				'result' => false,
 				'message' => 'レイアウトID '.$layout_id.' は、存在しません。',
 			);
 		}
-		if( is_file($realpathLayout.$new_layout_id.'.html') ){
+		if( is_file($realpath_theme_root.$new_layout_id.'.html') ){
 			return array(
 				'result' => false,
 				'message' => 'レイアウトID '.$new_layout_id.' は、すでに存在します。',
@@ -323,21 +323,69 @@ class themeCollection{
 		}
 
 		$this->main->fs()->rename(
-			$realpathLayout.'/'.urlencode($layout_id).'.html',
-			$realpathLayout.'/'.urlencode($new_layout_id).'.html'
+			$realpath_theme_root.'/'.urlencode($layout_id).'.html',
+			$realpath_theme_root.'/'.urlencode($new_layout_id).'.html'
 		);
 
-		if( is_dir( $realpathLayout.'/guieditor.ignore/'.urlencode($layout_id).'/' ) ){
+		if( is_dir( $realpath_theme_root.'/guieditor.ignore/'.urlencode($layout_id).'/' ) ){
 			$this->main->fs()->rename(
-				$realpathLayout.'/guieditor.ignore/'.urlencode($layout_id).'/',
-				$realpathLayout.'/guieditor.ignore/'.urlencode($new_layout_id).'/'
+				$realpath_theme_root.'/guieditor.ignore/'.urlencode($layout_id).'/',
+				$realpath_theme_root.'/guieditor.ignore/'.urlencode($new_layout_id).'/'
 			);
 		}
-		if( is_dir( $realpathLayout.'/theme_files/layouts/'.urlencode($layout_id).'/' ) ){
+		if( is_dir( $realpath_theme_root.'/theme_files/layouts/'.urlencode($layout_id).'/' ) ){
 			$this->main->fs()->rename(
-				$realpathLayout.'/theme_files/layouts/'.urlencode($layout_id).'/',
-				$realpathLayout.'/theme_files/layouts/'.urlencode($new_layout_id).'/'
+				$realpath_theme_root.'/theme_files/layouts/'.urlencode($layout_id).'/',
+				$realpath_theme_root.'/theme_files/layouts/'.urlencode($new_layout_id).'/'
 			);
+		}
+
+		return array(
+			'result' => true,
+			'message' => 'OK',
+		);
+	}
+
+	/**
+	 * レイアウトを削除
+	 */
+	public function delete_layout( $theme_id, $layout_id ){
+		if( !strlen($theme_id) ){
+			return array(
+				'result' => false,
+				'message' => 'テーマIDが指定されていません。',
+			);
+		}
+		if( !strlen($layout_id) ){
+			return array(
+				'result' => false,
+				'message' => 'レイアウトIDが指定されていません。',
+			);
+		}
+
+		$px2all = $this->main->px2all();
+		$realpath_theme_root = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
+
+		if( !is_dir($realpath_theme_root) ){
+			return array(
+				'result' => false,
+				'message' => 'テーマが存在しません。',
+			);
+		}
+		if( !is_file($realpath_theme_root.$layout_id.'.html') ){
+			return array(
+				'result' => false,
+				'message' => 'レイアウトID '.$layout_id.' は、存在しません。',
+			);
+		}
+
+		$this->main->fs()->rm($realpath_theme_root.'/'.urlencode($layout_id).'.html');
+
+		if( is_dir( $realpath_theme_root.'/guieditor.ignore/'.urlencode($layout_id).'/' ) ){
+			$this->main->fs()->rm( $realpath_theme_root.'/guieditor.ignore/'.urlencode($layout_id).'/' );
+		}
+		if( is_dir( $realpath_theme_root.'/theme_files/layouts/'.urlencode($layout_id).'/' ) ){
+			$this->main->fs()->rm( $realpath_theme_root.'/theme_files/layouts/'.urlencode($layout_id).'/' );
 		}
 
 		return array(
