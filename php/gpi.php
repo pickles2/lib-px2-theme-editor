@@ -64,6 +64,7 @@ class gpi{
 
 			case "addNewTheme":
 				$themecollection = new themeCollection($this->main);
+				if( !array_key_exists('importFrom', $query) ){ $query['importFrom'] = null; }
 				$rtn = $themecollection->add_new_theme(
 					$query['newThemeId'],
 					array('importFrom' => $query['importFrom'])
