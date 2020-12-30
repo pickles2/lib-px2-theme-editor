@@ -50,6 +50,7 @@
             "php/main.php",
             "php/gpi.php",
             "php/configEditor.php",
+            "php/plugins.php",
             "php/themeCollection.php"
         ]
     }

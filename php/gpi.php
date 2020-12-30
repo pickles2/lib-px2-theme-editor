@@ -46,7 +46,10 @@ class gpi{
 				$bootup['conf']['appMode'] = $this->main->getAppMode();
 				$bootup['languageCsv'] = file_get_contents( __DIR__.'/../data/language.csv' );
 				$bootup['px2all'] = $this->main->px2all();
-				$bootup['multithemePluginOptions'] = $this->main->px2agent()->query('/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec'), array("output" => "json"));
+				$plugins = new plugins($this->main);
+				$plugins->set_pickles2_config($bootup['px2all']->config);
+				$bootup['multithemePluginOptions'] = $plugins->get_plugin_options('tomk79\\pickles2\\multitheme\\theme::exec', 'processor.html');
+				// $bootup['multithemePluginOptions'] = $this->main->px2agent()->query('/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec'), array("output" => "json"));
 				$bootup['theme_collection_dir_exists'] = is_dir($bootup['px2all']->realpath_theme_collection_dir);
 
 				$themecollection = new themeCollection($this->main);
