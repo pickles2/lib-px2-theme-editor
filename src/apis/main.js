@@ -104,7 +104,11 @@
 					function(it1){
 						px2style.closeLoading();
 						_this.pageHome();
+						it1.next();
+					},
+					function(){
 						console.log('Pickles2 Theme Editor: init done.');
+						callback();
 					}
 				]
 			);
