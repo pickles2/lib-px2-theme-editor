@@ -22,6 +22,7 @@ class mainTest extends PHPUnit_Framework_TestCase{
 		$this->assertSame($bootupInfomations['conf']['appMode'], 'web');
 		$this->assertSame(is_string($bootupInfomations['languageCsv']), true);
 		$this->assertSame(is_array($bootupInfomations['multithemePluginOptions']), true);
+		$this->assertSame(count($bootupInfomations['multithemePluginOptions']), 1);
 		$this->assertSame($bootupInfomations['theme_collection_dir_exists'], true);
 		$this->assertSame(is_array($bootupInfomations['listThemeCollection']), true);
 		$this->assertSame(count($bootupInfomations['listThemeCollection']), 1);
@@ -72,6 +73,33 @@ class mainTest extends PHPUnit_Framework_TestCase{
 		// var_dump($bootupInfomations);
 		$this->assertSame(count($bootupInfomations['listThemeCollection']), 2);
 		$this->assertTrue(is_dir(__DIR__.'/app/src_px2/px-files/themes/test-theme/'));
+	}
+
+
+	/**
+	 * addNewLayout
+	 */
+	public function testAddNewLayout(){
+		$main = new \pickles2\libs\themeEditor\main();
+		$main->init(array(
+			'entryScript' => __DIR__.'/app/src_px2/.px_execute.php',
+		));
+		$this->assertEquals(is_object($main), true);
+
+		$result = $main->gpi(array(
+			'api'=>'addNewLayout',
+			'themeId'=>'test-theme',
+			'newLayoutId'=>'testlayout001',
+			'editMode'=>'html.gui',
+		));
+		// var_dump($result);
+		$this->assertSame($result['result'], true);
+		$this->assertSame($result['message'], 'OK');
+
+		$themeInfo = $main->gpi(array('api'=>'getThemeInfo', 'themeId'=>'test-theme'));
+		// var_dump($themeInfo);
+		$this->assertSame(count($themeInfo['layouts']), 6);
+		$this->assertTrue(is_file(__DIR__.'/app/src_px2/px-files/themes/test-theme/testlayout001.html'));
 	}
 
 

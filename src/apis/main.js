@@ -814,7 +814,9 @@
 				realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
 
 				try {
-					multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
+					if( bootupInfomations.multithemePluginOptions[0] ){
+						multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
+					}
 				} catch (e) {
 					console.error(e);
 				}
