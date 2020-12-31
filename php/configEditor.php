@@ -22,12 +22,20 @@ class configEditor{
 			)
 		)));
 
+
+		$px2all = $this->main->px2all();
+		$tmp_data_file = $px2all->realpath_homedir.'_sys/ram/data/__theme-editor-'.date('Y-m-d-His').'-'.md5( microtime(true) ).'.txt';
+		$this->main->fs()->save_file( $tmp_data_file, 'PX=px2dthelper.config.update&base64_json='.urlencode($param) );
 		$result = $this->main->px2agent()->query(
-			'/?PX=px2dthelper.config.update&base64_json='.urlencode($param),
+			'/',
 			array(
 				"output" => "json",
+				"method" => 'post',
+				"body_file"=>$tmp_data_file,
 			)
 		);
+		unlink( $tmp_data_file );
+
 
 		if( !is_object( $result ) ){
 			return array(

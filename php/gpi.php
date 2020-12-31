@@ -46,10 +46,18 @@ class gpi{
 				$bootup['conf']['appMode'] = $this->main->getAppMode();
 				$bootup['languageCsv'] = file_get_contents( __DIR__.'/../data/language.csv' );
 				$bootup['px2all'] = $this->main->px2all();
-				$plugins = new plugins($this->main);
-				$plugins->set_pickles2_config($bootup['px2all']->config);
-				$bootup['multithemePluginOptions'] = $plugins->get_plugin_options('tomk79\\pickles2\\multitheme\\theme::exec', 'processor.html');
-				// $bootup['multithemePluginOptions'] = $this->main->px2agent()->query('/?PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec'), array("output" => "json"));
+				$tmp_data_file = $bootup['px2all']->realpath_homedir.'_sys/ram/data/__theme-editor-'.date('Y-m-d-His').'-'.md5( microtime(true) ).'.txt';
+				$this->main->fs()->save_file( $tmp_data_file, 'PX=px2dthelper.plugins.get_plugin_options&func_div=processor.html&plugin_name='.urlencode('tomk79\\pickles2\\multitheme\\theme::exec') );
+				$bootup['multithemePluginOptions'] = $this->main->px2agent()->query(
+					'/',
+					array(
+						"output" => "json",
+						"method" => 'post',
+						"body_file"=>$tmp_data_file,
+					)
+				);
+				$bootup['multithemePluginOptions'] = (array) $bootup['multithemePluginOptions'];
+				unlink( $tmp_data_file );
 				$bootup['theme_collection_dir_exists'] = is_dir($bootup['px2all']->realpath_theme_collection_dir);
 
 				$themecollection = new themeCollection($this->main);

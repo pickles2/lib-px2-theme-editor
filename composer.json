@@ -23,8 +23,7 @@
     "config": {
         "process-timeout": 0
     },
-    "minimum-stability": "stable",
-    "prefer-stable": true,
+    "minimum-stability": "dev",
     "repositories": [
     ],
     "require": {
@@ -33,7 +32,7 @@
         "ext-mbstring": "*",
         "tomk79/filesystem": "^1.0",
         "tomk79/langbank": "^0.0.4",
-        "pickles2/px2agent": "^0.0.1"
+        "pickles2/px2agent": "^0.0"
     },
     "require-dev": {
         "pickles2/px-fw-2.x": "^2.0",
@@ -50,7 +49,6 @@
             "php/main.php",
             "php/gpi.php",
             "php/configEditor.php",
-            "php/plugins.php",
             "php/themeCollection.php"
         ]
     }
