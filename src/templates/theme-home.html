@@ -10,9 +10,9 @@
 
 	<div class="pickles2-theme-editor__set-default px2-p{% if default_theme_id == themeId %} pickles2-theme-editor__set-default--is-default{% endif %}">
 		{% if default_theme_id == themeId %}
-			<p>このテーマを採用しています。</p>
+			<p>このテーマを適用しています。</p>
 		{% else %}
-			<p><button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="setDefaultTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">このテーマを採用する</button></p>
+			<p><button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="setDefaultTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">このテーマを適用する</button></p>
 		{% endif %}
 	</div>
 

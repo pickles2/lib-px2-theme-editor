@@ -302,6 +302,8 @@
 					}
 				}
 
+				px2style.loading();
+
 				if( theme_id ){
 					// --------------------
 					// テーマ名の変更
@@ -313,10 +315,12 @@
 						console.log(result);
 						if( result === false ){
 							alert('[FATAL] Unknown Error.');
+							px2style.closeLoading();
 							return;
 						}
 						if( !result.result ){
 							alert(result.message);
+							px2style.closeLoading();
 							return;
 						}
 
@@ -324,6 +328,7 @@
 						_this.message(msg);
 						px2style.closeModal();
 						updateBootupInfomations(function(){
+							px2style.closeLoading();
 							_this.pageThemeHome(newThemeId);
 						});
 						return;
@@ -339,10 +344,12 @@
 						console.log(result);
 						if( result === false ){
 							alert('[FATAL] Unknown Error.');
+							px2style.closeLoading();
 							return;
 						}
 						if( !result.result ){
 							alert(result.message);
+							px2style.closeLoading();
 							return;
 						}
 
@@ -350,6 +357,7 @@
 						_this.message(msg);
 						px2style.closeModal();
 						updateBootupInfomations(function(){
+							px2style.closeLoading();
 							_this.pageThemeHome(newThemeId);
 						});
 						return;
@@ -372,12 +380,14 @@
 		 * デフォルトテーマをセットする
 		 */
 		this.setDefaultTheme = function(theme_id){
+			px2style.loading();
 			_this.gpi({
 				'api': 'setDefaultTheme',
 				'themeId': theme_id,
 			}, function(result){
 				console.log(result);
 				updateBootupInfomations(function(){
+					px2style.closeLoading();
 					_this.pageThemeHome(theme_id);
 				});
 				return;
@@ -424,6 +434,7 @@
 			$form.on('submit', function(e){
 				// --------------------
 				// テーマを削除
+				px2style.loading();
 				_this.gpi({
 					'api': 'deleteTheme',
 					'themeId': theme_id,
@@ -431,10 +442,12 @@
 					console.log(result);
 					if( result === false ){
 						alert('[FATAL] Unknown Error.');
+						px2style.closeLoading();
 						return;
 					}
 					if( !result.result ){
 						alert(result.message);
+						px2style.closeLoading();
 						return;
 					}
 
@@ -442,6 +455,7 @@
 					_this.message(msg);
 					px2style.closeModal();
 					updateBootupInfomations(function(){
+						px2style.closeLoading();
 						_this.pageHome();
 					});
 					return;
@@ -524,6 +538,8 @@
 					}
 				}
 
+				px2style.loading();
+
 				if( layout_id ){
 					// --------------------
 					// レイアウト名の変更
@@ -536,11 +552,13 @@
 						// console.log(result);
 						if( !result ){
 							alert( 'ERROR' );
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 							return;
 						}
 						if( !result.result ){
 							alert( result.message );
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 							return;
 						}
@@ -549,6 +567,7 @@
 						_this.message(msg);
 						px2style.closeModal();
 						updateBootupInfomations(function(){
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 						});
 						return;
@@ -565,11 +584,13 @@
 						// console.log(result);
 						if( !result ){
 							alert( 'ERROR' );
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 							return;
 						}
 						if( !result.result ){
 							alert( result.message );
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 							return;
 						}
@@ -578,6 +599,7 @@
 						_this.message(msg);
 						px2style.closeModal();
 						updateBootupInfomations(function(){
+							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 						});
 						return;
@@ -635,6 +657,9 @@
 			$form.on('submit', function(e){
 				// --------------------
 				// レイアウトを削除
+
+				px2style.loading();
+
 				_this.gpi({
 					'api': 'deleteLayout',
 					'themeId': theme_id,
@@ -643,11 +668,13 @@
 					// console.log(result);
 					if( !result ){
 						alert( 'ERROR' );
+						px2style.closeLoading();
 						_this.pageThemeHome(theme_id);
 						return;
 					}
 					if( !result.result ){
 						alert( result.message );
+						px2style.closeLoading();
 						_this.pageThemeHome(theme_id);
 						return;
 					}
@@ -656,6 +683,7 @@
 					_this.message(msg);
 					px2style.closeModal();
 					updateBootupInfomations(function(){
+						px2style.closeLoading();
 						_this.pageThemeHome(theme_id);
 					});
 					return;
