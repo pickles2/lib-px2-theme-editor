@@ -2,20 +2,30 @@
 @charset "utf-8";
 .pickles2-theme-editor {
 
-    // px2style
-    @import '../node_modules/px2style/dist/px2style';
+	// px2style
+	@import '../node_modules/px2style/dist/px2style';
 
-    overflow: auto;
-    display: flex;
+	overflow: auto;
+	display: flex;
 }
 
 .pickles2-theme-editor {
-	button.px2-btn{
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+
+	&__container {
+		max-width: 768px;
+		width: 100%;
+		margin: 0 auto;
+		padding: 0 10px;
 	}
-	.cont-theme-list{
+
+
+	// button.px2-btn{
+	// 	overflow: hidden;
+	// 	text-overflow: ellipsis;
+	// 	white-space: nowrap;
+	// }
+
+	&__theme-collection-list{
 		&__unit{
 			display: flex;
 			&-thumb{
@@ -33,7 +43,8 @@
 			}
 		}
 	}
-	.cont-layout-menu{
+
+	&__layout-menu{
 		border: none;
 		display: block;
 		li{
@@ -46,7 +57,10 @@
 			}
 		}
 	}
-	.cont-theme-home-readme{
+
+	&__readme{
+		margin: 1em 0;
+
 		&__thumb{
 			float: left;
 			margin: 0 20px 20px 0;
@@ -71,7 +85,8 @@
 			clear:both;
 		}
 	}
-	.cont-theme-home-set-default{
+
+	&__set-default{
 		border: 1px solid #ffeeba;
 		background-color: #fff3cd;
 		color: #856404;
@@ -90,7 +105,7 @@
 		}
 	}
 
-	.cont-footer-menu {
+	&__footer-menu {
 		> div {
 			text-align: center;
 			margin: 2em 0;
@@ -108,4 +123,59 @@
 			}
 		}
 	}
+
+	/**
+	 * リストビュー
+	 */
+	&__listview{
+		border: 1px solid #999;
+		border-radius: 5px;
+		padding: 0;
+		overflow:hidden;
+		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+
+		li{
+			border-bottom: 1px solid #999;
+			list-style-type: none;
+			margin:0; padding: 0;
+			&:last-child{
+				border: none;
+			}
+			>a{
+				display: block;
+				text-decoration: none;
+				padding: 0.3em 1.5em;
+				background-color: #fefefe;
+				&:hover{
+					background-color: #f9f9f9;
+				}
+				&.current{
+					font-weight: bold;
+					background-color: #00a0e6;
+					color: #fff;
+				}
+			}
+
+			ul{
+				padding: 0;
+				margin: 0;
+				border-top: 1px dotted #ddd;
+				li{
+					border-bottom: 1px dotted #ddd;
+					>a{
+						padding-left: 2.5em;
+					}
+				}
+			}
+		}
+	}
+
+	&__selected {
+		display: inline-block;
+		padding: 2px 5px;
+		background-color: rgb(243, 166, 140);
+		color: #fff;
+		font-size: 11px;
+	}
+
 }

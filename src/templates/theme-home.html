@@ -1,21 +1,14 @@
-<div class="container">
-	<h2>テーマ "{{ themeId | e }}"</h2>
-	<div class="btn-group btn-group-justified" role="group">
-		<div class="btn-group" role="group">
-			<button class="px2-btn" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">{{ themeId | e }} フォルダを開く</button>
-		</div>
-		<div class="btn-group" role="group">
-			<button class="px2-btn" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/theme_files/&quot;}">リソースフォルダを開く</button>
-		</div>
-		<div class="btn-group" role="group">
-			<button class="px2-btn" data-pickles2-theme-editor-action="openInTextEditor" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">外部テキストエディタで開く</button>
-		</div>
-		<div class="btn-group" role="group">
-			<button class="px2-btn" data-pickles2-theme-editor-action="renameTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">テーマIDを変更する</button>
-		</div>
+<div class="pickles2-theme-editor__container">
+
+	<div class="px2-horizontal-list">
+		<ul>
+			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="pageHome">テーマコレクションへ戻る</a></li>
+		</ul>
 	</div>
 
-	<div class="cont-theme-home-set-default px2-p{% if default_theme_id == themeId %} cont-theme-home-set-default--is-default{% endif %}">
+	<h2>テーマ "{{ themeId | e }}"</h2>
+
+	<div class="pickles2-theme-editor__set-default px2-p{% if default_theme_id == themeId %} pickles2-theme-editor__set-default--is-default{% endif %}">
 		{% if default_theme_id == themeId %}
 			<p>このテーマを採用しています。</p>
 		{% else %}
@@ -23,24 +16,24 @@
 		{% endif %}
 	</div>
 
-	<div class="cont-theme-home-readme px2-p">
-		<div class="cont-theme-home-readme__thumb">
+	<div class="pickles2-theme-editor__readme">
+		<div class="pickles2-theme-editor__readme__thumb">
 			<img src="{{ thumb | e }}" alt="" />
 		</div>
-		<div class="cont-theme-home-readme__readme">
+		<div class="pickles2-theme-editor__readme__readme">
 			<article>{{ readme }}</article>
 		</div>
 	</div>
 
 	<h2>レイアウト</h2>
 	{% if layouts | length %}
-		<ul class="cont-layout-list listview">
+		<ul class="pickles2-theme-editor__listview pickles2-theme-editor__layout-list">
 		{% for layout in layouts %}
 			<li><a href="javascript:;" data-pickles2-theme-editor-action="openEditor" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">
 				{{ layout.id | e }}
 				<span class="px2-editor-type px2-editor-type--{{ layout.editMode == 'html.gui' ? 'html-gui' : layout.editMode }}"></span>
 
-				<ul class="cont-layout-menu">
+				<ul class="pickles2-theme-editor__layout-menu">
 					<li><button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="openEditor" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">編集する</button></li>
 					<li><button class="px2-btn" data-pickles2-theme-editor-action="renameLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">リネームする</button></li>
 					<li><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">削除する</button></li>
@@ -51,16 +44,25 @@
 	{% else %}
 		<p>レイアウトを作成してください。</p>
 	{% endif %}
-	<p class="text-right">
+	<p class="px2-text-align-right">
 		<button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="addNewLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">新規レイアウト作成</button>
 	</p>
 
 	<hr />
 
-	<div class="cont-footer-menu">
+	<div class="px2-horizontal-list">
+		<ul>
+			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">{{ themeId | e }} フォルダを開く</a></li>
+			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/theme_files/&quot;}">リソースフォルダを開く</a></li>
+			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">外部テキストエディタで開く</a></li>
+			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="renameTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">テーマIDを変更する</a></li>
+		</ul>
+	</div>
+
+	<div class="pickles2-theme-editor__footer-menu">
 		<div>
 			<div><button class="px2-btn" data-pickles2-theme-editor-action="pageHome">テーマコレクションへ戻る</button></div>
-			<div><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;: &quot;{{ themeId | e }}&quot;}">テーマを削除する</button></div>
+			<div><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;: &quot;{{ themeId | e }}&quot;}">このテーマを削除する</button></div>
 		</div>
 	</div>
 </div>

@@ -11,8 +11,8 @@
 				<tr data-form-column-name="layoutId">
 					<th>レイアウトID</th>
 					<td>
-						<div><input type="text" name="layoutId" value="{{ layoutId }}" class="form-control" /></div>
-						<div class="cont-error-message"></div>
+						<div><input type="text" name="layoutId" value="{{ layoutId }}" class="px2-input" /></div>
+						<div class="pickles2-theme-editor__error-message"></div>
 					</td>
 				</tr>
 				{% if not layoutId %}
@@ -21,7 +21,7 @@
 						<td>
 							<div><label><input type="radio" name="editMode" value="html.gui" checked="checked" /> HTML + GUI編集</label></div>
 							<div><label><input type="radio" name="editMode" value="html" /> HTML</label></div>
-							<div class="cont-error-message"></div>
+							<div class="pickles2-theme-editor__error-message"></div>
 						</td>
 					</tr>
 				{% endif %}

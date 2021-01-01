@@ -160,7 +160,7 @@
 
 			// Events
 			setStandardEventHandlers($canvas);
-			$canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
+			$canvas.find('.pickles2-theme-editor__theme-collection-list a[data-theme-id]').on('click', function(){
 				_this.pageThemeHome($(this).attr('data-theme-id'));
 				return false;
 			});
@@ -209,7 +209,7 @@
 				},
 				function(it1, arg){
 					// Events
-					// $canvas.find('.cont-theme-list a[data-theme-id]').on('click', function(){
+					// $canvas.find('.pickles2-theme-editor__theme-collection-list a[data-theme-id]').on('click', function(){
 					// 	_this.pageThemeHome($(this).attr('data-theme-id'));
 					// 	return false;
 					// });
@@ -226,7 +226,7 @@
 
 					// イベント処理登録
 					setStandardEventHandlers($canvas);
-					$canvas.find('.cont-layout-list a button').on('click', function(e){
+					$canvas.find('.pickles2-theme-editor__layout-list a button').on('click', function(e){
 						e.stopPropagation();
 					});
 					$canvas.find('a').on('click', function(e){
@@ -262,15 +262,17 @@
 					'title': (theme_id ? 'テーマのリネーム' : '新規テーマ作成'),
 					'body': $body,
 					'buttons': [
-						$('<button class="px2-btn">')
-							.text('キャンセル')
-							.on('click', function(e){
-								px2style.closeModal();
-							}),
 						$('<button class="px2-btn px2-btn--primary">')
 							.text('OK')
 							.on('click', function(e){
 								$form.submit();
+							})
+					],
+					'buttonsSecondary': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
 							})
 					]
 				},
@@ -280,7 +282,7 @@
 			$form.on('submit', function(e){
 				var newThemeId = $form.find('input[name=themeId]').val();
 				var importFrom = $form.find('input[name=import_from]:checked').val();
-				var $errMsg = $form.find('[data-form-column-name=themeId] .cont-error-message')
+				var $errMsg = $form.find('[data-form-column-name=themeId] .pickles2-theme-editor__error-message')
 				if( !newThemeId.length ){
 					$errMsg.text('テーマIDを指定してください。');
 					return;
@@ -402,15 +404,17 @@
 					'title': 'テーマ削除',
 					'body': $body,
 					'buttons': [
-						$('<button class="px2-btn">')
-							.text('キャンセル')
-							.on('click', function(e){
-								px2style.closeModal();
-							}),
 						$('<button class="px2-btn px2-btn--danger">')
 							.text('削除する')
 							.on('click', function(e){
 								$form.submit();
+							})
+					],
+					'buttonsSecondary': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
 							})
 					]
 				},
@@ -469,15 +473,17 @@
 					'title': (layout_id ? 'レイアウトのリネーム' : '新規レイアウト作成'),
 					'body': $body,
 					'buttons': [
-						$('<button class="px2-btn">')
-							.text('キャンセル')
-							.on('click', function(e){
-								px2style.closeModal();
-							}),
 						$('<button class="px2-btn px2-btn--primary">')
 							.text('OK')
 							.on('click', function(e){
 								$form.submit();
+							})
+					],
+					'buttonsSecondary': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
 							})
 					]
 				},
@@ -487,7 +493,7 @@
 			$form.on('submit', function(e){
 				var newLayoutId = $form.find('input[name=layoutId]').val();
 				var editMode = $form.find('input[name=editMode]:checked').val();
-				var $errMsg = $form.find('[data-form-column-name=layoutId] .cont-error-message');
+				var $errMsg = $form.find('[data-form-column-name=layoutId] .pickles2-theme-editor__error-message');
 
 				if( !newLayoutId.length ){
 					$errMsg.text('レイアウトIDを指定してください。');
@@ -609,15 +615,17 @@
 					'title': 'レイアウト削除',
 					'body': $body,
 					'buttons': [
-						$('<button class="px2-btn">')
-							.text('キャンセル')
-							.on('click', function(e){
-								px2style.closeModal();
-							}),
 						$('<button class="px2-btn px2-btn--danger">')
 							.text('削除する')
 							.on('click', function(e){
 								$form.submit();
+							})
+					],
+					'buttonsSecondary': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
 							})
 					]
 				},
