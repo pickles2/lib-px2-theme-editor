@@ -132,3 +132,7 @@ var parseUriParam = function(url){
 	}
 	return paramsArray;
 }
+
+window.darkmode = function(){
+	$('body').addClass('px2-darkmode');
+}

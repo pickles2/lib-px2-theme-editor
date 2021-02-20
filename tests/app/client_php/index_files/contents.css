@@ -4,3 +4,7 @@
 body{
     font-size: small;
 }
+body.px2-darkmode{
+    background-color: #0d0d0d;
+    color: #ccc;
+}

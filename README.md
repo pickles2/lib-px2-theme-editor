@@ -95,6 +95,7 @@ pickles2ThemeEditor.init(
 
 - Windows で プラグインオプションの取得と、デフォルトテーマの変更に失敗する問題を修正。
 - レイアウトとスタイリングの修正。
+- ダークモードへの対応。
 - その他の細かい不具合の修正。
 
 ### pickles2/pickles2-theme-editor v0.0.1 (2020年12月30日)

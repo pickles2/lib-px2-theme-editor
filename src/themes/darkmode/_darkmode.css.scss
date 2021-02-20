@@ -1,0 +1,34 @@
+.pickles2-theme-editor {
+
+	/**
+	 * リストビュー
+	 */
+	&__listview{
+		border: 1px solid #666;
+		box-shadow: 1px 2px 5px rgba(255, 255, 255, 0.1);
+
+		li{
+			border-bottom: 1px solid #666;
+			>a{
+				background-color: #0d0d0d;
+                color: #ccc;
+				&:hover{
+					background-color: #222;
+                    color: #fff;
+				}
+				&.current{
+					background-color: #00a0e6;
+					color: #fff;
+				}
+			}
+
+			ul{
+				border-top: 1px dotted #333;
+				li{
+					border-bottom: 1px dotted #333;
+				}
+			}
+		}
+	}
+
+}
