@@ -1,5 +1,11 @@
 @charset "UTF-8";
 .pickles2-theme-editor {
+  /**
+ * Header
+ */
+  /**
+ * Table
+ */
   overflow: auto;
   display: -ms-flexbox;
   display: flex; }
@@ -8,13 +14,14 @@
   .pickles2-theme-editor .px2-btn {
     display: inline-block;
     border-radius: 3px;
-    background-color: #fff;
-    color: #666;
-    border: 1px solid #666;
+    background-color: #fefefe;
+    color: #333;
+    border: 1px solid #333;
     box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
     padding: 0.5em 2em;
     font-size: 1em;
     font-weight: normal;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     line-height: 1;
     text-decoration: none;
     text-align: center;
@@ -27,14 +34,14 @@
     text-decoration: none;
     font-weight: normal;
     color: #666;
-    background-color: #f9f9f9; }
+    background-color: #f3f3f3; }
   .pickles2-theme-editor .px2-btn:focus {
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .pickles2-theme-editor .px2-btn:hover {
     background-color: #f0f0f0; }
   .pickles2-theme-editor .px2-btn:active {
     background-color: #333;
-    color: #fff;
+    color: #fefefe;
     box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.3);
     transform: translateY(1px); }
   .pickles2-theme-editor .px2-btn.px2-btn--primary {
@@ -49,16 +56,16 @@
     background-color: #00a0e6;
     color: #fff; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary {
-    border-color: #666;
-    background: #fff;
-    color: #666; }
+    border-color: #333;
+    background: #fefefe;
+    color: #333; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary:focus, .pickles2-theme-editor .px2-btn.px2-btn--secondary:hover {
-    background-color: #f9f9f9; }
+    background-color: #f3f3f3; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary:hover {
     background-color: #f0f0f0; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary:active {
     background-color: #333;
-    color: #fff; }
+    color: #fefefe; }
   .pickles2-theme-editor .px2-btn.px2-btn--danger {
     border-color: #e86a60;
     background-color: #fdf8f8;
@@ -210,7 +217,7 @@
   .pickles2-theme-editor .px2-table th,
   .pickles2-theme-editor .px2-table td {
     border: 1px solid #999999;
-    background: #ffffff;
+    background: #fefefe;
     padding: 10px; }
   .pickles2-theme-editor .px2-table th {
     background: #e7e7e7; }
@@ -263,7 +270,8 @@
     -ms-flex-pack: center;
     justify-content: center;
     -ms-flex-align: center;
-    align-items: center; }
+    align-items: center;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; }
   .pickles2-theme-editor .px2-modal > form {
     margin: 0;
     padding: 0;
@@ -277,6 +285,28 @@
     justify-content: center;
     -ms-flex-align: center;
     align-items: center; }
+  .pickles2-theme-editor .px2-modal__close {
+    position: absolute;
+    right: -0.5em;
+    top: -0.5em;
+    width: 1.4em;
+    height: 1.4em; }
+  .pickles2-theme-editor .px2-modal__close button {
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    border-radius: 50%;
+    border: 1px solid #999;
+    background-color: #eee;
+    color: #999;
+    cursor: pointer; }
+  .pickles2-theme-editor .px2-modal__close button::before {
+    content: "×"; }
   .pickles2-theme-editor .px2-modal__dialog {
     position: relative;
     top: 0;
@@ -287,7 +317,8 @@
     flex-direction: column;
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    background-color: #fff;
+    color: #333;
+    background-color: #fefefe;
     box-sizing: border-box;
     padding: 10px 0;
     margin: 20px auto;
@@ -295,7 +326,7 @@
     max-width: 520px;
     height: auto;
     max-height: calc(100% - 40px);
-    overflow: auto;
+    overflow: visible;
     font-size: medium; }
   .pickles2-theme-editor .px2-modal__dialog h1 {
     font-size: 124%;
@@ -544,7 +575,8 @@
   .pickles2-theme-editor .px2-responsive {
     overflow: auto; }
   .pickles2-theme-editor .px2-header {
-    height: 45px; }
+    height: 45px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif; }
   .pickles2-theme-editor .px2-header__inner {
     display: -ms-flexbox;
     display: flex;
@@ -853,7 +885,7 @@
     font-weight: normal;
     line-height: 1.5;
     color: #333;
-    background-color: #fff;
+    background-color: #fefefe;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -914,10 +946,30 @@
   .pickles2-theme-editor select.px2-input[disabled] {
     color: #8e959c;
     background-color: #eee; }
+  .pickles2-theme-editor input[type=text].px2-input--block,
+  .pickles2-theme-editor input[type=password].px2-input--block,
+  .pickles2-theme-editor input[type=number].px2-input--block,
+  .pickles2-theme-editor input[type=search].px2-input--block,
+  .pickles2-theme-editor input[type=tel].px2-input--block,
+  .pickles2-theme-editor input[type=url].px2-input--block,
+  .pickles2-theme-editor input[type=email].px2-input--block,
+  .pickles2-theme-editor input[type=datetime].px2-input--block,
+  .pickles2-theme-editor input[type=date].px2-input--block,
+  .pickles2-theme-editor input[type=month].px2-input--block,
+  .pickles2-theme-editor input[type=week].px2-input--block,
+  .pickles2-theme-editor input[type=time].px2-input--block,
+  .pickles2-theme-editor input[type=color].px2-input--block,
+  .pickles2-theme-editor input[type=datetime-local].px2-input--block,
+  .pickles2-theme-editor textarea.px2-input--block,
+  .pickles2-theme-editor select.px2-input--block {
+    display: block;
+    width: 100%; }
   .pickles2-theme-editor .px2-input-group {
     display: -ms-inline-flexbox;
     display: inline-flex;
-    border-radius: 0px; }
+    box-sizing: border-box;
+    border-radius: 0px;
+    max-width: 100%; }
   .pickles2-theme-editor .px2-input-group__text {
     display: inline-block;
     box-sizing: border-box;
@@ -926,14 +978,16 @@
     font-weight: normal;
     line-height: 1.5;
     color: #333;
-    background-color: #f9f9f9;
+    background-color: #fefefe;
     border: 1px solid #ced4da; }
   .pickles2-theme-editor .px2-input-group > *,
   .pickles2-theme-editor .px2-input-group > input.px2-input,
   .pickles2-theme-editor .px2-input-group > select.px2-input,
   .pickles2-theme-editor .px2-input-group > textarea.px2-input,
   .pickles2-theme-editor .px2-input-group > .px2-btn {
-    border-right-width: 0px; }
+    border-right-width: 0px;
+    -ms-flex-positive: 1;
+    flex-grow: 1; }
   .pickles2-theme-editor .px2-input-group > :first-child,
   .pickles2-theme-editor .px2-input-group > input:first-child.px2-input,
   .pickles2-theme-editor .px2-input-group > select:first-child.px2-input,
@@ -947,6 +1001,10 @@
   .pickles2-theme-editor .px2-input-group > :last-child.px2-btn {
     border-right-width: 1px;
     border-radius: 0 .25rem .25rem 0 / 0 .25rem .25rem 0; }
+  .pickles2-theme-editor .px2-input-group--fluid {
+    display: -ms-flexbox;
+    display: flex;
+    width: 100%; }
   .pickles2-theme-editor .px2-grid {
     display: -ms-flexbox;
     display: flex;
@@ -1129,6 +1187,363 @@
       margin: 0 0.5rem 1em 0.5rem;
       box-sizing: border-box;
       width: calc( 16.66% - 1rem); } }
+  .pickles2-theme-editor .px2-darkmode.px2-header,
+  .pickles2-theme-editor .px2-darkmode .px2-header {
+    color: #ccc; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__inner,
+  .pickles2-theme-editor .px2-darkmode .px2-header__inner {
+    background-color: #060606;
+    box-shadow: 0 5px 13px rgba(255, 100, 100, 0.1); }
+  .pickles2-theme-editor .px2-darkmode.px2-header a,
+  .pickles2-theme-editor .px2-darkmode .px2-header a {
+    color: #ccc; }
+  .pickles2-theme-editor .px2-darkmode.px2-header a:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-header a:hover {
+    color: #fff; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__px2logo a,
+  .pickles2-theme-editor .px2-darkmode .px2-header__px2logo a {
+    background-color: #060606; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__id a:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-header__id a:hover {
+    color: #fff; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__global-menu ul li a, .pickles2-theme-editor .px2-darkmode.px2-header__global-menu ul li span,
+  .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li a,
+  .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li span {
+    color: #999; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__global-menu ul li a.current, .pickles2-theme-editor .px2-darkmode.px2-header__global-menu ul li span.current,
+  .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li a.current,
+  .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li span.current {
+    border-bottom-color: rgba(0, 0, 0, 0.85); }
+  .pickles2-theme-editor .px2-darkmode.px2-header__global-menu ul li.px2-header__global-menu-group > a::after,
+  .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li.px2-header__global-menu-group > a::after {
+    border-color: #999;
+    border-top-color: transparent;
+    border-bottom-color: transparent; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > button,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > button {
+    background: #060606; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul {
+    background-color: #555;
+    border-color: #222; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li {
+    border-bottom-color: #333; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li a,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li a {
+    color: #ccc;
+    background-color: #555; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li a:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li a:hover {
+    background-color: #444;
+    color: #eee; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li a.current,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li a.current {
+    color: #eee; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group > a::after,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group > a::after {
+    border-color: #eee;
+    border-top-color: transparent;
+    border-bottom-color: transparent; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a {
+    background-color: #333;
+    color: #ddd; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a:hover {
+    background-color: #444;
+    color: #eee; }
+  .pickles2-theme-editor .px2-darkmode.px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a.current,
+  .pickles2-theme-editor .px2-darkmode .px2-header__shoulder-menu > ul li.px2-header__shoulder-menu-group ul li a.current {
+    color: #eee; }
+  .pickles2-theme-editor .px2-darkmode.px2-modal,
+  .pickles2-theme-editor .px2-darkmode .px2-modal {
+    background: rgba(223, 223, 223, 0.5); }
+  .pickles2-theme-editor .px2-darkmode.px2-modal__close button,
+  .pickles2-theme-editor .px2-darkmode .px2-modal__close button {
+    border-color: #666;
+    background-color: #111;
+    color: #666; }
+  .pickles2-theme-editor .px2-darkmode.px2-modal__dialog,
+  .pickles2-theme-editor .px2-darkmode .px2-modal__dialog {
+    color: #ccc;
+    background-color: #0d0d0d; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn,
+  .pickles2-theme-editor .px2-darkmode .px2-btn {
+    background-color: #0d0d0d;
+    color: #ccc;
+    border: 3px solid #ccc;
+    box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn:focus, .pickles2-theme-editor .px2-darkmode.px2-btn:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn:hover {
+    color: #eee;
+    background-color: #222; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn:focus {
+    box-shadow: 0 0 0 0.2rem rgba(123, 230, 255, 0.25); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn:hover {
+    background-color: #292929; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn:active {
+    background-color: #ccc;
+    color: #0d0d0d;
+    box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.3); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--primary,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary {
+    border-color: #00a0e6;
+    background-color: #d9f1fb;
+    color: #00a0e6; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--primary:focus, .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--primary:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary:hover {
+    background-color: #ccecfa; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--primary:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary:hover {
+    background-color: #f5fbfe; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--primary:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary:active {
+    background-color: #00a0e6;
+    color: #fff; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--secondary,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary {
+    border-color: #ccc;
+    background: #0d0d0d;
+    color: #ccc; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--secondary:focus, .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--secondary:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:hover {
+    color: #eee;
+    background-color: #222; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--secondary:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:hover {
+    background-color: #292929; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--secondary:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:active {
+    background-color: #ccc;
+    color: #0d0d0d; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--danger,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger {
+    border-color: #e86a60;
+    background-color: #fdf8f8;
+    color: #e86a60; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--danger:focus, .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--danger:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger:hover {
+    background-color: #fce9e7; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--danger:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger:hover {
+    background-color: #fae1df; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--danger:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger:active {
+    background-color: #e86a60;
+    color: #fff; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--download,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--download {
+    border-color: #4ad64d;
+    background-color: #f7fcf7;
+    color: #4ad64d; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--download:focus, .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--download:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--download:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--download:hover {
+    background-color: #e4f9e4; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--download:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--download:hover {
+    background-color: #dbf7db; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn.px2-btn--download:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--download:active {
+    background-color: #4ad64d;
+    color: #fff; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn[disabled],
+  .pickles2-theme-editor .px2-darkmode .px2-btn[disabled] {
+    border-color: #444;
+    background-color: rgba(153, 153, 153, 0.05);
+    color: #444; }
+  .pickles2-theme-editor .px2-darkmode.px2-btn[disabled]:focus, .pickles2-theme-editor .px2-darkmode.px2-btn[disabled]:hover, .pickles2-theme-editor .px2-darkmode.px2-btn[disabled]:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn[disabled]:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn[disabled]:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn[disabled]:active {
+    border-color: #444;
+    background-color: rgba(153, 153, 153, 0.05);
+    color: #444;
+    box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn--toggle-on,
+  .pickles2-theme-editor .px2-darkmode .px2-btn--toggle-on {
+    box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.15); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn--toggle-on[disabled],
+  .pickles2-theme-editor .px2-darkmode .px2-btn--toggle-on[disabled] {
+    box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.15); }
+  .pickles2-theme-editor .px2-darkmode.px2-btn--toggle-on[disabled]:focus, .pickles2-theme-editor .px2-darkmode.px2-btn--toggle-on[disabled]:hover, .pickles2-theme-editor .px2-darkmode.px2-btn--toggle-on[disabled]:active,
+  .pickles2-theme-editor .px2-darkmode .px2-btn--toggle-on[disabled]:focus,
+  .pickles2-theme-editor .px2-darkmode .px2-btn--toggle-on[disabled]:hover,
+  .pickles2-theme-editor .px2-darkmode .px2-btn--toggle-on[disabled]:active {
+    box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.15); }
+  .pickles2-theme-editor .px2-darkmode.px2-table,
+  .pickles2-theme-editor .px2-darkmode .px2-table {
+    color: #ccc; }
+  .pickles2-theme-editor .px2-darkmode.px2-table th,
+  .pickles2-theme-editor .px2-darkmode.px2-table td,
+  .pickles2-theme-editor .px2-darkmode .px2-table th,
+  .pickles2-theme-editor .px2-darkmode .px2-table td {
+    border-color: #666;
+    background: #0d0d0d; }
+  .pickles2-theme-editor .px2-darkmode.px2-table th,
+  .pickles2-theme-editor .px2-darkmode .px2-table th {
+    background: #222; }
+  .pickles2-theme-editor .px2-darkmode.px2-table thead th,
+  .pickles2-theme-editor .px2-darkmode.px2-table tfoot th,
+  .pickles2-theme-editor .px2-darkmode .px2-table thead th,
+  .pickles2-theme-editor .px2-darkmode .px2-table tfoot th {
+    background: #333; }
+  .pickles2-theme-editor .px2-darkmode.px2-table thead td,
+  .pickles2-theme-editor .px2-darkmode.px2-table tfoot td,
+  .pickles2-theme-editor .px2-darkmode .px2-table thead td,
+  .pickles2-theme-editor .px2-darkmode .px2-table tfoot td {
+    background: #111; }
+  .pickles2-theme-editor input[type=text].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=password].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=number].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=search].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=tel].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=url].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=email].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=datetime].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=date].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=month].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=week].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=time].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=color].px2-input.px2-darkmode,
+  .pickles2-theme-editor input[type=datetime-local].px2-input.px2-darkmode,
+  .pickles2-theme-editor textarea.px2-input.px2-darkmode,
+  .pickles2-theme-editor select.px2-input.px2-darkmode,
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input,
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input,
+  .pickles2-theme-editor .px2-darkmode select.px2-input {
+    color: #ccc;
+    background-color: #0d0d0d;
+    border: 1px solid #555; }
+  .pickles2-theme-editor input[type=text].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=password].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=number].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=search].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=tel].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=url].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=email].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=datetime].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=date].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=month].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=week].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=time].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=color].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor input[type=datetime-local].px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor textarea.px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor select.px2-input.px2-darkmode:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode select.px2-input:focus {
+    color: #999;
+    background-color: #000;
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
+  .pickles2-theme-editor input[type=text].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=password].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=number].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=search].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=tel].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=url].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=email].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=datetime].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=date].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=month].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=week].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=time].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=color].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor input[type=datetime-local].px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor textarea.px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor select.px2-input.px2-darkmode[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode select.px2-input[readonly] {
+    background-color: #111; }
+  .pickles2-theme-editor input[type=text].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=password].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=number].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=search].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=tel].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=url].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=email].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=datetime].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=date].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=month].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=week].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=time].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=color].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor input[type=datetime-local].px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor textarea.px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor select.px2-input.px2-darkmode[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode select.px2-input[disabled] {
+    color: #8e959c;
+    background-color: #111; }
+  .pickles2-theme-editor .px2-darkmode.px2-input-group__text,
+  .pickles2-theme-editor .px2-darkmode .px2-input-group__text {
+    color: #ccc;
+    background-color: #060606;
+    border: 1px solid #222; }
 
 .pickles2-theme-editor {
   /**
