@@ -11,7 +11,16 @@
 
 
 {% if is_startup %}
-	<p>スタートアップテーマです。</p>
+	<form action="javascript:;" method="post" data-pickles2-theme-editor-form="startup">
+		<input type="hidden" name="theme_id" value="{{ themeId | e }}" />
+		<input type="hidden" name="template_id" value="template_001" />
+
+		<p>スタートアップテーマです。</p>
+
+		<div class="px2-p">
+			<p><button type="submit" class="px2-btn px2-btn--primary">テーマを生成する</button></p>
+		</div>
+	</form>
 
 {% else %}
 

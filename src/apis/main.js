@@ -249,6 +249,44 @@
 					$canvas.find('.pickles2-theme-editor__layout-list a button').on('click', function(e){
 						e.stopPropagation();
 					});
+
+					$canvas.find('[data-pickles2-theme-editor-form=startup]').on('submit', function(e){
+						e.stopPropagation();
+						e.preventDefault();
+
+						var options = {};
+						options.themeId = $(this).find('input[name=theme_id]').val();
+
+						px2style.loading();
+						_this.gpi({
+							'api': 'startupTheme',
+							'themeId': options.themeId,
+						}, function(result){
+							console.log(result);
+							if( result === false ){
+								alert('[FATAL] Unknown Error.');
+								px2style.closeLoading();
+								return;
+							}
+							if( !result.result ){
+								alert(result.message);
+								px2style.closeLoading();
+								return;
+							}
+
+							var msg = 'テーマ '+options.themeId+' を保存しました。';
+							_this.message(msg);
+
+							updateBootupInfomations(function(){
+								px2style.closeLoading();
+								_this.pageThemeHome(options.themeId);
+							});
+							return;
+						});
+
+						return false;
+					});
+
 					it1.next(arg);
 				}
 			]);

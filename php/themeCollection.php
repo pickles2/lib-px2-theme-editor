@@ -164,6 +164,55 @@ class themeCollection{
 	}
 
 	/**
+	 * 新規のテーマを構築する
+	 */
+	public function startup_theme( $theme_id, $options = array() ){
+
+		$rtn = array(
+			'result' => null,
+			'message' => '',
+		);
+
+		if( !strlen( $theme_id ) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマID を指定してください。',
+			);
+			return $rtn;
+		}
+
+		$px2all = $this->main->px2all();
+		$realpath_theme_root = $px2all->realpath_theme_collection_dir.urlencode($theme_id).'/';
+
+		if( !is_dir( $realpath_theme_root ) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマID '.$theme_id.' は、存在しません。',
+			);
+			return $rtn;
+		}
+
+		$this->main->fs()->rm($realpath_theme_root);
+		$result = $this->main->fs()->copy_r(
+			__DIR__.'/../startup_templates/template_001/theme/',
+			$realpath_theme_root
+		);
+
+		if( $result ){
+			$rtn = array(
+				'result' => true,
+				'message' => 'OK',
+			);
+		}else{
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマのスタートアップに失敗しました。',
+			);
+		}
+		return $rtn;
+	}
+
+	/**
 	 * テーマを改名する
 	 */
 	public function rename_theme( $new_theme_id, $rename_from ){

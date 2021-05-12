@@ -83,6 +83,15 @@ class gpi{
 				return $rtn;
 				break;
 
+			case "startupTheme":
+				$themecollection = new themeCollection($this->main);
+				$rtn = $themecollection->startup_theme(
+					$query['themeId'],
+					array()
+				);
+				return $rtn;
+				break;
+
 			case "renameTheme":
 				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->rename_theme(
