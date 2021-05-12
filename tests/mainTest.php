@@ -98,7 +98,7 @@ class mainTest extends PHPUnit_Framework_TestCase{
 
 		$themeInfo = $main->gpi(array('api'=>'getThemeInfo', 'themeId'=>'test-theme'));
 		// var_dump($themeInfo);
-		$this->assertSame(count($themeInfo['layouts']), 6);
+		$this->assertSame(count($themeInfo['layouts']), 2);
 		$this->assertTrue(is_file(__DIR__.'/app/src_px2/px-files/themes/test-theme/testlayout001.html'));
 	}
 

@@ -8,7 +8,7 @@
   .pickles2-theme-editor .px2-btn {
     display: inline-block;
     border-radius: 3px;
-    background-color: #fefefe;
+    background-color: #f9f9f9;
     color: #333;
     border: 1px solid #333;
     box-shadow: 0 2px 0px rgba(0, 0, 0, 0.1);
@@ -35,7 +35,7 @@
     background-color: #f0f0f0; }
   .pickles2-theme-editor .px2-btn:active {
     background-color: #333;
-    color: #fefefe;
+    color: #f9f9f9;
     box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.3);
     transform: translateY(1px); }
   .pickles2-theme-editor .px2-btn.px2-btn--primary {
@@ -51,7 +51,7 @@
     color: #fff; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary {
     border-color: #333;
-    background: #fefefe;
+    background: #f9f9f9;
     color: #333; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary:focus, .pickles2-theme-editor .px2-btn.px2-btn--secondary:hover {
     background-color: #f3f3f3; }
@@ -59,7 +59,7 @@
     background-color: #f0f0f0; }
   .pickles2-theme-editor .px2-btn.px2-btn--secondary:active {
     background-color: #333;
-    color: #fefefe; }
+    color: #f9f9f9; }
   .pickles2-theme-editor .px2-btn.px2-btn--danger {
     border-color: #e86a60;
     background-color: #fdf8f8;
@@ -210,8 +210,9 @@
     text-align: left; }
   .pickles2-theme-editor .px2-table th,
   .pickles2-theme-editor .px2-table td {
+    vertical-align: top;
     border: 1px solid #999999;
-    background: #fefefe;
+    background: #f9f9f9;
     padding: 10px; }
   .pickles2-theme-editor .px2-table th {
     background: #e7e7e7; }
@@ -312,7 +313,7 @@
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
     color: #333;
-    background-color: #fefefe;
+    background-color: #f9f9f9;
     box-sizing: border-box;
     padding: 10px 0;
     margin: 20px auto;
@@ -866,6 +867,7 @@
   .pickles2-theme-editor input[type=week].px2-input,
   .pickles2-theme-editor input[type=time].px2-input,
   .pickles2-theme-editor input[type=color].px2-input,
+  .pickles2-theme-editor input[type=file].px2-input,
   .pickles2-theme-editor input[type=datetime-local].px2-input,
   .pickles2-theme-editor textarea.px2-input,
   .pickles2-theme-editor select.px2-input {
@@ -879,7 +881,7 @@
     font-weight: normal;
     line-height: 1.5;
     color: #333;
-    background-color: #fefefe;
+    background-color: #f9f9f9;
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
@@ -897,10 +899,11 @@
   .pickles2-theme-editor input[type=week].px2-input:focus,
   .pickles2-theme-editor input[type=time].px2-input:focus,
   .pickles2-theme-editor input[type=color].px2-input:focus,
+  .pickles2-theme-editor input[type=file].px2-input:focus,
   .pickles2-theme-editor input[type=datetime-local].px2-input:focus,
   .pickles2-theme-editor textarea.px2-input:focus,
   .pickles2-theme-editor select.px2-input:focus {
-    color: #495057;
+    color: #333;
     background-color: #fff;
     border-color: #80bdff;
     outline: 0;
@@ -918,10 +921,30 @@
   .pickles2-theme-editor input[type=week].px2-input[readonly],
   .pickles2-theme-editor input[type=time].px2-input[readonly],
   .pickles2-theme-editor input[type=color].px2-input[readonly],
+  .pickles2-theme-editor input[type=file].px2-input[readonly],
   .pickles2-theme-editor input[type=datetime-local].px2-input[readonly],
   .pickles2-theme-editor textarea.px2-input[readonly],
   .pickles2-theme-editor select.px2-input[readonly] {
     background-color: #eee; }
+  .pickles2-theme-editor input[type=text].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=password].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=number].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=search].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=tel].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=url].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=email].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=datetime].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=date].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=month].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=week].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=time].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=color].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=file].px2-input[readonly]:focus,
+  .pickles2-theme-editor input[type=datetime-local].px2-input[readonly]:focus,
+  .pickles2-theme-editor textarea.px2-input[readonly]:focus,
+  .pickles2-theme-editor select.px2-input[readonly]:focus {
+    border-color: #ced4da;
+    box-shadow: none; }
   .pickles2-theme-editor input[type=text].px2-input[disabled],
   .pickles2-theme-editor input[type=password].px2-input[disabled],
   .pickles2-theme-editor input[type=number].px2-input[disabled],
@@ -935,6 +958,7 @@
   .pickles2-theme-editor input[type=week].px2-input[disabled],
   .pickles2-theme-editor input[type=time].px2-input[disabled],
   .pickles2-theme-editor input[type=color].px2-input[disabled],
+  .pickles2-theme-editor input[type=file].px2-input[disabled],
   .pickles2-theme-editor input[type=datetime-local].px2-input[disabled],
   .pickles2-theme-editor textarea.px2-input[disabled],
   .pickles2-theme-editor select.px2-input[disabled] {
@@ -953,11 +977,32 @@
   .pickles2-theme-editor input[type=week].px2-input--block,
   .pickles2-theme-editor input[type=time].px2-input--block,
   .pickles2-theme-editor input[type=color].px2-input--block,
+  .pickles2-theme-editor input[type=file].px2-input--block,
   .pickles2-theme-editor input[type=datetime-local].px2-input--block,
   .pickles2-theme-editor textarea.px2-input--block,
   .pickles2-theme-editor select.px2-input--block {
     display: block;
     width: 100%; }
+  .pickles2-theme-editor input[type=text].px2-input--error,
+  .pickles2-theme-editor input[type=password].px2-input--error,
+  .pickles2-theme-editor input[type=number].px2-input--error,
+  .pickles2-theme-editor input[type=search].px2-input--error,
+  .pickles2-theme-editor input[type=tel].px2-input--error,
+  .pickles2-theme-editor input[type=url].px2-input--error,
+  .pickles2-theme-editor input[type=email].px2-input--error,
+  .pickles2-theme-editor input[type=datetime].px2-input--error,
+  .pickles2-theme-editor input[type=date].px2-input--error,
+  .pickles2-theme-editor input[type=month].px2-input--error,
+  .pickles2-theme-editor input[type=week].px2-input--error,
+  .pickles2-theme-editor input[type=time].px2-input--error,
+  .pickles2-theme-editor input[type=color].px2-input--error,
+  .pickles2-theme-editor input[type=file].px2-input--error,
+  .pickles2-theme-editor input[type=datetime-local].px2-input--error,
+  .pickles2-theme-editor textarea.px2-input--error,
+  .pickles2-theme-editor select.px2-input--error {
+    border-color: #721c24;
+    color: #721c24;
+    background-color: #f8d7da; }
   .pickles2-theme-editor .px2-input-group {
     display: -ms-inline-flexbox;
     display: inline-flex;
@@ -972,7 +1017,7 @@
     font-weight: normal;
     line-height: 1.5;
     color: #333;
-    background-color: #fefefe;
+    background-color: #f9f9f9;
     border: 1px solid #ced4da; }
   .pickles2-theme-editor .px2-input-group > *,
   .pickles2-theme-editor .px2-input-group > input.px2-input,
@@ -999,6 +1044,101 @@
     display: -ms-flexbox;
     display: flex;
     width: 100%; }
+  .pickles2-theme-editor .px2-form-input-list {
+    margin-top: 1em;
+    margin-bottom: 1em; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul {
+    display: table;
+    border-collapse: collapse;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #999999;
+    margin: 0;
+    padding: 0; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li {
+    display: table-row;
+    list-style-type: none;
+    margin: 0;
+    padding: 0; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__label {
+    display: table-cell;
+    vertical-align: top;
+    background-color: #e7e7e7;
+    font-weight: bold;
+    padding: 0.4em 1em;
+    width: 30%;
+    border: 1px solid #999999; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__input {
+    display: table-cell;
+    vertical-align: top;
+    background-color: #f9f9f9;
+    padding: 0.4em 1em;
+    width: 70%;
+    border: 1px solid #999999; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li--required .px2-form-input-list__label::after {
+    content: "*";
+    color: #e11;
+    font-weight: bold;
+    margin: 0 0 0 0.7em; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li--error .px2-form-input-list__label {
+    color: #721c24; }
+  .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li--error .px2-form-input-list__label::before {
+    content: "!!!";
+    color: #e11;
+    margin: 0 0.7em 0 0; }
+  @media all and (max-width: 544px) {
+    .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul {
+      display: block;
+      border-bottom: 0 none; }
+    .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li {
+      display: block; }
+    .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__label {
+      display: block;
+      border-left: 0 none;
+      border-top: 0 none;
+      border-right: 0 none;
+      padding: 0.4em 1em;
+      width: auto; }
+    .pickles2-theme-editor .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__input {
+      display: block;
+      border-left: 0 none;
+      border-top: 0 none;
+      border-right: 0 none;
+      padding: 0.4em 1em;
+      width: auto; } }
+  .pickles2-theme-editor .px2-form-submit-area {
+    margin: 1em 0;
+    padding: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    -ms-flex-pack: justify;
+    justify-content: space-between; }
+  .pickles2-theme-editor .px2-form-submit-area__btns, .pickles2-theme-editor .px2-form-submit-area__backward-btns {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+    margin: 0;
+    padding: 0; }
+  .pickles2-theme-editor .px2-form-submit-area__btns > li, .pickles2-theme-editor .px2-form-submit-area__backward-btns > li {
+    margin: 0;
+    padding: 0;
+    list-style-type: none; }
+  @media all and (max-width: 544px) {
+    .pickles2-theme-editor .px2-form-submit-area {
+      -ms-flex-direction: column;
+      flex-direction: column; }
+    .pickles2-theme-editor .px2-form-submit-area__btns, .pickles2-theme-editor .px2-form-submit-area__backward-btns {
+      -ms-flex-direction: column;
+      flex-direction: column; }
+    .pickles2-theme-editor .px2-form-submit-area__btns > li, .pickles2-theme-editor .px2-form-submit-area__backward-btns > li {
+      margin: 0.2em auto; }
+    .pickles2-theme-editor .px2-form-submit-area__backward-btns {
+      margin-top: 1em; }
+    .pickles2-theme-editor .px2-form-submit-area__backward-btns > li {
+      margin: 0.2em auto 0.2em 0; } }
   .pickles2-theme-editor .px2-grid {
     display: -ms-flexbox;
     display: flex;
@@ -1191,14 +1331,14 @@
   .pickles2-theme-editor .px2-darkmode .px2-header {
     color: #ccc; }
   .pickles2-theme-editor .px2-darkmode .px2-header__inner {
-    background-color: #060606;
+    background-color: #222;
     box-shadow: 0 5px 13px rgba(255, 100, 100, 0.1); }
   .pickles2-theme-editor .px2-darkmode .px2-header a {
     color: #ccc; }
   .pickles2-theme-editor .px2-darkmode .px2-header a:hover {
     color: #fff; }
   .pickles2-theme-editor .px2-darkmode .px2-header__px2logo a {
-    background-color: #060606; }
+    background-color: #222; }
   .pickles2-theme-editor .px2-darkmode .px2-header__id a:hover {
     color: #fff; }
   .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li a, .pickles2-theme-editor .px2-darkmode .px2-header__global-menu ul li span {
@@ -1244,9 +1384,9 @@
     color: #666; }
   .pickles2-theme-editor .px2-darkmode .px2-modal__dialog {
     color: #ccc;
-    background-color: #0d0d0d; }
+    background-color: #242424; }
   .pickles2-theme-editor .px2-darkmode .px2-btn {
-    background-color: #0d0d0d;
+    background-color: #242424;
     color: #ccc;
     border: 3px solid #ccc;
     box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1); }
@@ -1259,7 +1399,7 @@
     background-color: #292929; }
   .pickles2-theme-editor .px2-darkmode .px2-btn:active {
     background-color: #ccc;
-    color: #0d0d0d;
+    color: #242424;
     box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.3); }
   .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--primary {
     border-color: #00a0e6;
@@ -1274,7 +1414,7 @@
     color: #fff; }
   .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary {
     border-color: #ccc;
-    background: #0d0d0d;
+    background: #242424;
     color: #ccc; }
   .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:focus, .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:hover {
     color: #eee;
@@ -1283,7 +1423,7 @@
     background-color: #292929; }
   .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--secondary:active {
     background-color: #ccc;
-    color: #0d0d0d; }
+    color: #242424; }
   .pickles2-theme-editor .px2-darkmode .px2-btn.px2-btn--danger {
     border-color: #e86a60;
     background-color: #fdf8f8;
@@ -1326,12 +1466,12 @@
   .pickles2-theme-editor .px2-darkmode .px2-table th,
   .pickles2-theme-editor .px2-darkmode .px2-table td {
     border-color: #666;
-    background: #0d0d0d; }
+    background: #242424; }
   .pickles2-theme-editor .px2-darkmode .px2-table th {
-    background: #222; }
+    background: #191919; }
   .pickles2-theme-editor .px2-darkmode .px2-table thead th,
   .pickles2-theme-editor .px2-darkmode .px2-table tfoot th {
-    background: #333; }
+    background: #111; }
   .pickles2-theme-editor .px2-darkmode .px2-table thead td,
   .pickles2-theme-editor .px2-darkmode .px2-table tfoot td {
     background: #111; }
@@ -1348,11 +1488,12 @@
   .pickles2-theme-editor .px2-darkmode input[type=week].px2-input,
   .pickles2-theme-editor .px2-darkmode input[type=time].px2-input,
   .pickles2-theme-editor .px2-darkmode input[type=color].px2-input,
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input,
   .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input,
   .pickles2-theme-editor .px2-darkmode textarea.px2-input,
   .pickles2-theme-editor .px2-darkmode select.px2-input {
     color: #ccc;
-    background-color: #0d0d0d;
+    background-color: #242424;
     border: 1px solid #555; }
   .pickles2-theme-editor .px2-darkmode input[type=text].px2-input:focus,
   .pickles2-theme-editor .px2-darkmode input[type=password].px2-input:focus,
@@ -1367,10 +1508,11 @@
   .pickles2-theme-editor .px2-darkmode input[type=week].px2-input:focus,
   .pickles2-theme-editor .px2-darkmode input[type=time].px2-input:focus,
   .pickles2-theme-editor .px2-darkmode input[type=color].px2-input:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input:focus,
   .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input:focus,
   .pickles2-theme-editor .px2-darkmode textarea.px2-input:focus,
   .pickles2-theme-editor .px2-darkmode select.px2-input:focus {
-    color: #999;
+    color: #f3f3f3;
     background-color: #000;
     border-color: #80bdff;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
@@ -1387,10 +1529,31 @@
   .pickles2-theme-editor .px2-darkmode input[type=week].px2-input[readonly],
   .pickles2-theme-editor .px2-darkmode input[type=time].px2-input[readonly],
   .pickles2-theme-editor .px2-darkmode input[type=color].px2-input[readonly],
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input[readonly],
   .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input[readonly],
   .pickles2-theme-editor .px2-darkmode textarea.px2-input[readonly],
   .pickles2-theme-editor .px2-darkmode select.px2-input[readonly] {
-    background-color: #111; }
+    color: #ccc;
+    background-color: #242424; }
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input[readonly]:focus,
+  .pickles2-theme-editor .px2-darkmode select.px2-input[readonly]:focus {
+    border-color: #555;
+    box-shadow: none; }
   .pickles2-theme-editor .px2-darkmode input[type=text].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode input[type=password].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode input[type=number].px2-input[disabled],
@@ -1404,15 +1567,46 @@
   .pickles2-theme-editor .px2-darkmode input[type=week].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode input[type=time].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode input[type=color].px2-input[disabled],
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode textarea.px2-input[disabled],
   .pickles2-theme-editor .px2-darkmode select.px2-input[disabled] {
     color: #8e959c;
-    background-color: #111; }
+    background-color: #333; }
+  .pickles2-theme-editor .px2-darkmode input[type=text].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=password].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=number].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=search].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=tel].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=url].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=email].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=date].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=month].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=week].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=time].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=color].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=file].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode input[type=datetime-local].px2-input--error,
+  .pickles2-theme-editor .px2-darkmode textarea.px2-input--error,
+  .pickles2-theme-editor .px2-darkmode select.px2-input--error {
+    border-color: #721c24;
+    color: #721c24;
+    background-color: #f8d7da; }
   .pickles2-theme-editor .px2-darkmode .px2-input-group__text {
     color: #ccc;
-    background-color: #060606;
-    border: 1px solid #222; }
+    background-color: #333;
+    border: 1px solid #555; }
+  .pickles2-theme-editor .px2-darkmode .px2-form-input-list {
+    color: #ccc; }
+  .pickles2-theme-editor .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul {
+    border: 1px solid #666; }
+  .pickles2-theme-editor .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__label {
+    background-color: #191919;
+    border: 1px solid #666; }
+  .pickles2-theme-editor .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__input {
+    background-color: #242424;
+    border: 1px solid #666; }
 
 .pickles2-theme-editor {
   /**
@@ -1548,14 +1742,14 @@
   .px2-darkmode .px2-header {
     color: #ccc; }
     .px2-darkmode .px2-header__inner {
-      background-color: #060606;
+      background-color: #222;
       box-shadow: 0 5px 13px rgba(255, 100, 100, 0.1); }
     .px2-darkmode .px2-header a {
       color: #ccc; }
       .px2-darkmode .px2-header a:hover {
         color: #fff; }
     .px2-darkmode .px2-header__px2logo a {
-      background-color: #060606; }
+      background-color: #222; }
     .px2-darkmode .px2-header__id a:hover {
       color: #fff; }
     .px2-darkmode .px2-header__global-menu ul li a, .px2-darkmode .px2-header__global-menu ul li span {
@@ -1601,9 +1795,9 @@
       color: #666; }
     .px2-darkmode .px2-modal__dialog {
       color: #ccc;
-      background-color: #0d0d0d; }
+      background-color: #242424; }
   .px2-darkmode .px2-btn {
-    background-color: #0d0d0d;
+    background-color: #242424;
     color: #ccc;
     border: 3px solid #ccc;
     box-shadow: 0 2px 0px rgba(255, 255, 255, 0.1); }
@@ -1616,7 +1810,7 @@
       background-color: #292929; }
     .px2-darkmode .px2-btn:active {
       background-color: #ccc;
-      color: #0d0d0d;
+      color: #242424;
       box-shadow: inset 0 3px 15px rgba(255, 255, 255, 0.3); }
   .px2-darkmode .px2-btn.px2-btn--primary {
     border-color: #00a0e6;
@@ -1631,7 +1825,7 @@
       color: #fff; }
   .px2-darkmode .px2-btn.px2-btn--secondary {
     border-color: #ccc;
-    background: #0d0d0d;
+    background: #242424;
     color: #ccc; }
     .px2-darkmode .px2-btn.px2-btn--secondary:focus, .px2-darkmode .px2-btn.px2-btn--secondary:hover {
       color: #eee;
@@ -1640,7 +1834,7 @@
       background-color: #292929; }
     .px2-darkmode .px2-btn.px2-btn--secondary:active {
       background-color: #ccc;
-      color: #0d0d0d; }
+      color: #242424; }
   .px2-darkmode .px2-btn.px2-btn--danger {
     border-color: #e86a60;
     background-color: #fdf8f8;
@@ -1683,12 +1877,12 @@
     .px2-darkmode .px2-table th,
     .px2-darkmode .px2-table td {
       border-color: #666;
-      background: #0d0d0d; }
+      background: #242424; }
     .px2-darkmode .px2-table th {
-      background: #222; }
+      background: #191919; }
     .px2-darkmode .px2-table thead th,
     .px2-darkmode .px2-table tfoot th {
-      background: #333; }
+      background: #111; }
     .px2-darkmode .px2-table thead td,
     .px2-darkmode .px2-table tfoot td {
       background: #111; }
@@ -1705,11 +1899,12 @@
   .px2-darkmode input[type=week].px2-input,
   .px2-darkmode input[type=time].px2-input,
   .px2-darkmode input[type=color].px2-input,
+  .px2-darkmode input[type=file].px2-input,
   .px2-darkmode input[type=datetime-local].px2-input,
   .px2-darkmode textarea.px2-input,
   .px2-darkmode select.px2-input {
     color: #ccc;
-    background-color: #0d0d0d;
+    background-color: #242424;
     border: 1px solid #555; }
     .px2-darkmode input[type=text].px2-input:focus,
     .px2-darkmode input[type=password].px2-input:focus,
@@ -1724,10 +1919,11 @@
     .px2-darkmode input[type=week].px2-input:focus,
     .px2-darkmode input[type=time].px2-input:focus,
     .px2-darkmode input[type=color].px2-input:focus,
+    .px2-darkmode input[type=file].px2-input:focus,
     .px2-darkmode input[type=datetime-local].px2-input:focus,
     .px2-darkmode textarea.px2-input:focus,
     .px2-darkmode select.px2-input:focus {
-      color: #999;
+      color: #f3f3f3;
       background-color: #000;
       border-color: #80bdff;
       box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
@@ -1744,10 +1940,31 @@
     .px2-darkmode input[type=week].px2-input[readonly],
     .px2-darkmode input[type=time].px2-input[readonly],
     .px2-darkmode input[type=color].px2-input[readonly],
+    .px2-darkmode input[type=file].px2-input[readonly],
     .px2-darkmode input[type=datetime-local].px2-input[readonly],
     .px2-darkmode textarea.px2-input[readonly],
     .px2-darkmode select.px2-input[readonly] {
-      background-color: #111; }
+      color: #ccc;
+      background-color: #242424; }
+      .px2-darkmode input[type=text].px2-input[readonly]:focus,
+      .px2-darkmode input[type=password].px2-input[readonly]:focus,
+      .px2-darkmode input[type=number].px2-input[readonly]:focus,
+      .px2-darkmode input[type=search].px2-input[readonly]:focus,
+      .px2-darkmode input[type=tel].px2-input[readonly]:focus,
+      .px2-darkmode input[type=url].px2-input[readonly]:focus,
+      .px2-darkmode input[type=email].px2-input[readonly]:focus,
+      .px2-darkmode input[type=datetime].px2-input[readonly]:focus,
+      .px2-darkmode input[type=date].px2-input[readonly]:focus,
+      .px2-darkmode input[type=month].px2-input[readonly]:focus,
+      .px2-darkmode input[type=week].px2-input[readonly]:focus,
+      .px2-darkmode input[type=time].px2-input[readonly]:focus,
+      .px2-darkmode input[type=color].px2-input[readonly]:focus,
+      .px2-darkmode input[type=file].px2-input[readonly]:focus,
+      .px2-darkmode input[type=datetime-local].px2-input[readonly]:focus,
+      .px2-darkmode textarea.px2-input[readonly]:focus,
+      .px2-darkmode select.px2-input[readonly]:focus {
+        border-color: #555;
+        box-shadow: none; }
     .px2-darkmode input[type=text].px2-input[disabled],
     .px2-darkmode input[type=password].px2-input[disabled],
     .px2-darkmode input[type=number].px2-input[disabled],
@@ -1761,15 +1978,46 @@
     .px2-darkmode input[type=week].px2-input[disabled],
     .px2-darkmode input[type=time].px2-input[disabled],
     .px2-darkmode input[type=color].px2-input[disabled],
+    .px2-darkmode input[type=file].px2-input[disabled],
     .px2-darkmode input[type=datetime-local].px2-input[disabled],
     .px2-darkmode textarea.px2-input[disabled],
     .px2-darkmode select.px2-input[disabled] {
       color: #8e959c;
-      background-color: #111; }
+      background-color: #333; }
+    .px2-darkmode input[type=text].px2-input--error,
+    .px2-darkmode input[type=password].px2-input--error,
+    .px2-darkmode input[type=number].px2-input--error,
+    .px2-darkmode input[type=search].px2-input--error,
+    .px2-darkmode input[type=tel].px2-input--error,
+    .px2-darkmode input[type=url].px2-input--error,
+    .px2-darkmode input[type=email].px2-input--error,
+    .px2-darkmode input[type=datetime].px2-input--error,
+    .px2-darkmode input[type=date].px2-input--error,
+    .px2-darkmode input[type=month].px2-input--error,
+    .px2-darkmode input[type=week].px2-input--error,
+    .px2-darkmode input[type=time].px2-input--error,
+    .px2-darkmode input[type=color].px2-input--error,
+    .px2-darkmode input[type=file].px2-input--error,
+    .px2-darkmode input[type=datetime-local].px2-input--error,
+    .px2-darkmode textarea.px2-input--error,
+    .px2-darkmode select.px2-input--error {
+      border-color: #721c24;
+      color: #721c24;
+      background-color: #f8d7da; }
   .px2-darkmode .px2-input-group__text {
     color: #ccc;
-    background-color: #060606;
-    border: 1px solid #222; }
+    background-color: #333;
+    border: 1px solid #555; }
+  .px2-darkmode .px2-form-input-list {
+    color: #ccc; }
+    .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul {
+      border: 1px solid #666; }
+      .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__label {
+        background-color: #191919;
+        border: 1px solid #666; }
+      .px2-darkmode .px2-form-input-list ul.px2-form-input-list__ul li.px2-form-input-list__li .px2-form-input-list__input {
+        background-color: #242424;
+        border: 1px solid #666; }
   .px2-darkmode .pickles2-theme-editor {
     /**
 	 * リストビュー

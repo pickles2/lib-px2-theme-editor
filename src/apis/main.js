@@ -229,11 +229,6 @@
 					$canvas.find('.pickles2-theme-editor__layout-list a button').on('click', function(e){
 						e.stopPropagation();
 					});
-					$canvas.find('a').on('click', function(e){
-						var href = this.href;
-						main.utils.openURL( href );
-						return false;
-					});
 					it1.next(arg);
 				}
 			]);

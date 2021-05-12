@@ -58,14 +58,14 @@ class themeCollection{
 
 		$rtn['layouts'] = array();
 		$ls = $this->main->fs()->ls($realpath_theme_root.'/');
-		foreach( $ls as $layoutId ){
-			if( !is_file( $realpath_theme_root.'/'.$layoutId ) ){
+		foreach( $ls as $basename ){
+			if( !is_file( $realpath_theme_root.'/'.$basename ) ){
 				continue;
 			}
-			if( !preg_match('/\.html$/', $layoutId) ){
+			if( !preg_match('/\.html$/', $basename) ){
 				continue;
 			}
-			$layoutId = preg_replace('/\.[a-zA-Z0-9]+$/i', '', $layoutId);
+			$layoutId = preg_replace('/\.[a-zA-Z0-9]+$/i', '', $basename);
 			$editMode = 'html';
 			if( is_file( $realpath_theme_root.'/guieditor.ignore/'.urlencode($layoutId).'/data/data.json' ) ){
 				$editMode = 'html.gui';
@@ -74,6 +74,8 @@ class themeCollection{
 			array_push( $rtn['layouts'], array(
 				'id' => $layoutId,
 				'editMode' => $editMode,
+				'size' => filesize( $realpath_theme_root.'/'.$basename ),
+				'md5' => md5_file( $realpath_theme_root.'/'.$basename ),
 			) );
 		}
 
@@ -121,10 +123,6 @@ class themeCollection{
 		$this->main->fs()->mkdir_r( $realpath_theme_root );
 		if( !$importFrom ){
 			$this->main->fs()->save_file( $realpath_theme_root.'/default.html', '' );
-			$this->main->fs()->save_file( $realpath_theme_root.'/plain.html', '' );
-			$this->main->fs()->save_file( $realpath_theme_root.'/naked.html', '' );
-			$this->main->fs()->save_file( $realpath_theme_root.'/popup.html', '' );
-			$this->main->fs()->save_file( $realpath_theme_root.'/top.html', '' );
 
 			$rtn = array(
 				'result' => true,
