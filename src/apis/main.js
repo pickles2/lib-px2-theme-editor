@@ -173,6 +173,7 @@
 		this.pageThemeHome = function(themeId){
 			console.log('Theme: '+themeId);
 			var themeInfo;
+			var isStartup = false;
 
 			it79.fnc({}, [
 				function(it1, arg){
@@ -191,6 +192,24 @@
 					});
 				},
 				function(it1, arg){
+					// テーマがスタートアップ状態か調べる
+					if( themeInfo.layouts.length != 1 ){
+						it1.next(arg);
+						return;
+					}
+					if( themeInfo.layouts[0].id != 'default' ){
+						it1.next(arg);
+						return;
+					}
+					if( themeInfo.layouts[0].size != 0 ){
+						it1.next(arg);
+						return;
+					}
+					isStartup = true;
+					it1.next(arg);
+					return;
+				},
+				function(it1, arg){
 					// テンプレート描画
 					var html = bindTwig(
 						templates['theme-home'],
@@ -201,7 +220,8 @@
 							'thumb': arg.thumb,
 							'readme': arg.readme,
 							'realpathThemeCollectionDir': realpathThemeCollectionDir,
-							'default_theme_id': multithemePluginOptions.default_theme_id
+							'default_theme_id': multithemePluginOptions.default_theme_id,
+							'is_startup': isStartup,
 						}
 					);
 					$canvas.html( html );

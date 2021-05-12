@@ -8,6 +8,13 @@
 
 	<h2>テーマ "{{ themeId | e }}"</h2>
 
+
+
+{% if is_startup %}
+	<p>スタートアップテーマです。</p>
+
+{% else %}
+
 	<div class="pickles2-theme-editor__set-default px2-p{% if default_theme_id == themeId %} pickles2-theme-editor__set-default--is-default{% endif %}">
 		{% if default_theme_id == themeId %}
 			<p>このテーマを適用しています。</p>
@@ -59,10 +66,14 @@
 		</ul>
 	</div>
 
+{% endif %}
+
+
 	<div class="pickles2-theme-editor__footer-menu">
 		<div>
 			<div><button class="px2-btn" data-pickles2-theme-editor-action="pageHome">テーマコレクションへ戻る</button></div>
 			<div><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;: &quot;{{ themeId | e }}&quot;}">このテーマを削除する</button></div>
 		</div>
 	</div>
+
 </div>

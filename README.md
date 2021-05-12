@@ -91,6 +91,10 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
+### pickles2/pickles2-theme-editor v0.1.0 (リリース日未定)
+
+- テーマのスタートアップ機能を追加。
+
 ### pickles2/pickles2-theme-editor v0.0.2 (2021年2月21日)
 
 - Windows で プラグインオプションの取得と、デフォルトテーマの変更に失敗する問題を修正。
