@@ -85,9 +85,13 @@ class gpi{
 
 			case "startupTheme":
 				$themecollection = new themeCollection($this->main);
+				$options = array();
+				if( array_key_exists('options', $query) ){
+					$options = (array) $query['options'];
+				}
 				$rtn = $themecollection->startup_theme(
 					$query['themeId'],
-					array()
+					$options
 				);
 				return $rtn;
 				break;
@@ -145,16 +149,6 @@ class gpi{
 				);
 				return $rtn;
 				break;
-
-			// case "px2agent":
-			// 	$result = $this->main->px2agent()->query(
-			// 		$query['pxcmd'],
-			// 		array(
-			// 			"output" => "json",
-			// 		)
-			// 	);
-			// 	return $result;
-			// 	break;
 
 			default:
 				return true;

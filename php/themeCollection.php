@@ -198,6 +198,18 @@ class themeCollection{
 			$realpath_theme_root
 		);
 
+		if( array_key_exists('logoImage', $options) && strlen($options['logoImage']) ){
+			$result = $this->main->fs()->mkdir($realpath_theme_root.'/theme_files/');
+			$logoExt = $options['logoImageExt'];
+			if( !strlen($logoExt) ){
+				$logoExt = 'png';
+			}
+			$this->main->fs()->save_file(
+				$realpath_theme_root.'/theme_files/logo.'.$logoExt,
+				base64_decode($options['logoImage'])
+			);
+		}
+
 		if( $result ){
 			$rtn = array(
 				'result' => true,
