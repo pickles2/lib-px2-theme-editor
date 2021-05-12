@@ -45,11 +45,10 @@
         "phpunit/phpunit": "^4.1.0"
     },
     "autoload": {
-        "files": [
-            "php/main.php",
-            "php/gpi.php",
-            "php/configEditor.php",
-            "php/themeCollection.php"
-        ]
+        "psr-4": {
+            "pickles2\\libs\\themeEditor\\": [
+                "php"
+            ]
+        }
     }
 }
