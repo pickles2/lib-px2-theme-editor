@@ -6,10 +6,9 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	const it79 = require('iterate79');
 	const templates = {
 		"home": require("./templates/home.twig"),
-		"thumbs": {
-			"template_001": require("./theme_templates/template_001/thumb.twig"),
-		},
 	};
+	const themeTemplates = {};
+	themeTemplates.template_001 = new (require("./theme_templates/template_001/template_001.js"))(main, $);
 	let $thumb;
 	let $form;
 
@@ -112,6 +111,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 										"data-base64": base64,
 									})
 								;
+								updateThumbs();
 							});
 						}
 					})
@@ -136,8 +136,8 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	 * サムネイルを更新する
 	 */
 	function updateThumbs(){
-		let userOptions = getSelectedOptions();
-		$thumb.html( templates.thumbs.template_001(userOptions) );
+		const userOptions = getSelectedOptions();
+		themeTemplates.template_001.update($thumb, userOptions);
 		return;
 	}
 
@@ -150,9 +150,13 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 		options.mainColor = $form.find('input[name=main_color]').val();
 		options.subColor = $form.find('input[name=sub_color]').val();
 		options.logoImage = $form.find('input[name=logo_image]').attr('data-base64');
+		options.logoImageMimeType = $form.find('input[name=logo_image]').attr('data-mime-type');
 		options.logoImageExt = $form.find('input[name=logo_image]').attr('data-ext');
-		if(!options.logoImageExt){
+		if(options.logoImage && !options.logoImageExt){
 			options.logoImageExt = 'png';
+		}
+		if(options.logoImage && !options.logoImageMimeType){
+			options.logoImageMimeType = 'image/png';
 		}
 		return options;
 	}

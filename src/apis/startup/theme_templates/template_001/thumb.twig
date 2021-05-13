@@ -1,3 +1,8 @@
 <div class="pickles2-theme-editor__thumb-template_001">
     <p>Thumb</p>
+    {% if logoImage %}
+    <p><img src="data:{{ logoImageMimeType }};base64,{{ logoImage }}" /></p>
+    {% endif %}
+    <p style="color:{{ mainColor }};">{{ mainColor }}</p>
+    <p style="color:{{ subColor }};">{{ subColor }}</p>
 </div>
