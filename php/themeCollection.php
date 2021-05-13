@@ -205,7 +205,7 @@ class themeCollection{
 			);
 			return $rtn;
 		}
-		$path_theme_template_dir = __DIR__.'/../startup_templates/'.urlencode($options['templateId']).'/';
+		$path_theme_template_dir = __DIR__.'/../startup_theme_templates/'.urlencode($options['templateId']).'/basefiles/';
 		if( !is_dir($path_theme_template_dir) ){
 			$rtn = array(
 				'result' => false,
@@ -244,6 +244,7 @@ class themeCollection{
 		}
 
 		// テンプレート別の加工処理
+		require_once(__DIR__.'/../startup_theme_templates/'.urlencode($options['templateId']).'/'.urlencode($options['templateId']).'.php');
 		$className = '\\pickles2\\libs\\themeEditor\\themeTemplates\\'.$options['templateId'];
 		$templateOperator = new $className( $this->main );
 		$result = $templateOperator->bind( $realpath_theme_root, $options );
