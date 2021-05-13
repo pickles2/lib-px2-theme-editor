@@ -16,6 +16,7 @@
     "jquery": "^3.5.1",
     "px2style": "git+https://github.com/pickles2/px2style.git#develop",
     "twig": "^1.15.4",
+    "twig-loader": "^0.5.5",
     "webpack": "^4.39.2",
     "webpack-stream": "^5.2.1"
   }

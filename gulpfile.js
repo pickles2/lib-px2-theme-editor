@@ -48,6 +48,10 @@ gulp.task("pickles2-theme-editor.js", function() {
 				{
 					test:/\.html$/,
 					use:['html-loader']
+				},
+				{
+					test:/\.twig$/,
+					use:['twig-loader']
 				}
 			]
 		}

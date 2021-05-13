@@ -11,23 +11,7 @@
 
 
 {% if is_startup %}
-	<form action="javascript:;" method="post" data-pickles2-theme-editor-form="startup">
-		<input type="hidden" name="theme_id" value="{{ themeId | e }}" />
-		<input type="hidden" name="template_id" value="template_001" />
-
-		<p>テーマの初期状態を構築します。</p>
-
-		<div>
-			<p>logo: <input type="file" name="logo_image" value="" /></p>
-			<img src="about:blank" alt="" class="pickles2-theme-editor__logo-image-preview" />
-		</div>
-		<p>main color: <input type="color" name="main_color" value="" /></p>
-		<p>sub color: <input type="color" name="sub_color" value="" /></p>
-
-		<div class="px2-p">
-			<p><button type="submit" class="px2-btn px2-btn--primary">テーマを生成する</button></p>
-		</div>
-	</form>
+	<div class="pickles2-theme-editor__startup"></div>
 
 {% else %}
 
