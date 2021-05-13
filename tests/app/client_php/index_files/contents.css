@@ -3,6 +3,7 @@
 }
 body{
     font-size: small;
+    background-color: #f9f9f9;
 }
 body.px2-darkmode{
     background-color: #0d0d0d;

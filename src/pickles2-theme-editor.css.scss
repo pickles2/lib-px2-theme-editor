@@ -7,6 +7,9 @@
 
 	overflow: auto;
 	display: flex;
+
+	// startup
+	@import './apis/startup/startup.css.scss';
 }
 
 .pickles2-theme-editor {

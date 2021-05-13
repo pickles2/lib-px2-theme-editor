@@ -5,25 +5,21 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	const _this = this;
 	const templates = {
 		"home": require("./templates/home.twig"),
+		"thumbs": {
+			"template_001": require("./theme_templates/template_001/thumb.twig"),
+		},
 	};
-	var html = templates.home(tplOptions);
-	$canvas.append(html);
+	$canvas.append(templates.home(tplOptions));
 
-	$canvas.find('[data-pickles2-theme-editor-form=startup]').on('submit', function(e){
+	const $thumb = $canvas.find('.pickles2-theme-editor__startup-thumb');
+	const $form = $canvas.find('[data-pickles2-theme-editor-form=startup]');
+
+	$form.on('submit', function(e){
 		e.stopPropagation();
 		e.preventDefault();
 
-		var $form = $(this);
 		var themeId = $form.find('input[name=theme_id]').val();
-		var options = {};
-		options.templateId = $form.find('input[name=template_id]').val();
-		options.mainColor = $form.find('input[name=main_color]').val();
-		options.subColor = $form.find('input[name=sub_color]').val();
-		options.logoImage = $form.find('input[name=logo_image]').attr('data-base64');
-		options.logoImageExt = $form.find('input[name=logo_image]').attr('data-ext');
-		if(!options.logoImageExt){
-			options.logoImageExt = 'png';
-		}
+		var options = getSelectedOptions();
 
 
 		px2style.loading();
@@ -104,5 +100,22 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 			}
 		})
 	;
+
+	function getSelectedOptions(){
+		var options = {};
+		options.templateId = $form.find('input[name=template_id]').val();
+		options.mainColor = $form.find('input[name=main_color]').val();
+		options.subColor = $form.find('input[name=sub_color]').val();
+		options.logoImage = $form.find('input[name=logo_image]').attr('data-base64');
+		options.logoImageExt = $form.find('input[name=logo_image]').attr('data-ext');
+		if(!options.logoImageExt){
+			options.logoImageExt = 'png';
+		}
+		return options;
+	}
+
+console.log(getSelectedOptions());
+console.log(templates.thumbs.template_001(getSelectedOptions()));
+	$thumb.html( templates.thumbs.template_001(getSelectedOptions()) );
 
 }
