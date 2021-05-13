@@ -1,6 +1,6 @@
 <?php
-namespace pickles2\libs\themeEditor\themeTemplates;
-class template_002{
+namespace pickles2\libs\themeEditor\startupThemeTemplates\template_002;
+class main{
 
 	/** $main */
 	private $main;

@@ -244,8 +244,8 @@ class themeCollection{
 		}
 
 		// テンプレート別の加工処理
-		require_once(__DIR__.'/../startup_theme_templates/'.urlencode($options['templateId']).'/'.urlencode($options['templateId']).'.php');
-		$className = '\\pickles2\\libs\\themeEditor\\themeTemplates\\'.$options['templateId'];
+		require_once(__DIR__.'/../startup_theme_templates/'.urlencode($options['templateId']).'/main.php');
+		$className = '\\pickles2\\libs\\themeEditor\\startupThemeTemplates\\'.$options['templateId'].'\\main';
 		$templateOperator = new $className( $this->main );
 		$result = $templateOperator->bind( $realpath_theme_root, $options );
 		if( !$result ){

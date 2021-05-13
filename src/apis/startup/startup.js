@@ -8,8 +8,8 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 		"home": require("./templates/home.twig"),
 	};
 	const themeTemplates = {};
-	themeTemplates.template_001 = new (require("./theme_templates/template_001/template_001.js"))(main, $);
-	themeTemplates.template_002 = new (require("./theme_templates/template_002/template_002.js"))(main, $);
+	themeTemplates.template_001 = new (require("../../../startup_theme_templates/template_001/frontend/main.js"))(main, $);
+	themeTemplates.template_002 = new (require("../../../startup_theme_templates/template_002/frontend/main.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
