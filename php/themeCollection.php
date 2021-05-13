@@ -192,36 +192,72 @@ class themeCollection{
 			return $rtn;
 		}
 
-		$this->main->fs()->rm($realpath_theme_root);
-		$result = $this->main->fs()->copy_r(
-			__DIR__.'/../startup_templates/template_001/theme/',
-			$realpath_theme_root
-		);
+		if( !array_key_exists('templateId', $options) || !strlen($options['templateId']) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマテンプレートID を指定してください。',
+			);
+			return $rtn;
+		}elseif( !preg_match('/^[a-zA-Z0-9\-\_]+$/', $options['templateId']) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマテンプレートID の形式が不正です。',
+			);
+			return $rtn;
+		}
+		$path_theme_template_dir = __DIR__.'/../startup_templates/'.urlencode($options['templateId']).'/theme/';
+		if( !is_dir($path_theme_template_dir) ){
+			$rtn = array(
+				'result' => false,
+				'message' => 'テーマテンプレートが存在しません。',
+			);
+			return $rtn;
+		}
 
+		// テーマテンプレートを複製
+		$this->main->fs()->rm($realpath_theme_root);
+		$result = $this->main->fs()->copy_r( $path_theme_template_dir, $realpath_theme_root );
+		if( !$result ){
+			return array(
+				'result' => false,
+				'message' => 'テーマテンプレートの展開処理に失敗しました。',
+			);
+		}
+
+		// ロゴ画像がある場合、保存
 		if( array_key_exists('logoImage', $options) && strlen($options['logoImage']) ){
 			$result = $this->main->fs()->mkdir($realpath_theme_root.'/theme_files/');
 			$logoExt = $options['logoImageExt'];
 			if( !strlen($logoExt) ){
 				$logoExt = 'png';
 			}
-			$this->main->fs()->save_file(
+			$result = $this->main->fs()->save_file(
 				$realpath_theme_root.'/theme_files/logo.'.$logoExt,
 				base64_decode($options['logoImage'])
 			);
+			if( !$result ){
+				return array(
+					'result' => false,
+					'message' => 'ロゴ画像の保存に失敗しました。',
+				);
+			}
 		}
 
-		if( $result ){
-			$rtn = array(
-				'result' => true,
-				'message' => 'OK',
-			);
-		}else{
-			$rtn = array(
+		// テンプレート別の加工処理
+		$className = '\\pickles2\\libs\\themeEditor\\themeTemplates\\'.$options['templateId'];
+		$templateOperator = new $className( $this->main );
+		$result = $templateOperator->bind( $realpath_theme_root, $options );
+		if( !$result ){
+			return array(
 				'result' => false,
-				'message' => 'テーマのスタートアップに失敗しました。',
+				'message' => 'テンプレートの反映処理に失敗しました。',
 			);
 		}
-		return $rtn;
+
+		return array(
+			'result' => true,
+			'message' => 'OK',
+		);
 	}
 
 	/**
