@@ -9,7 +9,8 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	};
 	const themeTemplates = {};
 	themeTemplates.template_001 = new (require("./theme_templates/template_001/template_001.js"))(main, $);
-	let $thumb;
+	themeTemplates.template_002 = new (require("./theme_templates/template_002/template_002.js"))(main, $);
+	const themeTemplateThumbs = {};
 	let $form;
 
 
@@ -21,8 +22,14 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 			function(it1){
 				$canvas.append(templates.home(tplOptions));
 
-				$thumb = $canvas.find('.pickles2-theme-editor__startup-thumb');
 				$form = $canvas.find('form[data-pickles2-theme-editor-form=startup]');
+
+				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
+				themeTemplateThumbs['template_001'] = $('<a>').attr('data-value', 'template_001');
+				themeTemplateThumbs['template_002'] = $('<a>').attr('data-value', 'template_002');
+				for(var idx in themeTemplateThumbs){
+					$thumbs.append( themeTemplateThumbs[idx] );
+				}
 
 				it1.next();
 			},
@@ -73,7 +80,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 						// console.log(e.target.files);
 						var fileInfo = e.target.files[0];
 						var realpathSelected = $this.val();
-						var $img = $canvas.find('img.pickles2-theme-editor__logo-image-preview');
+						var $img = $canvas.find('.pickles2-theme-editor__logo-image-preview img');
 
 						if( realpathSelected ){
 							function readSelectedLocalFile(fileInfo, callback){
@@ -116,6 +123,20 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 						}
 					})
 				;
+
+				for(var idx in themeTemplateThumbs){
+					themeTemplateThumbs[idx]
+						.attr({
+							"href": "javascript:;",
+						})
+						.on('click', function(e){
+							const $this = $(this);
+							const selectedValue = $this.attr('data-value');
+							$canvas.find('input[name=template_id]').val(selectedValue);
+						})
+					;
+				}
+
 				$canvas.find('form[data-pickles2-theme-editor-form=startup]').find('input,select,textarea')
 					.on('change', function(){
 						updateThumbs();
@@ -137,7 +158,8 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	 */
 	function updateThumbs(){
 		const userOptions = getSelectedOptions();
-		themeTemplates.template_001.update($thumb, userOptions);
+		themeTemplates.template_001.update( themeTemplateThumbs['template_001'], userOptions);
+		themeTemplates.template_002.update( themeTemplateThumbs['template_002'], userOptions);
 		return;
 	}
 
