@@ -264,6 +264,7 @@
 							'default_theme_id': multithemePluginOptions.default_theme_id,
 							'is_startup': isStartup,
 						}, $startupCanvas, $, px2style );
+						startup.init();
 					}
 
 					it1.next(arg);
