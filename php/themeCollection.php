@@ -205,7 +205,7 @@ class themeCollection{
 			);
 			return $rtn;
 		}
-		$path_theme_template_dir = __DIR__.'/../startup_templates/'.urlencode($options['templateId']).'/theme/';
+		$path_theme_template_dir = __DIR__.'/../startup_templates/'.urlencode($options['templateId']).'/';
 		if( !is_dir($path_theme_template_dir) ){
 			$rtn = array(
 				'result' => false,
