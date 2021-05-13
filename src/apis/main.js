@@ -68,7 +68,7 @@
 					function(it1){
 						// リソースファイルの読み込み
 						var css = [
-							__dirname+'/pickles2-theme-editor.css',
+							// __dirname+'/pickles2-theme-editor.css',
 						];
 						$('head *[data-pickles2-theme-editor-resource]').remove(); // 一旦削除
 						it79.ary(

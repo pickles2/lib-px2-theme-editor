@@ -1609,21 +1609,29 @@
     border: 1px solid #666; }
   .pickles2-theme-editor .pickles2-theme-editor__startup-thumb {
     display: -ms-flexbox;
-    display: flex; }
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -ms-flex-pack: justify;
+        justify-content: space-between; }
     .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a {
       display: block;
       border: 2px solid #d9d9d9;
       border-radius: 3px;
       background-color: #fff;
       position: relative;
-      width: 180px;
+      box-sizing: border-box;
+      width: 47%;
       height: 120px;
       overflow: hidden;
       font-size: 8px;
       color: #000;
-      text-decoration: none; }
+      text-decoration: none;
+      margin-bottom: 10px; }
       .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a img {
         max-width: 100%; }
+      .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a.pickles2-theme-editor__startup-thumb-current {
+        border-color: #58d; }
   .pickles2-theme-editor .pickles2-theme-editor__startup .pickles2-theme-editor__logo-image-preview img {
     max-width: 82%; }
 

@@ -124,6 +124,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 					})
 				;
 
+				let classNameCurrent = 'pickles2-theme-editor__startup-thumb-current';
 				for(var idx in themeTemplateThumbs){
 					themeTemplateThumbs[idx]
 						.attr({
@@ -133,9 +134,14 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 							const $this = $(this);
 							const selectedValue = $this.attr('data-value');
 							$canvas.find('input[name=template_id]').val(selectedValue);
+
+							$canvas.find('.pickles2-theme-editor__startup-thumb > a').removeClass(classNameCurrent);
+							$this.addClass(classNameCurrent);
 						})
 					;
 				}
+				$canvas.find('.pickles2-theme-editor__startup-thumb > a[data-value="template_001"]').addClass(classNameCurrent);
+
 
 				$canvas.find('form[data-pickles2-theme-editor-form=startup]').find('input,select,textarea')
 					.on('change', function(){
