@@ -13,7 +13,7 @@ let packageJson = require(__dirname+'/package.json');
 
 // src 中の *.css.scss を処理
 gulp.task('.css.scss', function(){
-	return gulp.src("src/**/*.css.scss")
+	return gulp.src(["src/**/*.css.scss","!src/**/*.ignore*","!src/**/*.ignore*/*"])
 		.pipe(plumber())
 		.pipe(sass({
 			"sourceComments": false
