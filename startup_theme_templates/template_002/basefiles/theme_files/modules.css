@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
   color: inherit; }
 
 a {
-  color: #00a0e6;
+  color: {{ mainColor }};
   text-decoration: none; }
 
 a:hover, a:focus {
@@ -200,7 +200,8 @@ p, li, dt, dd {
  * Header
  */
 .theme-header {
-  background-color: #00a0e6;
+  background-color: {{ mainColor }};
+  border-top: 4px solid {{ subColor }};
   padding: 1em 15px 1px 15px;
   clear: both;
   /**
@@ -289,14 +290,14 @@ p, li, dt, dd {
   padding: 0; }
 
 .theme-welcome .theme-welcome__title {
-  color: #00a0e6;
+  color: {{ mainColor }};
   font-weight: bold;
   font-size: xx-large;
   margin: 1em 0 0.5em 0; }
 
 .theme-welcome .theme-welcome__message {
-  color: #00a0e6;
-  border: 2px solid #00a0e6;
+  color: {{ mainColor }};
+  border: 2px solid {{ mainColor }};
   background-color: #fff;
   border-radius: 3px;
   padding: 0.5em 1em;

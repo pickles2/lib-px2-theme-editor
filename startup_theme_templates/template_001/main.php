@@ -19,6 +19,7 @@ class main{
 
 		$templateFileList = array(
 			'theme_files/modules.css',
+			'broccoli_module_packages/_env.scss',
 		);
 
 		foreach ($templateFileList as $templateFile) {
