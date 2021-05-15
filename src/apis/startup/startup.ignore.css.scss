@@ -6,24 +6,35 @@
 
         > a {
             display: block;
-            border: 2px solid #d9d9d9;
+            border: 4px solid #d9d9d9;
             border-radius: 3px;
             background-color: #fff;
             position: relative;
             box-sizing: border-box;
             width: 47%;
-            height: 120px;
+            height: 160px;
             overflow: hidden;
-            font-size: 8px;
+            font-size: 6px;
             color: #000;
             text-decoration: none;
             margin-bottom: 10px;
+            word-wrap: break-word;
             img {
                 max-width: 100%;
+            }
+            ul,
+            ol,
+            p {
+                margin: 0;
+                padding: 0;
+            }
+            * {
+                pointer-events: none;
             }
 
             &.pickles2-theme-editor__startup-thumb-current {
                 border-color: #58d;
+                box-shadow: 0 0 0 .2rem rgba(0,123,255,.25);
             }
         }
     }

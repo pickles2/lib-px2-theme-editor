@@ -1616,24 +1616,139 @@
         justify-content: space-between; }
     .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a {
       display: block;
-      border: 2px solid #d9d9d9;
+      border: 4px solid #d9d9d9;
       border-radius: 3px;
       background-color: #fff;
       position: relative;
       box-sizing: border-box;
       width: 47%;
-      height: 120px;
+      height: 160px;
       overflow: hidden;
-      font-size: 8px;
+      font-size: 6px;
       color: #000;
       text-decoration: none;
-      margin-bottom: 10px; }
+      margin-bottom: 10px;
+      word-wrap: break-word; }
       .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a img {
         max-width: 100%; }
+      .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a ul,
+      .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a ol,
+      .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a p {
+        margin: 0;
+        padding: 0; }
+      .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a * {
+        pointer-events: none; }
       .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a.pickles2-theme-editor__startup-thumb-current {
-        border-color: #58d; }
+        border-color: #58d;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); }
   .pickles2-theme-editor .pickles2-theme-editor__startup .pickles2-theme-editor__logo-image-preview img {
     max-width: 82%; }
+  .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001 {
+    color: #333; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001 a {
+      color: #00a0e6; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__header {
+      padding: 3px 5px 0 5px;
+      background-color: #2ea8e5;
+      color: #fff; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__header p {
+        float: left;
+        margin: 0; }
+        .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__header p img {
+          height: 12px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__gmenu {
+      display: -ms-flexbox;
+      display: flex;
+      float: none;
+      clear: both; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__gmenu div {
+        height: 8px;
+        width: 21px;
+        background-color: #f5f5ff;
+        margin: 2px 3px 0 3px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__middle {
+      display: -ms-flexbox;
+      display: flex; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__middle-main {
+        width: 70%;
+        padding: 3px; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__middle-sidebar {
+        width: 30%;
+        padding: 3px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__sidebarmenu div {
+      height: 8px;
+      width: auto;
+      background-color: #eee;
+      margin: 1px 0 0 0; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__autoindex {
+      margin: 2px 5%;
+      border: 0.1px solid #bbb;
+      padding: 3px;
+      background: rgba(124, 124, 124, 0.05);
+      border-radius: 2px;
+      height: 12px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__title {
+      font-size: 160%;
+      font-weight: bold; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__h1 {
+      font-size: 160%;
+      font-weight: bold; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_001__h2 {
+      font-size: 120%;
+      font-weight: bold; }
+  .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002 {
+    color: #333; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002 a {
+      color: #00a0e6; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__header {
+      padding: 3px 5px 0 5px;
+      background-color: #2ea8e5;
+      color: #fff; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__header p {
+        float: left;
+        margin: 0; }
+        .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__header p img {
+          height: 12px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__gmenu {
+      display: -ms-flexbox;
+      display: flex;
+      float: none;
+      clear: both; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__gmenu div {
+        height: 8px;
+        width: 21px;
+        background-color: #f5f5ff;
+        margin: 2px 3px 0 3px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__middle {
+      display: -ms-flexbox;
+      display: flex; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__middle-main {
+        width: 70%;
+        padding: 3px; }
+      .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__middle-sidebar {
+        width: 30%;
+        padding: 3px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__sidebarmenu div {
+      height: 8px;
+      width: auto;
+      background-color: #eee;
+      margin: 1px 0 0 0; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__autoindex {
+      margin: 2px 5%;
+      border: 0.1px solid #bbb;
+      padding: 3px;
+      background: rgba(124, 124, 124, 0.05);
+      border-radius: 2px;
+      height: 12px; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__title {
+      font-size: 160%;
+      font-weight: bold; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__h1 {
+      font-size: 160%;
+      font-weight: bold; }
+    .pickles2-theme-editor .pickles2-theme-editor__thumb-template_002__h2 {
+      font-size: 120%;
+      font-weight: bold; }
 
 .pickles2-theme-editor {
   /**
