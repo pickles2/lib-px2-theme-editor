@@ -240,6 +240,11 @@ p, li, dt, dd {
   .theme-header__si:before {
     content: url("'data:image/svg+xml;base64,<") ) ?>');
     margin: 0 20px 0 0; }
+  .theme-header__si img {
+    display: inline-block;
+    height: 1.2em;
+    margin-right: 5px;
+    vertical-align: top; }
   .theme-header__shouldernavi {
     float: right; }
     @media all and (max-width: 580px) {

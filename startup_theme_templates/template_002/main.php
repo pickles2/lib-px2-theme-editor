@@ -19,6 +19,9 @@ class main{
 
 		$templateFileList = array(
 			'theme_files/modules.css',
+			'default.html',
+			'popup.html',
+			'top.html',
 		);
 
 		foreach ($templateFileList as $templateFile) {
