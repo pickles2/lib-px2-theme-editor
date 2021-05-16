@@ -47,13 +47,13 @@ class main{
 				$this->main->fs()->mkdir_r( $realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/' );
 				$this->main->fs()->copy_r(
 					$realpath_theme_root.'theme_files/logo.'.$options['logoImageExt'],
-					$realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/logo_'.$layoutName.'.'.$options['logoImageExt']
+					$realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/logo.'.$options['logoImageExt']
 				);
 
-				$this->main->fs()->mkdir_r( $realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage_'.$layoutName.'/' );
+				$this->main->fs()->mkdir_r( $realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/' );
 				$this->main->fs()->copy_r(
 					$realpath_theme_root.'theme_files/logo.'.$options['logoImageExt'],
-					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage_'.$layoutName.'/bin.'.$options['logoImageExt']
+					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/bin.'.$options['logoImageExt']
 				);
 
 				$resJson = array();
@@ -62,12 +62,12 @@ class main{
 				$resJson["base64"] = base64_encode( file_get_contents($realpath_theme_root.'theme_files/logo.'.$options['logoImageExt']) );
 				$resJson["md5"] = md5_file($realpath_theme_root.'theme_files/logo.'.$options['logoImageExt']);
 				$resJson["isPrivateMaterial"] = false;
-				$resJson["publicFilename"] = "logo_".$layoutName;
+				$resJson["publicFilename"] = "logo";
 				$resJson["field"] = "image";
 				$resJson["fieldNote"] = [];
 				$resJson["type"] = $options['logoImageMimeType'];
 				$this->main->fs()->save_file(
-					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage_'.$layoutName.'/res.json',
+					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/res.json',
 					json_encode($resJson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)
 				);
 			}
