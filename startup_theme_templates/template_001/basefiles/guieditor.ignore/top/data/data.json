@@ -13,7 +13,7 @@
                             "globalnavi": [],
                             "sitetitle_image": {
 {% if logoImage %}
-                                "resKey": "logoImage_top",
+                                "resKey": "logoImage",
                                 "resType": "",
                                 "webUrl": "",
                                 "path": "./theme_files/layouts/top/resources/logo.{{ logoImageExt }}"
