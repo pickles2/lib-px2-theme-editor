@@ -10,7 +10,20 @@
                             "sitetitle_linkto": "",
                             "sitetitle_htmlElement": "",
                             "shouldernavi": [],
-                            "globalnavi": []
+                            "globalnavi": [],
+                            "sitetitle_image": {
+{% if logoImage %}
+                                "resKey": "logoImage_popup",
+                                "resType": "",
+                                "webUrl": "",
+                                "path": "./theme_files/layouts/popup/resources/logo.{{ logoImageExt }}"
+{% else %}
+                                "resKey": "",
+                                "resType": "none",
+                                "webUrl": "",
+                                "path": ""
+{% endif %}
+                            }
                         },
                         "anchor": "",
                         "dec": ""

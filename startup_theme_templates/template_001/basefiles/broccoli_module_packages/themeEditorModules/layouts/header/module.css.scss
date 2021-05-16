@@ -46,9 +46,11 @@
 	&__si a:hover{
 		color: #eee;
 	}
-	&__si:before{
-		content: url('data:image/svg+xml;base64,<?= base64_encode( $px->get_pickles_logo_svg() ) ?>');
-		margin: 0 20px 0 0;
+	&__si img {
+		display: inline-block;
+		height: 1.2em;
+		margin-right: 5px;
+		vertical-align: top;
 	}
 
 	/**

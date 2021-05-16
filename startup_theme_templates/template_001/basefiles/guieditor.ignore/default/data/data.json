@@ -24,7 +24,20 @@
                                     "anchor": "",
                                     "dec": ""
                                 }
-                            ]
+                            ],
+                            "sitetitle_image": {
+{% if logoImage %}
+                                "resKey": "logoImage_default",
+                                "resType": "",
+                                "webUrl": "",
+                                "path": "./theme_files/layouts/default/resources/logo.{{ logoImageExt }}"
+{% else %}
+                                "resKey": "",
+                                "resType": "none",
+                                "webUrl": "",
+                                "path": ""
+{% endif %}
+                            }
                         },
                         "anchor": "",
                         "dec": ""

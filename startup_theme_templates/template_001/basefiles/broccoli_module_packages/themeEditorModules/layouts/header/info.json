@@ -17,6 +17,11 @@
                      {"value":"h1", "label":"h1"}
                 ]
             },
+            "sitetitle_image":{
+                "fieldType": "input",
+                "label": "タイトルイメージ",
+                "type": "image"
+            },
             "shouldernavi": {
                 "fieldType": "module",
                 "label": "ショルダーナビ"
