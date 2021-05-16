@@ -67,8 +67,8 @@ class main{
 				$resJson["fieldNote"] = [];
 				$resJson["type"] = $options['logoImageMimeType'];
 				$this->main->fs()->save_file(
-					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'_/data/resources/logoImage_'.$layoutName.'/res.json',
-					json_encode($resJson)
+					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage_'.$layoutName.'/res.json',
+					json_encode($resJson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)
 				);
 			}
 		}
