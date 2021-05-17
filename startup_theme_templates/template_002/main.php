@@ -17,6 +17,17 @@ class main{
 	 */
 	public function bind( $realpath_theme_root, $options ){
 
+		$colorUtils = new \tomk79\colorUtils\main();
+		$options['textColorOnMainColor'] = '#fff';
+		if( $colorUtils->get_brightness($options['mainColor']) > 50 ){
+			$options['textColorOnMainColor'] = '#333';
+		}
+		$options['textColorOnSubColor'] = '#fff';
+		if( $colorUtils->get_brightness($options['subColor']) > 50 ){
+			$options['textColorOnSubColor'] = '#333';
+		}
+
+
 		$templateFileList = array(
 			'theme_files/modules.css',
 			'default.html',

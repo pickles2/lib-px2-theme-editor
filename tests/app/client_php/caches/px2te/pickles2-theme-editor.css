@@ -1642,6 +1642,7 @@
       .pickles2-theme-editor .pickles2-theme-editor__startup-thumb > a.pickles2-theme-editor__startup-thumb-current {
         border-color: #58d; }
   .pickles2-theme-editor .pickles2-theme-editor__startup__badge-broccoli {
+    display: block;
     position: absolute;
     right: 2px;
     bottom: 2px;

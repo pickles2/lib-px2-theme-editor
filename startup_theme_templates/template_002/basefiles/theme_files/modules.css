@@ -1,10 +1,8 @@
 /*
-{{ mainColor }}
+mainColor = {{ mainColor }}
+subColor = {{ subColor }}
 */
 
-/**
- * module: themeEditorModules:layouts/footer
- */
 /**
  * Footer
  */
@@ -201,6 +199,7 @@ p, li, dt, dd {
  */
 .theme-header {
   background-color: {{ mainColor }};
+  color: {{ textColorOnMainColor }};
   border-top: 4px solid {{ subColor }};
   padding: 1em 15px 1px 15px;
   clear: both;
@@ -233,7 +232,7 @@ p, li, dt, dd {
     font-size: xx-large;
     margin: 0;
     padding: 0;
-    color: #fff;
+    color: {{ textColorOnMainColor }};
     line-height: 1.3; }
   .theme-header__si *:hover {
     color: #eee; }
@@ -257,7 +256,7 @@ p, li, dt, dd {
     display: inline-block; }
   .theme-header__shouldernavi ul li a {
     display: block;
-    color: #fff; }
+    color: {{ textColorOnMainColor }}; }
   .theme-header__globalnavi {
     clear: both; }
   .theme-header__globalnavi ul {
