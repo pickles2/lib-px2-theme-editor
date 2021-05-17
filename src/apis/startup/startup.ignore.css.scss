@@ -39,6 +39,19 @@
         }
     }
 
+    &__badge-broccoli {
+        position: absolute;
+        right: 2px;
+        bottom: 2px;
+        padding: 0.2em 1em;
+        background-color: #ddd;
+        color: #333;
+        font-size: 12px;
+        &::before {
+            content: "with Broccoli";
+        }
+    }
+
     .pickles2-theme-editor__logo-image-preview {
         img {
             max-width: 82%;
