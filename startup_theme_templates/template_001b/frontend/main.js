@@ -1,5 +1,5 @@
 /**
- * template_002
+ * template_001b
  */
 module.exports = function( main, $ ){
 	const _this = this;

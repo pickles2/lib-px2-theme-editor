@@ -10,7 +10,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	};
 	const themeTemplates = {};
 	themeTemplates.template_001 = new (require("../../../startup_theme_templates/template_001/frontend/main.js"))(main, $);
-	themeTemplates.template_002 = new (require("../../../startup_theme_templates/template_002/frontend/main.js"))(main, $);
+	themeTemplates.template_001b = new (require("../../../startup_theme_templates/template_001b/frontend/main.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
@@ -27,7 +27,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 
 				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
 				themeTemplateThumbs['template_001'] = $('<a>').attr('data-value', 'template_001');
-				themeTemplateThumbs['template_002'] = $('<a>').attr('data-value', 'template_002');
+				themeTemplateThumbs['template_001b'] = $('<a>').attr('data-value', 'template_001b');
 				for(var idx in themeTemplateThumbs){
 					$thumbs.append( themeTemplateThumbs[idx] );
 				}
@@ -182,7 +182,7 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	function updateThumbs(){
 		const userOptions = getSelectedOptions();
 		themeTemplates.template_001.update( themeTemplateThumbs['template_001'], userOptions);
-		themeTemplates.template_002.update( themeTemplateThumbs['template_002'], userOptions);
+		themeTemplates.template_001b.update( themeTemplateThumbs['template_001b'], userOptions);
 		return;
 	}
 

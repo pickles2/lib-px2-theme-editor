@@ -19,21 +19,17 @@ class main{
 
 		$colorUtils = new \tomk79\colorUtils\main();
 		$options['textColorOnMainColor'] = '#fff';
-		if( $colorUtils->get_brightness($options['mainColor']) > 50 ){
+		if( $colorUtils->get_brightness($options['mainColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
 			$options['textColorOnMainColor'] = '#333';
 		}
 		$options['textColorOnSubColor'] = '#fff';
-		if( $colorUtils->get_brightness($options['subColor']) > 50 ){
+		if( $colorUtils->get_brightness($options['subColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
 			$options['textColorOnSubColor'] = '#333';
 		}
 
 
 		$templateFileList = array(
 			'theme_files/modules.css',
-			'guieditor.ignore/default/data/data.json',
-			'guieditor.ignore/popup/data/data.json',
-			'guieditor.ignore/top/data/data.json',
-			'broccoli_module_packages/_env.scss',
 			'default.html',
 			'popup.html',
 			'top.html',
@@ -49,39 +45,6 @@ class main{
 				$realpath_theme_root.$templateFile,
 				$templateSrc
 			);
-		}
-
-
-		if( array_key_exists('logoImage', $options) && strlen( $options['logoImage'] ) ){
-			foreach( array('default', 'popup', 'top') as $layoutName ){
-
-				$this->main->fs()->mkdir_r( $realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/' );
-				$this->main->fs()->copy_r(
-					$realpath_theme_root.'theme_files/logo.'.$options['logoImageExt'],
-					$realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/logo.'.$options['logoImageExt']
-				);
-
-				$this->main->fs()->mkdir_r( $realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/' );
-				$this->main->fs()->copy_r(
-					$realpath_theme_root.'theme_files/logo.'.$options['logoImageExt'],
-					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/bin.'.$options['logoImageExt']
-				);
-
-				$resJson = array();
-				$resJson["ext"] = $options['logoImageExt'];
-				$resJson["size"] = filesize($realpath_theme_root.'theme_files/logo.'.$options['logoImageExt']);
-				$resJson["base64"] = base64_encode( file_get_contents($realpath_theme_root.'theme_files/logo.'.$options['logoImageExt']) );
-				$resJson["md5"] = md5_file($realpath_theme_root.'theme_files/logo.'.$options['logoImageExt']);
-				$resJson["isPrivateMaterial"] = false;
-				$resJson["publicFilename"] = "logo";
-				$resJson["field"] = "image";
-				$resJson["fieldNote"] = [];
-				$resJson["type"] = $options['logoImageMimeType'];
-				$this->main->fs()->save_file(
-					$realpath_theme_root.'guieditor.ignore/'.$layoutName.'/data/resources/logoImage/res.json',
-					json_encode($resJson, JSON_PRETTY_PRINT|JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES)
-				);
-			}
 		}
 
 		return true;
