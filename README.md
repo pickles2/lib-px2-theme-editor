@@ -1,4 +1,4 @@
-# pickles2/pickles2-theme-editor
+# pickles2/lib-px2-theme-editor
 
 ## Usage
 
@@ -91,18 +91,18 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/pickles2-theme-editor v0.1.0 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.1.0 (2021年6月26日)
 
 - テーマのスタートアップ機能を追加。
 
-### pickles2/pickles2-theme-editor v0.0.2 (2021年2月21日)
+### pickles2/lib-px2-theme-editor v0.0.2 (2021年2月21日)
 
 - Windows で プラグインオプションの取得と、デフォルトテーマの変更に失敗する問題を修正。
 - レイアウトとスタイリングの修正。
 - ダークモードへの対応。
 - その他の細かい不具合の修正。
 
-### pickles2/pickles2-theme-editor v0.0.1 (2020年12月30日)
+### pickles2/lib-px2-theme-editor v0.0.1 (2020年12月30日)
 
 - 初回リリース
 
