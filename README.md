@@ -11,7 +11,7 @@
  */
 require_once('vendor/autoload.php');
 
-$px2te = new pickles2\libs\themeEditor\main();
+$px2te = new pickles2\libs\themeEditor\main( $px );
 $px2te->init(array(
 	'appMode' => 'web', // 'web' or 'desktop'. default to 'web'
 	'entryScript' => '/realpath/to/.px_execute.php', // Pickles 2 のエンドポイント
@@ -37,7 +37,7 @@ exit;
 <?php
 require_once('vendor/autoload.php');
 
-$px2te = new pickles2\libs\themeEditor\main();
+$px2te = new pickles2\libs\themeEditor\main( $px );
 $px2te->init( /* any options */ );
 
 $resources = $px2te->get_client_resources();
@@ -90,6 +90,10 @@ pickles2ThemeEditor.init(
 
 
 ## 更新履歴 - Change log
+
+### pickles2/lib-px2-theme-editor v0.1.1 (リリース日未定)
+
+- パフォーマンスに関する改善。
 
 ### pickles2/lib-px2-theme-editor v0.1.0 (2021年6月26日)
 

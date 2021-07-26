@@ -2,6 +2,9 @@
 namespace pickles2\libs\themeEditor;
 class main{
 
+	/** Pickles 2 オブジェクト */
+	private $px;
+
 	/** 設定情報 */
 	public	$options;
 
@@ -19,8 +22,11 @@ class main{
 
 	/**
 	 * Constructor
+	 *
+	 * @param object $px Pickles 2 オブジェクト
 	 */
-	public function __construct(){
+	public function __construct( $px = null ){
+		$this->px = $px;
 		$this->fs = new \tomk79\filesystem();
 	}
 
