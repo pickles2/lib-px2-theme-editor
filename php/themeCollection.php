@@ -522,7 +522,26 @@ class themeCollection{
 				);
 			}
 
-			$data_json = '{}';
+			$src_html = $this->main->fs()->read_file( $realpath_theme_root.$layout_id.'.html' );
+
+			$data_json = json_encode( array(
+				"bowl" => array(
+					"main" => array(
+						"modId" => "_sys/root" ,
+						"fields" => array(
+							"main" => array(
+								array(
+									"modId" => "_sys/html" ,
+									"fields" => array(
+										"main" => $src_html,
+									),
+								),
+							),
+						),
+					),
+				),
+			), JSON_PRETTY_PRINT );
+
 			$result = $this->main->fs()->save_file( $guieditor_data_dir.'data/data.json', $data_json );
 			if( !$result ){
 				return array(
