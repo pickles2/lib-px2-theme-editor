@@ -449,6 +449,96 @@ class themeCollection{
 	}
 
 	/**
+	 * レイアウトの編集方法を変更する
+	 */
+	public function change_edit_mode_layout( $theme_id, $layout_id, $new_edit_mode ){
+		if( !strlen($theme_id) ){
+			return array(
+				'result' => false,
+				'message' => 'テーマIDが指定されていません。',
+			);
+		}
+		if( !strlen($layout_id) ){
+			return array(
+				'result' => false,
+				'message' => '変更前のレイアウトIDが指定されていません。',
+			);
+		}
+		if( !strlen($new_edit_mode) ){
+			return array(
+				'result' => false,
+				'message' => '編集方法が指定されていません。',
+			);
+		}
+
+		$px2all = $this->main->px2all();
+		$realpath_theme_root = $this->main->fs()->get_realpath($px2all->realpath_theme_collection_dir.urlencode($theme_id).'/');
+
+		if( !is_dir($realpath_theme_root) ){
+			return array(
+				'result' => false,
+				'message' => 'テーマが存在しません。',
+			);
+		}
+		if( !is_file($realpath_theme_root.$layout_id.'.html') ){
+			return array(
+				'result' => false,
+				'message' => 'レイアウトID '.$layout_id.' は、存在しません。',
+			);
+		}
+
+		$guieditor_data_dir = $realpath_theme_root.'guieditor.ignore/'.urlencode($layout_id).'/';
+		$beforeEditMode = 'html';
+		if( is_dir($guieditor_data_dir) ){
+			$beforeEditMode = 'html.gui';
+		}
+
+		if( $beforeEditMode == $new_edit_mode ){
+			return array(
+				'result' => false,
+				'message' => '要求された編集方法は、すでに適用されています。',
+			);
+		}
+
+		if( $beforeEditMode == 'html.gui' && $new_edit_mode == 'html' ){
+			// --------------------------------------
+			// ブロックエディタモードからHTMLモードに変更
+			$result = $this->main->fs()->rm( $guieditor_data_dir );
+			if( !$result ){
+				return array(
+					'result' => false,
+					'message' => 'データディレクトリの削除に失敗しました。',
+				);
+			}
+		}elseif( $beforeEditMode == 'html' && $new_edit_mode == 'html.gui' ){
+			// --------------------------------------
+			// HTMLモードからブロックエディタモードに変更
+
+			$result = $this->main->fs()->mkdir_r( $guieditor_data_dir.'data/' );
+			if( !$result ){
+				return array(
+					'result' => false,
+					'message' => 'データディレクトリの作成に失敗しました。',
+				);
+			}
+
+			$data_json = '{}';
+			$result = $this->main->fs()->save_file( $guieditor_data_dir.'data/data.json', $data_json );
+			if( !$result ){
+				return array(
+					'result' => false,
+					'message' => 'JSONファイルの保存に失敗しました。',
+				);
+			}
+		}
+
+		return array(
+			'result' => true,
+			'message' => 'OK',
+		);
+	}
+
+	/**
 	 * レイアウトを削除
 	 */
 	public function delete_layout( $theme_id, $layout_id ){

@@ -141,6 +141,16 @@ class gpi{
 				return $rtn;
 				break;
 
+			case "changeEditModeLayout":
+				$themecollection = new themeCollection($this->main);
+				$rtn = $themecollection->change_edit_mode_layout(
+					$query['themeId'],
+					$query['layoutId'],
+					$query['newEditMode']
+				);
+				return $rtn;
+				break;
+
 			case "deleteLayout":
 				$themecollection = new themeCollection($this->main);
 				$rtn = $themecollection->delete_layout(

@@ -93,6 +93,7 @@ pickles2ThemeEditor.init(
 
 ### pickles2/lib-px2-theme-editor v0.1.1 (リリース日未定)
 
+- レイアウトの編集方法変更ができるようになった。
 - パフォーマンスに関する改善。
 
 ### pickles2/lib-px2-theme-editor v0.1.0 (2021年6月26日)

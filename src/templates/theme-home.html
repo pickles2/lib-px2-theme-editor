@@ -43,6 +43,7 @@
 				<ul class="pickles2-theme-editor__layout-menu">
 					<li><button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="openEditor" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">編集する</button></li>
 					<li><button class="px2-btn" data-pickles2-theme-editor-action="renameLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">リネームする</button></li>
+					<li><button class="px2-btn" data-pickles2-theme-editor-action="changeEditModeLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;,&quot;editMode&quot;:&quot;{{ layout.editMode | e }}&quot;}">編集方法を変更する</button></li>
 					<li><button class="px2-btn px2-btn--danger" data-pickles2-theme-editor-action="deleteLayout" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;,&quot;layoutId&quot;:&quot;{{ layout.id | e }}&quot;}">削除する</button></li>
 				</ul>
 			</a></li>

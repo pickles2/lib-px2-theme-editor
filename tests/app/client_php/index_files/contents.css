@@ -1,5 +1,7 @@
 :root {
     --px2-main-color: #229;
+    --px2-text-color: #333;
+    --px2-background-color: #f3f3f3;
 }
 body{
     font-size: small;

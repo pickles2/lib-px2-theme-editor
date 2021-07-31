@@ -32,6 +32,7 @@
 		var $canvas;
 		var appMode;
 		var templates = {
+			'form-layout-change-edit-mode': require('../templates/form-layout-change-edit-mode.html'),
 			'form-layout-delete': require('../templates/form-layout-delete.html'),
 			'form-layout': require('../templates/form-layout.html'),
 			'form-theme-delete': require('../templates/form-theme-delete.html'),
@@ -652,6 +653,100 @@
 		}
 
 		/**
+		 * 編集方法を変更する
+		 */
+		this.changeEditModeLayout = function(theme_id, layout_id, edit_mode){
+			if( !theme_id ){
+				return;
+			}
+			if( !layout_id ){
+				return;
+			}
+			var html = bindTwig(
+				templates['form-layout-change-edit-mode'],
+				{
+					'themeId': theme_id,
+					'layoutId': layout_id,
+					'editMode': edit_mode,
+				}
+			);
+			var $body = $('<div>').append( html );
+			var $form = $body.find('form');
+
+			px2style.modal(
+				{
+					'title': '編集方法を変更する',
+					'body': $body,
+					'buttons': [
+						$('<button class="px2-btn px2-btn--primary">')
+							.text('OK')
+							.on('click', function(e){
+								$form.submit();
+							})
+					],
+					'buttonsSecondary': [
+						$('<button class="px2-btn">')
+							.text('キャンセル')
+							.on('click', function(e){
+								px2style.closeModal();
+							})
+					]
+				},
+				function(){}
+			);
+
+			$form.on('submit', function(e){
+				var newEditMode = $form.find('input[name=editMode]:checked').val();
+				var $errMsg = $form.find('[data-form-column-name=layoutId] .pickles2-theme-editor__error-message');
+
+				if( !newEditMode ){
+					$errMsg.text('編集方法が選択されていません。');
+					return;
+				}
+				if( newEditMode != 'html' && newEditMode != 'html.gui' ){
+					$errMsg.text('編集方法が不正です。');
+					return;
+				}
+
+				px2style.loading();
+
+				// --------------------
+				// レイアウト名の変更
+				_this.gpi({
+					'api': 'changeEditModeLayout',
+					'themeId': theme_id,
+					'layoutId': layout_id,
+					'newEditMode': newEditMode,
+				}, function(result){
+					// console.log(result);
+					if( !result ){
+						alert( 'ERROR' );
+						px2style.closeLoading();
+						_this.pageThemeHome(theme_id);
+						return;
+					}
+					if( !result.result ){
+						alert( result.message );
+						px2style.closeLoading();
+						_this.pageThemeHome(theme_id);
+						return;
+					}
+
+					var msg = 'レイアウト '+layout_id+' の編集方法を '+newEditMode+' に変更しました。';
+					_this.message(msg);
+					px2style.closeModal();
+					updateBootupInfomations(function(){
+						px2style.closeLoading();
+						_this.pageThemeHome(theme_id);
+					});
+					return;
+				});
+
+			});
+			return;
+		}
+
+		/**
 		 * レイアウトを削除する
 		 */
 		this.deleteLayout = function(theme_id, layout_id){
@@ -837,6 +932,14 @@
 				options.themeId = options.themeId || undefined;
 				options.layoutId = options.layoutId || undefined;
 				_this.renameLayout( options.themeId, options.layoutId );
+				return false;
+			});
+			$canvas.find('[data-pickles2-theme-editor-action=changeEditModeLayout]').on('click', function(){
+				var options = parseOptions($(this));
+				options.themeId = options.themeId || undefined;
+				options.layoutId = options.layoutId || undefined;
+				options.editMode = options.editMode || undefined;
+				_this.changeEditModeLayout( options.themeId, options.layoutId, options.editMode );
 				return false;
 			});
 			$canvas.find('[data-pickles2-theme-editor-action=deleteLayout]').on('click', function(){
