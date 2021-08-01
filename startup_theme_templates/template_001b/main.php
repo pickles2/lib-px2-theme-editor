@@ -18,11 +18,11 @@ class main{
 	public function bind( $realpath_theme_root, $options ){
 
 		$colorUtils = new \tomk79\colorUtils\main();
-		$options['textColorOnMainColor'] = '#fff';
+		$options['textColorOnMainColor'] = '#eee';
 		if( $colorUtils->get_brightness($options['mainColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
 			$options['textColorOnMainColor'] = '#333';
 		}
-		$options['textColorOnSubColor'] = '#fff';
+		$options['textColorOnSubColor'] = '#eee';
 		if( $colorUtils->get_brightness($options['subColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
 			$options['textColorOnSubColor'] = '#333';
 		}
