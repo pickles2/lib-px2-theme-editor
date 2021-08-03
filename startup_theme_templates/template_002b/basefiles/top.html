@@ -14,7 +14,7 @@
 <header class="theme-header">
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
-			<h1><img src="<?= $theme->files('/layouts/top/resources/logo.png'); ?>" alt="" /><?= htmlspecialchars( $px->conf()->name ) ?></h1>		</div>
+			<h1>{% if logoImage %}<img src="<?= $theme->files('/layouts/top/resources/logo.{{ logoImageExt }}'); ?>" alt="" />{% endif %}<?= htmlspecialchars( $px->conf()->name ) ?></h1>		</div>
 
 
 	</div>
