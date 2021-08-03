@@ -37,6 +37,9 @@
                                     "fields": {
                                         "bowlName": ""
                                     }
+                                    },
+                                    "anchor": "",
+                                    "dec": ""
                                 }
                             ],
                             "inner-width": "theme-layouts--fluid"

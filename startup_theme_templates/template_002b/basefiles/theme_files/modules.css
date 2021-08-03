@@ -49,6 +49,16 @@
 }
 
 /**
+ * module: themeEditorModules:layouts/backtopagetop
+ */
+/**
+ * Back to PageTop
+ */
+.theme-back-to-pagetop {
+  text-align: right;
+}
+
+/**
  * module: themeEditorModules:layouts/footer
  */
 @charset "UTF-8";
@@ -387,6 +397,14 @@ p, li, dt, dd {
  */
 .contents {
   margin-bottom: 3em;
+}
+/**
+ * 引用
+ */
+blockquote {
+  padding: 0 0 0 1em;
+  margin: 1em 0 1em 2em;
+  margin-left: 3px solid #999;
 }
 
 /**
