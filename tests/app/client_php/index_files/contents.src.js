@@ -83,7 +83,7 @@ $(window).on('load', function(){
 							return;
 						},
 						'themeLayoutEditor': function(themeId, layoutId){
-							alert('themeLayoutEditor: '+themeId+'/'+layoutId);
+							window.open('./px2ce.php?theme_id='+themeId+'&layout_id='+layoutId);
 						},
 						'openInFinder': function(path){
 							alert('openInFinder: '+path);
