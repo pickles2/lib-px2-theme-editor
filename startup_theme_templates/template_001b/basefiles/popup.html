@@ -10,7 +10,7 @@
 <?= $px->bowl()->get_clean('head'); ?>
 
 	</head>
-	<body>
+	<body id="pagetop">
 <header class="theme-header">
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
@@ -26,9 +26,12 @@
 <div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by())?>="">
 <?= $px->bowl()->pull('') ?>
 </div>
+<div class="theme-back-to-pagetop">
+	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+</div>
 	</div>
 </div>
-<p style="text-align:center;"><button onclick="window.close();return false;">close</button></p>
+<p style="text-align:center;"><button onclick="window.close();return false;" class="px2-btn">close</button></p>
 <?php if( @strlen($px->conf()->copyright) ){ ?>
 <p style="text-align:center;">&copy;<?= htmlspecialchars($px->conf()->copyright); ?>.</p>
 <?php } ?>

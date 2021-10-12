@@ -68,6 +68,10 @@
                                     "dec": ""
                                 },
                                 {
+                                    "modId": "themeEditorModules:layouts/backtopagetop",
+                                    "fields": []
+                                },
+                                {
                                     "modId": "themeEditorModules:vars/breadcrumb",
                                     "fields": []
                                 }

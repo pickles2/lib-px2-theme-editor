@@ -36,7 +36,7 @@
         "tomk79/color-utils": "^0.0.1"
     },
     "require-dev": {
-        "pickles2/px-fw-2.x": "^2.0",
+        "pickles2/px-fw-2.x": "^2.0||^2.1",
         "pickles2/px2-dec": "^2.0",
         "pickles2/px2-multitheme": "^2.0",
         "pickles2/px2-path-resolver": "^2.0",

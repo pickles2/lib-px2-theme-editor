@@ -4,9 +4,9 @@
  * Header
  */
 .theme-header{
-	background-color: $keycolor;
-	color: $textcolor_on_keycolor;
-	border-top: 4px solid $subcolor;
+	background-color: var(--theme-keycolor);
+	color: var(--theme-textcolor-on-keycolor);
+	border-top: 4px solid var(--theme-subcolor);
 	padding: 1em 15px 1px 15px;
 
 	clear: both;
@@ -41,11 +41,11 @@
 		font-size: xx-large;
 		margin: 0;
 		padding: 0;
-		color: $textcolor_on_keycolor;
+		color: var(--theme-textcolor-on-keycolor);
 		line-height: 1.3;
 	}
 	&__si a:hover{
-		color: $textcolor_on_keycolor;
+		color: var(--theme-textcolor-on-keycolor);
 	}
 	&__si img {
 		display: inline-block;
@@ -75,7 +75,7 @@
 	}
 	&__shouldernavi ul li a{
 		display: block;
-		color: $textcolor_on_keycolor;
+		color: var(--theme-textcolor-on-keycolor);
 	}
 
 

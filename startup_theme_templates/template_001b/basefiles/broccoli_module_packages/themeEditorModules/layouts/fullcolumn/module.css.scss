@@ -37,7 +37,7 @@ h1, h2, h3, h4, h5, h6 {
 	color: inherit;
 }
 a{
-	color: $keycolor;
+	color: var(--theme-keycolor);
 	text-decoration: none;
 }
 a:hover {

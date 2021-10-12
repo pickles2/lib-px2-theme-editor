@@ -43,6 +43,12 @@
                                     "fields": {
                                         "bowlName": ""
                                     }
+                                },
+                                {
+                                    "modId": "themeEditorModules:layouts/backtopagetop",
+                                    "fields": [],
+                                    "anchor": "",
+                                    "dec": ""
                                 }
                             ],
                             "inner-width": "theme-layouts--fullcolumn"
@@ -52,7 +58,9 @@
                     },
                     {
                         "modId": "themeEditorModules:vars/close_button",
-                        "fields": []
+                        "fields": [],
+                        "anchor": "",
+                        "dec": ""
                     },
                     {
                         "modId": "themeEditorModules:vars/copyright",
