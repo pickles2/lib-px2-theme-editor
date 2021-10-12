@@ -34,6 +34,7 @@ class main{
 			'guieditor.ignore/popup/data/data.json',
 			'guieditor.ignore/top/data/data.json',
 			'broccoli_module_packages/_env.scss',
+			'inc/headsection.inc',
 			'default.html',
 			'popup.html',
 			'top.html',

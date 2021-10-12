@@ -54,8 +54,11 @@
     }
 
     .pickles2-theme-editor__logo-image-preview {
+        text-align: center;
         img {
             max-width: 82%;
+            max-height: 120px;
+            margin: 10px auto;
         }
     }
 }

@@ -1733,8 +1733,12 @@
     font-size: 12px; }
     .pickles2-theme-editor .pickles2-theme-editor__startup__badge-broccoli::before {
       content: "with Broccoli"; }
-  .pickles2-theme-editor .pickles2-theme-editor__startup .pickles2-theme-editor__logo-image-preview img {
-    max-width: 82%; }
+  .pickles2-theme-editor .pickles2-theme-editor__startup .pickles2-theme-editor__logo-image-preview {
+    text-align: center; }
+    .pickles2-theme-editor .pickles2-theme-editor__startup .pickles2-theme-editor__logo-image-preview img {
+      max-width: 82%;
+      max-height: 120px;
+      margin: 10px auto; }
   .pickles2-theme-editor .pickr {
     position: relative;
     overflow: visible;
