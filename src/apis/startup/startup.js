@@ -81,7 +81,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 						var msg = 'テーマ '+themeId+' を保存しました。';
 						main.message(msg);
 
-						main.updateBootupInfomations(function(){
+						main.updateBootupInformations(function(){
 							px2style.closeLoading();
 							main.pageThemeHome(themeId);
 						});
