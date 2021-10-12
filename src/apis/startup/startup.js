@@ -9,7 +9,6 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 		"home": require("./templates/home.twig"),
 	};
 	const themeTemplates = _themeTemplates;
-	themeTemplates.template_001.frontendThumb = new (require("../../../startup_theme_templates/template_001/frontend/thumb.js"))(main, $);
 	themeTemplates.template_001b.frontendThumb = new (require("../../../startup_theme_templates/template_001b/frontend/thumb.js"))(main, $);
 	themeTemplates.template_002b.frontendThumb = new (require("../../../startup_theme_templates/template_002b/frontend/thumb.js"))(main, $);
 	const themeTemplateThumbs = {};
