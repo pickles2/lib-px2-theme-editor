@@ -62,6 +62,7 @@ class gpi{
 
 				$themecollection = new themeCollection($this->main);
 				$bootup['listThemeCollection'] = $themecollection->get_list();
+
 				$bootup['listThemeTemplates'] = array();
 				$themeDirs = $this->main->fs()->ls(__DIR__.'/../startup_theme_templates/');
 				foreach($themeDirs as $themeDir){
@@ -72,6 +73,26 @@ class gpi{
 					$infoJson = json_decode($infoJson);
 					$bootup['listThemeTemplates'][$themeDir]['info'] = $infoJson;
 				}
+
+				$bootup['themeTemplatesThumbsCss'] = '';
+				$scssProcessor = null;
+				if (class_exists('\ScssPhp\ScssPhp\Compiler')) {
+					$scssProcessor = new \ScssPhp\ScssPhp\Compiler();
+				} elseif (class_exists('\Leafo\ScssPhp\Compiler')) {
+					$scssProcessor = new \Leafo\ScssPhp\Compiler();
+				}else{
+					trigger_error('SCSS Proccessor is NOT available.');
+				}
+				foreach($themeDirs as $themeDir){
+					$src_frontendThumbScss = $this->main->fs()->read_file(__DIR__.'/../startup_theme_templates/'.$themeDir.'/frontend/thumb.scss');
+					$src_frontendThumbScss = '.pickles2-theme-editor{'.$src_frontendThumbScss.'}';
+					$src_frontendThumbScss = str_replace('_rootClassName', '.pickles2-theme-editor__thumb-'.$themeDir, $src_frontendThumbScss);
+
+					$src_frontendThumbScss = $scssProcessor->compile( $src_frontendThumbScss );
+
+					$bootup['themeTemplatesThumbsCss'] .= $src_frontendThumbScss;
+				}
+
 				return $bootup;
 				break;
 

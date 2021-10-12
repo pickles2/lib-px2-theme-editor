@@ -182,6 +182,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 	 */
 	function updateThumbs(){
 		const userOptions = getSelectedOptions();
+		userOptions._rootClassName = 'pickles2-theme-editor__thumb-'+userOptions.templateId;
 		for(var themeId in themeTemplates){
 			themeTemplates[themeId].frontendThumb.update( themeTemplateThumbs[themeId], userOptions);
 		}
@@ -307,11 +308,11 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 			$formElm.val(val);
 			updateIcon();
 		}).on('change', function(color, instance){
-			console.log('++ change', color, instance);
+			// console.log('++ change', color, instance);
 		}).on('clear', function(instance) {
-			console.log('++ clear', instance);
+			// console.log('++ clear', instance);
 		}).on('cancel', function(instance) {
-			console.log('++ cancel', instance);
+			// console.log('++ cancel', instance);
 		});
 
 		$Cleared

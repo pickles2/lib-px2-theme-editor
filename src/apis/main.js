@@ -98,6 +98,17 @@
 						});
 					},
 					function(it1){
+						// --------------------------------------
+						// テーマテンプレートのサムネイルのCSSを配置する
+						if( !bootupInformations.themeTemplatesThumbsCss ){
+							it1.next();
+						}
+						var style = document.createElement('style');
+						$('head').append(style);
+						style.innerHTML = bootupInformations.themeTemplatesThumbsCss;
+						it1.next();
+					},
+					function(it1){
 						$(window).on('resize', function(){
 							onWindowResize();
 						});
