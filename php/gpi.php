@@ -39,7 +39,7 @@ class gpi{
 		$this->main->lb()->setLang( $query['lang'] );
 
 		switch($query['api']){
-			case "getBootupInfomations":
+			case "getBootupInformations":
 				// broccoli の初期起動時に必要なすべての情報を取得する
 				$bootup = array();
 				$bootup['conf'] = array();
@@ -62,6 +62,16 @@ class gpi{
 
 				$themecollection = new themeCollection($this->main);
 				$bootup['listThemeCollection'] = $themecollection->get_list();
+				$bootup['listThemeTemplates'] = array();
+				$themeDirs = $this->main->fs()->ls(__DIR__.'/../startup_theme_templates/');
+				foreach($themeDirs as $themeDir){
+					$bootup['listThemeTemplates'][$themeDir] = array();
+					$bootup['listThemeTemplates'][$themeDir]['id'] = $themeDir;
+
+					$infoJson = $this->main->fs()->read_file(__DIR__.'/../startup_theme_templates/'.$themeDir.'/info.json');
+					$infoJson = json_decode($infoJson);
+					$bootup['listThemeTemplates'][$themeDir]['info'] = $infoJson;
+				}
 				return $bootup;
 				break;
 

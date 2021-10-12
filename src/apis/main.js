@@ -22,7 +22,7 @@
 		var twig = require('twig');
 		var px2style = new(require('px2style'))();
 		px2style.setConfig('additionalClassName', 'pickles2-theme-editor');
-		var bootupInfomations;
+		var bootupInformations;
 		var px2all,
 			themePluginList,
 			realpathThemeCollectionDir,
@@ -93,7 +93,7 @@
 					function(it1){
 						// --------------------------------------
 						// 初期化に必要な諸情報を取得する
-						updateBootupInfomations(function(){
+						updateBootupInformations(function(){
 							it1.next();
 						});
 					},
@@ -153,7 +153,7 @@
 				{
 					'appMode': appMode,
 					'themePluginList': themePluginList,
-					'themeCollection': bootupInfomations.listThemeCollection,
+					'themeCollection': bootupInformations.listThemeCollection,
 					'realpathThemeCollectionDir': realpathThemeCollectionDir,
 					'default_theme_id': multithemePluginOptions.default_theme_id
 				}
@@ -173,7 +173,7 @@
 		 * テーマのホーム画面を開く
 		 */
 		this.pageThemeHome = function(themeId){
-			console.log('Theme: '+themeId);
+			// console.log('Theme: '+themeId);
 			var themeInfo;
 			var isStartup = false;
 
@@ -184,7 +184,7 @@
 						'api': 'getThemeInfo',
 						'themeId': themeId,
 					}, function(result){
-						console.log(result);
+						// console.log(result);
 						themeInfo = result;
 						arg.layouts = themeInfo.layouts;
 						arg.readme = themeInfo.readme;
@@ -255,7 +255,7 @@
 					// Startup
 					if( isStartup ){
 						const $startupCanvas = $('.pickles2-theme-editor__startup').eq(0);
-						const startup = new Startup( _this, {
+						const startup = new Startup( _this, bootupInformations.listThemeTemplates, {
 							'appMode': appMode,
 							'themeId': themeId,
 							'layouts': arg.layouts,
@@ -285,7 +285,7 @@
 					'appMode': appMode,
 					'themeId': theme_id,
 					'themePluginList': themePluginList,
-					'themeCollection': bootupInfomations.listThemeCollection
+					'themeCollection': bootupInformations.listThemeCollection
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -361,7 +361,7 @@
 						var msg = 'テーマ '+theme_id+' を '+newThemeId+' にリネームしました。';
 						_this.message(msg);
 						px2style.closeModal();
-						updateBootupInfomations(function(){
+						updateBootupInformations(function(){
 							px2style.closeLoading();
 							_this.pageThemeHome(newThemeId);
 						});
@@ -390,7 +390,7 @@
 						var msg = 'テーマ '+newThemeId+' を作成しました。';
 						_this.message(msg);
 						px2style.closeModal();
-						updateBootupInfomations(function(){
+						updateBootupInformations(function(){
 							px2style.closeLoading();
 							_this.pageThemeHome(newThemeId);
 						});
@@ -420,7 +420,7 @@
 				'themeId': theme_id,
 			}, function(result){
 				console.log(result);
-				updateBootupInfomations(function(){
+				updateBootupInformations(function(){
 					px2style.closeLoading();
 					_this.pageThemeHome(theme_id);
 				});
@@ -488,7 +488,7 @@
 					var msg = 'テーマ '+theme_id+' を削除しました。';
 					_this.message(msg);
 					px2style.closeModal();
-					updateBootupInfomations(function(){
+					updateBootupInformations(function(){
 						px2style.closeLoading();
 						_this.pageHome();
 					});
@@ -600,7 +600,7 @@
 						var msg = 'レイアウト '+layout_id+' を '+newLayoutId+' にリネームしました。';
 						_this.message(msg);
 						px2style.closeModal();
-						updateBootupInfomations(function(){
+						updateBootupInformations(function(){
 							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 						});
@@ -632,7 +632,7 @@
 						var msg = 'レイアウト '+newLayoutId+' を作成しました。';
 						_this.message(msg);
 						px2style.closeModal();
-						updateBootupInfomations(function(){
+						updateBootupInformations(function(){
 							px2style.closeLoading();
 							_this.pageThemeHome(theme_id);
 						});
@@ -735,7 +735,7 @@
 					var msg = 'レイアウト '+layout_id+' の編集方法を '+newEditMode+' に変更しました。';
 					_this.message(msg);
 					px2style.closeModal();
-					updateBootupInfomations(function(){
+					updateBootupInformations(function(){
 						px2style.closeLoading();
 						_this.pageThemeHome(theme_id);
 					});
@@ -810,7 +810,7 @@
 					var msg = 'レイアウト ' + layout_id + ' を削除しました。';
 					_this.message(msg);
 					px2style.closeModal();
-					updateBootupInfomations(function(){
+					updateBootupInformations(function(){
 						px2style.closeLoading();
 						_this.pageThemeHome(theme_id);
 					});
@@ -962,14 +962,14 @@
 		/**
 		 * 初期化に必要なデータを更新する
 		 */
-		function updateBootupInfomations(callback){
+		function updateBootupInformations(callback){
 			callback = callback || function(){};
 			_this.gpi({
-				'api': 'getBootupInfomations'
+				'api': 'getBootupInformations'
 			}, function(result){
-				// console.log(result);
-				bootupInfomations = result;
-				px2all = bootupInfomations.px2all;
+				// console.log('getBootupInformations:', result);
+				bootupInformations = result;
+				px2all = bootupInformations.px2all;
 
 				themePluginList = [];
 				try {
@@ -983,11 +983,11 @@
 
 				// テーマコレクションディレクトリのパスを求める
 				realpathThemeCollectionDir = px2all.realpath_theme_collection_dir;
-				realpathThemeCollectionDir_exists = bootupInfomations.theme_collection_dir_exists;
+				realpathThemeCollectionDir_exists = bootupInformations.theme_collection_dir_exists;
 
 				try {
-					if( bootupInfomations.multithemePluginOptions[0] ){
-						multithemePluginOptions = bootupInfomations.multithemePluginOptions[0].options;
+					if( bootupInformations.multithemePluginOptions[0] ){
+						multithemePluginOptions = bootupInformations.multithemePluginOptions[0].options;
 					}
 				} catch (e) {
 					console.error(e);
@@ -998,7 +998,7 @@
 				return;
 			});
 		}
-		this.updateBootupInfomations = updateBootupInfomations;
+		this.updateBootupInformations = updateBootupInformations;
 
 		/**
 		 * twig テンプレートにデータをバインドする

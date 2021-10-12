@@ -1,17 +1,17 @@
 /**
  * startup.js
  */
-module.exports = function( main, tplOptions, $canvas, $, px2style ){
+module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2style ){
 	const _this = this;
 	const it79 = require('iterate79');
 	const Pickr = require('@simonwep/pickr/dist/pickr.es5.min');
 	const templates = {
 		"home": require("./templates/home.twig"),
 	};
-	const themeTemplates = {};
-	themeTemplates.template_001 = new (require("../../../startup_theme_templates/template_001/frontend/main.js"))(main, $);
-	themeTemplates.template_001b = new (require("../../../startup_theme_templates/template_001b/frontend/main.js"))(main, $);
-	themeTemplates.template_002b = new (require("../../../startup_theme_templates/template_002b/frontend/main.js"))(main, $);
+	const themeTemplates = _themeTemplates;
+	themeTemplates.template_001.frontendThumb = new (require("../../../startup_theme_templates/template_001/frontend/thumb.js"))(main, $);
+	themeTemplates.template_001b.frontendThumb = new (require("../../../startup_theme_templates/template_001b/frontend/thumb.js"))(main, $);
+	themeTemplates.template_002b.frontendThumb = new (require("../../../startup_theme_templates/template_002b/frontend/thumb.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
@@ -27,11 +27,9 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 				$form = $canvas.find('form[data-pickles2-theme-editor-form=startup]');
 
 				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
-				themeTemplateThumbs['template_001'] = $('<a>').attr('data-value', 'template_001');
-				themeTemplateThumbs['template_001b'] = $('<a>').attr('data-value', 'template_001b');
-				themeTemplateThumbs['template_002b'] = $('<a>').attr('data-value', 'template_002b');
-				for(var idx in themeTemplateThumbs){
-					$thumbs.append( themeTemplateThumbs[idx] );
+				for(var themeId in themeTemplates){
+					themeTemplateThumbs[themeId] = $('<a>').attr('data-value', themeId);
+					$thumbs.append( themeTemplateThumbs[themeId] );
 				}
 
 				it1.next();
@@ -159,7 +157,8 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 						})
 					;
 				}
-				$canvas.find('.pickles2-theme-editor__startup-thumb > a[data-value="template_001"]').addClass(classNameCurrent);
+				var defaultThemeTemplateId = $('input[name=template_id]').val();
+				$canvas.find('.pickles2-theme-editor__startup-thumb > a[data-value="'+defaultThemeTemplateId+'"]').addClass(classNameCurrent);
 
 
 				$canvas.find('form[data-pickles2-theme-editor-form=startup]').find('input,select,textarea')
@@ -183,9 +182,9 @@ module.exports = function( main, tplOptions, $canvas, $, px2style ){
 	 */
 	function updateThumbs(){
 		const userOptions = getSelectedOptions();
-		themeTemplates.template_001.update( themeTemplateThumbs['template_001'], userOptions);
-		themeTemplates.template_001b.update( themeTemplateThumbs['template_001b'], userOptions);
-		themeTemplates.template_002b.update( themeTemplateThumbs['template_002b'], userOptions);
+		for(var themeId in themeTemplates){
+			themeTemplates[themeId].frontendThumb.update( themeTemplateThumbs[themeId], userOptions);
+		}
 		return;
 	}
 
