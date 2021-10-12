@@ -27,7 +27,10 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 
 				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
 				for(var themeId in themeTemplates){
-					themeTemplateThumbs[themeId] = $('<a>').attr('data-value', themeId);
+					themeTemplateThumbs[themeId] = $('<a>')
+						.attr('data-value', themeId)
+						.attr('title', themeTemplates[themeId].info.name)
+					;
 					$thumbs.append( themeTemplateThumbs[themeId] );
 				}
 
