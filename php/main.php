@@ -76,7 +76,14 @@ class main{
 
 		$this->lb = new \tomk79\LangBank(__DIR__.'/../data/language.csv');
 
-		$px2agent = new \picklesFramework2\px2agent\px2agent();
+		$px2agent_options = array();
+		if( isset( $options['commands']['php']['bin'] ) ){
+			$px2agent_options['bin'] = $options['commands']['php']['bin'];
+		}
+		if( isset( $options['commands']['php']['ini'] ) ){
+			$px2agent_options['ini'] = $options['commands']['php']['ini'];
+		}
+		$px2agent = new \picklesFramework2\px2agent\px2agent($px2agent_options);
 		$this->px2proj = $px2agent->createProject( $options['entryScript'] );
 
 	}

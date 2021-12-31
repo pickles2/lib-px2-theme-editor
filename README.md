@@ -15,6 +15,13 @@ $px2te = new pickles2\libs\themeEditor\main( $px );
 $px2te->init(array(
 	'appMode' => 'web', // 'web' or 'desktop'. default to 'web'
 	'entryScript' => '/realpath/to/.px_execute.php', // Pickles 2 のエンドポイント
+	'commands' => array(
+		// コマンドのパスを指定する (任意)
+		'php' => array(
+			'bin' => 'php',
+			'ini' => null,
+		),
+	),
 ));
 
 $value = $px2te->gpi( json_decode( $_REQUEST['data'] ) );
@@ -95,6 +102,7 @@ pickles2ThemeEditor.init(
 
 - レイアウトの編集方法変更ができるようになった。
 - パフォーマンスに関する改善。
+- サーバーサイドの初期化オプション `commands` を追加。
 - 内部コードの改善。
 
 ### pickles2/lib-px2-theme-editor v0.1.0 (2021年6月26日)
