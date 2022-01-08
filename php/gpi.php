@@ -32,7 +32,7 @@ class gpi{
 		if( !array_key_exists('lang', $query) ){
 			$query['lang'] = null;
 		}
-		if( !strlen($query['lang']) ){
+		if( !strlen(''.$query['lang']) ){
 			$query['lang'] = 'en';
 		}
 

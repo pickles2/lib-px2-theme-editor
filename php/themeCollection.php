@@ -173,7 +173,7 @@ class themeCollection{
 			'message' => '',
 		);
 
-		if( !strlen( $theme_id ) ){
+		if( !strlen( ''.$theme_id ) ){
 			$rtn = array(
 				'result' => false,
 				'message' => 'テーマID を指定してください。',
@@ -192,7 +192,7 @@ class themeCollection{
 			return $rtn;
 		}
 
-		if( !array_key_exists('templateId', $options) || !strlen($options['templateId']) ){
+		if( !array_key_exists('templateId', $options) || !strlen(''.$options['templateId']) ){
 			$rtn = array(
 				'result' => false,
 				'message' => 'テーマテンプレートID を指定してください。',
@@ -225,10 +225,10 @@ class themeCollection{
 		}
 
 		// ロゴ画像がある場合、保存
-		if( array_key_exists('logoImage', $options) && strlen($options['logoImage']) ){
+		if( array_key_exists('logoImage', $options) && strlen(''.$options['logoImage']) ){
 			$result = $this->main->fs()->mkdir($realpath_theme_root.'/theme_files/');
 			$logoExt = $options['logoImageExt'];
-			if( !strlen($logoExt) ){
+			if( !strlen(''.$logoExt) ){
 				$logoExt = 'png';
 			}
 			$result = $this->main->fs()->save_file(
@@ -337,13 +337,13 @@ class themeCollection{
 	 * 新規レイアウトを追加
 	 */
 	public function add_new_layout( $theme_id, $new_layout_id, $editMode = null ){
-		if( !strlen($theme_id) ){
+		if( !strlen(''.$theme_id) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマIDが指定されていません。',
 			);
 		}
-		if( !strlen($new_layout_id) ){
+		if( !strlen(''.$new_layout_id) ){
 			return array(
 				'result' => false,
 				'message' => '新しいレイアウトIDが指定されていません。',
@@ -383,19 +383,19 @@ class themeCollection{
 	 * レイアウトをリネーム
 	 */
 	public function rename_layout( $theme_id, $layout_id, $new_layout_id ){
-		if( !strlen($theme_id) ){
+		if( !strlen(''.$theme_id) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマIDが指定されていません。',
 			);
 		}
-		if( !strlen($layout_id) ){
+		if( !strlen(''.$layout_id) ){
 			return array(
 				'result' => false,
 				'message' => '変更前のレイアウトIDが指定されていません。',
 			);
 		}
-		if( !strlen($new_layout_id) ){
+		if( !strlen(''.$new_layout_id) ){
 			return array(
 				'result' => false,
 				'message' => '新しいレイアウトIDが指定されていません。',
@@ -452,19 +452,19 @@ class themeCollection{
 	 * レイアウトの編集方法を変更する
 	 */
 	public function change_edit_mode_layout( $theme_id, $layout_id, $new_edit_mode ){
-		if( !strlen($theme_id) ){
+		if( !strlen(''.$theme_id) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマIDが指定されていません。',
 			);
 		}
-		if( !strlen($layout_id) ){
+		if( !strlen(''.$layout_id) ){
 			return array(
 				'result' => false,
 				'message' => '変更前のレイアウトIDが指定されていません。',
 			);
 		}
-		if( !strlen($new_edit_mode) ){
+		if( !strlen(''.$new_edit_mode) ){
 			return array(
 				'result' => false,
 				'message' => '編集方法が指定されていません。',
@@ -561,13 +561,13 @@ class themeCollection{
 	 * レイアウトを削除
 	 */
 	public function delete_layout( $theme_id, $layout_id ){
-		if( !strlen($theme_id) ){
+		if( !strlen(''.$theme_id) ){
 			return array(
 				'result' => false,
 				'message' => 'テーマIDが指定されていません。',
 			);
 		}
-		if( !strlen($layout_id) ){
+		if( !strlen(''.$layout_id) ){
 			return array(
 				'result' => false,
 				'message' => 'レイアウトIDが指定されていません。',
