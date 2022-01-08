@@ -1,8 +1,8 @@
 <?php
 
-class mainTest extends PHPUnit_Framework_TestCase{
+class mainTest extends PHPUnit\Framework\TestCase{
 
-	public function setup(){
+	public function setUp() : void{
 		mb_internal_encoding('UTF-8');
 	}
 
