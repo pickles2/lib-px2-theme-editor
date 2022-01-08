@@ -98,7 +98,7 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/lib-px2-theme-editor v0.2.0 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.2.0 (2022年1月8日)
 
 - サポートするPHPのバージョンを `>=7.3.0` に変更。
 - PHP 8.1 に対応した。
