@@ -30,8 +30,8 @@
         "php": ">=7.3.0",
         "ext-json": "*",
         "ext-mbstring": "*",
-        "tomk79/filesystem": "^1.0",
-        "tomk79/langbank": "^0.0.4",
+        "tomk79/filesystem": "~1.0",
+        "tomk79/langbank": "~0.2",
         "pickles2/px2agent": "~0.0",
         "tomk79/color-utils": "^0.0.1"
     },
