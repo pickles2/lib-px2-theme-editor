@@ -336,6 +336,8 @@
     background-color: #f9f9f9; }
   .pickles2-theme-editor .px2-modal__close button:hover::before, .pickles2-theme-editor .px2-modal__close button:hover::after {
     border-bottom: 1px solid #666; }
+  .pickles2-theme-editor .px2-modal__close button[data-px2-modal-locked] {
+    visibility: hidden; }
 
 @keyframes px2-modal--initial {
   0% {
@@ -368,7 +370,8 @@
     overflow: visible;
     border-radius: 5px;
     font-size: medium;
-    animation: px2-modal--initial .3s ease 0s 1 normal none running; }
+    animation: px2-modal--initial .3s ease 0s 1 normal none running;
+    transition: transform .3s, opacity .3s; }
   .pickles2-theme-editor .px2-modal__dialog h1 {
     font-size: 124%;
     margin: 0;
@@ -394,7 +397,8 @@
     margin: 1em 0 0.5em 0;
     font-weight: bold; }
   .pickles2-theme-editor .px2-modal__dialog--closed {
-    animation: px2-modal--initial .3s ease 0s 1 reverse forwards running; }
+    transform: translateY(-10px);
+    opacity: 0; }
   .pickles2-theme-editor .px2-modal__header {
     border-bottom: 1px solid #999;
     padding: 8px 20px;
@@ -409,7 +413,8 @@
     -ms-flex-positive: 1;
     flex-grow: 1; }
   .pickles2-theme-editor .px2-modal__title {
-    font-weight: bold; }
+    font-weight: bold;
+    outline: none; }
   .pickles2-theme-editor .px2-modal__footer {
     border-top: 1px solid #999;
     margin: 10px 0 0 0;
@@ -1078,6 +1083,10 @@
     border-color: #721c24;
     color: #721c24;
     background-color: #f8d7da; }
+  .pickles2-theme-editor .px2-error {
+    color: #e00; }
+  .pickles2-theme-editor .px2-note {
+    color: #999; }
   .pickles2-theme-editor .px2-input-group {
     display: -ms-inline-flexbox;
     display: inline-flex;
