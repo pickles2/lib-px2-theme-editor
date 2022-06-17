@@ -165,13 +165,10 @@ pre {
   border: 1px solid #e1e1e8;
   background-color: #f7f7f9;
   border-radius: 4px;
-  padding: 1em;
 }
-pre code {
-  border: none;
-  padding: 0;
-  margin: 0;
-  display: inline;
+pre > code {
+  display: block;
+  padding: 1em;
 }
 code {
   color: #d44950;
