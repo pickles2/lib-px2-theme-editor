@@ -169,6 +169,7 @@ pre {
 pre > code {
   display: block;
   padding: 1em;
+  overflow: auto;
 }
 code {
   color: #d44950;
