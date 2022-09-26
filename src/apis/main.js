@@ -20,8 +20,8 @@
 		var $ = require('jquery');
 		var it79 = require('iterate79');
 		var twig = require('twig');
-		var px2style = new(require('px2style'))();
-		px2style.setConfig('additionalClassName', 'pickles2-theme-editor');
+		require('px2style/px2style/px2style.js');
+		var px2style = window.px2style;
 		var bootupInformations;
 		var px2all,
 			themePluginList,
