@@ -20,7 +20,7 @@
 		var $ = require('jquery');
 		var it79 = require('iterate79');
 		var twig = require('twig');
-		require('px2style/px2style/px2style.js');
+		require('px2style/dist/px2style.js');
 		var px2style = window.px2style;
 		var bootupInformations;
 		var px2all,
