@@ -20,16 +20,23 @@
 		</li>
 		<li>同じようにして、<code>{$layout}</code> はこれら以外にも自由に追加定義することができます。</li>
 	</ul>
+
+	{% if can_openInFinder or can_openInTextEditor %}
 	<p>
 		テンプレートの格納フォルダは、下記をクリックして開いてください。<br />
 	</p>
 
 	<div class="btn-group btn-group-justified" role="group">
+		{% if can_openInFinder %}
 		<div class="btn-group" role="group">
 			<button class="px2-btn" onclick="contApp.openInFinder();">テーマコレクションフォルダを開く</button>
 		</div>
+		{% endif %}
+		{% if can_openInTextEditor %}
 		<div class="btn-group" role="group">
 			<button class="px2-btn" onclick="contApp.openInTextEditor();">外部テキストエディタで開く</button>
 		</div>
+		{% endif %}
 	</div>
+	{% endif %}
 </div>

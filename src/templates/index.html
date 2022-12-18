@@ -27,10 +27,12 @@
 		<button class="px2-btn px2-btn--primary" data-pickles2-theme-editor-action="addNewTheme">新規テーマ作成</button>
 	</p>
 
+	{% if can_openInFinder or can_openInTextEditor %}
 	<div class="px2-horizontal-list">
 		<ul>
-			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder">テーマコレクションフォルダを開く</a></li>
-			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor">外部テキストエディタで開く</a></li>
+			{% if can_openInFinder %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder">テーマコレクションフォルダを開く</a></li>{% endif %}
+			{% if can_openInTextEditor %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor">外部テキストエディタで開く</a></li>{% endif %}
 		</ul>
 	</div>
+	{% endif %}
 </div>

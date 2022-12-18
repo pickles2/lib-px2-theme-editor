@@ -90,7 +90,7 @@ $(window).on('load', function(){
 						},
 						'openInTextEditor': function(path){
 							alert('openInTextEditor: '+path);
-						}
+						},
 					},
 					function(){
 

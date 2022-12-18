@@ -53,9 +53,9 @@
 		this.init = function(options, callback){
 			options = options || {};
 			options.gpiBridge = options.gpiBridge || function(){};
-			options.themeLayoutEditor = options.themeLayoutEditor || function(){};
-			options.openInFinder = options.openInFinder || function(){};
-			options.openInTextEditor = options.openInTextEditor || function(){};
+			options.themeLayoutEditor = options.themeLayoutEditor || false;
+			options.openInFinder = options.openInFinder || false;
+			options.openInTextEditor = options.openInTextEditor || false;
 			this.options = options;
 
 			$canvas = $(options.elmCanvas);
@@ -166,7 +166,10 @@
 					'themePluginList': themePluginList,
 					'themeCollection': bootupInformations.listThemeCollection,
 					'realpathThemeCollectionDir': realpathThemeCollectionDir,
-					'default_theme_id': multithemePluginOptions.default_theme_id
+					'default_theme_id': multithemePluginOptions.default_theme_id,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			$canvas.html( html );
@@ -235,6 +238,9 @@
 							'realpathThemeCollectionDir': realpathThemeCollectionDir,
 							'default_theme_id': multithemePluginOptions.default_theme_id,
 							'is_startup': isStartup,
+							'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+							'can_openInFinder': (_this.options.openInFinder ? true : false),
+							'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 						}
 					);
 					$canvas.html( html );
@@ -296,7 +302,10 @@
 					'appMode': appMode,
 					'themeId': theme_id,
 					'themePluginList': themePluginList,
-					'themeCollection': bootupInformations.listThemeCollection
+					'themeCollection': bootupInformations.listThemeCollection,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -448,7 +457,10 @@
 			var html = bindTwig(
 				templates['form-theme-delete'],
 				{
-					'themeId': theme_id
+					'themeId': theme_id,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -521,7 +533,10 @@
 				templates['form-layout'],
 				{
 					'themeId': theme_id,
-					'layoutId': layout_id
+					'layoutId': layout_id,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -679,6 +694,9 @@
 					'themeId': theme_id,
 					'layoutId': layout_id,
 					'editMode': edit_mode,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -765,7 +783,10 @@
 				templates['form-layout-delete'],
 				{
 					'themeId': theme_id,
-					'layoutId': layout_id
+					'layoutId': layout_id,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
 			);
 			var $body = $('<div>').append( html );
@@ -838,7 +859,12 @@
 		this.pageNotEnoughApiVersion = function( errors ){
 			var html = bindTwig(
 				templates['not-enough-api-version'],
-				{'errors': errors}
+				{
+					'errors': errors,
+					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInFinder': (_this.options.openInFinder ? true : false),
+					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
+				}
 			);
 			$canvas.html( html );
 		}
@@ -847,6 +873,9 @@
 		 * エディター画面を開く
 		 */
 		this.openEditor = function( themeId, layoutId ){
+			if( !this.options.themeLayoutEditor ){
+				return;
+			}
 			this.options.themeLayoutEditor( themeId, layoutId );
 			return;
 		} // openEditor()
@@ -868,6 +897,9 @@
 		 * フォルダを開く
 		 */
 		this.openInFinder = function( path ){
+			if( !this.options.openInFinder ){
+				return;
+			}
 			this.options.openInFinder( path );
 			return;
 		}
@@ -876,6 +908,9 @@
 		 * 外部テキストエディタで開く
 		 */
 		this.openInTextEditor = function( path ){
+			if( !this.options.openInTextEditor ){
+				return;
+			}
 			this.options.openInTextEditor( path );
 			return;
 		}
@@ -897,7 +932,9 @@
 				var options = {};
 				try{
 					var strOptions = $this.attr('data-pickles2-theme-editor-options');
-					options = JSON.parse(strOptions);
+					if(typeof(strOptions) == typeof('string')){
+						options = JSON.parse(strOptions);
+					}
 				}catch(e){
 					console.error('JSON parse error', e);
 				}
@@ -1014,7 +1051,7 @@
 		/**
 		 * twig テンプレートにデータをバインドする
 		 */
-		function bindTwig( tpl, data, options ){
+		function bindTwig( tpl, data ){
 			var rtn = '';
 			data = data || {};
 			if( templates[tpl] ){
@@ -1039,7 +1076,7 @@
 		function onWindowResize(){
 			$elms.editor
 				.css({
-					'height': $(window).innerHeight() - 0
+					'height': $(window).innerHeight() - 0,
 				})
 			;
 		}

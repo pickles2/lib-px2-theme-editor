@@ -60,9 +60,9 @@
 
 	<div class="px2-horizontal-list">
 		<ul>
-			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">{{ themeId | e }} フォルダを開く</a></li>
-			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/theme_files/&quot;}">リソースフォルダを開く</a></li>
-			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">外部テキストエディタで開く</a></li>
+			{% if can_openInFinder %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">{{ themeId | e }} フォルダを開く</a></li>{% endif %}
+			{% if can_openInFinder %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/theme_files/&quot;}">リソースフォルダを開く</a></li>{% endif %}
+			{% if can_openInTextEditor %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">外部テキストエディタで開く</a></li>{% endif %}
 			<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="renameTheme" data-pickles2-theme-editor-options="{&quot;themeId&quot;:&quot;{{ themeId | e }}&quot;}">テーマIDを変更する</a></li>
 		</ul>
 	</div>
