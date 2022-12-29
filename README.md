@@ -98,7 +98,7 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/lib-px2-theme-editor v0.2.3 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.2.3 (2022年12月29日)
 
 - `openInFinder`、 `openInTextEditor` を省略できるようになった。
 
