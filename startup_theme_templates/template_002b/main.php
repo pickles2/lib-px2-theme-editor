@@ -19,11 +19,11 @@ class main{
 
 		$colorUtils = new \tomk79\colorUtils\main();
 		$options['textColorOnMainColor'] = '#eee';
-		if( $colorUtils->get_brightness($options['mainColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
+		if( $colorUtils->get_brightness($options['mainColor'] ?? '') > 65 && $colorUtils->get_saturation($options['mainColor'] ?? '') < 40 ){
 			$options['textColorOnMainColor'] = '#333';
 		}
 		$options['textColorOnSubColor'] = '#eee';
-		if( $colorUtils->get_brightness($options['subColor']) > 65 && $colorUtils->get_saturation($options['mainColor']) < 40 ){
+		if( $colorUtils->get_brightness($options['subColor'] ?? '') > 65 && $colorUtils->get_saturation($options['mainColor'] ?? '') < 40 ){
 			$options['textColorOnSubColor'] = '#333';
 		}
 
@@ -53,7 +53,7 @@ class main{
 		}
 
 
-		if( array_key_exists('logoImage', $options) && strlen( $options['logoImage'] ) ){
+		if( array_key_exists('logoImage', $options) && strlen( $options['logoImage'] ?? '' ) ){
 			foreach( array('default', 'popup', 'top') as $layoutName ){
 
 				$this->main->fs()->mkdir_r( $realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/' );

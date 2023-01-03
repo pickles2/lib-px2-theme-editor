@@ -2,8 +2,11 @@
 
 class startupTest extends PHPUnit\Framework\TestCase{
 
+	private $fs;
+
 	public function setUp() : void{
 		mb_internal_encoding('UTF-8');
+		$this->fs = new tomk79\filesystem();
 	}
 
 	/**
@@ -16,23 +19,42 @@ class startupTest extends PHPUnit\Framework\TestCase{
 		));
 		$this->assertEquals(is_object($main), true);
 
-		$result = $main->gpi(array(
-			'api'=>'addNewTheme',
-			'newThemeId' => 'template_001b',
-			'importFrom' => null,
-		));
-		$result = $main->gpi(array(
-			'api'=>'startupTheme',
-			'themeId' => 'template_001b',
-			'options' => array(
-				"templateId" => "template_001b",
+		$theme_templates = $this->fs->ls(__DIR__.'/../startup_theme_templates/');
+
+		$option_variations = array(
+			'full' => array(
 				"mainColor" => "#030303",
 				"subColor" => "#696969",
 				"logoImage" => base64_encode( file_get_contents( __DIR__.'/app/src_px2/common/images/pickles2-appicon.png' ) ),
 				"logoImageExt" => 'png',
 				"logoImageMimeType" => 'image/png',
 			),
-		));
+			'minimum' => array(
+				"mainColor" => null,
+				"subColor" => null,
+				"logoImage" => null,
+				"logoImageExt" => null,
+				"logoImageMimeType" => null,
+			),
+		);
+
+		foreach( $theme_templates as $template_id ){
+			foreach( $option_variations as $option_id => $optionsBase ){
+				$options = json_decode(json_encode($optionsBase), true);
+				$options["templateId"] = $template_id;
+
+				$result = $main->gpi(array(
+					'api'=>'addNewTheme',
+					'newThemeId' => $template_id.'--'.$option_id,
+					'importFrom' => null,
+				));
+				$result = $main->gpi(array(
+					'api'=>'startupTheme',
+					'themeId' => $template_id.'--'.$option_id,
+					'options' => $options,
+				));
+			}
+		}
 
 		$this->assertSame(1, 1);
 	}
