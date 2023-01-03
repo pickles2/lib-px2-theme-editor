@@ -2,3 +2,10 @@ $keycolor: {{ mainColor }};
 $textcolor_on_keycolor: {{ textColorOnMainColor }};
 $subcolor: {{ subColor }};
 $textcolor_on_subcolor: {{ textColorOnSubColor }};
+
+:root {
+    --theme-keycolor: {{ mainColor }};
+    --theme-textcolor-on-keycolor: {{ textColorOnMainColor }};
+    --theme-subcolor: {{ subColor }};
+    --theme-textcolor-on-subcolor: {{ textColorOnSubColor }};
+}

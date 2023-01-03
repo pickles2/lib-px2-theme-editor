@@ -6,9 +6,14 @@ require_once('../../../vendor/autoload.php');
 <head>
 <title>px2ce</title>
 <style>
+:root {
+	--px2-main-color: #000;
+	--px2-background-color: #f5f5f5;
+	--px2-text-color: #333;
+}
 #canvas {
 	width: 100%;
-	height: 500px;
+	height: 100vh;
 }
 </style>
 

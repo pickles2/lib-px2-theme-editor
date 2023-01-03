@@ -6,13 +6,5 @@
 
 <?= $px->get_contents_manifesto(); ?>
 
-		<style>
-		:root {
-			--theme-keycolor: #030303;
-			--theme-textcolor-on-keycolor: #eee;
-			--theme-subcolor: #696969;
-			--theme-textcolor-on-subcolor: #eee;
-		}
-		</style>
 		<link rel="stylesheet" href="<?= htmlspecialchars( $theme->files('/modules.css') ); ?>" />
 		<link rel="stylesheet" href="<?= htmlspecialchars( $theme->files('/styles/theme.css') ); ?>">
