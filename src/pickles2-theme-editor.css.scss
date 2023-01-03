@@ -185,12 +185,3 @@
 	}
 
 }
-
-// Darkmode
-.px2-darkmode {
-	// px2style/darkmode
-	@import '../node_modules/px2style/src_px2style/_src/themes/darkmode/darkmode.css.scss';
-
-	// px2te
-	@import './themes/darkmode/_darkmode.css.scss';
-}
