@@ -11,13 +11,13 @@
     ],
     "scripts":{
         "start": [
-            "php -S 127.0.0.1:8088 -t ./"
+            "@php -S 127.0.0.1:8088 -t ./ tests/app/src_px2/px-files/_sys/serve/route.php"
         ],
         "preview": [
             "open http://127.0.0.1:8088/tests/app/client_php/"
         ],
         "test": [
-            "php ./vendor/phpunit/phpunit/phpunit"
+            "@php ./vendor/phpunit/phpunit/phpunit"
         ]
     } ,
     "config": {

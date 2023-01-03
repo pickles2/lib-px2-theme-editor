@@ -56,7 +56,7 @@ pickles2ContentsEditor.init(
 		'page_path': <?= var_export($path_contents, true) ?> , // <- 編集対象ページのパス
 		'elmCanvas': document.getElementById('canvas'), // <- 編集画面を描画するための器となる要素
 		'preview':{ // プレビュー用サーバーの情報を設定します。
-			'origin': '/tests/app/src_px2/.px_execute.php/'
+			'origin': '/tests/app/src_px2/'
 		},
 		'lang': 'ja', // language
 		'gpiBridge': function(input, callback){
