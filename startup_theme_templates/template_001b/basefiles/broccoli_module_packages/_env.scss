@@ -1,11 +1,11 @@
-$keycolor: {{ mainColor }};
-$textcolor_on_keycolor: {{ textColorOnMainColor }};
-$subcolor: {{ subColor }};
-$textcolor_on_subcolor: {{ textColorOnSubColor }};
+$keycolor: {{ mainColor ?? "#000" }};
+$textcolor_on_keycolor: {{ textColorOnMainColor ?? "#fff" }};
+$subcolor: {{ subColor ?? "#666" }};
+$textcolor_on_subcolor: {{ textColorOnSubColor ?? "#eee" }};
 
 :root {
-    --theme-keycolor: {{ mainColor }};
-    --theme-textcolor-on-keycolor: {{ textColorOnMainColor }};
-    --theme-subcolor: {{ subColor }};
-    --theme-textcolor-on-subcolor: {{ textColorOnSubColor }};
+    --theme-keycolor: {{ mainColor ?? "#000" }};
+    --theme-textcolor-on-keycolor: {{ textColorOnMainColor ?? "#fff" }};
+    --theme-subcolor: {{ subColor ?? "#666" }};
+    --theme-textcolor-on-subcolor: {{ textColorOnSubColor ?? "#eee" }};
 }
