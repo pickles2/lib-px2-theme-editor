@@ -101,6 +101,7 @@ pickles2ThemeEditor.init(
 ### pickles2/lib-px2-theme-editor v0.2.3 (2022年12月29日)
 
 - `openInFinder`、 `openInTextEditor` を省略できるようになった。
+- スタートアップ機能での初期化時に、 Broccoli コンテンツのリビルドを実行するようになった。
 
 ### pickles2/lib-px2-theme-editor v0.2.2 (2022年11月3日)
 

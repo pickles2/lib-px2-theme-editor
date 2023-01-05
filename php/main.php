@@ -6,7 +6,7 @@ class main{
 	private $px;
 
 	/** 設定情報 */
-	public	$options;
+	private	$options;
 
 	/** FileSystem Utility */
 	private $fs;

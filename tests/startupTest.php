@@ -61,30 +61,6 @@ class startupTest extends PHPUnit\Framework\TestCase{
 					'themeId' => $template_id.'--'.$option_id,
 					'options' => $options,
 				));
-
-				// --------------------------------------
-				// Broccoli コンテンツをリビルドする
-				// TODO: ↓各レイアウトごとにビルドするコマンドに修正する
-				$layout_list = $this->fs->ls(__DIR__.'/../startup_theme_templates/'.urlencode($template_id).'/basefiles/guieditor.ignore');
-				if( !$layout_list ){
-					$layout_list = array();
-				}
-				foreach($layout_list as $layout_id){
-					$options = array(
-						'api' => 'broccoliBridge',
-						'forBroccoli' => array(
-							'api' => 'updateContents',
-							'options' => array(
-								'lang' => 'ja',
-							),
-						),
-					);
-					$output = $this->px2query->query( [
-						__DIR__.'/app/src_px2/.px_execute.php',
-						'/'.urlencode($template_id.'--'.$option_id).'/'.urlencode($layout_id).'.html?PX=px2dthelper.px2ce.gpi&appMode=web&target_mode=theme_layout&data='.base64_encode(json_encode($options))
-					] );
-					// var_dump($output);
-				}
 			}
 		}
 

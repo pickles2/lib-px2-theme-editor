@@ -255,6 +255,31 @@ class themeCollection{
 			);
 		}
 
+		// --------------------------------------
+		// Broccoli コンテンツをリビルドする
+		$layout_list = $this->main->fs()->ls(__DIR__.'/../startup_theme_templates/'.urlencode($options['templateId']).'/basefiles/guieditor.ignore');
+		if( !$layout_list ){
+			$layout_list = array();
+		}
+		foreach($layout_list as $layout_id){
+			$options = array(
+				'api' => 'broccoliBridge',
+				'forBroccoli' => array(
+					'api' => 'updateContents',
+					'options' => array(
+						'lang' => 'ja',
+					),
+				),
+			);
+			$output = $this->main->px2agent()->query(
+				'/'.urlencode($theme_id).'/'.urlencode($layout_id).'.html?PX=px2dthelper.px2ce.gpi&appMode=web&target_mode=theme_layout&data='.base64_encode(json_encode($options)),
+				array(
+					"output" => "json",
+				)
+			);
+			// var_dump($output);
+		}
+
 		return array(
 			'result' => true,
 			'message' => 'OK',
