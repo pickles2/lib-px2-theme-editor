@@ -8,37 +8,30 @@
                         "modId": "themeEditorModules:layouts/header",
                         "fields": {
                             "sitetitle_linkto": "",
-                            "sitetitle_htmlElement": "h1",
-                            "shouldernavi": [],
-                            "globalnavi": [],
+                            "sitetitle_htmlElement": "",
                             "sitetitle_image": {
                                 "resKey": "logoImage",
                                 "resType": "",
                                 "webUrl": "",
                                 "path": "./theme_files/layouts/top/resources/logo.png"
-                            }
-                        },
-                        "anchor": "",
-                        "dec": ""
+                            },
+                            "shouldernavi": [],
+                            "globalnavi": []
+                        }
                     },
                     {
                         "modId": "themeEditorModules:layouts/fullcolumn",
                         "fields": {
+                            "inner-width": "",
                             "main": [
                                 {
                                     "modId": "themeEditorModules:vars/bowl",
                                     "fields": {
                                         "bowlName": ""
                                     }
-                                    },
-                                    "anchor": "",
-                                    "dec": ""
                                 }
-                            ],
-                            "inner-width": "theme-layouts--fluid"
-                        },
-                        "anchor": "",
-                        "dec": ""
+                            ]
+                        }
                     },
                     {
                         "modId": "themeEditorModules:layouts/footer",
@@ -46,9 +39,7 @@
                             "content": [
                                 {
                                     "modId": "themeEditorModules:vars/copyright",
-                                    "fields": [],
-                                    "anchor": "",
-                                    "dec": ""
+                                    "fields": []
                                 }
                             ]
                         }
