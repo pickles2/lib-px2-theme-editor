@@ -3,7 +3,7 @@ require_once(__DIR__.'/../../../vendor/autoload.php');
 
 // 例外ハンドラを設定する
 set_exception_handler(function(Throwable $exception) {
-	$realpath_error_log = __DIR__.'/error_report.log';
+	$realpath_error_log = __DIR__.'/error_report.txt';
 	echo "Uncaught exception: ", $exception->getMessage(), "\n";
 	error_log(
 		"Uncaught exception: ".$exception->getMessage().' on '.$exception->getFile().' line:'.$exception->getLine()."\n",
@@ -14,7 +14,7 @@ set_exception_handler(function(Throwable $exception) {
 
 // エラーハンドラを設定する
 set_error_handler(function($errno, $errstr, $errfile, $errline) {
-	$realpath_error_log = __DIR__.'/error_report.log';
+	$realpath_error_log = __DIR__.'/error_report.txt';
 	error_log(
 		'Error['.$errno.']: '.$errstr.' on '.$errfile.' line:'.$errline."\n",
 		3,
