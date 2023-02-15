@@ -32,7 +32,7 @@ return call_user_func( function(){
 	$conf->output_eol_coding = 'lf'; // 出力改行コード名 (cr|lf|crlf)
 	$conf->session_name = 'PXSID'; // セッション名
 	$conf->session_expire = 1800; // セッションの有効期間
-	$conf->allow_pxcommands = 0; // PX Commands のウェブインターフェイスからの実行を許可
+	$conf->allow_pxcommands = 1; // PX Commands のウェブインターフェイスからの実行を許可
 	$conf->default_timezone = 'Asia/Tokyo';
 
 
@@ -60,6 +60,10 @@ return call_user_func( function(){
 		'/px-files/*' => 'ignore' ,
 		'*.ignore/*' => 'ignore' ,
 		'*.ignore.*' => 'ignore' ,
+		'*.pass/*' => 'pass' ,
+		'*.pass.*' => 'pass' ,
+		'*.direct/*' => 'direct' ,
+		'*.direct.*' => 'direct' ,
 		'/composer.json' => 'ignore' ,
 		'/composer.lock' => 'ignore' ,
 		'/README.md' => 'ignore' ,
@@ -88,6 +92,16 @@ return call_user_func( function(){
 	// funcs: Before sitemap
 	// サイトマップ読み込みの前に実行するプラグインを設定します。
 	$conf->funcs->before_sitemap = [
+		// px2-error-reporter
+		\tomk79\pickles2\px2ErrorReporter\register::register(array(
+			"realpath_log_dir" => __DIR__.'/_sys/',
+		)),
+
+		// px2-clover
+		\tomk79\pickles2\px2clover\register::clover(array(
+			"protect_preview" => false, // プレビューに認証を要求するか？
+		)),
+
 		// PX=clearcache
 		'picklesFramework2\commands\clearcache::register' ,
 
@@ -99,6 +113,10 @@ return call_user_func( function(){
 
 		// sitemapExcel
 		'tomk79\pickles2\sitemap_excel\pickles_sitemap_excel::exec' ,
+
+		// px2-serve
+		\tomk79\pickles2\px2serve\serve::register(),
+
 	];
 
 	// funcs: Before content
@@ -137,7 +155,7 @@ return call_user_func( function(){
 			'cookie_theme_switch'=>'THEME',
 			'path_theme_collection'=>'./px-files/themes/',
 			'attr_bowl_name_by'=>'data-contents-area',
-			'default_theme_id' => 'pickles2'
+			'default_theme_id' => 'template_001b--full'
 		]).')' ,
 
 		// Apache互換のSSIの記述を解決する
@@ -225,10 +243,14 @@ return call_user_func( function(){
 	// config for Pickles2 Desktop Tool.
 	$conf->plugins->px2dt = new stdClass;
 	$conf->plugins->px2dt->paths_module_template = [
-		"PlainHTMLElements" => "../../vendor/broccoli-html-editor/broccoli-module-plain-html-elements/modules/",
-		"local" => "./px-files/modules/",
-		"FESS" => "../../vendor/broccoli-html-editor/broccoli-module-fess/modules/"
+		// "PlainHTMLElements" => "../../vendor/broccoli-html-editor/broccoli-module-plain-html-elements/modules/",
+		// "local" => "./px-files/modules/",
+		// "FESS" => "../../vendor/broccoli-html-editor/broccoli-module-fess/modules/"
 	];
+
+	/** プロジェクト固有のモジュールセットの格納ディレクトリ */
+	$conf->plugins->px2dt->path_module_templates_dir = "./px-files/modules/";
+
 	$conf->plugins->px2dt->contents_area_selector = '[data-contents-area]'; // <- コンテンツエリアを識別するセレクタ(複数の要素がマッチしてもよい)
 	$conf->plugins->px2dt->contents_bowl_name_by = 'data-contents-area'; // <- コンテンツエリアのbowl名を指定する属性名
 

@@ -1,0 +1,288 @@
+{
+    "bowl": {
+        "main": {
+            "modId": "_sys/root",
+            "fields": {
+                "main": [
+                    {
+                        "modId": "px2style:utils/viewport-fit",
+                        "fields": {
+                            "text-color": {
+                                "src": "#FFFFFF"
+                            },
+                            "background-color": {
+                                "src": "#3F51B5CC"
+                            },
+                            "background-image": {
+                                "resKey": "e19ed9c32acc298e88ecb481e6828173",
+                                "path": "./index_files/resources/e19ed9c32acc298e88ecb481e6828173.unknown",
+                                "resType": "none",
+                                "webUrl": ""
+                            },
+                            "min-height": {
+                                "src": ""
+                            },
+                            "margin-padding": {
+                                "marginTop": "",
+                                "marginRight": "",
+                                "marginBottom": "",
+                                "marginLeft": "",
+                                "paddingTop": "20vh",
+                                "paddingRight": "",
+                                "paddingBottom": "16vh",
+                                "paddingLeft": ""
+                            },
+                            "fluid-contents": {
+                                "src": ""
+                            },
+                            "main": [
+                                {
+                                    "modId": "px2style:basics/text",
+                                    "fields": {
+                                        "main": {
+                                            "src": "サンプルコンテンツです。",
+                                            "editor": "markdown"
+                                        },
+                                        "text-align": {
+                                            "src": "center"
+                                        },
+                                        "font-size": {
+                                            "src": "ll"
+                                        },
+                                        "paragraph": {
+                                            "src": "px2-p"
+                                        }
+                                    },
+                                    "anchor": "",
+                                    "dec": ""
+                                }
+                            ]
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "px2style:sections/hx",
+                        "fields": {
+                            "hx": {
+                                "src": "2"
+                            },
+                            "main": {
+                                "src": "レイアウトを確認するためのサンプルコンテンツです"
+                            },
+                            "sub": {
+                                "src": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "px2style:basics/text",
+                        "fields": {
+                            "main": {
+                                "src": "この度、私たちが運営する新しいブログサイトを紹介します。このサイトは、最新のトレンドやニュース、ライフスタイル、ビジネス、エンターテインメントなど、様々なテーマについて、情報やアイデアを共有するためのプラットフォームです。\n",
+                                "editor": "markdown"
+                            },
+                            "text-align": {
+                                "src": ""
+                            },
+                            "font-size": {
+                                "src": ""
+                            },
+                            "paragraph": {
+                                "src": "px2-p"
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "px2style:grids/grid",
+                        "fields": {
+                            "col": [
+                                {
+                                    "modId": "px2style:grids/grid",
+                                    "fields": {
+                                        "column-width": "1of3",
+                                        "main": [
+                                            {
+                                                "modId": "px2style:sections/hx",
+                                                "fields": {
+                                                    "hx": {
+                                                        "src": "2"
+                                                    },
+                                                    "main": {
+                                                        "src": "特徴1：豊富なコンテンツ"
+                                                    },
+                                                    "sub": {
+                                                        "src": ""
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            },
+                                            {
+                                                "modId": "px2style:basics/text",
+                                                "fields": {
+                                                    "main": {
+                                                        "src": "私たちのブログサイトでは、数多くのカテゴリーに分かれた、多彩なコンテンツを提供しています。読者の皆様にとって役に立つ情報、新しいアイデア、知的好奇心を刺激する記事、さまざまな視点からの分析や解説など、幅広い視野を持つライターが執筆した内容をお楽しみいただけます。\n",
+                                                        "editor": "markdown"
+                                                    },
+                                                    "text-align": {
+                                                        "src": ""
+                                                    },
+                                                    "font-size": {
+                                                        "src": ""
+                                                    },
+                                                    "paragraph": {
+                                                        "src": "px2-p"
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            }
+                                        ]
+                                    },
+                                    "subModName": "col",
+                                    "anchor": "",
+                                    "dec": ""
+                                },
+                                {
+                                    "modId": "px2style:grids/grid",
+                                    "fields": {
+                                        "column-width": "1of3",
+                                        "main": [
+                                            {
+                                                "modId": "px2style:sections/hx",
+                                                "fields": {
+                                                    "hx": {
+                                                        "src": "2"
+                                                    },
+                                                    "main": {
+                                                        "src": "特徴2：使いやすさ"
+                                                    },
+                                                    "sub": {
+                                                        "src": ""
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            },
+                                            {
+                                                "modId": "px2style:basics/text",
+                                                "fields": {
+                                                    "main": {
+                                                        "src": "私たちは、読者の皆様にとって使いやすいサイトを提供することを心がけています。シンプルで直感的なデザインやナビゲーションを採用し、記事の探しやすさや閲覧しやすさにもこだわっています。また、スマートフォンやタブレットなど、さまざまなデバイスに対応したレスポンシブデザインも導入しています。\n",
+                                                        "editor": "markdown"
+                                                    },
+                                                    "text-align": {
+                                                        "src": ""
+                                                    },
+                                                    "font-size": {
+                                                        "src": ""
+                                                    },
+                                                    "paragraph": {
+                                                        "src": "px2-p"
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            }
+                                        ]
+                                    },
+                                    "subModName": "col",
+                                    "anchor": "",
+                                    "dec": ""
+                                },
+                                {
+                                    "modId": "px2style:grids/grid",
+                                    "fields": {
+                                        "column-width": "1of3",
+                                        "main": [
+                                            {
+                                                "modId": "px2style:sections/hx",
+                                                "fields": {
+                                                    "hx": {
+                                                        "src": "2"
+                                                    },
+                                                    "main": {
+                                                        "src": "特徴3：コミュニケーションの活性化"
+                                                    },
+                                                    "sub": {
+                                                        "src": ""
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            },
+                                            {
+                                                "modId": "px2style:basics/text",
+                                                "fields": {
+                                                    "main": {
+                                                        "src": "私たちのブログサイトでは、読者の皆様がコメントやシェアを通じて、コンテンツに対してフィードバックを送ることができます。また、SNSとの連携も行っており、新しい記事や情報がアップされた際には、すぐにシェアすることができます。読者同士の交流も促進し、コミュニティを形成することもできます。\n",
+                                                        "editor": "markdown"
+                                                    },
+                                                    "text-align": {
+                                                        "src": ""
+                                                    },
+                                                    "font-size": {
+                                                        "src": ""
+                                                    },
+                                                    "paragraph": {
+                                                        "src": "px2-p"
+                                                    }
+                                                },
+                                                "anchor": "",
+                                                "dec": ""
+                                            }
+                                        ]
+                                    },
+                                    "subModName": "col",
+                                    "anchor": "",
+                                    "dec": ""
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "modId": "px2style:sections/hx",
+                        "fields": {
+                            "hx": {
+                                "src": "2"
+                            },
+                            "main": {
+                                "src": "まとめ"
+                            },
+                            "sub": {
+                                "src": ""
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    },
+                    {
+                        "modId": "px2style:basics/text",
+                        "fields": {
+                            "main": {
+                                "src": "私たちのブログサイトは、豊富なコンテンツ、使いやすさ、コミュニケーションの活性化など、様々な特徴を備えたプラットフォームです。皆様にとって役に立つ情報や、新しい発見を見つけることができる場として、ぜひご利用ください。\n",
+                                "editor": "markdown"
+                            },
+                            "text-align": {
+                                "src": ""
+                            },
+                            "font-size": {
+                                "src": ""
+                            },
+                            "paragraph": {
+                                "src": "px2-p"
+                            }
+                        },
+                        "anchor": "",
+                        "dec": ""
+                    }
+                ]
+            }
+        }
+    }
+}

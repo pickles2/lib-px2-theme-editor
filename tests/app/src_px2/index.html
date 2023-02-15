@@ -1,67 +1,55 @@
-<?php if( !$px ){ ?>
-<meta charset="utf-8" />
-<div style="background-color:#fff; color:#f00; border:2px solid #f00; padding:20px;">
-	<p>このメッセージが表示されているということは、インストールが正常に完了していない可能性があります。</p>
-	<p>次の点を確認してください。</p>
-	<ul>
-		<li>index.html ファイルを直接ウェブブラウザで開いているかもしれません。ウェブサーバー Apache を経由して表示してください。</li>
-		<li>.htaccess の設定が反映されていない可能性があります。Apache の設定で <code>AllowOverride All</code> などとして、設定の上書きを許可してください。</li>
-		<li>Apache モジュールの mod_rewrite が利用できない可能性があります。有効になるように設定する、またはモジュールのインストールを行ってください。</li>
-	</ul>
+<div class="px2-viewport-fit">
+	<div class="px2-viewport-fit__inner" style="padding-top:20vh;padding-bottom:16vh; background-color: #3F51B5CC; color: #FFFFFF;">
+		<div class="px2-viewport-fit__contents">
+<div class="px2-p px2-font-size-ll px2-text-align-center">
+<p>サンプルコンテンツです。</p>
+
 </div>
-<?php } ?>
 
-
-<h2>次のステップ</h2>
-
-<div class="cols unit">
-	<div class="cols-col cols-1of3"><div class="cols-pad">
-		<h3>サイトマップを編集します</h3>
-		<p>
-			はじめに、サイト全体の構造をサイトマップに登録します。1行が1ページで表現されるCSV形式のファイルです。<br />
-		</p>
-		<p>
-			サイトマップCSVは次のパスに置かれています。<br />
-		</p>
-		<div class="code"><pre><code>./px-files/sitemaps/</code></pre></div>
-
-	</div></div>
-	<div class="cols-col cols-1of3"><div class="cols-pad">
-		<h3>テーマを編集します</h3>
-		<p>
-			テーマは、コンテンツエリア以外のHTMLソースを生成するPHPテンプレートです。<br />
-			次のパスに置かれています。<br />
-		</p>
-		<div class="code"><pre><code>./px-files/themes/</code></pre></div>
-
-	</div></div>
-	<div class="cols-col cols-1of3 cols-last"><div class="cols-pad">
-		<h3>コンテンツを編集します</h3>
-		<p>
-			コンテンツは、コンテンツエリアのソースだけが記述されたシンプルなHTMLファイルです。<br />
-			サイトマップの path 欄に登録したパスにHTMLファイルを作成してください。<br />
-		</p>
-		<p>
-			あなたがいま見ているこのページは、テキストエディタで <code>/index.html</code> を開くとソースを確認できます。<br />
-			このページも、削除や上書きしてあなたのサイトのトップページに置き換えてください。<br />
-		</p>
-	</div></div>
-</div><!-- / .cols -->
-
-<h3>パブリッシュします</h3>
-<p>
-	サイトができあがったら、そのまま静的なHTMLに書き出すことができます。<br />
-	次のコマンドで、パブリッシュを実行します。<br />
-</p>
-
-<div class="unit">
-	<div class="code"><pre><code>$ php ./.px_execute.php /?PX=publish.run
-</code></pre></div>
+		</div>
+	</div>
 </div>
-<p>
-	しばらくすると、次のパスに、静的なHTMLファイルが生成されます。<br />
-</p>
-<div class="code"><pre><code>./px-files/_sys/ram/publish/</code></pre></div>
+<div class="px2-h2">
+<h2>レイアウトを確認するためのサンプルコンテンツです</h2>
+</div>
+<div class="px2-p">
+<p>この度、私たちが運営する新しいブログサイトを紹介します。このサイトは、最新のトレンドやニュース、ライフスタイル、ビジネス、エンターテインメントなど、様々なテーマについて、情報やアイデアを共有するためのプラットフォームです。</p>
 
+</div>
+<div class="px2-grid">
 
+    <div class="px2-grid__col-1of3"><div class="px2-h2">
+<h2>特徴1：豊富なコンテンツ</h2>
+</div>
+<div class="px2-p">
+<p>私たちのブログサイトでは、数多くのカテゴリーに分かれた、多彩なコンテンツを提供しています。読者の皆様にとって役に立つ情報、新しいアイデア、知的好奇心を刺激する記事、さまざまな視点からの分析や解説など、幅広い視野を持つライターが執筆した内容をお楽しみいただけます。</p>
 
+</div>
+</div>
+
+    <div class="px2-grid__col-1of3"><div class="px2-h2">
+<h2>特徴2：使いやすさ</h2>
+</div>
+<div class="px2-p">
+<p>私たちは、読者の皆様にとって使いやすいサイトを提供することを心がけています。シンプルで直感的なデザインやナビゲーションを採用し、記事の探しやすさや閲覧しやすさにもこだわっています。また、スマートフォンやタブレットなど、さまざまなデバイスに対応したレスポンシブデザインも導入しています。</p>
+
+</div>
+</div>
+
+    <div class="px2-grid__col-1of3"><div class="px2-h2">
+<h2>特徴3：コミュニケーションの活性化</h2>
+</div>
+<div class="px2-p">
+<p>私たちのブログサイトでは、読者の皆様がコメントやシェアを通じて、コンテンツに対してフィードバックを送ることができます。また、SNSとの連携も行っており、新しい記事や情報がアップされた際には、すぐにシェアすることができます。読者同士の交流も促進し、コミュニティを形成することもできます。</p>
+
+</div>
+</div>
+
+</div>
+<div class="px2-h2">
+<h2>まとめ</h2>
+</div>
+<div class="px2-p">
+<p>私たちのブログサイトは、豊富なコンテンツ、使いやすさ、コミュニケーションの活性化など、様々な特徴を備えたプラットフォームです。皆様にとって役に立つ情報や、新しい発見を見つけることができる場として、ぜひご利用ください。</p>
+
+</div>

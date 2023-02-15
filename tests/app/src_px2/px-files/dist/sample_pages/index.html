@@ -3,10 +3,11 @@
 	<head>
 		<meta charset="UTF-8" />
 		<title>サンプルページ1 | Pickles 2</title>
+		<meta name="description" content="このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。" />
+		<meta name="keywords" content="sample, サンプル" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="keywords" content="sample, サンプル" />
-		<meta name="description" content="このページはPxFWのサンプルコードとして予め用意されたものです。サンプルが不要であれば、sample_pagesディレクトリとともに削除してください。" />
 
  
 <!-- jQuery -->
@@ -20,29 +21,29 @@
 <link rel="stylesheet" href="/common/styles/contents.css" type="text/css" />
 <script src="/common/scripts/contents.js"></script>
 
-		<!-- Bootstrap Theme -->
-		<link rel="stylesheet" href="/caches/p/theme/styles/bootstrap-theme.min.css">
-		<link rel="stylesheet" href="/caches/p/theme/styles/theme.css">
+		<link rel="stylesheet" href="/caches/p/theme/template_001b--full/modules.css" />
+		<link rel="stylesheet" href="/caches/p/theme/template_001b--full/styles/theme.css">
+<link rel="stylesheet" href="/sample_pages/index_files/style.css" />
 	</head>
-	<body>
-		<header class="theme_header" id="page_top">
-			<div class="container">
-				<p class="theme_si"><a href="/">Pickles 2</a></p>
-				<div class="theme_shouldernavi">
-<ul><li><a href="/sample_pages/help/">ヘルプ</a></li></ul>				</div>
-				<div class="theme_globalnavi">
-<ul><li><a href="/sample_pages/" class="current">サンプルページ1</a></li><li><a href="/sample_pages/page2/">サンプルページ2</a></li><li><a href="/sample_pages/page3/">サンプルページ3</a></li></ul>
-				</div>
-			</div>
-		</header>
-		<div class="theme_mainblock">
-			<div class="container">
-				<div class="row">
-					<div class="col-sm-9">
-						<div class="theme_breadcrumb"><ul><li><a href="/">ホーム</a></li><li><span>サンプルページ1</span></li></ul></div>
-						<h1>サンプルページ1</h1>
-						<div class="contents">
+	<body id="pagetop">
+<header class="theme-header">
+	<div class="theme-header__inner">
+		<div class="theme-header__si">
+			<a href="/"><img src="/caches/p/theme/template_001b--full/layouts/default/resources/logo.png" alt="" />Pickles 2</a>		</div>
+		<div class="theme-header__shouldernavi"><ul><li><a href="/sample_pages/help/">ヘルプ</a></li></ul></div>
 
+		<div class="theme-header__globalnavi"><ul><li><a href="/sample_pages/" class="current">サンプルページ1</a></li><li><a href="/sample_pages/page2/">サンプルページ2</a></li><li><a href="/sample_pages/page3/">サンプルページ3</a></li></ul></div>
+
+	</div>
+</header>
+<div class="theme-layouts theme-layouts--rnavi">
+	<div class="theme-layouts__body">
+		<div class="theme-layouts__content">
+<div class="theme-breadcrumb"><ul><li><a href="/">ホーム</a></li><li><span>サンプルページ1</span></li></ul></div>
+<h1>サンプルページ1</h1>
+
+<div class="contents">
+<p class="cont_test">テスト</p>
 <p>
 	このディレクトリに配置されているファイルは、コンテンツのサンプルコード集です。<br />
 </p>
@@ -75,20 +76,17 @@
 <ul>
 	<li><a href="/sample_pages/fess/">FESSドキュメント</a></li>
 </ul>
-						</div>
-						<div class="theme_breadcrumb"><ul><li><a href="/">ホーム</a></li><li><span>サンプルページ1</span></li></ul></div>
-					</div>
-					<div class="col-sm-3">
-						<nav class="theme_common_navi">
-							<p><a href="/sample_pages/">サンプルページ1</a></p>
+</div>
+<div class="theme-back-to-pagetop">
+	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+</div>
+<div class="theme-breadcrumb"><ul><li><a href="/">ホーム</a></li><li><span>サンプルページ1</span></li></ul></div>
+		</div>
+		<div class="theme-layouts__rnavi">
+<nav class="theme-common-navi">
+	<p><a href="/sample_pages/">サンプルページ1</a></p>
 <ul>
-<li><a href="/sample_pages/fess/">FESSスタイルガイド</a><ul>
-<li><a href="/sample_pages/fess/units/">ユニットモジュール</a></li>
-<li><a href="/sample_pages/fess/parts/">パーツモジュール</a></li>
-<li><a href="/sample_pages/fess/statics/">スタティックモジュール</a></li>
-<li><a href="/sample_pages/fess/boxes/">ボックスモジュール</a></li>
-</ul>
-</li>
+<li><a href="/sample_pages/fess/">FESSスタイルガイド</a></li>
 <li><a href="/sample_pages/bootstrap/">Bootstrapスタイルガイド</a></li>
 <li><a href="/sample_pages/page1/1.html">ページタイトル(リンクのラベル)</a></li>
 <li><a href="/sample_pages/page1/2.html">PHPコード埋め込み</a></li>
@@ -96,14 +94,13 @@
 <li><a href="/sample_pages/page1/4/">ダイナミックパス</a></li>
 <li><a href="/sample_pages/page2/">サンプルページ2へのエイリアス</a></li>
 </ul>
-						</nav>
-					</div>
-				</div><!-- /.row -->
-			</div><!-- /.container -->
-		</div><!-- /.theme_mainblock -->
-		<footer class="theme_footer">
-			<div class="container">
-				<nav class="theme_megafooter_navi">
+</nav>
+		</div>
+	</div>
+</div>
+<footer class="theme-footer">
+	<div class="theme-footer__inner">
+		<nav class="theme-footer__megafooter-navi">
 <ul>
 <li><a href="/sample_pages/" class="current">サンプルページ1</a><ul>
 <li><a href="/sample_pages/fess/">FESSスタイルガイド</a></li>
@@ -126,13 +123,16 @@
 </ul>
 </li>
 </ul>
-				</nav>
-			</div>
-			<div class="container theme_footer_shouldernavi">
-<ul><li><a href="/">ホーム</a></li><li><a href="/sample_pages/help/">ヘルプ</a></li></ul>			</div>
-			<div class="container">
-				<p style="text-align:center;">Pickles 2 is made by Tomoya Koyanagi.</p>
-			</div>
-		</footer>
+		</nav>
+
+		<div class="theme-footer__shouldernavi">
+<ul><li><a href="/">ホーム</a></li><li><a href="/sample_pages/help/">ヘルプ</a></li></ul>		</div>
+
+	</div>
+</footer>
+
+
+		<script src="/caches/p/theme/template_001b--full/modules.js"></script>
+<script src="/sample_pages/index_files/script.js"></script>
 	</body>
 </html>

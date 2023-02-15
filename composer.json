@@ -10,10 +10,16 @@
         }
     ],
     "scripts":{
-        "start": [
+		"start": [
+			"@php ./tests/app/src_px2/.px_execute.php \"/?PX=serve\""
+		],
+		"start-pub": [
+			"@php ./tests/app/src_px2/.px_execute.php \"/?PX=serve.pub\""
+		],
+        "start-without-px2": [
             "@php -S 127.0.0.1:8088 -t ./ tests/app/src_px2/px-files/_sys/serve/route.php"
         ],
-        "preview": [
+        "preview-without-px2": [
             "open http://127.0.0.1:8088/tests/app/client_php/"
         ],
         "test": [
@@ -37,13 +43,18 @@
     },
     "require-dev": {
         "pickles2/px-fw-2.x": "~2.0||~2.1",
+		"pickles2/px2-clover": "^0.2",
         "pickles2/px2-dec": "~2.0",
         "pickles2/px2-multitheme": "~2.0",
         "pickles2/px2-path-resolver": "~2.0",
         "pickles2/px2-px2dthelper": "~2.0",
         "pickles2/px2-remove-attr": "~2.0",
         "pickles2/px2-sitemapexcel": "~2.0||~2.1",
-        "phpunit/phpunit": "~9.5"
+		"pickles2/px2style": "~3.1",
+        "phpunit/phpunit": "~9.5",
+		"tomk79/px2-error-reporter": "~0.1",
+		"tomk79/px2-serve": "^0.1",
+		"vlucas/phpdotenv": "~5.4.0"
     },
     "autoload": {
         "psr-4": {

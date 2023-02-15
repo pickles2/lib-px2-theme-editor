@@ -98,6 +98,10 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
+### pickles2/lib-px2-theme-editor v0.2.5 (リリース日未定)
+
+- テーマテンプレートの不具合の修正。
+
 ### pickles2/lib-px2-theme-editor v0.2.4 (2023年2月11日)
 
 - スタートアップ機能での初期化時に、 Broccoli コンテンツのリビルドを実行するようになった。

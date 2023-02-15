@@ -28,7 +28,7 @@ $px2te->init(array(
 	'appMode' => 'web', // 'web' or 'desktop'. default to 'web'
 	'entryScript' => realpath(__DIR__.'/../src_px2/.px_execute.php'),
 ));
-if(@$_GET['client_resources']){
+if($_GET['client_resources'] ?? null){
 	$value = $px2te->get_client_resources(__DIR__.'/caches/');
 	header('Content-type: text/json');
 	echo json_encode($value);
