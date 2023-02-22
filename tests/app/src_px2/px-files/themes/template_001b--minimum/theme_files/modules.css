@@ -285,6 +285,9 @@ p, li, dt, dd {
     margin-left: 0;
     margin-right: 0;
   }
+  .theme-layouts .theme-layouts__lnavi, .theme-layouts .theme-layouts__rnavi {
+    margin-top: 30px;
+  }
 }
 
 /**
@@ -417,21 +420,22 @@ p, li, dt, dd {
     display: block;
   }
 }
-.theme-header__menu-btn button {
+.theme-header__menu-open-btn button {
   width: 33px;
   height: 33px;
   position: relative;
   border: 1px solid #999;
   padding: 0;
+  overflow: hidden;
   box-sizing: border-box;
 }
-.theme-header__menu-btn button::before {
+.theme-header__menu-open-btn button::before {
   content: "";
 }
-.theme-header__menu-btn button::after {
+.theme-header__menu-open-btn button::after {
   content: "";
 }
-.theme-header__menu-btn button span, .theme-header__menu-btn button::after, .theme-header__menu-btn button::before {
+.theme-header__menu-open-btn button span, .theme-header__menu-open-btn button::after, .theme-header__menu-open-btn button::before {
   display: block;
   border-top: 1px solid #999;
   position: absolute;
@@ -439,29 +443,124 @@ p, li, dt, dd {
   top: calc(50%);
   left: calc(15%);
   box-sizing: border-box;
+  text-indent: -9999px;
 }
-.theme-header__menu-btn button::after {
+.theme-header__menu-open-btn button::after {
   top: calc(27%);
 }
-.theme-header__menu-btn button::before {
+.theme-header__menu-open-btn button::before {
   top: calc(73%);
 }
 .theme-header__menu-body {
   display: none;
-  background-color: #999;
+  background-color: #0004;
   position: fixed;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
-  overflow: auto;
   color: #fff;
 }
+@keyframes theme-header--menu-open {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes theme-header--menu-close {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 .theme-header__menu-body--visible {
-  display: block;
+  display: flex;
+}
+.theme-header__menu-body--visible .theme-header__menu-body-inner {
+  animation: theme-header--menu-open 0.3s ease 0s 1 normal forwards running;
 }
 .theme-header__menu-body--closed {
-  display: none;
+  display: flex;
+}
+.theme-header__menu-body--closed .theme-header__menu-body-inner {
+  animation: theme-header--menu-close 0.3s ease 0s 1 reverse forwards running;
+}
+.theme-header__menu-body-inner {
+  background-color: #eee;
+  color: #333;
+  padding: 40px 20px 20px 20px;
+  margin-left: 10px;
+  overflow: auto;
+  flex-grow: 10;
+}
+.theme-header__menu-close-btn {
+  text-align: right;
+  position: fixed;
+  right: 10px;
+  top: 10px;
+}
+.theme-header__menu-mega-menu ul {
+  padding: 0;
+  margin: 0;
+}
+.theme-header__menu-mega-menu ul li {
+  padding: 0 0 1px 0;
+  margin: 0;
+  list-style-type: none;
+}
+.theme-header__menu-mega-menu ul li a {
+  display: block;
+  padding: 10px 10px;
+}
+.theme-header__menu-mega-menu ul li a:hover {
+  background-color: #ddd;
+}
+.theme-header__menu-mega-menu ul li li a {
+  padding-left: 30px;
+}
+.theme-header__menu-mega-menu ul li li li a {
+  padding-left: 60px;
+}
+.theme-header__menu-mega-menu ul li li li li a {
+  padding-left: 90px;
+}
+.theme-header__menu-shoulder-menu {
+  margin: 1em 0;
+}
+.theme-header__menu-shoulder-menu ul {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.theme-header__menu-shoulder-menu ul li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+.theme-header__menu-shoulder-menu ul li a {
+  display: block;
+  padding: 10px 20px;
+}
+.theme-header__menu-shoulder-menu ul li a:hover {
+  background-color: #ddd;
+}
+body.theme-scroll-lock {
+  overflow: hidden;
+}
+body.theme-scroll-lock--iphone {
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 /**
@@ -521,6 +620,8 @@ blockquote {
  */
 .theme-common-navi {
   margin-bottom: 0.7em;
+  overflow: hidden;
+  border-radius: 13px;
 }
 .theme-common-navi a {
   display: block;
@@ -531,6 +632,9 @@ blockquote {
   text-align: center;
   margin: 1px 0;
   padding: 0;
+}
+.theme-common-navi p a {
+  background-color: #ddd;
 }
 .theme-common-navi ul {
   display: block;

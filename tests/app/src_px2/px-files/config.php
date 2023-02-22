@@ -8,6 +8,7 @@ return call_user_func( function(){
 	$conf->name = 'Pickles 2 Theme Editor Develop'; // サイト名
 	$conf->domain = null; // ドメイン
 	$conf->path_controot = '/'; // コンテンツルートディレクトリ
+	$conf->copyright = 'Pickles Project'; // 著作権表示
 
 	// paths
 	$conf->path_top = '/'; // トップページのパス(デフォルト "/")
