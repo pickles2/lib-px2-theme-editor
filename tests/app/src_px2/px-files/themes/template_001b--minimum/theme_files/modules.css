@@ -315,6 +315,9 @@ p, li, dt, dd {
   /**
 	 * グローバルメニュー
 	 */
+  /**
+	 * ハンバーガーメニュー
+	 */
 }
 .theme-header::after {
   display: block;
@@ -325,6 +328,7 @@ p, li, dt, dd {
 .theme-header__inner {
   margin: 0 auto;
   max-width: 1024px;
+  position: relative;
   clear: both;
 }
 .theme-header__inner::after {
@@ -352,10 +356,15 @@ p, li, dt, dd {
   margin-right: 5px;
   vertical-align: top;
 }
+@media (max-width: 740px) {
+  .theme-header__si {
+    margin-right: 60px;
+  }
+}
 .theme-header__shouldernavi {
   float: right;
 }
-@media (max-width: 580px) {
+@media (max-width: 740px) {
   .theme-header__shouldernavi {
     display: none;
   }
@@ -377,6 +386,11 @@ p, li, dt, dd {
 .theme-header__globalnavi {
   clear: both;
 }
+@media (max-width: 740px) {
+  .theme-header__globalnavi {
+    display: none;
+  }
+}
 .theme-header__globalnavi ul {
   margin: 0;
   padding: 0;
@@ -392,10 +406,62 @@ p, li, dt, dd {
   display: block;
   background-color: #f5f5ff;
 }
+.theme-header__menu {
+  display: none;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
 @media (max-width: 740px) {
-  .theme-header__globalnavi {
-    display: none;
+  .theme-header__menu {
+    display: block;
   }
+}
+.theme-header__menu-btn button {
+  width: 33px;
+  height: 33px;
+  position: relative;
+  border: 1px solid #999;
+  padding: 0;
+  box-sizing: border-box;
+}
+.theme-header__menu-btn button::before {
+  content: "";
+}
+.theme-header__menu-btn button::after {
+  content: "";
+}
+.theme-header__menu-btn button span, .theme-header__menu-btn button::after, .theme-header__menu-btn button::before {
+  display: block;
+  border-top: 1px solid #999;
+  position: absolute;
+  width: calc(70%);
+  top: calc(50%);
+  left: calc(15%);
+  box-sizing: border-box;
+}
+.theme-header__menu-btn button::after {
+  top: calc(27%);
+}
+.theme-header__menu-btn button::before {
+  top: calc(73%);
+}
+.theme-header__menu-body {
+  display: none;
+  background-color: #999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  color: #fff;
+}
+.theme-header__menu-body--visible {
+  display: block;
+}
+.theme-header__menu-body--closed {
+  display: none;
 }
 
 /**

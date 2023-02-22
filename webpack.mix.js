@@ -54,6 +54,10 @@ mix
 	.copy('./dist/pickles2-theme-editor.css', './dist/pickles2-theme-editor.min.css')
 
 	// --------------------------------------
+	// Theme: template_001b
+	.js('./startup_theme_templates/template_001b/src/modules/layouts/header/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/header/module.js')
+
+	// --------------------------------------
 	// Local Dev
 	.js('./tests/app/client_php/index_files/contents.src.js', './tests/app/client_php/index_files/contents.js')
 ;
