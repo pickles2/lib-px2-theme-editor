@@ -7,8 +7,12 @@
                     {
                         "modId": "themeEditorModules:layouts/header",
                         "fields": {
-                            "sitetitle_linkto": "",
-                            "sitetitle_htmlElement": "",
+                            "sitetitle_linkto": {
+                                "src": ""
+                            },
+                            "sitetitle_htmlElement": {
+                                "src": "h1"
+                            },
                             "sitetitle_image": {
                                 "resKey": "",
                                 "resType": "none",
@@ -29,6 +33,10 @@
                                     "fields": {
                                         "bowlName": ""
                                     }
+                                },
+                                {
+                                    "modId": "themeEditorModules:layouts/backtopagetop",
+                                    "fields": []
                                 }
                             ]
                         }

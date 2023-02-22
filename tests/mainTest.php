@@ -31,9 +31,9 @@ class mainTest extends PHPUnit\Framework\TestCase{
 		$this->assertSame(count($bootupInformations['multithemePluginOptions']), 1);
 		$this->assertSame($bootupInformations['theme_collection_dir_exists'], true);
 		$this->assertSame(is_array($bootupInformations['listThemeCollection']), true);
-		$this->assertSame(count($bootupInformations['listThemeCollection']), 1 + count($this->theme_templates) * $this->option_variations_count);
-		$this->assertSame($bootupInformations['listThemeCollection'][0]['id'], 'pickles2');
-		$this->assertSame($bootupInformations['listThemeCollection'][0]['name'], 'pickles2');
+		$this->assertSame(count($bootupInformations['listThemeCollection']), 0 + count($this->theme_templates) * $this->option_variations_count);
+		$this->assertSame($bootupInformations['listThemeCollection'][0]['id'], 'template_001b--full');
+		$this->assertSame($bootupInformations['listThemeCollection'][0]['name'], 'template_001b--full');
 	}
 
 	/**
@@ -77,7 +77,7 @@ class mainTest extends PHPUnit\Framework\TestCase{
 
 		$bootupInformations = $main->gpi(array('api'=>'getBootupInformations'));
 		// var_dump($bootupInformations);
-		$this->assertSame(count($bootupInformations['listThemeCollection']), 2 + count($this->theme_templates) * $this->option_variations_count);
+		$this->assertSame(count($bootupInformations['listThemeCollection']), 1 + count($this->theme_templates) * $this->option_variations_count);
 		$this->assertTrue(is_dir(__DIR__.'/app/src_px2/px-files/themes/test-theme/'));
 	}
 

@@ -14,17 +14,22 @@
 <header class="theme-header">
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
-			<img src="./theme_files/layouts/top/resources/logo.png" alt="" /><?= htmlspecialchars( $px->conf()->name ) ?>		</div>
+			<h1><img src="./theme_files/layouts/top/resources/logo.png" alt="" /><?= htmlspecialchars( $px->conf()->name ) ?></h1>		</div>
 
 
 	</div>
 </header>
 <div class="theme-layouts ">
 	<div class="theme-layouts__body">
+		<div class="theme-layouts__content">
 
 <div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by())?>="">
 <?= $px->bowl()->pull('') ?>
 </div>
+<div class="theme-back-to-pagetop">
+	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+</div>
+    	</div>
 	</div>
 </div>
 <footer class="theme-footer">
