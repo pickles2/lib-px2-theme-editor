@@ -4,11 +4,12 @@
 	const isIphone = window.navigator.userAgent.match(/iPhone/);
 	let presetOverflow = {};
 	$(document)
-		.on('click', '.theme-header__menu-open-btn button', function(){
-			const $menu = $(this).closest('.theme-header__menu').find('.theme-header__menu-body');
+		.off('click', '.theme-hamburger-menu__open-btn button')
+		.on('click', '.theme-hamburger-menu__open-btn button', function(){
+			const $menu = $(this).closest('.theme-hamburger-menu').find('.theme-hamburger-menu__body');
 			$menu
-				.addClass('theme-header__menu-body--visible')
-				.removeClass('theme-header__menu-body--closed')
+				.addClass('theme-hamburger-menu__body--visible')
+				.removeClass('theme-hamburger-menu__body--closed')
 				;
 
 			presetOverflow = {
@@ -26,15 +27,16 @@
 			}
 
 		})
-		.on('click', '.theme-header__menu-close-btn button', function(){
-			const $menu = $(this).closest('.theme-header__menu').find('.theme-header__menu-body');
+		.off('click', '.theme-hamburger-menu__close-btn button')
+		.on('click', '.theme-hamburger-menu__close-btn button', function(){
+			const $menu = $(this).closest('.theme-hamburger-menu').find('.theme-hamburger-menu__body');
 			$menu
-				.removeClass('theme-header__menu-body--visible')
-				.addClass('theme-header__menu-body--closed')
+				.removeClass('theme-hamburger-menu__body--visible')
+				.addClass('theme-hamburger-menu__body--closed')
 				;
 			setTimeout(function(){
 				$menu
-					.removeClass('theme-header__menu-body--closed')
+					.removeClass('theme-hamburger-menu__body--closed')
 					;
 			}, 300);
 

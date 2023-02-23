@@ -101,6 +101,7 @@ pickles2ThemeEditor.init(
 ### pickles2/lib-px2-theme-editor v0.2.5 (リリース日未定)
 
 - テーマテンプレートのユーザビリティを向上と不具合の修正。
+- ハンバーガーメニューモジュールを追加。
 
 ### pickles2/lib-px2-theme-editor v0.2.4 (2023年2月11日)
 

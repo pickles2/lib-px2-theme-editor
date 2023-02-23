@@ -55,7 +55,7 @@ mix
 
 	// --------------------------------------
 	// Theme: template_001b
-	.js('./startup_theme_templates/template_001b/src/modules/layouts/header/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/header/module.js')
+	.js('./startup_theme_templates/template_001b/src/modules/layouts/hamburger-menu/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js')
 
 	// --------------------------------------
 	// Local Dev

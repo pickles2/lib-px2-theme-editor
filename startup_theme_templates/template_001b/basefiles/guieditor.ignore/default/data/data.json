@@ -103,6 +103,10 @@
                         },
                         "anchor": "",
                         "dec": ""
+                    },
+                    {
+                        "modId": "themeEditorModules:layouts/hamburger-menu",
+                        "fields": []
                     }
                 ]
             }
