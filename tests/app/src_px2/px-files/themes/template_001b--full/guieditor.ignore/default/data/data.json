@@ -108,6 +108,10 @@
                     {
                         "modId": "themeEditorModules:layouts/hamburger-menu",
                         "fields": []
+                    },
+                    {
+                        "modId": "themeEditorModules:layouts/backtopagetop-float",
+                        "fields": []
                     }
                 ]
             }

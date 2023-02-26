@@ -8,6 +8,7 @@
 	position: fixed;
 	top: 0px;
 	left: 0px;
+	z-index: 110;
 	@media all and (max-width: 740px) {
 		display: block;
 	}
@@ -19,7 +20,6 @@
 		width: 45px;
 		height: 45px;
 		z-index: 110;
-
 	}
 
 	&__body {
@@ -211,5 +211,6 @@ body.theme-scroll-lock--iphone {
 		position: relative;
 		top: 0;
 		left: 0;
+		margin: 0 auto 0 0;
 	}
 }
