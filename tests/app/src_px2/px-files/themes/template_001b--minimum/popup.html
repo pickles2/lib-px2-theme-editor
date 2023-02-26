@@ -32,7 +32,9 @@
     	</div>
 	</div>
 </div>
-<p style="text-align:center;"><button onclick="window.close();return false;" class="px2-btn">close</button></p>
+<p class="theme-text-align-center">
+    <button onclick="window.close();return false;" class="theme-btn theme-btn--primary">閉じる</button>
+</p>
 <?php if( @strlen($px->conf()->copyright) ){ ?>
 <p style="text-align:center;">&copy;<?= htmlspecialchars($px->conf()->copyright); ?>.</p>
 <?php } ?>

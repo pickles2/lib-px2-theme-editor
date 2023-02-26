@@ -50,7 +50,7 @@
                         "dec": ""
                     },
                     {
-                        "modId": "themeEditorModules:vars/close_button",
+                        "modId": "themeEditorModules:basics/close_button",
                         "fields": [],
                         "anchor": "",
                         "dec": ""

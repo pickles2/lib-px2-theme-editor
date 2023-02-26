@@ -432,6 +432,7 @@ p, li, dt, dd {
 .theme-hamburger-menu__mega-menu ul li a {
   display: block;
   padding: 10px 10px;
+  border-radius: 9px;
 }
 .theme-hamburger-menu__mega-menu ul li a:hover {
   background-color: #ddd;
@@ -463,6 +464,7 @@ p, li, dt, dd {
 .theme-hamburger-menu__shoulder-menu ul li a {
   display: block;
   padding: 10px 20px;
+  border-radius: 9px;
 }
 .theme-hamburger-menu__shoulder-menu ul li a:hover {
   background-color: #ddd;
