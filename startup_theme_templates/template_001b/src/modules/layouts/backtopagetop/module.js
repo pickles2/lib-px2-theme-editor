@@ -2,13 +2,17 @@
 	const $ = require('jquery');
 
 	$(function(){
-		const $backToPageTops = $('.theme-back-to-pagetop');
+		const $as = $('a[href]');
 		const $body = $('html,body');
 
-		$backToPageTops.each(function(backToPageTopIndex, elmBackToPageTop){
+		$as.each(function(backToPageTopIndex, elmBackToPageTop){
 			const $backToPageTop = $(elmBackToPageTop);
+			const href = $(this).attr('href');
+			if( !href || !href.match(/^\#/) ){
+				return;
+			}
 
-			$backToPageTop.find('a')
+			$backToPageTop
 				.off('click.theme-back-to-pagetop')
 				.on('click.theme-back-to-pagetop', function(e){
 					e.stopPropagation();
