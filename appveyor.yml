@@ -18,9 +18,10 @@ environment:
 # branches
 branches:
   only:
-    - main
-    - master
-    - develop
+    - 0.2.x
+    # - main
+    # - master
+    # - develop
 
 # fix lineendings in Windows
 init:
