@@ -85,10 +85,15 @@
 	</div>
 </footer>
 <div class="theme-hamburger-menu">
-	<div class="theme-hamburger-menu__open-btn"><button><span>メニュー</span></button></div>
+	<div class="theme-hamburger-menu__open">
+		<button class="theme-hamburger-menu__open-btn">
+			<span class="theme-hamburger-menu__open-btn-inner">
+				<span class="theme-hamburger-menu__open-btn-decoration-a">メニュー</span>
+			</span>
+		</button>
+	</div>
 	<div class="theme-hamburger-menu__body">
 		<div class="theme-hamburger-menu__body-inner">
-			<div class="theme-hamburger-menu__close-btn"><button>閉じる</button></div>
 			<div class="theme-hamburger-menu__mega-menu">
 <?= $theme->mk_megafooter_menu() ?>
 			</div>

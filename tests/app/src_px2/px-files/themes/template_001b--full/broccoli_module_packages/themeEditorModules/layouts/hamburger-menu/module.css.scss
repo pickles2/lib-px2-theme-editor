@@ -12,106 +12,123 @@
 		display: block;
 	}
 
-	&__open-btn {
-		button {
-			width: 33px;
-			height: 33px;
-			position: fixed;
-			top: 10px;
-			right: 10px;
-			border: 1px solid #999;
-			padding: 0;
-			overflow: hidden;
-			box-sizing: border-box;
-			&::before {
-				content: "";
-			}
-			&::after {
-				content: "";
-			}
-			span,
-			&::after,
-			&::before {
-				display: block;
-				border-top: 1px solid #999;
-				position: absolute;
-				width: calc(70%);
-				top: calc(50%);
-				left: calc(15%);
-				box-sizing: border-box;
-				text-indent: -9999px;
-			}
-			&::after {
-				top: calc(27%);
-			}
-			&::before {
-				top: calc(73%);
-			}
-		}
+	&__open {
+		position: fixed;
+		bottom: 5px;
+		left: 5px;
+		width: 45px;
+		height: 45px;
+		z-index: 110;
+
 	}
+
 	&__body {
 		display: none;
 		background-color: #0004;
 		position: fixed;
 		top: 0px;
 		left: 0px;
+		z-index: 100;
 		width: 100%;
 		height: 100%;
 		color: #fff;
+		transition: all .3s ease-in-out;
 
-		@keyframes theme-hamburger-menu--menu-open {
-			0% {
-				transform: translateX(100px);
-				opacity: 0;
-			}
-			100% {
-				transform: translateX(0);
-				opacity: 1;
-			}
-		}
-		@keyframes theme-hamburger-menu--menu-close {
-			0% {
-				transform: translateX(100px);
-				opacity: 0;
-			}
-			100% {
-				transform: translateX(0);
-				opacity: 1;
-			}
-		}
+		&-inner {
+			background-color: #eee;
+			color: #333;
+			padding: 40px 20px 20px 20px;
+			margin-right: 30px;
+			overflow: auto;
+			flex-grow: 10;
 
-		&--visible {
+			transition: all .3s ease-in-out;
+			transform: translateX(-100px);
+			opacity: 0;
+		}
+	}
+	&--visible {
+		.theme-hamburger-menu__body {
 			display: flex;
-			.theme-hamburger-menu__body-inner {
-				animation: theme-hamburger-menu--menu-open .3s ease 0s 1 normal forwards running;
+		}
+	}
+	&--opening {
+		.theme-hamburger-menu__body-inner {
+			transform: translateX(0);
+			opacity: 1;
+		}
+	}
+
+	// --------------------------------------
+	// Button
+	button.theme-hamburger-menu__open-btn {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		padding: 3px;
+		overflow: hidden;
+		box-sizing: border-box;
+		border-radius: 50%;
+		background-color: #fff;
+		border: 0px none transparent;
+		position: relative;
+
+		.theme-hamburger-menu__open-btn-inner {
+			display: block;
+			position: relative;
+			width: 100%;
+			height: 100%;
+			border: 2px solid var(--theme-keycolor, #000);
+			border-radius: 50%;
+
+			&::before {
+				content: "";
+			}
+			&::after {
+				content: "";
+			}
+			span.theme-hamburger-menu__open-btn-decoration-a,
+			&::after,
+			&::before {
+				display: block;
+				border-top: 2px solid var(--theme-keycolor, #000);
+				position: absolute;
+				width: calc(60%);
+				top: calc(50% - 1px);
+				left: calc(20%);
+				box-sizing: border-box;
+				text-indent: -9999px;
+				font-size: 0.1px;
+				transition: all .3s ease-in-out;
+			}
+			&::after {
+				top: calc(50% - 1px - 7px);
+			}
+			&::before {
+				top: calc(50% - 1px + 7px);
 			}
 		}
-		&--closed {
-			display: flex;
-			.theme-hamburger-menu__body-inner {
-				animation: theme-hamburger-menu--menu-close .3s ease 0s 1 reverse forwards running;
+	}
+	&--opening {
+		button.theme-hamburger-menu__open-btn {
+			.theme-hamburger-menu__open-btn-inner {
+				span.theme-hamburger-menu__open-btn-decoration-a {
+					opacity: 0;
+				}
+				&::after {
+					top: calc(50% - 1px);
+					transform: rotate(45deg);
+				}
+				&::before {
+					top: calc(50% - 1px);
+					transform: rotate(-45deg);
+				}
 			}
 		}
 	}
-	&__body-inner {
-		background-color: #eee;
-		color: #333;
-		padding: 40px 20px 20px 20px;
-		margin-left: 10px;
-		overflow: auto;
-		flex-grow: 10;
-	}
 
-	&__close-btn {
-		text-align: right;
-		position: fixed;
-		right: 10px;
-		top: 10px;
-		button {
-
-		}
-	}
-
+	// --------------------------------------
+	// Content
 	&__mega-menu {
 		ul {
 			padding: 0;
