@@ -57,6 +57,19 @@
 .theme-back-to-pagetop {
   text-align: right;
 }
+.theme-back-to-pagetop a {
+  position: relative;
+}
+.theme-back-to-pagetop a::before {
+  content: "";
+  display: inline-block;
+  border-top: 2px solid var(--theme-keycolor, #000);
+  border-left: 2px solid var(--theme-keycolor, #000);
+  width: 0.6em;
+  height: 0.6em;
+  transform: rotate(45deg);
+  margin-right: 0.4em;
+}
 
 /**
  * module: themeEditorModules:layouts/footer
@@ -307,7 +320,7 @@ p, li, dt, dd {
   display: none;
   position: fixed;
   top: 0px;
-  right: 0px;
+  left: 0px;
 }
 @media (max-width: 740px) {
   .theme-hamburger-menu {
@@ -461,6 +474,18 @@ body.theme-scroll-lock--iphone {
   position: fixed;
   width: 100%;
   height: 100%;
+}
+.theme-hamburger-menu--canvas-mode {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+  padding: 5px;
+}
+.theme-hamburger-menu--canvas-mode .theme-hamburger-menu__open {
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
 /**

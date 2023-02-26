@@ -7,7 +7,7 @@
 	display: none;
 	position: fixed;
 	top: 0px;
-	right: 0px;
+	left: 0px;
 	@media all and (max-width: 740px) {
 		display: block;
 	}
@@ -196,4 +196,18 @@ body.theme-scroll-lock--iphone {
     position: fixed;
     width: 100%;
     height: 100%;
+}
+
+// Canvasモード (編集画面)
+.theme-hamburger-menu--canvas-mode {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	padding: 5px;
+	.theme-hamburger-menu__open {
+		position: relative;
+		top: 0;
+		left: 0;
+	}
 }

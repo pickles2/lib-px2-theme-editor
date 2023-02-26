@@ -59,14 +59,6 @@
                                     },
                                     "anchor": "",
                                     "dec": ""
-                                },
-                                {
-                                    "modId": "themeEditorModules:layouts/backtopagetop",
-                                    "fields": []
-                                },
-                                {
-                                    "modId": "themeEditorModules:vars/breadcrumb",
-                                    "fields": []
                                 }
                             ],
                             "rnavi": [
@@ -81,6 +73,22 @@
                         },
                         "anchor": "",
                         "dec": ""
+                    },
+                    {
+                        "modId": "themeEditorModules:layouts/rnavi",
+                        "fields": {
+                            "main": [
+                                {
+                                    "modId": "themeEditorModules:layouts/backtopagetop",
+                                    "fields": []
+                                },
+                                {
+                                    "modId": "themeEditorModules:vars/breadcrumb",
+                                    "fields": []
+                                }
+                            ],
+                            "rnavi": []
+                        }
                     },
                     {
                         "modId": "themeEditorModules:layouts/footer",
