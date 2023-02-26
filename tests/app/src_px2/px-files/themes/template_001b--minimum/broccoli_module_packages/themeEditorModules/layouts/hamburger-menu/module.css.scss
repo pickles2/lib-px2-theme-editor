@@ -15,10 +15,10 @@
 
 	&__open {
 		position: fixed;
-		bottom: 5px;
-		left: 5px;
-		width: 45px;
-		height: 45px;
+		bottom: 15px;
+		left: 15px;
+		width: 60px;
+		height: 60px;
 		z-index: 110;
 	}
 
@@ -80,6 +80,7 @@
 			height: 100%;
 			border: 2px solid var(--theme-keycolor, #000);
 			border-radius: 50%;
+			box-sizing: border-box;
 
 			&::before {
 				content: "";
@@ -102,10 +103,10 @@
 				transition: all .3s ease-in-out;
 			}
 			&::after {
-				top: calc(50% - 1px - 7px);
+				top: calc(50% - 1px - 18%);
 			}
 			&::before {
-				top: calc(50% - 1px + 7px);
+				top: calc(50% - 1px + 18%);
 			}
 		}
 	}

@@ -7,6 +7,7 @@
 	right: 0px;
 	opacity: 0;
 	z-index: 90;
+	transition: opacity .3s linear;
 
 	&--visible {
 		opacity: 1;
@@ -14,10 +15,10 @@
 
 	&__inner {
 		position: fixed;
-		bottom: 5px;
-		right: 5px;
-		width: 45px;
-		height: 45px;
+		bottom: 15px;
+		right: 15px;
+		width: 60px;
+		height: 60px;
 	}
 
 	a.theme-back-to-pagetop-float__back-to-top {
@@ -39,6 +40,7 @@
 			height: 100%;
 			border: 2px solid var(--theme-keycolor, #000);
 			border-radius: 50%;
+			box-sizing: border-box;
 
 			span.theme-back-to-pagetop-float__back-to-top-decoration-a {
 				display: block;

@@ -122,16 +122,17 @@
   right: 0px;
   opacity: 0;
   z-index: 90;
+  transition: opacity 0.3s linear;
 }
 .theme-back-to-pagetop-float--visible {
   opacity: 1;
 }
 .theme-back-to-pagetop-float__inner {
   position: fixed;
-  bottom: 5px;
-  right: 5px;
-  width: 45px;
-  height: 45px;
+  bottom: 15px;
+  right: 15px;
+  width: 60px;
+  height: 60px;
 }
 .theme-back-to-pagetop-float a.theme-back-to-pagetop-float__back-to-top {
   display: flex;
@@ -152,6 +153,7 @@
   height: 100%;
   border: 2px solid var(--theme-keycolor, #000);
   border-radius: 50%;
+  box-sizing: border-box;
 }
 .theme-back-to-pagetop-float a.theme-back-to-pagetop-float__back-to-top .theme-back-to-pagetop-float__back-to-top-inner span.theme-back-to-pagetop-float__back-to-top-decoration-a {
   display: block;
@@ -197,6 +199,9 @@
 }
 .theme-back-to-pagetop a::before {
   content: "";
+  position: relative;
+  top: 0.1em;
+  left: 0;
   display: inline-block;
   border-top: 2px solid var(--theme-keycolor, #000);
   border-left: 2px solid var(--theme-keycolor, #000);
@@ -465,10 +470,10 @@ p, li, dt, dd {
 }
 .theme-hamburger-menu__open {
   position: fixed;
-  bottom: 5px;
-  left: 5px;
-  width: 45px;
-  height: 45px;
+  bottom: 15px;
+  left: 15px;
+  width: 60px;
+  height: 60px;
   z-index: 110;
 }
 .theme-hamburger-menu__body {
@@ -520,6 +525,7 @@ p, li, dt, dd {
   height: 100%;
   border: 2px solid var(--theme-keycolor, #000);
   border-radius: 50%;
+  box-sizing: border-box;
 }
 .theme-hamburger-menu button.theme-hamburger-menu__open-btn .theme-hamburger-menu__open-btn-inner::before {
   content: "";
@@ -540,10 +546,10 @@ p, li, dt, dd {
   transition: all 0.3s ease-in-out;
 }
 .theme-hamburger-menu button.theme-hamburger-menu__open-btn .theme-hamburger-menu__open-btn-inner::after {
-  top: calc(50% - 1px - 7px);
+  top: calc(50% - 1px - 18%);
 }
 .theme-hamburger-menu button.theme-hamburger-menu__open-btn .theme-hamburger-menu__open-btn-inner::before {
-  top: calc(50% - 1px + 7px);
+  top: calc(50% - 1px + 18%);
 }
 .theme-hamburger-menu--opening button.theme-hamburger-menu__open-btn .theme-hamburger-menu__open-btn-inner span.theme-hamburger-menu__open-btn-decoration-a {
   opacity: 0;
