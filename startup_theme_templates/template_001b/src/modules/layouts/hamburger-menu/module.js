@@ -35,7 +35,10 @@
 
 		$hamburgerMenus.each(function(hamburgerMenuIndex, elmHamburgerMenu){
 			const $hamburgerMenu = $(elmHamburgerMenu);
+			const $backgroundScreen = $hamburgerMenu.find('.theme-hamburger-menu__body');
+			const $backgroundScreenInner = $hamburgerMenu.find('.theme-hamburger-menu__body-inner');
 			const $toggleButton = $hamburgerMenu.find('button.theme-hamburger-menu__open-btn');
+			const $win = $(window);
 
 			$toggleButton
 				.off('click.theme-hamburger-menu')
@@ -47,6 +50,14 @@
 							$hamburgerMenu.addClass('theme-hamburger-menu--opening');
 						}, 0);
 						bodyScrollLockSwitch(true);
+						$backgroundScreen.on('click.theme-hamburger-menu', function(){
+							$toggleButton.trigger('click');
+						});
+						$win.on('keydown.theme-hamburger-menu', function(e){
+							if( e.originalEvent.keyCode == 27 ){ // Escキー
+								$toggleButton.trigger('click');
+							}
+						});
 						return;
 					}else{
 						// 閉じる
@@ -54,10 +65,16 @@
 						setTimeout(function(){
 							$hamburgerMenu.removeClass('theme-hamburger-menu--visible');
 						}, 300);
-
 						bodyScrollLockSwitch(false);
+						$backgroundScreen.off('click.theme-hamburger-menu');
+						$win.off('keydown.theme-hamburger-menu');
 						return;
 					}
+				});
+			$backgroundScreenInner
+				.off('click.theme-hamburger-menu')
+				.on('click.theme-hamburger-menu', function(e){
+					e.stopPropagation();
 				});
 		});
 	});

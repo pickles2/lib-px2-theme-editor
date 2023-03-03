@@ -4,14 +4,11 @@
  * ハンバーガーメニュー
  */
 .theme-hamburger-menu {
-	display: none;
+	display: block;
 	position: fixed;
 	top: 0px;
 	left: 0px;
 	z-index: 110;
-	@media all and (max-width: 740px) {
-		display: block;
-	}
 
 	&__open {
 		position: fixed;
@@ -41,6 +38,7 @@
 			margin-right: 30px;
 			overflow: auto;
 			flex-grow: 10;
+			max-width: 360px;
 
 			transition: all .3s ease-in-out;
 			transform: translateX(-100px);
@@ -72,6 +70,7 @@
 		background-color: #fff;
 		border: 0px none transparent;
 		position: relative;
+		cursor: pointer;
 
 		.theme-hamburger-menu__open-btn-inner {
 			display: block;
@@ -140,7 +139,7 @@
 				list-style-type: none;
 				a {
 					display: block;
-					padding: 10px 10px;
+					padding: 8px 18px;
 					border-radius: 9px;
 					&:hover {
 						background-color: #ddd;
@@ -148,15 +147,15 @@
 				}
 				li {
 					a {
-						padding-left: 30px;
+						padding-left: 38px;
 					}
 					li {
 						a {
-							padding-left: 60px;
+							padding-left: 68px;
 						}
 						li {
 							a {
-								padding-left: 90px;
+								padding-left: 98px;
 							}
 						}
 					}
@@ -167,12 +166,14 @@
 
 	&__shoulder-menu {
 		margin: 1em 0;
+		border-top: 1px solid #999;
 
 		ul {
 			padding: 0;
-			margin: 0;
+			margin: 10px 0 0 0;
 			display: flex;
 			justify-content: center;
+			flex-wrap: wrap;
 			gap: 10px;
 			li {
 				padding: 0;

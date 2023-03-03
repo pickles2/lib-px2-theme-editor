@@ -8,9 +8,11 @@
 	opacity: 0;
 	z-index: 90;
 	transition: opacity .3s linear;
+	pointer-events: none;
 
 	&--visible {
 		opacity: 1;
+		pointer-events: auto;
 	}
 
 	&__inner {

@@ -7,6 +7,7 @@
 		const classVisible = `theme-back-to-pagetop-float--visible`;
 
 		$(window)
+			.off('scroll.theme-back-to-pagetop-float')
 			.on('scroll.theme-back-to-pagetop-float', function(){
 				const scrollTop = $win.scrollTop();
 				if( scrollTop > 400 ){
@@ -14,6 +15,7 @@
 				}else{
 					$moduleInstances.removeClass(classVisible);
 				}
-			});
+			})
+			.trigger('scroll');
 	});
 })();
