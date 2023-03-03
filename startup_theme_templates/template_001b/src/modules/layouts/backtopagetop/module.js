@@ -20,7 +20,7 @@
 					const href = $(this).attr('href');
 					let targetTop = 0;
 					if( href && href.match(/^\#/) ){
-						targetTop = $(href).offset().top;
+						targetTop = $(document.getElementById(href.replace(/^\#/, ''))).offset().top;
 					}
 					$body.animate({
 						"scrollTop": targetTop,
