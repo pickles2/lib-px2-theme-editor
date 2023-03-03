@@ -88,11 +88,11 @@ class gpi{
 					$src_frontendThumbScss = '.pickles2-theme-editor{'.$src_frontendThumbScss.'}';
 					$src_frontendThumbScss = str_replace('_rootClassName', '.pickles2-theme-editor__thumb-'.$themeDir, $src_frontendThumbScss);
 
-					if( method_exists( $src_frontendThumbScss, 'compileString' ) ){
-						$src_frontendThumbScss = $src_frontendThumbScss->compileString( $src_frontendThumbScss )->getCss();
-					}elseif( method_exists( $src_frontendThumbScss, 'compile' ) ){
+					if( method_exists( $scssProcessor, 'compileString' ) ){
+						$src_frontendThumbScss = $scssProcessor->compileString( $src_frontendThumbScss )->getCss();
+					}elseif( method_exists( $scssProcessor, 'compile' ) ){
 						// 古い ScssPhp への対応
-						$src_frontendThumbScss = $src_frontendThumbScss->compile( $src_frontendThumbScss );
+						$src_frontendThumbScss = $scssProcessor->compile( $src_frontendThumbScss );
 					}
 
 					$bootup['themeTemplatesThumbsCss'] .= $src_frontendThumbScss;
