@@ -308,6 +308,11 @@
   --theme-textcolor-on-keycolor: #eee;
   --theme-subcolor: #696969;
   --theme-textcolor-on-subcolor: #eee;
+  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
+  --px2-main-color: #030303;
+  --px2-text-color: #333;
+  --px2-background-color: #f9f9f9;
+  --px2-border-color: #f0f0f0;
 }
 html, body {
   margin: 0;
@@ -457,6 +462,11 @@ p, li, dt, dd {
   --theme-textcolor-on-keycolor: #eee;
   --theme-subcolor: #696969;
   --theme-textcolor-on-subcolor: #eee;
+  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
+  --px2-main-color: #030303;
+  --px2-text-color: #333;
+  --px2-background-color: #f9f9f9;
+  --px2-border-color: #f0f0f0;
 }
 /**
  * ハンバーガーメニュー
@@ -646,6 +656,11 @@ body.theme-scroll-lock--iphone {
   --theme-textcolor-on-keycolor: #eee;
   --theme-subcolor: #696969;
   --theme-textcolor-on-subcolor: #eee;
+  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
+  --px2-main-color: #030303;
+  --px2-text-color: #333;
+  --px2-background-color: #f9f9f9;
+  --px2-border-color: #f0f0f0;
 }
 /**
  * Header
