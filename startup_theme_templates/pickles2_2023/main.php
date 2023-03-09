@@ -1,5 +1,5 @@
 <?php
-namespace pickles2\libs\themeEditor\startupThemeTemplates\template_001b;
+namespace pickles2\libs\themeEditor\startupThemeTemplates\pickles2_2023;
 class main{
 
 	/** $main */

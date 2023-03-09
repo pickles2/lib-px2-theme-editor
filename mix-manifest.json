@@ -1,8 +1,8 @@
 {
     "/dist/pickles2-theme-editor.js": "/dist/pickles2-theme-editor.js",
-    "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js": "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js",
-    "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js": "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js",
-    "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js": "/startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js",
+    "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js": "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js",
+    "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js": "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js",
+    "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js": "/startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js",
     "/tests/app/client_php/index_files/contents.js": "/tests/app/client_php/index_files/contents.js",
     "/dist/pickles2-theme-editor.css": "/dist/pickles2-theme-editor.css",
     "/dist/pickles2-theme-editor.min.js": "/dist/pickles2-theme-editor.min.js",

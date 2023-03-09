@@ -54,10 +54,10 @@ mix
 	.copy('./dist/pickles2-theme-editor.css', './dist/pickles2-theme-editor.min.css')
 
 	// --------------------------------------
-	// Theme: template_001b
-	.js('./startup_theme_templates/template_001b/src/modules/layouts/backtopagetop/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js')
-	.js('./startup_theme_templates/template_001b/src/modules/layouts/backtopagetop-float/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js')
-	.js('./startup_theme_templates/template_001b/src/modules/layouts/hamburger-menu/module.js', './startup_theme_templates/template_001b/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js')
+	// Theme: pickles2_2023
+	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/backtopagetop/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js')
+	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/backtopagetop-float/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js')
+	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/hamburger-menu/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js')
 
 	// --------------------------------------
 	// Local Dev

@@ -32,8 +32,8 @@ class mainTest extends PHPUnit\Framework\TestCase{
 		$this->assertSame($bootupInformations['theme_collection_dir_exists'], true);
 		$this->assertSame(is_array($bootupInformations['listThemeCollection']), true);
 		$this->assertSame(count($bootupInformations['listThemeCollection']), 0 + count($this->theme_templates) * $this->option_variations_count);
-		$this->assertSame($bootupInformations['listThemeCollection'][0]['id'], 'template_001b--full');
-		$this->assertSame($bootupInformations['listThemeCollection'][0]['name'], 'template_001b--full');
+		$this->assertSame($bootupInformations['listThemeCollection'][0]['id'], 'pickles2_2023--full');
+		$this->assertSame($bootupInformations['listThemeCollection'][0]['name'], 'pickles2_2023--full');
 	}
 
 	/**
