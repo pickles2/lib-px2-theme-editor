@@ -9,7 +9,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 		"home": require("./templates/home.twig"),
 	};
 	const themeTemplates = _themeTemplates;
-	themeTemplates.template_001b.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023/frontend/thumb.js"))(main, $);
+	themeTemplates.pickles2_2023.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023/frontend/thumb.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
