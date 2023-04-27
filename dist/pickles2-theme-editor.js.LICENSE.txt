@@ -38,9 +38,9 @@
 /*! Pickr 1.8.2 MIT | https://github.com/Simonwep/pickr */
 
 /**
-	 * Twig.js
-	 *
-	 * @copyright 2011-2016 John Roepke and the Twig.js Contributors
-	 * @license   Available under the BSD 2-Clause License
-	 * @link      https://github.com/twigjs/twig.js
-	 */
+ * Twig.js
+ *
+ * @copyright 2011-2020 John Roepke and the Twig.js Contributors
+ * @license   Available under the BSD 2-Clause License
+ * @link      https://github.com/twigjs/twig.js
+ */
