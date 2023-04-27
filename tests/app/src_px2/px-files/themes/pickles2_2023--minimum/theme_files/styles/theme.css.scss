@@ -38,6 +38,9 @@ h5,
 h6 {
 	font-weight: bold;
 }
+h1 {
+	font-size: 36px;
+}
 a {
 	color: var(--theme-keycolor);
 	text-decoration: none;
@@ -58,13 +61,13 @@ p, li, dt, dd {
 // --------------------------------------
 // px2style
 .px2-h2 h2, h2 {
-	font-size: 32px;
+	font-size: 30px;
 }
 .px2-h3 h3, h3 {
-	font-size: 28px;
+	font-size: 26px;
 }
 .px2-h4 h4, h4 {
-	font-size: 24px;
+	font-size: 23px;
 }
 .px2-h5 h5, h5 {
 	font-size: 20px;
