@@ -17,81 +17,73 @@
 .pickles2-theme-editor {
 
 	&__container {
-		max-width: 768px;
 		width: 100%;
 		margin: 0 auto;
 		padding: 0 10px;
 	}
 
-
-	// button.px2-btn{
-	// 	overflow: hidden;
-	// 	text-overflow: ellipsis;
-	// 	white-space: nowrap;
-	// }
-
-	&__theme-collection-list{
+	&__theme-collection-list {
 		&__unit{
 			display: flex;
-			&-thumb{
+			&-thumb {
 				width: 60px;
 				max-width: 100%;
 				margin-right: 20px;
-				img{
+				img {
 					width: 60px;
 					height: 60px;
 				}
 			}
-			&-body{
+			&-body {
 				display: flex;
 				align-items: center;
 			}
 		}
 	}
 
-	&__layout-menu{
+	&__layout-menu {
 		border: none;
 		display: block;
-		li{
+		li {
 			display: inline-block;
 			border: none;
 			padding: 1px 2px;
-			button{
+			button {
 				font-size: small;
 				padding: 0.2em 1em;
 			}
 		}
 	}
 
-	&__readme{
+	&__readme {
 		margin: 1em 0;
 
-		&__thumb{
+		&__thumb {
 			float: left;
 			margin: 0 20px 20px 0;
 			width: 220px;
 			max-width: 100%;
-			img{
+			img {
 				width: 100%;
 			}
-			@media all and (max-width:580px){
+			@media all and (max-width:580px) {
 				width: 100px;
 			}
 		}
-		&__readme{
+		&__readme {
 			margin-left: 240px;
-			@media all and (max-width:580px){
+			@media all and (max-width:580px) {
 				margin-left: 120px;
 			}
 		}
-		&:after{
+		&:after {
 			content:" ";
 			display:block;
 			clear:both;
 		}
 	}
 
-	&__set-default{
+	&__set-default {
 		border: 1px solid #ffeeba;
 		background-color: #fff3cd;
 		color: #856404;
@@ -100,12 +92,12 @@
 		border-radius: 5px;
 		width: 80%;
 		margin: 1em auto;
-		&--is-default{
+		&--is-default {
 			border: 1px solid #c3e6cb;
 			background-color: #d4edda;
 			color: #155724;
 		}
-		p{
+		p {
 			margin: 0;
 		}
 	}
@@ -118,7 +110,7 @@
 			justify-content: space-between;
 			align-content: center;
 		}
-		@media all and (max-width:680px){
+		@media all and (max-width:680px) {
 			> div {
 				display: block;
 				margin: 0;
@@ -132,42 +124,42 @@
 	/**
 	 * リストビュー
 	 */
-	&__listview{
+	&__listview {
 		border: 1px solid #999;
 		border-radius: 5px;
 		padding: 0;
 		overflow:hidden;
 		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
 
-		li{
+		li {
 			border-bottom: 1px solid #999;
 			list-style-type: none;
 			margin:0; padding: 0;
-			&:last-child{
+			&:last-child {
 				border: none;
 			}
-			>a{
+			>a {
 				display: block;
 				text-decoration: none;
 				padding: 0.3em 1.5em;
 				background-color: #fefefe;
-				&:hover{
+				&:hover {
 					background-color: #f9f9f9;
 				}
-				&.current{
+				&.current {
 					font-weight: bold;
 					background-color: #00a0e6;
 					color: #fff;
 				}
 			}
 
-			ul{
+			ul {
 				padding: 0;
 				margin: 0;
 				border-top: 1px dotted #ddd;
-				li{
+				li {
 					border-bottom: 1px dotted #ddd;
-					>a{
+					> a {
 						padding-left: 2.5em;
 					}
 				}
