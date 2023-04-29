@@ -101,6 +101,7 @@ pickles2ThemeEditor.init(
 ### pickles2/lib-px2-theme-editor v0.2.6 (リリース日未定)
 
 - "2023 Pickles 2" テンプレートに、コンテンツモジュールのスタイル調整を追加した。
+- "2023 Pickles 2 Darkmode" テンプレートを追加した。
 
 ### pickles2/lib-px2-theme-editor v0.2.5 (2023年3月11日)
 
