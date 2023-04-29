@@ -1,5 +1,5 @@
 /**
- * pickles2_2023
+ * shiromuku
  */
 module.exports = function( main, $ ){
 	const _this = this;
