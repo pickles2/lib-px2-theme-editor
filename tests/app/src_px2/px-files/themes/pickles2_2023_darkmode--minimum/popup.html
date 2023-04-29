@@ -14,7 +14,7 @@
 <header class="theme-header">
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
-			<?= htmlspecialchars( $px->conf()->name ?? '' ) ?>		</div>
+			<?= htmlspecialchars( $px->conf()->name ?? '' ) ?>			<?php if( strlen($px->conf()->tagline ?? '') ){ ?><div class="theme-header__si-tagline"><?= htmlspecialchars( $px->conf()->tagline ?? '' ) ?></div><?php } ?>		</div>
 
 	</div>
 </header>

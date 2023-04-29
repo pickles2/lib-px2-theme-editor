@@ -107,6 +107,7 @@ pickles2ThemeEditor.init(
 - "2023 Pickles 2 Darkmode" テンプレートを追加した。
 - テーマアイコンの表示を廃止した。
 - クライアントサイドにオプション `openInBrowser` を追加。
+- テンプレートが キャッチコピー(`$conf->tagline`) に対応した。
 
 ### pickles2/lib-px2-theme-editor v0.2.5 (2023年3月11日)
 
