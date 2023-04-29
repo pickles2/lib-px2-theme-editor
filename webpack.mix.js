@@ -55,6 +55,10 @@ mix
 
 	// --------------------------------------
 	// Theme: pickles2_2023
+	.copy('./vendor/pickles2/px2style/dist/themes/default.css', './startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css')
+	.copy('./vendor/pickles2/px2style/dist/themes/default.css.map', './startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css.map')
+	.copy('./vendor/pickles2/px2style/dist/themes/darkmode.css', './startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css')
+	.copy('./vendor/pickles2/px2style/dist/themes/darkmode.css.map', './startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css.map')
 	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/backtopagetop/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop/module.js')
 	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/backtopagetop-float/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/backtopagetop-float/module.js')
 	.js('./startup_theme_templates/pickles2_2023/src/modules/layouts/hamburger-menu/module.js', './startup_theme_templates/pickles2_2023/basefiles/broccoli_module_packages/themeEditorModules/layouts/hamburger-menu/module.js')

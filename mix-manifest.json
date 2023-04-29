@@ -6,5 +6,9 @@
     "/tests/app/client_php/index_files/contents.js": "/tests/app/client_php/index_files/contents.js",
     "/dist/pickles2-theme-editor.css": "/dist/pickles2-theme-editor.css",
     "/dist/pickles2-theme-editor.min.js": "/dist/pickles2-theme-editor.min.js",
-    "/dist/pickles2-theme-editor.min.css": "/dist/pickles2-theme-editor.min.css"
+    "/dist/pickles2-theme-editor.min.css": "/dist/pickles2-theme-editor.min.css",
+    "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css": "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css",
+    "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css.map": "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/default.css.map",
+    "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css": "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css",
+    "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css.map": "/startup_theme_templates/pickles2_2023/basefiles/theme_files/styles/px2style_themes/darkmode.css.map"
 }
