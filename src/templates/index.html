@@ -6,9 +6,6 @@
 		{% for themeRow in themeCollection %}
 			<li><a href="javascript:;" data-theme-id="{{ themeRow.id | e }}">
 				<div class="pickles2-theme-editor__theme-collection-list__unit">
-					<div class="pickles2-theme-editor__theme-collection-list__unit-thumb">
-						<img src="{{ themeRow.thumb | e }}" alt="" />
-					</div>
 					<div class="pickles2-theme-editor__theme-collection-list__unit-body">
 						<p>
 							{{ themeRow.id | e }}

@@ -23,14 +23,11 @@
 		{% endif %}
 	</div>
 
+	{% if readme %}
 	<div class="pickles2-theme-editor__readme">
-		<div class="pickles2-theme-editor__readme__thumb">
-			<img src="{{ thumb | e }}" alt="" />
-		</div>
-		<div class="pickles2-theme-editor__readme__readme">
-			<article>{{ readme }}</article>
-		</div>
+		<article>{{ readme }}</article>
 	</div>
+	{% endif %}
 
 	<h2>レイアウト</h2>
 	{% if layouts | length %}
