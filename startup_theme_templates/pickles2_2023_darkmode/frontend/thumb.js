@@ -1,5 +1,5 @@
 /**
- * pickles2_2023
+ * pickles2_2023_darkmode
  */
 module.exports = function( main, $ ){
 	const _this = this;

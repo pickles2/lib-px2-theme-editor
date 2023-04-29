@@ -10,6 +10,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 	};
 	const themeTemplates = _themeTemplates;
 	themeTemplates.pickles2_2023.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023/frontend/thumb.js"))(main, $);
+	themeTemplates.pickles2_2023_darkmode.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023_darkmode/frontend/thumb.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
@@ -183,9 +184,13 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 	 */
 	function updateThumbs(){
 		const userOptions = getSelectedOptions();
-		userOptions._rootClassName = 'pickles2-theme-editor__thumb-'+userOptions.templateId;
 		for(var themeId in themeTemplates){
-			themeTemplates[themeId].frontendThumb.update( themeTemplateThumbs[themeId], userOptions);
+			let templateUpdateParams = {
+				...userOptions,
+				"templateId": themeId,
+				"_rootClassName": `pickles2-theme-editor__thumb-${themeId}`,
+			};
+			themeTemplates[themeId].frontendThumb.update( themeTemplateThumbs[themeId], templateUpdateParams);
 		}
 		return;
 	}
