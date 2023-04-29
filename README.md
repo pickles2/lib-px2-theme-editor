@@ -105,6 +105,7 @@ pickles2ThemeEditor.init(
 
 - "2023 Pickles 2" テンプレートに、コンテンツモジュールのスタイル調整を追加した。
 - "2023 Pickles 2 Darkmode" テンプレートを追加した。
+- "SHIROMUKU" テンプレートを追加した。
 - テーマアイコンの表示を廃止した。
 - クライアントサイドにオプション `openInBrowser` を追加。
 - テンプレートが キャッチコピー(`$conf->tagline`) に対応した。

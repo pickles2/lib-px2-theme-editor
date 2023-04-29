@@ -1,0 +1,40 @@
+/**
+ * ナビゲーション
+ */
+.theme-common-navi {
+	margin-bottom: 0.7em;
+	overflow: hidden;
+	border-radius: 13px;
+
+	a {
+		display: block;
+		padding: 10px;
+	}
+	p {
+		text-align: center;
+		margin: 1px 0;
+		padding: 0;
+		a {
+			font-weight: bold;
+		}
+	}
+	ul {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+	ul li {
+		display: block;
+		margin: 1px 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	ul ul a {
+		padding-left: 25px;
+		font-size: small;
+	}
+	ul ul ul a {
+		padding-left: 40px;
+		font-size: small;
+	}
+}
