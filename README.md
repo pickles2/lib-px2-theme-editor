@@ -79,6 +79,9 @@ pickles2ThemeEditor.init(
         'themeLayoutEditor': function(themeId, layoutId){
             alert('themeLayoutEditor: '+themeId+'/'+layoutId);
         },
+        'openInBrowser': function(path){
+            alert('openInBrowser: '+path);
+        },
         'openInFinder': function(path){
             alert('openInFinder: '+path);
         },
@@ -103,6 +106,7 @@ pickles2ThemeEditor.init(
 - "2023 Pickles 2" テンプレートに、コンテンツモジュールのスタイル調整を追加した。
 - "2023 Pickles 2 Darkmode" テンプレートを追加した。
 - テーマアイコンの表示を廃止した。
+- クライアントサイドにオプション `openInBrowser` を追加。
 
 ### pickles2/lib-px2-theme-editor v0.2.5 (2023年3月11日)
 

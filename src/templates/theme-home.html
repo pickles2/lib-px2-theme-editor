@@ -57,6 +57,7 @@
 
 	<div class="px2-horizontal-list">
 		<ul>
+			{% if can_openInBrowser %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInBrowser" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/?THEME={{ themeId | e }}/&quot;}">プレビュー</a></li>{% endif %}
 			{% if can_openInFinder %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">{{ themeId | e }} フォルダを開く</a></li>{% endif %}
 			{% if can_openInFinder %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInFinder" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/theme_files/&quot;}">リソースフォルダを開く</a></li>{% endif %}
 			{% if can_openInTextEditor %}<li><a href="javascript:;" class="px2-a" data-pickles2-theme-editor-action="openInTextEditor" data-pickles2-theme-editor-options="{&quot;path&quot;:&quot;/{{ themeId | e }}/&quot;}">外部テキストエディタで開く</a></li>{% endif %}

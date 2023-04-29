@@ -54,6 +54,7 @@
 			options = options || {};
 			options.gpiBridge = options.gpiBridge || function(){};
 			options.themeLayoutEditor = options.themeLayoutEditor || false;
+			options.openInBrowser = options.openInBrowser || false;
 			options.openInFinder = options.openInFinder || false;
 			options.openInTextEditor = options.openInTextEditor || false;
 			this.options = options;
@@ -941,6 +942,12 @@
 				options = options || {};
 				return options;
 			}
+			$canvas.find('[data-pickles2-theme-editor-action=openInBrowser]').on('click', function(){
+				var options = parseOptions($(this));
+				options.path = options.path || '/';
+				_this.openInBrowser(options.path);
+				return false;
+			});
 			$canvas.find('[data-pickles2-theme-editor-action=openInFinder]').on('click', function(){
 				var options = parseOptions($(this));
 				options.path = options.path || '/';
