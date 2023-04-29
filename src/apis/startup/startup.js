@@ -11,6 +11,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 	const themeTemplates = _themeTemplates;
 	themeTemplates.pickles2_2023.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023/frontend/thumb.js"))(main, $);
 	themeTemplates.pickles2_2023_darkmode.frontendThumb = new (require("../../../startup_theme_templates/pickles2_2023_darkmode/frontend/thumb.js"))(main, $);
+	themeTemplates.shiromuku.frontendThumb = new (require("../../../startup_theme_templates/shiromuku/frontend/thumb.js"))(main, $);
 	const themeTemplateThumbs = {};
 	let $form;
 
