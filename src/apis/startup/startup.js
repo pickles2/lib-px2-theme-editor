@@ -21,17 +21,16 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 	this.init = function(){
 		it79.fnc({}, [
 			function(it1){
-				$canvas.append(templates.home(tplOptions));
+				$canvas.append(templates.home({
+					...tplOptions,
+					"themeTemplates": themeTemplates,
+				}));
 
 				$form = $canvas.find('form[data-pickles2-theme-editor-form=startup]');
 
 				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
 				for(var themeId in themeTemplates){
-					themeTemplateThumbs[themeId] = $('<a>')
-						.attr('data-value', themeId)
-						.attr('title', themeTemplates[themeId].info.name)
-					;
-					$thumbs.append( themeTemplateThumbs[themeId] );
+					themeTemplateThumbs[themeId] = $thumbs.find(`[data-value=${themeId}]`);
 				}
 
 				it1.next();
@@ -68,7 +67,6 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 						'themeId': themeId,
 						'options': options,
 					}, function(result){
-						// console.log(result);
 						if( result === false ){
 							alert('[FATAL] Unknown Error.');
 							px2style.closeLoading();
@@ -96,7 +94,6 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 				$canvas.find('form[data-pickles2-theme-editor-form=startup] input[name=logo_image]')
 					.on('change', function(e){
 						var $this = $(this);
-						// console.log(e.target.files);
 						var fileInfo = e.target.files[0];
 						var realpathSelected = $this.val();
 						var $img = $canvas.find('.pickles2-theme-editor__logo-image-preview img');
@@ -113,7 +110,6 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 							readSelectedLocalFile(fileInfo, function(dataUri){
 								var base64 = (function(dataUri){
 									dataUri = dataUri.replace(new RegExp('^data\\:[^\\;]*\\;base64\\,'), '');
-									// console.log(dataUri);
 									return dataUri;
 								})(dataUri);
 								var ext = (function(basename){
@@ -154,13 +150,13 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 							const selectedValue = $this.attr('data-value');
 							$canvas.find('input[name=template_id]').val(selectedValue);
 
-							$canvas.find('.pickles2-theme-editor__startup-thumb > a').removeClass(classNameCurrent);
+							$canvas.find('.pickles2-theme-editor__startup-thumb a').removeClass(classNameCurrent);
 							$this.addClass(classNameCurrent);
 						})
 					;
 				}
 				var defaultThemeTemplateId = $('input[name=template_id]').val();
-				$canvas.find('.pickles2-theme-editor__startup-thumb > a[data-value="'+defaultThemeTemplateId+'"]').addClass(classNameCurrent);
+				$canvas.find('.pickles2-theme-editor__startup-thumb a[data-value="'+defaultThemeTemplateId+'"]').addClass(classNameCurrent);
 
 
 				$canvas.find('form[data-pickles2-theme-editor-form=startup]').find('input,select,textarea')
@@ -308,7 +304,6 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 			var val = '';
 			if(pickr.getSelectedColor()){
 				var hexa = pickr.getColor().toHEXA();
-				// console.log(hexa);
 				val = hexa.toString();
 			}
 			$formElm.val(val);

@@ -33,7 +33,14 @@
 				<div class="px2-form-input-list__label"><label for="logo_image">テンプレート</label></div>
 				<div class="px2-form-input-list__input">
 					<input type="hidden" name="template_id" value="pickles2_2023" />
-					<div class="pickles2-theme-editor__startup-thumb"></div>
+					<div class="pickles2-theme-editor__startup-thumb">
+						{% for templateId, template in themeTemplates %}
+						<div class="pickles2-theme-editor__startup-thumb-item">
+							<a href="javascript:;" data-value="{{ templateId }}" title="{{ template.info.name }}"></a>
+							<div class="pickles2-theme-editor__startup-thumb-item-title">{{ template.info.name }}</div>
+						</div>
+						{% endfor %}
+					</div>
 				</div>
 			</li>
 		</ul>
