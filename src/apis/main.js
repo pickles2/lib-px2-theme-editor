@@ -169,6 +169,7 @@
 					'realpathThemeCollectionDir': realpathThemeCollectionDir,
 					'default_theme_id': multithemePluginOptions.default_theme_id,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -240,6 +241,7 @@
 							'default_theme_id': multithemePluginOptions.default_theme_id,
 							'is_startup': isStartup,
 							'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+							'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 							'can_openInFinder': (_this.options.openInFinder ? true : false),
 							'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 						}
@@ -305,6 +307,7 @@
 					'themePluginList': themePluginList,
 					'themeCollection': bootupInformations.listThemeCollection,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -460,6 +463,7 @@
 				{
 					'themeId': theme_id,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -536,6 +540,7 @@
 					'themeId': theme_id,
 					'layoutId': layout_id,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -696,6 +701,7 @@
 					'layoutId': layout_id,
 					'editMode': edit_mode,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -786,6 +792,7 @@
 					'themeId': theme_id,
 					'layoutId': layout_id,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
@@ -863,6 +870,7 @@
 				{
 					'errors': errors,
 					'can_themeLayoutEditor': (_this.options.themeLayoutEditor ? true : false),
+					'can_openInBrowser': (_this.options.openInBrowser ? true : false),
 					'can_openInFinder': (_this.options.openInFinder ? true : false),
 					'can_openInTextEditor': (_this.options.openInTextEditor ? true : false),
 				}
