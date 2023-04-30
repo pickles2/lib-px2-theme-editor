@@ -963,7 +963,6 @@
 			}
 			$canvas.find('[data-pickles2-theme-editor-action=openInBrowser]').on('click', function(){
 				var options = parseOptions($(this));
-				options.path = options.path || '/';
 				_this.openInBrowser(options.path);
 				return false;
 			});
