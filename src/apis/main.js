@@ -903,6 +903,17 @@
 		} // closeEditor()
 
 		/**
+		 * ブラウザで開く
+		 */
+		this.openInBrowser = function( path ){
+			if( !this.options.openInBrowser ){
+				return;
+			}
+			this.options.openInBrowser( path );
+			return;
+		}
+
+		/**
 		 * フォルダを開く
 		 */
 		this.openInFinder = function( path ){
