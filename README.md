@@ -101,6 +101,10 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
+### pickles2/lib-px2-theme-editor v0.2.7 (リリース日未定)
+
+- `article` レイアウトを標準化した。
+
 ### pickles2/lib-px2-theme-editor v0.2.6 (2023年5月1日)
 
 - "2023 Pickles 2" テンプレートに、コンテンツモジュールのスタイル調整を追加した。
