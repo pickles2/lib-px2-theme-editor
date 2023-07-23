@@ -45,6 +45,7 @@
 		<div class="theme-layouts__content">
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
 <h1><?= preg_replace('/\r\n|\r|\n/', '<br />', htmlspecialchars( $px->site()->get_current_page_info('title_h1') ?? '' )) ?></h1>
+<div class="theme-update-date"><p>更新日: <?= htmlspecialchars( $px->site()->get_current_page_info('update_date') ?? '---' ); ?></p></div>
 
 <div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by() ?? '') ?>="">
 <?= $px->bowl()->pull('') ?>
@@ -52,16 +53,14 @@
     	</div>
 	</div>
 </div>
-<div class="theme-layouts theme-layouts--rnavi">
+<div class="theme-layouts ">
 	<div class="theme-layouts__body">
 		<div class="theme-layouts__content">
 <div class="theme-back-to-pagetop">
 	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
 </div>
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
-		</div>
-		<div class="theme-layouts__rnavi">
-		</div>
+    	</div>
 	</div>
 </div>
 <footer class="theme-footer">

@@ -60,6 +60,10 @@
                                     "dec": ""
                                 },
                                 {
+                                    "modId": "themeEditorModules:vars/update_date",
+                                    "fields": []
+                                },
+                                {
                                     "modId": "themeEditorModules:vars/bowl",
                                     "fields": {
                                         "bowlName": ""
@@ -71,8 +75,9 @@
                         }
                     },
                     {
-                        "modId": "themeEditorModules:layouts/rnavi",
+                        "modId": "themeEditorModules:layouts/fullcolumn",
                         "fields": {
+                            "inner-width": "",
                             "main": [
                                 {
                                     "modId": "themeEditorModules:layouts/backtopagetop",
@@ -82,8 +87,7 @@
                                     "modId": "themeEditorModules:vars/breadcrumb",
                                     "fields": []
                                 }
-                            ],
-                            "rnavi": []
+                            ]
                         }
                     },
                     {

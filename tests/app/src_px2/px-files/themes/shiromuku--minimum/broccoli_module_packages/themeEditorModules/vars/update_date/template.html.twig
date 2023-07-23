@@ -1,0 +1,6 @@
+{% if _ENV.mode == 'canvas' %}
+<div class="theme-update-date"><p>更新日: 20XX-XX-XX</p></div>
+{% endif %}
+{% if _ENV.mode == 'finalize' %}
+<div class="theme-update-date"><p>更新日: <?= htmlspecialchars( $px->site()->get_current_page_info('update_date') ?? '---' ); ?></p></div>
+{% endif %}

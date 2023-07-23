@@ -895,3 +895,16 @@ blockquote {
   background-color: #222;
   font-size: small;
 }
+
+/**
+ * module: themeEditorModules:vars/update_date
+ */
+@charset "UTF-8";
+/**
+ * 更新日
+ */
+.theme-update-date {
+  text-align: right;
+  margin: 1em 0;
+  font-size: 14px;
+}
