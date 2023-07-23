@@ -43,9 +43,9 @@
                         "dec": ""
                     },
                     {
-                        "modId": "themeEditorModules:layouts/rnavi",
+                        "modId": "themeEditorModules:layouts/fullcolumn",
                         "fields": {
-                            "header": [],
+                            "inner-width": "",
                             "main": [
                                 {
                                     "modId": "themeEditorModules:vars/breadcrumb",
@@ -67,19 +67,8 @@
                                     "anchor": "",
                                     "dec": ""
                                 }
-                            ],
-                            "rnavi": [
-                                {
-                                    "modId": "themeEditorModules:vars/localnavigation",
-                                    "fields": [],
-                                    "anchor": "",
-                                    "dec": ""
-                                }
-                            ],
-                            "footer": []
-                        },
-                        "anchor": "",
-                        "dec": ""
+                            ]
+                        }
                     },
                     {
                         "modId": "themeEditorModules:layouts/rnavi",
