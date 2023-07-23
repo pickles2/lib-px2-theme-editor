@@ -104,6 +104,7 @@ pickles2ThemeEditor.init(
 ### pickles2/lib-px2-theme-editor v0.2.7 (リリース日未定)
 
 - `article` レイアウトを標準化した。
+- ダークモードテンプレートのスタイリングを修正。
 
 ### pickles2/lib-px2-theme-editor v0.2.6 (2023年5月1日)
 

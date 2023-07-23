@@ -5,8 +5,8 @@ body {
 	font-size: medium;
 	font-family: Meiryo, "Hiragino Kaku Gothic ProN", Verdana, "Helvetica Neue", Helvetica, Arial, sans-serif;
 	line-height: 1.43;
-	color: #eee;
-	background-color: #333;
+	color: #bbb;
+	background-color: #111;
 }
 .current {
 	font-weight: bold;
@@ -42,7 +42,7 @@ h1 {
 	font-size: 36px;
 }
 a {
-	color: var(--theme-keycolor);
+	color: #ddd;
 	text-decoration: none;
 }
 a:hover {

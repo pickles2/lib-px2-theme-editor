@@ -9,14 +9,14 @@
 	a {
 		display: block;
 		padding: 10px;
-		background-color: #eee;
+		background-color: #111;
 	}
 	p {
 		text-align: center;
 		margin: 1px 0;
 		padding: 0;
 		a {
-			background-color: #ddd;
+			background-color: #222;
 		}
 	}
 	ul {
@@ -32,12 +32,12 @@
 	}
 	ul ul a {
 		padding-left: 25px;
-		background-color: #f5f5f5;
+		background-color: #222;
 		font-size: small;
 	}
 	ul ul ul a {
 		padding-left: 40px;
-		background-color: #fefefe;
+		background-color: #222;
 		font-size: small;
 	}
 }
