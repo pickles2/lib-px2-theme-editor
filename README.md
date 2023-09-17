@@ -101,6 +101,10 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
+### pickles2/lib-px2-theme-editor v0.2.8 (リリース日未定)
+
+- 編集方法の変更ダイアログで、現在の編集方法がプリセットされない不具合を修正した。
+
 ### pickles2/lib-px2-theme-editor v0.2.7 (2023年8月29日)
 
 - `article` レイアウトを標準化した。

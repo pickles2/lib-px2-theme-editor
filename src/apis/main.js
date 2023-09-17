@@ -32,14 +32,14 @@
 		var $canvas;
 		var appMode;
 		var templates = {
-			'form-layout-change-edit-mode': require('../templates/form-layout-change-edit-mode.html'),
-			'form-layout-delete': require('../templates/form-layout-delete.html'),
-			'form-layout': require('../templates/form-layout.html'),
-			'form-theme-delete': require('../templates/form-theme-delete.html'),
-			'form-theme': require('../templates/form-theme.html'),
-			'index': require('../templates/index.html'),
-			'not-enough-api-version': require('../templates/not-enough-api-version.html'),
-			'theme-home': require('../templates/theme-home.html'),
+			'form-layout-change-edit-mode': require('-!text-loader!../templates/form-layout-change-edit-mode.html'),
+			'form-layout-delete': require('-!text-loader!../templates/form-layout-delete.html'),
+			'form-layout': require('-!text-loader!../templates/form-layout.html'),
+			'form-theme-delete': require('-!text-loader!../templates/form-theme-delete.html'),
+			'form-theme': require('-!text-loader!../templates/form-theme.html'),
+			'index': require('-!text-loader!../templates/index.html'),
+			'not-enough-api-version': require('-!text-loader!../templates/not-enough-api-version.html'),
+			'theme-home': require('-!text-loader!../templates/theme-home.html'),
 		};
 		const Startup = require('./startup/startup.js');
 
