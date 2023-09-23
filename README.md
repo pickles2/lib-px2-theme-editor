@@ -101,7 +101,7 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/lib-px2-theme-editor v0.2.8 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.2.8 (2023年9月24日)
 
 - 編集方法の変更ダイアログで、現在の編集方法がプリセットされない不具合を修正した。
 
