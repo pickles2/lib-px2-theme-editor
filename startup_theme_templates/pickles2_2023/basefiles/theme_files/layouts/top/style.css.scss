@@ -1,0 +1,28 @@
+.theme-header {
+	position: relative;
+
+	&__inner {
+		position: relative;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		max-width: none;
+	}
+	&__si {
+		text-align: center;
+		padding: 6em 15px 5em 15px;
+		h1 {
+			font-size: 36px;
+		}
+	}
+
+	.theme-header__globalnavi {
+		order: -20;
+		text-align: right;
+	}
+	.theme-header__shouldernavi {
+		order: -10;
+		text-align: right;
+	}
+}

@@ -103,6 +103,7 @@ pickles2ThemeEditor.init(
 
 ### pickles2/lib-px2-theme-editor v0.2.9 (リリース日未定)
 
+- "2023 Pickles 2" テンプレートのスタイル調整を追加した。
 - 多言語対応に関する更新。
 
 ### pickles2/lib-px2-theme-editor v0.2.8 (2023年9月24日)

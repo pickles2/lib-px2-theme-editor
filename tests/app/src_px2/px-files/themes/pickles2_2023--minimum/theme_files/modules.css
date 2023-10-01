@@ -741,8 +741,9 @@ body.theme-scroll-lock--iphone {
 .theme-header__si img {
   display: inline-block;
   height: 1.2em;
-  margin-right: 5px;
+  margin-right: 0.5em;
   vertical-align: top;
+  font-size: inherit;
 }
 @media (max-width: 740px) {
   .theme-header__si {

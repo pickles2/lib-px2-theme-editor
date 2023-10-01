@@ -18,7 +18,19 @@
                                 "resType": "",
                                 "webUrl": "",
                                 "path": "./theme_files/layouts/top/resources/logo.png"
-                            }
+                            },
+                            "shouldernavi": [
+                                {
+                                    "modId": "themeEditorModules:vars/shouldernavi",
+                                    "fields": []
+                                }
+                            ],
+                            "globalnavi": [
+                                {
+                                    "modId": "themeEditorModules:vars/globalnavi",
+                                    "fields": []
+                                }
+                            ]
                         },
                         "anchor": "",
                         "dec": ""

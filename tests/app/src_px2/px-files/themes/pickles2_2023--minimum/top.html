@@ -15,7 +15,29 @@
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
 			<h1><?= htmlspecialchars( $px->conf()->name ?? '' ) ?></h1>			<?php if( strlen($px->conf()->tagline ?? '') ){ ?><div class="theme-header__si-tagline"><?= htmlspecialchars( $px->conf()->tagline ?? '' ) ?></div><?php } ?>		</div>
+		<div class="theme-header__shouldernavi"><?php
+	$shoulder_menu = $px->site()->get_shoulder_menu();
+	if( is_array($shoulder_menu) && count($shoulder_menu) ){
+		echo( '<ul>' );
+		foreach( $shoulder_menu as $page_id ){
+			echo( '<li>'.$px->mk_link( $page_id ).'</li>' );
+		}
+		echo( '</ul>' );
+	}
+?>
+</div>
 
+		<div class="theme-header__globalnavi"><?php
+	$global_menu = $px->site()->get_global_menu();
+	if( is_array($global_menu) && count($global_menu) ){
+		echo( '<ul>'."\n" );
+		foreach( $global_menu as $page_id ){
+			echo( '<li>'.$px->mk_link( $page_id ).'</li>'."\n" );
+		}
+		echo( '</ul>'."\n" );
+	}
+?>
+</div>
 	</div>
 </header>
 <div class="theme-layouts ">

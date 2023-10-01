@@ -6,6 +6,7 @@ return call_user_func( function(){
 
 	// project
 	$conf->name = 'Pickles 2 Theme Editor Develop'; // サイト名
+	$conf->tagline = 'Pickles 2 のテーマ編集インターフェイス'; // キャッチフレーズ
 	$conf->domain = null; // ドメイン
 	$conf->path_controot = '/'; // コンテンツルートディレクトリ
 	$conf->copyright = 'Pickles Project'; // 著作権表示
