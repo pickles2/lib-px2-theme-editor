@@ -6,6 +6,9 @@
         "lnavi",
         "rnavi",
         "3columns",
+        "hamburger-menu",
+        "backtopagetop",
+        "backtopagetop-float",
         "footer"
     ],
     "deprecated": false

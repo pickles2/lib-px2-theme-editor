@@ -1,5 +1,5 @@
 {
-  "name": "Contents Container",
+  "name": "Container",
   "interface": {
     "fields": {
       "text-color":{

@@ -798,7 +798,7 @@ body.theme-scroll-lock--iphone {
 .theme-header__globalnavi ul li a {
   padding: 0.5em 2em;
   display: block;
-  background-color: #222;
+  background-color: #f5f5ff;
 }
 
 /**
