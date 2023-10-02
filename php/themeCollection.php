@@ -1,6 +1,6 @@
 <?php
 namespace pickles2\libs\themeEditor;
-class themeCollection{
+class themeCollection {
 
 	/** $main */
 	private $main;
@@ -45,7 +45,7 @@ class themeCollection{
 		}
 
 		return $themeCollection;
-	} // get_list();
+	}
 
 
 	/**
@@ -277,7 +277,6 @@ class themeCollection{
 					"output" => "json",
 				)
 			);
-			// var_dump($output);
 		}
 
 		return array(
