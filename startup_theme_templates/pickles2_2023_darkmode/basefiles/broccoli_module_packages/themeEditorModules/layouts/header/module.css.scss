@@ -52,8 +52,9 @@
 	&__si img {
 		display: inline-block;
 		height: 1.2em;
-		margin-right: 5px;
+		margin-right: 0.5em;
 		vertical-align: top;
+		font-size: inherit;
 	}
 	&__si {
 		@media all and (max-width: 740px) {

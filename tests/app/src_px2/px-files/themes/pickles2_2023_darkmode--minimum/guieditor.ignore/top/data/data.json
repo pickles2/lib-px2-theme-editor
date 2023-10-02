@@ -18,7 +18,19 @@
                                 "resType": "none",
                                 "webUrl": "",
                                 "path": ""
-                            }
+                            },
+                            "shouldernavi": [
+                                {
+                                    "modId": "themeEditorModules:vars/shouldernavi",
+                                    "fields": []
+                                }
+                            ],
+                            "globalnavi": [
+                                {
+                                    "modId": "themeEditorModules:vars/globalnavi",
+                                    "fields": []
+                                }
+                            ]
                         },
                         "anchor": "",
                         "dec": ""
