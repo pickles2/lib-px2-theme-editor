@@ -105,6 +105,7 @@ pickles2ThemeEditor.init(
 
 - "2023 Pickles 2" テンプレートのスタイル調整を追加した。
 - 多言語対応に関する更新。
+- サブプロジェクトで プレビュー したとき、`$conf->path_controot` を考慮した画面を開くようになった。
 
 ### pickles2/lib-px2-theme-editor v0.2.8 (2023年9月24日)
 

@@ -144,7 +144,7 @@
 				callback(result);
 			});
 			return;
-		} // gpi()
+		}
 
 
 		/**
@@ -189,7 +189,6 @@
 		 * テーマのホーム画面を開く
 		 */
 		this.pageThemeHome = function(themeId){
-			// console.log('Theme: '+themeId);
 			var themeInfo;
 			var isStartup = false;
 
@@ -200,7 +199,6 @@
 						'api': 'getThemeInfo',
 						'themeId': themeId,
 					}, function(result){
-						// console.log(result);
 						themeInfo = result;
 						arg.layouts = themeInfo.layouts;
 						arg.readme = themeInfo.readme;
@@ -251,10 +249,6 @@
 				},
 				function(it1, arg){
 					// Events
-					// $canvas.find('.pickles2-theme-editor__theme-collection-list a[data-theme-id]').on('click', function(){
-					// 	_this.pageThemeHome($(this).attr('data-theme-id'));
-					// 	return false;
-					// });
 					$canvas.find('[data-pickles2-theme-editor-action=pageHome]').on('click', function(){
 						_this.pageHome();
 						return false;
@@ -900,7 +894,7 @@
 			;
 			pj.updateGitStatus();
 			return;
-		} // closeEditor()
+		}
 
 		/**
 		 * ブラウザで開く
@@ -909,7 +903,16 @@
 			if( !this.options.openInBrowser ){
 				return;
 			}
-			this.options.openInBrowser( path );
+
+			var openUrl = path;
+			if( px2all.config.path_controot !== '/' ){
+				openUrl = [
+					px2all.config.path_controot.replace(/\/*$/, ''),
+					path.replace(/^\/*/, ''),
+				].join('/');
+			}
+
+			this.options.openInBrowser( openUrl );
 			return;
 		}
 
@@ -1040,7 +1043,6 @@
 			_this.gpi({
 				'api': 'getBootupInformations'
 			}, function(result){
-				// console.log('getBootupInformations:', result);
 				bootupInformations = result;
 				px2all = bootupInformations.px2all;
 
@@ -1049,7 +1051,6 @@
 					themePluginList = px2all.packages.package_list.themes;
 				} catch (e) {
 				}
-				// console.log(themePluginList);
 
 				// appMode
 				appMode = result.conf.appMode;
