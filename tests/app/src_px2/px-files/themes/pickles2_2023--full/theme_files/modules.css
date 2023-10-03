@@ -511,6 +511,10 @@
   height: 60px;
   z-index: 110;
 }
+.theme-hamburger-menu__title {
+  text-align: center;
+  font-weight: bold;
+}
 .theme-hamburger-menu__body {
   display: none;
   background-color: #0004;

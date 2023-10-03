@@ -9,6 +9,9 @@
 	<div class="theme-hamburger-menu__body">
 		<div class="theme-hamburger-menu__body-inner">
 {% if _ENV.mode == 'finalize' %}
+			<div class="theme-hamburger-menu__title">
+				<p><a href="<?= htmlspecialchars($px->href('')) ?>"><?= htmlspecialchars($px->conf()->name ?? '') ?></a></p>
+			</div>
 			<div class="theme-hamburger-menu__mega-menu">
 <?= $theme->mk_megafooter_menu() ?>
 			</div>

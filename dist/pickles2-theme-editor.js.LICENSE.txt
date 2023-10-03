@@ -19,9 +19,7 @@
 
 /*! For license information please see px2style.js.LICENSE.txt */
 
-/*! NanoPop 2.1.0 MIT | https://github.com/Simonwep/nanopop */
-
-/*! Pickr 1.8.2 MIT | https://github.com/Simonwep/pickr */
+/*! NanoPop 2.3.0 MIT | https://github.com/Simonwep/nanopop */
 
 /**
  * Twig.js

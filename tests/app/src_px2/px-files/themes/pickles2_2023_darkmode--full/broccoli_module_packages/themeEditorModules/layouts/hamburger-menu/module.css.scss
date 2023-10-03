@@ -19,6 +19,11 @@
 		z-index: 110;
 	}
 
+	&__title {
+		text-align: center;
+		font-weight: bold;
+	}
+
 	&__body {
 		display: none;
 		background-color: #0004;
