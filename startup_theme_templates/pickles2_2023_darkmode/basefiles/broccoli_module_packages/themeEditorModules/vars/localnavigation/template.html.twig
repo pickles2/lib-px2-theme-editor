@@ -1,6 +1,7 @@
 <nav class="theme-common-navi">
 {% if _ENV.mode == 'canvas' %}
 
+{% if _ENV.lang == "ja" %}
 <p><a href="javascript:;">親ページ名</a></p>
 <ul>
 <li><a href="javascript:;">子階層ページ1</a></li>
@@ -10,6 +11,17 @@
 <li><a href="javascript:;">子階層ページ5</a></li>
 <li><a href="javascript:;">子階層ページ6</a></li>
 </ul>
+{% else %}
+<p><a href="javascript:;">Parent page</a></p>
+<ul>
+<li><a href="javascript:;">Child page 1</a></li>
+<li><a href="javascript:;">Child page 2</a></li>
+<li><a href="javascript:;">Child page 3</a></li>
+<li><a href="javascript:;">Child page 4</a></li>
+<li><a href="javascript:;">Child page 5</a></li>
+<li><a href="javascript:;">Child page 6</a></li>
+</ul>
+{% endif %}
 
 {% endif %}
 {% if _ENV.mode == 'finalize' %}

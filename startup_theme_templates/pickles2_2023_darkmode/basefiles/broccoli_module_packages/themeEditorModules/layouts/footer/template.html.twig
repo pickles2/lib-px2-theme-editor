@@ -2,6 +2,7 @@
 	<div class="theme-footer__inner">
 		<nav class="theme-footer__megafooter-navi">
 {% if _ENV.mode == 'canvas' %}
+{% if _ENV.lang == "ja" %}
 <ul>
 <li><a href="javascript:;">ページ名</a><ul>
 <li><a href="javascript:;">ページ名</a></li>
@@ -30,6 +31,36 @@
 </ul>
 </li>
 </ul>
+{% else %}
+<ul>
+<li><a href="javascript:;">Page name</a><ul>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+</ul>
+</li>
+<li><a href="javascript:;">Page name</a><ul>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+</ul>
+</li>
+<li><a href="javascript:;">Page name</a><ul>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+<li><a href="javascript:;">Page name</a></li>
+</ul>
+</li>
+</ul>
+{% endif %}
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
 <?= $theme->mk_megafooter_menu() ?>
@@ -39,8 +70,13 @@
 		<div class="theme-footer__shouldernavi">
 {% if _ENV.mode == 'canvas' %}
 <ul>
+{% if _ENV.lang == "ja" %}
 	<li><a href="javascript:;">ページ名</a></li>
 	<li><a href="javascript:;">ページ名</a></li>
+{% else %}
+	<li><a href="javascript:;">Page name</a></li>
+	<li><a href="javascript:;">Page name</a></li>
+{% endif %}
 </ul>
 {% endif %}
 {% if _ENV.mode == 'finalize' %}

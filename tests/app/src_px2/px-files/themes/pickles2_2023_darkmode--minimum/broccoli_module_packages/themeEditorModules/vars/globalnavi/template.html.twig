@@ -1,9 +1,16 @@
 {% if _ENV.mode == 'canvas' %}
 <ul>
+{% if _ENV.lang == "ja" %}
 	<li><a href="javascript:;">ページ名</a></li>
 	<li><a href="javascript:;">ページ名</a></li>
 	<li><a href="javascript:;">ページ名</a></li>
 	<li><a href="javascript:;">ページ名</a></li>
+{% else %}
+	<li><a href="javascript:;">Page name</a></li>
+	<li><a href="javascript:;">Page name</a></li>
+	<li><a href="javascript:;">Page name</a></li>
+	<li><a href="javascript:;">Page name</a></li>
+{% endif %}
 </ul>
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
