@@ -49,7 +49,10 @@
 <?= $px->bowl()->pull('') ?>
 </div>
 <div class="theme-back-to-pagetop">
-	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+	<p><a href="#pagetop"><?php
+		if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
+		} else { ?>Back to page top<?php
+		} ?></a></p>
 </div>
     	</div>
 	</div>
@@ -113,7 +116,10 @@
 	<div class="theme-back-to-pagetop-float__inner">
 		<a href="#pagetop" class="theme-back-to-pagetop-float__back-to-top">
 			<span class="theme-back-to-pagetop-float__back-to-top-inner">
-				<span class="theme-back-to-pagetop-float__back-to-top-decoration-a">このページの先頭へ戻る</span>
+				<span class="theme-back-to-pagetop-float__back-to-top-decoration-a"><?php
+					if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
+					} else { ?>Back to page top<?php
+					} ?></span>
 			</span>
 		</a>
 	</div>

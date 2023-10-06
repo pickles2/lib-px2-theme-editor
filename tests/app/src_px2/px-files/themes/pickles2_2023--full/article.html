@@ -45,7 +45,10 @@
 		<div class="theme-layouts__content">
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
 <h1><?= preg_replace('/\r\n|\r|\n/', '<br />', htmlspecialchars( $px->site()->get_current_page_info('title_h1') ?? '' )) ?></h1>
-<div class="theme-update-date"><p>更新日: <?= htmlspecialchars( $px->site()->get_current_page_info('update_date') ?? '---' ); ?></p></div>
+<div class="theme-update-date"><p><?php
+    if ($px->lang() == "ja") { ?>更新日<?php 
+    } else { ?>Update date<?php
+    } ?>: <?= htmlspecialchars( $px->site()->get_current_page_info('update_date') ?? '---' ); ?></p></div>
 
 <div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by() ?? '') ?>="">
 <?= $px->bowl()->pull('') ?>
@@ -57,7 +60,10 @@
 	<div class="theme-layouts__body">
 		<div class="theme-layouts__content">
 <div class="theme-back-to-pagetop">
-	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+	<p><a href="#pagetop"><?php
+		if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
+		} else { ?>Back to page top<?php
+		} ?></a></p>
 </div>
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
     	</div>
@@ -122,7 +128,10 @@
 	<div class="theme-back-to-pagetop-float__inner">
 		<a href="#pagetop" class="theme-back-to-pagetop-float__back-to-top">
 			<span class="theme-back-to-pagetop-float__back-to-top-inner">
-				<span class="theme-back-to-pagetop-float__back-to-top-decoration-a">このページの先頭へ戻る</span>
+				<span class="theme-back-to-pagetop-float__back-to-top-decoration-a"><?php
+					if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
+					} else { ?>Back to page top<?php
+					} ?></span>
 			</span>
 		</a>
 	</div>
