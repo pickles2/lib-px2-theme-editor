@@ -1,6 +1,6 @@
 <?php
 namespace pickles2\libs\themeEditor\startupThemeTemplates\pickles2_2023_darkmode;
-class main{
+class main {
 
 	/** $main */
 	private $main;
@@ -56,7 +56,7 @@ class main{
 
 
 		if( array_key_exists('logoImage', $options) && strlen( $options['logoImage'] ?? '' ) ){
-			foreach( array('default', 'popup', 'top') as $layoutName ){
+			foreach( array('default', 'article', 'popup', 'top') as $layoutName ){
 
 				$this->main->fs()->mkdir_r( $realpath_theme_root.'theme_files/layouts/'.$layoutName.'/resources/' );
 				$this->main->fs()->copy_r(
