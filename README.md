@@ -107,6 +107,7 @@ pickles2ThemeEditor.init(
 - "2023 Pickles 2" テンプレートで、 `article` レイアウトにロゴ画像が適用されない不具合を修正した。
 - 多言語対応に関する更新。
 - サブプロジェクトで プレビュー したとき、`$conf->path_controot` を考慮した画面を開くようになった。
+- テンプレート `Pickles 2 Darkmode 2023` の改善。
 
 ### pickles2/lib-px2-theme-editor v0.2.8 (2023年9月24日)
 

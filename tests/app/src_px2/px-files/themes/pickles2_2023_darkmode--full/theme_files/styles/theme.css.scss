@@ -21,14 +21,16 @@ pre {
 	border: 1px solid #e1e1e8;
 	background-color: #f7f7f9;
 	border-radius: 4px;
+	filter: invert(100%);
 	> code {
 		display: block;
 		padding: 1em;
 		overflow: auto;
+		color: #d44950;
 	}
 }
 code {
-	color: #d44950;
+	color: #c47f82;
 }
 h1,
 h2,
@@ -160,3 +162,109 @@ p, li, dt, dd {
 	}
 }
 
+
+/**
+ * Header
+ */
+.theme-header{
+	background-color: var(--theme-keycolor);
+	color: var(--theme-textcolor-on-keycolor);
+	border-top: 4px solid var(--theme-subcolor);
+
+	/**
+	 * Site Identity
+	 */
+	&__si,
+	&__si * {
+		color: var(--theme-textcolor-on-keycolor);
+	}
+	&__si a:hover {
+		color: var(--theme-textcolor-on-keycolor);
+	}
+
+	/**
+	 * ショルダーメニュー
+	 */
+	&__shouldernavi ul li a{
+		color: var(--theme-textcolor-on-keycolor);
+	}
+
+	/**
+	 * グローバルメニュー
+	 */
+	&__globalnavi ul li a {
+		background-color: #f5f5ff55;
+	}
+}
+
+/**
+ * ハンバーガーメニュー
+ */
+.theme-hamburger-menu {
+	&__body {
+		background-color: #0004;
+		color: #fff;
+
+		&-inner {
+			background-color: #333;
+		}
+	}
+
+	button.theme-hamburger-menu__open-btn {
+		background-color: #000;
+		.theme-hamburger-menu__open-btn-inner {
+			border: 2px solid #bbb;
+			span.theme-hamburger-menu__open-btn-decoration-a,
+			&::after,
+			&::before {
+				border-top: 2px solid #bbb;
+			}
+		}
+	}
+
+	// --------------------------------------
+	// Content
+	&__mega-menu {
+		ul {
+			li {
+				a {
+					&:hover {
+						background-color: #444;
+					}
+				}
+			}
+		}
+	}
+
+	&__shoulder-menu {
+		border-top: 1px solid #666;
+
+		ul {
+			li {
+				a {
+					&:hover {
+						background-color: #444;
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * Back to PageTop (float)
+ */
+.theme-back-to-pagetop-float {
+	a.theme-back-to-pagetop-float__back-to-top {
+		background-color: #000;
+
+		.theme-back-to-pagetop-float__back-to-top-inner {
+			border: 2px solid #bbb;
+
+			span.theme-back-to-pagetop-float__back-to-top-decoration-a {
+				border-top: 2px solid #bbb;
+				border-left: 2px solid #bbb;
+			}
+		}
+	}
+}
