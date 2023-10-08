@@ -1,0 +1,59 @@
+// Pickles2: Theme Editor
+@charset "utf-8";
+
+// px2style
+@import '../../node_modules/px2style/dist/themes/darkmode';
+
+.pickles2-theme-editor {
+	// startup
+	@import '../apis/startup/startup-darkmode.ignore.css.scss';
+}
+
+.pickles2-theme-editor {
+
+	&__set-default {
+		border: 1px solid #6e6341;
+		background-color: #5f573d;
+		color: #c0a75f;
+		&--is-default {
+			border: 1px solid #2f613b;
+			background-color: #1e5f2d;
+			color: #87d99a;
+		}
+	}
+
+	/**
+	 * リストビュー
+	 */
+	&__listview {
+		border: 1px solid #444;
+		box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.1);
+
+		li {
+			border-bottom: 1px solid #444;
+			>a {
+				background-color: #222;
+				&:hover {
+					background-color: #292929;
+				}
+				&.current {
+					background-color: #00a0e6;
+					color: #fff;
+				}
+			}
+
+			ul {
+				border-top: 1px dotted #222;
+				li {
+					border-bottom: 1px dotted #444;
+				}
+			}
+		}
+	}
+
+	&__selected {
+		background-color: rgb(187, 112, 87);
+		color: #fff;
+	}
+
+}

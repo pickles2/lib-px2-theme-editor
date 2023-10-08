@@ -129,11 +129,13 @@ class main{
 		// px2te
 		if(is_string($realpath_dist) && is_dir($realpath_dist)){
 			$this->fs->copy_r(__DIR__.'/../dist/', $realpath_dist.'/px2te/');
-			array_push($rtn->js, 'px2te/pickles2-theme-editor.min.js');
-			array_push($rtn->css, 'px2te/pickles2-theme-editor.min.css');
+			array_push($rtn->js, 'px2te/pickles2-theme-editor.js');
+			array_push($rtn->css, 'px2te/pickles2-theme-editor.css');
+			// array_push($rtn->css, 'px2te/themes/darkmode.css'); // NOTE: ダークモードのプレビュー用
 		}else{
-			array_push($rtn->js, realpath(__DIR__.'/../dist/pickles2-theme-editor.min.js'));
-			array_push($rtn->css, realpath(__DIR__.'/../dist/pickles2-theme-editor.min.css'));
+			array_push($rtn->js, realpath(__DIR__.'/../dist/pickles2-theme-editor.js'));
+			array_push($rtn->css, realpath(__DIR__.'/../dist/pickles2-theme-editor.css'));
+			// array_push($rtn->css, realpath(__DIR__.'/../dist/themes/darkmode.css')); // NOTE: ダークモードのプレビュー用
 		}
 
 

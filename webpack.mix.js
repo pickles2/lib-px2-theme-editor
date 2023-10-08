@@ -48,6 +48,7 @@ mix
 	// Pickles 2 Theme Editor
 	.js('./src/pickles2-theme-editor.js', './dist/pickles2-theme-editor.js')
 	.sass('./src/pickles2-theme-editor.css.scss', './dist/pickles2-theme-editor.css')
+	.sass('./src/themes/darkmode.css.scss', './dist/themes/darkmode.css')
 
 	// .min files
 	.copy('./dist/pickles2-theme-editor.js', './dist/pickles2-theme-editor.min.js')
