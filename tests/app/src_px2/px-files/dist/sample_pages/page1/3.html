@@ -26,7 +26,7 @@
 <header class="theme-header">
 	<div class="theme-header__inner">
 		<div class="theme-header__si">
-			<a href="/"><img src="/caches/p/theme/pickles2_2023--full/layouts/default/resources/logo.png" alt="" />Pickles 2 Theme Editor Develop</a>					</div>
+			<a href="/"><img src="/caches/p/theme/pickles2_2023--full/layouts/default/resources/logo.png" alt="" />Pickles 2 Theme Editor Develop</a>			<div class="theme-header__si-tagline">Pickles 2 のテーマ編集インターフェイス</div>		</div>
 		<div class="theme-header__shouldernavi"><ul><li><a href="/sample_pages/help/">ヘルプ</a></li></ul></div>
 
 		<div class="theme-header__globalnavi"><ul>
@@ -51,8 +51,8 @@
 <p>どのように記述してこのHTMLがつくられているか、コンテンツのソースコードをみて確認してください。</p>
 
 <!-- == autoindex == -->
-<div style="margin:2em 5%; border:1px solid #bbb; padding:1em; background:rgba(124, 124, 124, 0.05); border-radius:5px;">
-<div style="margin:0; padding:0; text-align:center; font-weight:bold;">INDEX</div><ul style="margin:0; padding:0 0 0 2em;"><li style="list-style-type:disc; display:list-item;"><a href="#hash_H2見出しのサンプル">H2見出しのサンプル</a><ul style="margin:0; padding:0 0 0 2em;"><li style="list-style-type:disc; display:list-item;"><a href="#hash_H3見出しのサンプル">H3見出しのサンプル</a><ul style="margin:0; padding:0 0 0 2em;"><li style="list-style-type:disc; display:list-item;"><a href="#hash_H4見出しのサンプル">H4見出しのサンプル</a><ul style="margin:0; padding:0 0 0 2em;"><li style="list-style-type:disc; display:list-item;"><a href="#hash_H5見出しのサンプル">H5見出しのサンプル</a></li></ul></li></ul></li></ul></li><li style="list-style-type:disc; display:list-item;"><a href="#hash_HTMLやPHPコードを埋め込む">HTMLやPHPコードを埋め込む</a></li></ul>
+<div class="px2-index-list">
+<div class="px2-index-list__title">INDEX</div><ul><li><a href="#hash_H2見出しのサンプル">H2見出しのサンプル</a><ul><li><a href="#hash_H3見出しのサンプル">H3見出しのサンプル</a><ul><li><a href="#hash_H4見出しのサンプル">H4見出しのサンプル</a><ul><li><a href="#hash_H5見出しのサンプル">H5見出しのサンプル</a></li></ul></li></ul></li></ul></li><li><a href="#hash_HTMLやPHPコードを埋め込む">HTMLやPHPコードを埋め込む</a></li></ul>
 </div>
 <!-- / == autoindex == -->
 
@@ -81,9 +81,19 @@
 
 <p>このテキストは、直接実装したPHPコードが出力したものです。</p>
 
+<p>インラインでコードを表現するには、 <code>バッククオート</code> を使用します。</p>
+
 <pre><code>&lt;div class="sample"&gt;
     &lt;p&gt;Markdown でコードを記載するサンプル&lt;/p&gt;
 &lt;/div&gt;
+</code></pre>
+
+<pre><code class="html">&lt;div class="sample"&gt;
+    &lt;p&gt;Markdown でコードを記載するサンプル&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code class="js">alert("123");
 </code></pre>
 </div>
 		</div>
@@ -158,6 +168,9 @@
 	</div>
 	<div class="theme-hamburger-menu__body">
 		<div class="theme-hamburger-menu__body-inner">
+			<div class="theme-hamburger-menu__title">
+				<p><a href="/">Pickles 2 Theme Editor Develop</a></p>
+			</div>
 			<div class="theme-hamburger-menu__mega-menu">
 <ul>
 <li><a href="/sample_pages/" class="current">サンプルページ1</a><ul>

@@ -144,7 +144,7 @@ return call_user_func( function(){
 
 	$conf->funcs->processor->html = [
 		// ページ内目次を自動生成する
-		'picklesFramework2\processors\autoindex\autoindex::exec' ,
+		\picklesFramework2\processors\autoindex\autoindex::exec(array('class'=>'px2-index-list')),
 
 		// px2-path-resolver - 共通コンテンツのリンクやリソースのパスを解決する
 		//   このAPIは、サイトマップCSV上で path と content が異なるパスを参照している場合に、

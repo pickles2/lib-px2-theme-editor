@@ -1016,6 +1016,7 @@ table.px2-table {
 }
 table.px2-table th, table.px2-table td {
   border: 1px solid #dee2e6;
+  padding: 0.6em 1em;
   word-wrap: break-word;
 }
 table.px2-table--left {
@@ -1055,6 +1056,7 @@ table.px2-table--dl td {
 .px2-grid {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0rem;
   margin: 0 -0.5rem 0 -0.5rem;
   box-sizing: border-box;
@@ -1751,6 +1753,30 @@ table.px2-table--dl td {
     margin-bottom: 0.5em;
     padding-left: 1em;
   }
+}
+/**
+ * module: px2style:lists/index
+ */
+.px2-index-list {
+  margin: 2em 5%;
+  border: 1px solid #bbb6;
+  padding: 1em;
+  background: rgba(124, 124, 124, 0.05);
+  border-radius: 5px;
+}
+.px2-index-list__title {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+}
+.px2-index-list ul {
+  margin: 0;
+  padding: 0 0 0 2em;
+}
+.px2-index-list ul li {
+  display: list-item;
+  list-style-type: disc;
 }
 /**
  * module: px2style:lists/ul-links
@@ -2478,9 +2504,9 @@ h1 .px2-linklist > ul > li a, .px2-h1 .px2-linklist > ul > li a, h2 .px2-linklis
 }
 .px2-viewport-fit__inner {
   box-sizing: border-box;
-  width: calc(100vw - 50px);
+  width: calc(100vw);
   position: relative;
-  left: calc(-50vw + 25px);
+  left: calc(-50vw);
 }
 .px2-viewport-fit__contents {
   margin: 0 auto;
