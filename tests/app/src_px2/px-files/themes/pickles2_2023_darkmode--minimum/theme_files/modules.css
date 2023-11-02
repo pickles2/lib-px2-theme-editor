@@ -399,7 +399,7 @@
  * Layout
  */
 .theme-layouts {
-  background-color: #333;
+  background-color: #181818;
   padding: 18px 15px;
   clear: both;
   margin: 0 auto;
@@ -865,11 +865,17 @@ blockquote {
   margin-bottom: 0.7em;
   overflow: hidden;
   border-radius: 13px;
+  border: 1px solid #444;
 }
 .theme-common-navi a {
   display: block;
   padding: 10px;
-  background-color: #111;
+  background-color: #222;
+  border-bottom: 1px solid #444;
+}
+.theme-common-navi a:hover {
+  opacity: 0.7;
+  background-color: #292929;
 }
 .theme-common-navi p {
   text-align: center;
@@ -877,7 +883,10 @@ blockquote {
   padding: 0;
 }
 .theme-common-navi p a {
-  background-color: #222;
+  background-color: #111;
+}
+.theme-common-navi p a:hover {
+  background-color: #181818;
 }
 .theme-common-navi ul {
   display: block;
@@ -892,12 +901,12 @@ blockquote {
 }
 .theme-common-navi ul ul a {
   padding-left: 25px;
-  background-color: #222;
+  background-color: #252525;
   font-size: small;
 }
 .theme-common-navi ul ul ul a {
   padding-left: 40px;
-  background-color: #222;
+  background-color: #252525;
   font-size: small;
 }
 
