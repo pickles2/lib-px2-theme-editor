@@ -45,10 +45,9 @@ h1 {
 }
 a {
 	color: #ddd;
-	text-decoration: none;
 }
 a:hover {
-	text-decoration: underline;
+	opacity: 0.7;
 }
 p, ul, ol, dl {
 	margin: 1em 0;
@@ -85,7 +84,7 @@ p, li, dt, dd {
 .px2-h6 {
 	.px2-linklist {
 		ul.px2-horizontal-list > li > a {
-			color: var(--theme-keycolor);
+			color: #ddd;
 			font-weight: normal;
 			&::before {
 				content: "";
@@ -100,6 +99,12 @@ p, li, dt, dd {
 				border-bottom-color: transparent;
 			}
 		}
+	}
+}
+
+.px2-linklist {
+	a {
+		text-decoration: none;
 	}
 }
 
@@ -247,6 +252,15 @@ p, li, dt, dd {
 					}
 				}
 			}
+		}
+	}
+}
+
+.theme-back-to-pagetop {
+	a {
+		&::before {
+			border-top: 2px solid #fff;
+			border-left: 2px solid #fff;
 		}
 	}
 }
