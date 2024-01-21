@@ -1,3 +1,17 @@
 {
-    "name": "Pickles 2 Darkmode 2023"
+    "name": "Pickles 2 Darkmode 2023",
+    "options": {
+        "logoImage": {
+            "label": "Logo Image",
+            "type": "image"
+        },
+        "mainColor": {
+            "label": "Main Color",
+            "type": "color"
+        },
+        "subColor": {
+            "label": "Sub Color",
+            "type": "color"
+        }
+    }
 }
