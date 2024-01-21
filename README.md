@@ -103,7 +103,9 @@ pickles2ThemeEditor.init(
 
 ### pickles2/lib-px2-theme-editor v0.2.10 (リリース日未定)
 
-- テンプレートのスタイルに関する微調整。
+- "2023 Pickles 2" テンプレート, "2023 Pickles 2 Darkmode" テンプレート
+	- サイドバーが画面内に固定されるようになった。
+	- スタイルに関する微調整。
 
 ### pickles2/lib-px2-theme-editor v0.2.9 (2023年11月13日)
 
