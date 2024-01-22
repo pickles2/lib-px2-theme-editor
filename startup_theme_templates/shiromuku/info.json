@@ -1,13 +1,7 @@
 {
     "name": "SHIROMUKU",
-    "options": {
-        "logoImage": {
-            "label": "Logo Image",
-            "type": "image"
-        },
-        "mainColor": {
-            "label": "Main Color",
-            "type": "color"
-        }
-    }
+    "options": [
+        "logoImage",
+        "mainColor"
+    ]
 }
