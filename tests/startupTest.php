@@ -26,8 +26,8 @@ class startupTest extends PHPUnit\Framework\TestCase{
 
 		$option_variations = array(
 			'full' => array(
-				"mainColor" => "#030303",
-				"subColor" => "#696969",
+				"mainColor" => "#d33",
+				"subColor" => "#f93",
 				"logoImage" => base64_encode( file_get_contents( __DIR__.'/app/src_px2/common/images/pickles2-appicon.png' ) ),
 				"logoImageExt" => 'png',
 				"logoImageMimeType" => 'image/png',
