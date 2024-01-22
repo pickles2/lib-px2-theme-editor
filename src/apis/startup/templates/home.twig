@@ -3,10 +3,28 @@
 
 	<p>テーマの初期状態を構築します。</p>
 
-
 	<div class="px2-form-input-list">
 		<ul class="px2-form-input-list__ul">
 			<li class="px2-form-input-list__li">
+				<div class="px2-form-input-list__label"><label for="logo_image">テンプレート</label></div>
+				<div class="px2-form-input-list__input">
+					<input type="hidden" name="template_id" value="pickles2_2023" />
+					<div class="pickles2-theme-editor__startup-thumb">
+						{% for templateId, template in themeTemplates %}
+						<div class="pickles2-theme-editor__startup-thumb-item">
+							<a href="javascript:;" data-template-id="{{ templateId }}" title="{{ template.info.name }}"></a>
+							<div class="pickles2-theme-editor__startup-thumb-item-title">{{ template.info.name }}</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</li>
+		</ul>
+	</div>
+
+	<div class="px2-form-input-list">
+		<ul class="px2-form-input-list__ul">
+			<li class="px2-form-input-list__li" data-option-name="logo_image">
 				<div class="px2-form-input-list__label"><label for="logo_image">ロゴ</label></div>
 				<div class="px2-form-input-list__input">
 					<input type="file" id="logo_image" name="logo_image" value="" class="px2-input" />
@@ -15,32 +33,18 @@
 					</div>
 				</div>
 			</li>
-			<li class="px2-form-input-list__li">
+			<li class="px2-form-input-list__li" data-option-name="main_color">
 				<div class="px2-form-input-list__label"><label for="main_color">メインカラー</label></div>
 				<div class="px2-form-input-list__input">
 					<input type="color" id="main_color" name="main_color" value="#00a0e6" class="px2-input" />
 					<div class="px2-form-input-list__pickr-main_color"></div>
 				</div>
 			</li>
-			<li class="px2-form-input-list__li">
+			<li class="px2-form-input-list__li" data-option-name="sub_color">
 				<div class="px2-form-input-list__label"><label for="sub_color">サブカラー</label></div>
 				<div class="px2-form-input-list__input">
 					<input type="color" id="sub_color" name="sub_color" value="#00a0e6" class="px2-input" />
 					<div class="px2-form-input-list__pickr-sub_color"></div>
-				</div>
-			</li>
-			<li class="px2-form-input-list__li">
-				<div class="px2-form-input-list__label"><label for="logo_image">テンプレート</label></div>
-				<div class="px2-form-input-list__input">
-					<input type="hidden" name="template_id" value="pickles2_2023" />
-					<div class="pickles2-theme-editor__startup-thumb">
-						{% for templateId, template in themeTemplates %}
-						<div class="pickles2-theme-editor__startup-thumb-item">
-							<a href="javascript:;" data-value="{{ templateId }}" title="{{ template.info.name }}"></a>
-							<div class="pickles2-theme-editor__startup-thumb-item-title">{{ template.info.name }}</div>
-						</div>
-						{% endfor %}
-					</div>
 				</div>
 			</li>
 		</ul>

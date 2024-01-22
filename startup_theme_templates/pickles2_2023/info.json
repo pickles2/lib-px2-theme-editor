@@ -1,8 +1,8 @@
 {
     "name": "Pickles 2 Standard 2023",
     "options": [
-        "logoImage",
-        "mainColor",
-        "subColor"
+        "logo_image",
+        "main_color",
+        "sub_color"
     ]
 }

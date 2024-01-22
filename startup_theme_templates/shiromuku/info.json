@@ -1,7 +1,7 @@
 {
     "name": "SHIROMUKU",
     "options": [
-        "logoImage",
-        "mainColor"
+        "logo_image",
+        "main_color"
     ]
 }

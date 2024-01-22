@@ -31,12 +31,13 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 
 				let $thumbs = $canvas.find('.pickles2-theme-editor__startup-thumb');
 				for(var themeId in themeTemplates){
-					themeTemplateThumbs[themeId] = $thumbs.find(`[data-value=${themeId}]`);
+					themeTemplateThumbs[themeId] = $thumbs.find(`[data-template-id=${themeId}]`);
 				}
 
 				it1.next();
 			},
 			function(it1){
+				// --------------------------------------
 				// Pickr を配置する
 				setup_Pickr(
 					$canvas.find('.px2-form-input-list__pickr-main_color'),
@@ -55,6 +56,8 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 			function(it1){
 				// --------------------------------------
 				// イベントハンドラをセット
+
+				// 送信
 				$form.on('submit', function(e){
 					e.stopPropagation();
 					e.preventDefault();
@@ -92,6 +95,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 					return false;
 				});
 
+				// ロゴ選択
 				$canvas.find('form[data-pickles2-theme-editor-form=startup] input[name=logo_image]')
 					.on('change', function(e){
 						var $this = $(this);
@@ -140,6 +144,7 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 					})
 				;
 
+				// テンプレート選択
 				let classNameCurrent = 'pickles2-theme-editor__startup-thumb-current';
 				for(var idx in themeTemplateThumbs){
 					themeTemplateThumbs[idx]
@@ -148,18 +153,22 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 						})
 						.on('click', function(e){
 							const $this = $(this);
-							const selectedValue = $this.attr('data-value');
+							const selectedValue = $this.attr('data-template-id');
 							$canvas.find('input[name=template_id]').val(selectedValue);
 
 							$canvas.find('.pickles2-theme-editor__startup-thumb a').removeClass(classNameCurrent);
 							$this.addClass(classNameCurrent);
+
+							updateOptions();
 						})
 					;
 				}
+
+				// デフォルトのテンプレートで選択を初期化
 				var defaultThemeTemplateId = $('input[name=template_id]').val();
-				$canvas.find('.pickles2-theme-editor__startup-thumb a[data-value="'+defaultThemeTemplateId+'"]').addClass(classNameCurrent);
+				$canvas.find('.pickles2-theme-editor__startup-thumb a[data-template-id="'+defaultThemeTemplateId+'"]').addClass(classNameCurrent);
 
-
+				// オプションの選択を変えたらサムネイルを更新する
 				$canvas.find('form[data-pickles2-theme-editor-form=startup]').find('input,select,textarea')
 					.on('change', function(){
 						updateThumbs();
@@ -170,6 +179,10 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 			function(it1){
 				// サムネイルを更新する
 				updateThumbs();
+
+				// オプションを更新する
+				updateOptions();
+
 				it1.next();
 			},
 		]);
@@ -189,6 +202,25 @@ module.exports = function( main, _themeTemplates, tplOptions, $canvas, $, px2sty
 			};
 			themeTemplates[themeId].frontendThumb.update( themeTemplateThumbs[themeId], templateUpdateParams);
 		}
+		return;
+	}
+
+	/**
+	 * オプションを更新する
+	 */
+	function updateOptions(){
+		const themeId = $canvas.find('input[name=template_id]').val();
+		const themeOptions = themeTemplates[themeId].info.options;
+		const $options = $canvas.find('[data-option-name]');
+		$options.each(function(idx, elm){
+			const $elm = $(elm);
+			const elmOptionName = $elm.attr('data-option-name');
+			if( themeOptions.includes(elmOptionName) ){
+				$elm.show();
+			}else{
+				$elm.hide();
+			}
+		});
 		return;
 	}
 
