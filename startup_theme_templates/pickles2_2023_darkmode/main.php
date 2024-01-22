@@ -29,6 +29,7 @@ class main {
 
 
 		$templateFileList = array(
+			'theme_files/styles/theme.css.scss',
 			'theme_files/modules.css',
 			'guieditor.ignore/article/data/data.json',
 			'guieditor.ignore/default/data/data.json',

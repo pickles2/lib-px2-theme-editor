@@ -1,3 +1,22 @@
+$keycolor: #d33;
+$textcolor_on_keycolor: #eee;
+$subcolor: #f93;
+$textcolor_on_subcolor: #eee;
+
+:root {
+    --theme-keycolor: #d33;
+    --theme-textcolor-on-keycolor: #eee;
+    --theme-subcolor: #f93;
+    --theme-textcolor-on-subcolor: #eee;
+	--theme-link-color: #d33;
+
+	--px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
+	--px2-main-color: #d33;
+	--px2-text-color: #eee;
+	--px2-background-color: #333;
+	--px2-border-color: #666;
+}
+
 html,
 body {
 	margin: 0;
@@ -44,7 +63,7 @@ h1 {
 	font-size: 36px;
 }
 a {
-	color: #ddd;
+	color: var(--theme-link-color);
 }
 a:hover {
 	opacity: 0.7;
@@ -198,7 +217,7 @@ p, li, dt, dd {
 	 * グローバルメニュー
 	 */
 	&__globalnavi ul li a {
-		background-color: #f5f5ff55;
+		background-color: #f5f5ff;
 	}
 }
 

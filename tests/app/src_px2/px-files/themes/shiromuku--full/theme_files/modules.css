@@ -375,17 +375,6 @@
 /**
  * module: themeEditorModules:layouts/fullcolumn
  */
-:root {
-  --theme-keycolor: #030303;
-  --theme-textcolor-on-keycolor: #eee;
-  --theme-subcolor: #696969;
-  --theme-textcolor-on-subcolor: #eee;
-  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
-  --px2-main-color: #030303;
-  --px2-text-color: #333;
-  --px2-background-color: #f9f9f9;
-  --px2-border-color: #f0f0f0;
-}
 /**
  * .anchor_links
  */
@@ -478,17 +467,6 @@
  * module: themeEditorModules:layouts/hamburger-menu
  */
 @charset "UTF-8";
-:root {
-  --theme-keycolor: #030303;
-  --theme-textcolor-on-keycolor: #eee;
-  --theme-subcolor: #696969;
-  --theme-textcolor-on-subcolor: #eee;
-  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
-  --px2-main-color: #030303;
-  --px2-text-color: #333;
-  --px2-background-color: #f9f9f9;
-  --px2-border-color: #f0f0f0;
-}
 /**
  * ハンバーガーメニュー
  */
@@ -672,17 +650,6 @@ body.theme-scroll-lock--iphone {
  * module: themeEditorModules:layouts/header
  */
 @charset "UTF-8";
-:root {
-  --theme-keycolor: #030303;
-  --theme-textcolor-on-keycolor: #eee;
-  --theme-subcolor: #696969;
-  --theme-textcolor-on-subcolor: #eee;
-  --px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
-  --px2-main-color: #030303;
-  --px2-text-color: #333;
-  --px2-background-color: #f9f9f9;
-  --px2-border-color: #f0f0f0;
-}
 /**
  * Header
  */
