@@ -8,7 +8,7 @@ $textcolor_on_subcolor: {{ textColorOnSubColor ?? "#eee" }};
     --theme-textcolor-on-keycolor: {{ textColorOnMainColor ?? "#fff" }};
     --theme-subcolor: {{ subColor ?? "#666" }};
     --theme-textcolor-on-subcolor: {{ textColorOnSubColor ?? "#eee" }};
-	--theme-link-color: {{ mainColor ?? "#00a0e6" }};
+	--theme-link-color: {{ linkColor ?? "#00a0e6" }};
 
 	--px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
 	--px2-main-color: {{ mainColor ?? "#00a0e6" }};

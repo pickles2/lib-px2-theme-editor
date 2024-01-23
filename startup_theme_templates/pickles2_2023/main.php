@@ -26,6 +26,10 @@ class main {
 		if( $colorUtils->get_brightness($options['subColor'] ?? '') > 65 && $colorUtils->get_saturation($options['mainColor'] ?? '') < 40 ){
 			$options['textColorOnSubColor'] = '#333';
 		}
+		$options['linkColor'] = $options['mainColor'];
+		if( $colorUtils->get_brightness($options['linkColor'] ?? '') > 65 && $colorUtils->get_saturation($options['linkColor'] ?? '') < 40 ){
+			$options['linkColor'] = '#00d';
+		}
 
 
 		$templateFileList = array(

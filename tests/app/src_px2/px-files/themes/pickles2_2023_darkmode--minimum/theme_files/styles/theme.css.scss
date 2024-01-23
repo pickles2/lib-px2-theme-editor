@@ -8,7 +8,7 @@ $textcolor_on_subcolor: #eee;
     --theme-textcolor-on-keycolor: #eee;
     --theme-subcolor: #666;
     --theme-textcolor-on-subcolor: #eee;
-	--theme-link-color: #00a0e6;
+	--theme-link-color: #fff;
 
 	--px2-font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Meiryo", "Helvetica Neue", "Arial", sans-serif;
 	--px2-main-color: #00a0e6;
@@ -217,7 +217,7 @@ p, li, dt, dd {
 	 * グローバルメニュー
 	 */
 	&__globalnavi ul li a {
-		background-color: #f5f5ff;
+		background-color: #181818;
 	}
 }
 
