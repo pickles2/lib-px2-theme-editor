@@ -5,7 +5,7 @@
 		<script>
 			window.addEventListener('load', function(){
 				// .sidebar-fix を固定します
-				sidebarFix('.theme-common-navi', {
+				sidebarFix('.theme-layouts__rnavi-inner', {
 					frame: $('.theme-layouts__rnavi'),
 					topBuffer: 10,
 					force: true
