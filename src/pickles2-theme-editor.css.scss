@@ -158,3 +158,27 @@
 	}
 
 }
+
+// 新規テーマダイアログの、インポート元の選択UI拡張
+.px2-tabs.pickles2-theme-editor-new-theme-import {
+	.px2-tabs__contents {
+		overflow: auto;
+		height: 40vh;
+		min-height: 200px;
+	}
+}
+
+
+// ラジオボタンの選択リスト
+.pickles2-theme-editor-radio-list {
+	padding: 0;
+	li {
+		list-style-type: none;
+		margin: 2px 0;
+		label {
+			display: block;
+			padding: 7px 0;
+			cursor: pointer;
+		}
+	}
+}

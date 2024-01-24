@@ -14,23 +14,43 @@
 	</div>
 
 	{% if not themeId %}
-		<div class="px2-p">
-			<h2>インポート</h2>
-			<ul>
-				<li><label><input type="radio" name="import_from" value="" checked="checked" /> インポートしない</label></li>
-			</ul>
-			<h3>テーマコレクション</h3>
-			<ul>
-			{% for themeCollectionRow in themeCollection %}
-				<li><label><input type="radio" name="import_from" value="themeCollection:{{ themeCollectionRow.id | e }}" /> {{ themeCollectionRow.name | e }}</label></li>
-			{% endfor %}
-			</ul>
-			<h3>テーマパッケージ</h3>
-			<ul>
-			{% for themePluginListRow in themePluginList %}
-				<li><label><input type="radio" name="import_from" value="themePlugin:{{ loop.index | e }}" /> {{ themePluginListRow.name | e }}</label></li>
-			{% endfor %}
-			</ul>
+		<div class="px2-tabs pickles2-theme-editor-new-theme-import">
+			<div class="px2-tabs__tabs">
+				<ul>
+					<li><a href="javascript:;">インポート</a></li>
+					<li><a href="javascript:;">テーマコレクション</a></li>
+					<li><a href="javascript:;">テーマパッケージ</a></li>
+				</ul>
+			</div>
+			<div class="px2-tabs__contents">
+				<div class="px2-tabs__content">
+					<ul class="pickles2-theme-editor-radio-list">
+						<li><label><input type="radio" name="import_from" value="" checked="checked" /> インポートしない</label></li>
+					</ul>
+				</div>
+				<div class="px2-tabs__content">
+					{% if themeCollection %}
+						<ul class="pickles2-theme-editor-radio-list">
+						{% for themeCollectionRow in themeCollection %}
+							<li><label><input type="radio" name="import_from" value="themeCollection:{{ themeCollectionRow.id | e }}" /> {{ themeCollectionRow.name | e }}</label></li>
+						{% endfor %}
+						</ul>
+					{% else %}
+						<p>テーマコレクションにテーマが登録されていません。</p>
+					{% endif %}
+				</div>
+				<div class="px2-tabs__content">
+					{% if themePluginList %}
+						<ul class="pickles2-theme-editor-radio-list">
+						{% for themePluginListRow in themePluginList %}
+							<li><label><input type="radio" name="import_from" value="themePlugin:{{ loop.index | e }}" /> {{ themePluginListRow.name | e }}</label></li>
+						{% endfor %}
+						</ul>
+					{% else %}
+						<p>テーマパッケージが見つかりません。</p>
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	{% endif %}
 
