@@ -5,10 +5,12 @@
 		<script>
 			window.addEventListener('load', function(){
 				// .sidebar-fix を固定します
-				sidebarFix('.theme-layouts__rnavi-inner', {
-					frame: $('.theme-layouts__rnavi'),
-					topBuffer: 10,
-					force: true
-				});
+				if( $('.theme-layouts__rnavi-inner').length ){
+					sidebarFix('.theme-layouts__rnavi-inner', {
+						frame: $('.theme-layouts__rnavi'),
+						topBuffer: 10,
+						force: true
+					});
+				}
 			});
 		</script>
