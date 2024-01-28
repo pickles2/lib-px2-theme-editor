@@ -395,6 +395,27 @@ class themeCollection {
 		if( $editMode == 'html.gui' ){
 			$this->main->fs()->mkdir_r( $realpath_theme_root.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/' );
 			$this->main->fs()->save_file( $realpath_theme_root.'/guieditor.ignore/'.urlencode($new_layout_id).'/data/data.json', '{}'."\n" );
+			
+			// レイアウトテンプレートを初期化(rebuild)する
+			$tmpPath = '/'.urlencode($theme_id).'/'.urlencode($new_layout_id).'.html';
+			$tmpGpiOptions = array(
+				'api' => 'broccoliBridge',
+				'forBroccoli' => array(
+					'api' => 'updateContents',
+					'options' => array(
+						'lang' => 'ja',
+					),
+				),
+				'page_path' => $tmpPath,
+			);
+
+			$this->main->px2agent()->query(
+				$tmpPath.'?PX=px2dthelper.px2ce.gpi'
+					."&appMode=web"
+					."&target_mode=theme_layout"
+					.'&data='.urlencode(base64_encode(json_encode($tmpGpiOptions))),
+				array("output" => "json")
+			);
 		}
 
 		return array(
