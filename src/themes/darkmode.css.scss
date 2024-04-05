@@ -1,9 +1,6 @@
 // Pickles2: Theme Editor
 @charset "utf-8";
 
-// px2style
-@import '../../node_modules/px2style/dist/themes/darkmode';
-
 .pickles2-theme-editor {
 	// startup
 	@import '../apis/startup/startup-darkmode.ignore.css.scss';
