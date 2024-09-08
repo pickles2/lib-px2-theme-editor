@@ -72,6 +72,7 @@
 </div>
 		</div>
 		<div class="theme-layouts__rnavi">
+			<div class="theme-layouts__rnavi-inner">
 <nav class="theme-common-navi">
 	<p><a href="/sample_pages/page2/">サンプルページ2</a></p>
 <ul>
@@ -83,6 +84,7 @@
 </li>
 </ul>
 </nav>
+			</div>
 		</div>
 	</div>
 </div>
@@ -95,6 +97,8 @@
 <div class="theme-breadcrumb"><ul><li><a href="/">ホーム</a></li><li><a href="/sample_pages/page2/">サンプルページ2</a></li><li><span>サンプル2-2</span></li></ul></div>
 		</div>
 		<div class="theme-layouts__rnavi">
+			<div class="theme-layouts__rnavi-inner">
+			</div>
 		</div>
 	</div>
 </div>
@@ -190,11 +194,13 @@
 		<script>
 			window.addEventListener('load', function(){
 				// .sidebar-fix を固定します
-				sidebarFix('.theme-common-navi', {
-					frame: $('.theme-layouts__rnavi'),
-					topBuffer: 10,
-					force: true
-				});
+				if( $('.theme-layouts__rnavi-inner').length ){
+					sidebarFix('.theme-layouts__rnavi-inner', {
+						frame: $('.theme-layouts__rnavi'),
+						topBuffer: 10,
+						force: true
+					});
+				}
 			});
 		</script>
 	</body>
