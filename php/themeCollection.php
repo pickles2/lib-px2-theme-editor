@@ -62,10 +62,10 @@ class themeCollection {
 			if( !is_file( $realpath_theme_root.'/'.$basename ) ){
 				continue;
 			}
-			if( !preg_match('/\.html$/', $basename) ){
+			if( !preg_match('/\.html(?:\.[a-zA-Z0-9]+)?$/', $basename) ){
 				continue;
 			}
-			$layoutId = preg_replace('/\.[a-zA-Z0-9]+$/i', '', $basename);
+			$layoutId = preg_replace('/\.[a-zA-Z0-9]+(?:\.[a-zA-Z0-9]+)?$/i', '', $basename);
 			$editMode = 'html';
 			if( is_file( $realpath_theme_root.'/guieditor.ignore/'.urlencode($layoutId).'/data/data.json' ) ){
 				$editMode = 'html.gui';

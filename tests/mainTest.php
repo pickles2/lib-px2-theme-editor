@@ -24,7 +24,6 @@ class mainTest extends PHPUnit\Framework\TestCase{
 		$this->assertEquals(is_object($main), true);
 
 		$bootupInformations = $main->gpi(array('api'=>'getBootupInformations'));
-		// var_dump($bootupInformations);
 		$this->assertSame($bootupInformations['conf']['appMode'], 'web');
 		$this->assertSame(is_string($bootupInformations['languageCsv']), true);
 		$this->assertSame(is_array($bootupInformations['multithemePluginOptions']), true);
@@ -50,7 +49,6 @@ class mainTest extends PHPUnit\Framework\TestCase{
 			'api'=>'addNewTheme',
 			'newThemeId'=>'new-test-theme',
 		));
-		// var_dump($result);
 		$this->assertSame($result['result'], true);
 		$this->assertSame($result['message'], 'OK');
 	}
@@ -71,12 +69,10 @@ class mainTest extends PHPUnit\Framework\TestCase{
 			'newThemeId'=>'test-theme',
 			'renameFrom'=>'new-test-theme',
 		));
-		// var_dump($result);
 		$this->assertSame($result['result'], true);
 		$this->assertSame($result['message'], 'OK');
 
 		$bootupInformations = $main->gpi(array('api'=>'getBootupInformations'));
-		// var_dump($bootupInformations);
 		$this->assertSame(count($bootupInformations['listThemeCollection']), 1 + count($this->theme_templates) * $this->option_variations_count);
 		$this->assertTrue(is_dir(__DIR__.'/app/src_px2/px-files/themes/test-theme/'));
 	}
@@ -98,12 +94,10 @@ class mainTest extends PHPUnit\Framework\TestCase{
 			'newLayoutId'=>'testlayout001',
 			'editMode'=>'html.gui',
 		));
-		// var_dump($result);
 		$this->assertSame($result['result'], true);
 		$this->assertSame($result['message'], 'OK');
 
 		$themeInfo = $main->gpi(array('api'=>'getThemeInfo', 'themeId'=>'test-theme'));
-		// var_dump($themeInfo);
 		$this->assertSame(count($themeInfo['layouts']), 2);
 		$this->assertTrue(is_file(__DIR__.'/app/src_px2/px-files/themes/test-theme/testlayout001.html'));
 	}
@@ -123,7 +117,6 @@ class mainTest extends PHPUnit\Framework\TestCase{
 			'api'=>'deleteTheme',
 			'themeId'=>'test-theme',
 		));
-		// var_dump($result);
 		$this->assertSame($result['result'], true);
 		$this->assertSame($result['message'], 'OK');
 	}
