@@ -101,6 +101,10 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
+### pickles2/lib-px2-theme-editor v0.3.0 (リリース日未定)
+
+- テーマテンプレート `Kaleflower` を追加した。
+
 ### pickles2/lib-px2-theme-editor v0.2.13 (リリース日未定)
 
 - テーマテンプレートの2重拡張子に対応した。

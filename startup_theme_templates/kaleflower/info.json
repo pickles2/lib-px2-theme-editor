@@ -1,0 +1,8 @@
+{
+    "name": "Kaleflower",
+    "options": [
+        "logo_image",
+        "main_color",
+        "sub_color"
+    ]
+}
