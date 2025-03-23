@@ -35,16 +35,11 @@ class main {
 		$templateFileList = array(
 			'theme_files/styles/theme.css.scss',
 			'theme_files/modules.css',
-			'guieditor.ignore/article/data/data.json',
-			'guieditor.ignore/default/data/data.json',
-			'guieditor.ignore/popup/data/data.json',
-			'guieditor.ignore/top/data/data.json',
-			'broccoli_module_packages/_env.scss',
 			'inc/headsection.inc',
-			'article.html',
-			'default.html',
-			'popup.html',
-			'top.html',
+			// 'article.html.kflow',
+			// 'default.html.kflow',
+			// 'popup.html.kflow',
+			// 'top.html.kflow',
 		);
 
 		foreach ($templateFileList as $templateFile) {
