@@ -2,6 +2,23 @@
 <kflow>
 	<components>
 		<component name="bowl" label="Contents Area" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * コンテンツエリア
+ */
+.contents{
+	margin-bottom: 3em;
+}
+
+/**
+ * 引用
+ */
+blockquote {
+	padding: 0 0 0 1em;
+	margin: 1em 0 1em 2em;
+	margin-left: 3px solid #999;
+}
+			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="contents">

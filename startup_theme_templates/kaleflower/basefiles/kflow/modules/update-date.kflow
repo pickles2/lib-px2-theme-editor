@@ -2,6 +2,16 @@
 <kflow>
 	<components>
 		<component name="update-date" label="Update date" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * 更新日
+ */
+.theme-update-date {
+	text-align: right;
+	margin: 1em 0;
+	font-size: 14px;
+}
+			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="theme-update-date"><p>{%
