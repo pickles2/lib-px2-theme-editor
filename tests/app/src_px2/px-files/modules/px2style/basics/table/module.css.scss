@@ -33,7 +33,26 @@ table.px2-table {
 			width: 70%;
 		}
 
-		@media all and (max-width: 544px) {
+	}
+
+	@media all and (max-width: 544px) {
+		&--dl {
+			display: block;
+			box-sizing: border-box;
+			border-bottom: none;
+			tbody,
+			thead,
+			tr,
+			th,
+			td {
+				display: block;
+				box-sizing: border-box;
+				width: 100%;
+			}
+		}
+	}
+	@container (max-width: 544px) {
+		&--dl {
 			display: block;
 			box-sizing: border-box;
 			border-bottom: none;
