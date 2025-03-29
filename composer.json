@@ -39,6 +39,7 @@
         "tomk79/filesystem": "~1.0",
         "tomk79/langbank": "~0.2",
         "pickles2/px2agent": "~0.0",
+        "pickles2/px2-multitheme": ">=2.1.2",
         "tomk79/color-utils": "^0.0.1"
     },
     "require-dev": {

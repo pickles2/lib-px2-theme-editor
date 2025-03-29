@@ -13,9 +13,9 @@
 	<body id="pagetop">
 <%- body %>
 
-		<script src="<?= htmlspecialchars( $theme->files('/modules.js') ); ?>"></script>
-<?= $px->bowl()->get_clean('foot'); ?>
 
 <?php include($theme->realpath_theme_dir().'/inc/footsection.inc'); ?>
+<?= $px->bowl()->get_clean('foot'); ?>
+
 	</body>
 </html>
