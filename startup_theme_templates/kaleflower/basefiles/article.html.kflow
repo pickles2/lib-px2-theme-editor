@@ -10,17 +10,19 @@
 	</configs>
 	<styles>
 		<style class="cont-horizontal" contents-direction="horizontal">gap: 10px;</style>
+		<style class="footer" width="null" height="null"/>
+		<style class="main" width="null" height="null">gap: 20px</style>
 	</styles>
 	<contents>
 		<content>
 			<div class="cont-horizontal">
-				<sitetitle/>
+				<sitetitle/><globalnavi/>
 			</div>
-			<globalnavi/>
-			<localnavi/>
-			<breadcrumb/>
-			<pagetitle/>
-			<bowl/>
+			
+			<div contents-direction="horizontal" class="main"><div width="80%"><breadcrumb/><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
+			
+			
+			<div class="footer"><p>Kaleflow Theme</p></div>
 	</content>
 	</contents>
 	<assets>
@@ -32,6 +34,24 @@
 	</fields>
 	<components>
 		<component name="bowl" label="Contents Area" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * コンテンツエリア
+ */
+.contents{
+	margin-bottom: 3em;
+}
+
+/**
+ * 引用
+ */
+blockquote {
+	padding: 0 0 0 1em;
+	margin: 1em 0 1em 2em;
+	margin-left: 3px solid #999;
+}
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="contents">
@@ -53,6 +73,7 @@
 			<fields>
 				<field type="image" name="image" label="Image" />
 			</fields>
+
 			<template><![CDATA[
 {% set image = json_decode(attributes.image) %}
 <div class="custom-component-001 {{ attributes.class }}">
@@ -68,6 +89,7 @@
 </div>]]></template>
 </component>
 		<component name="custom-component-002" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+
 			<template><![CDATA[<div class="custom-component-002">
 	<div class="custom-component-002__content">
 		<div class="custom-component-002__content-inner">
@@ -77,6 +99,36 @@
 </div>]]></template>
 </component>
 		<component name="breadcrumb" label="Breadcrumb" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * パンくず
+ */
+.theme-breadcrumb{
+	margin:0 0;
+
+	ul,
+	ul li{
+		margin: 0;
+		padding: 0 0.3em 0 0;
+		display: inline;
+		font-size: small;
+		list-style-type: none;
+	}
+	ul li:after{
+		content:' > ';
+		margin: 0 0.3em;
+	}
+	ul li:last-child:after{
+		content:'';
+		margin: 0;
+	}
+	ul li span{
+		font-weight:bold;
+	}
+
+}
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="theme-breadcrumb">{%
@@ -90,6 +142,9 @@
 ]]></template>
 </component>
 		<component name="copyright" label="Copyright" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <p style="text-align:center;">&copy;20XX Example.</p>
@@ -102,6 +157,9 @@
 ]]></template>
 </component>
 		<component name="globalnavi" label="Global navigation" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <ul>
@@ -133,6 +191,52 @@
 ]]></template>
 </component>
 		<component name="localnavi" label="Local navigation" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * ナビゲーション
+ */
+.theme-common-navi {
+	margin-bottom: 0.7em;
+	overflow: hidden;
+	border-radius: 13px;
+
+	a {
+		display: block;
+		padding: 10px;
+		background-color: #eee;
+	}
+	p {
+		text-align: center;
+		margin: 1px 0;
+		padding: 0;
+		a {
+			background-color: #ddd;
+		}
+	}
+	ul {
+		display: block;
+		margin: 0;
+		padding: 0;
+	}
+	ul li {
+		display: block;
+		margin: 1px 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	ul ul a {
+		padding-left: 25px;
+		background-color: #f5f5f5;
+		font-size: small;
+	}
+	ul ul ul a {
+		padding-left: 40px;
+		background-color: #fefefe;
+		font-size: small;
+	}
+}
+			</style>
+
 			<template><![CDATA[
 <nav class="theme-common-navi">
 {% if _ENV.mode == 'canvas' %}
@@ -171,6 +275,9 @@
 ]]></template>
 </component>
 		<component name="pagetitle" label="Page title" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 {% if _ENV.lang == "ja" %}
@@ -185,6 +292,9 @@
 ]]></template>
 </component>
 		<component name="shouldernavi" label="Shoulder navigation" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <ul>
@@ -216,6 +326,9 @@
 ]]></template>
 </component>
 		<component name="sitetitle" label="Site title" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+			</style>
+
 			<template><![CDATA[
 {% set htmlElement = 'h1' %}
 {% set linkto = '/' %}
@@ -231,6 +344,17 @@
 ]]></template>
 </component>
 		<component name="update-date" label="Update date" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+			<style>
+/**
+ * 更新日
+ */
+.theme-update-date {
+	text-align: right;
+	margin: 1em 0;
+	font-size: 14px;
+}
+			</style>
+
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="theme-update-date"><p>{%

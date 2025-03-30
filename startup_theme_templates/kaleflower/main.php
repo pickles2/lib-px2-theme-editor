@@ -36,10 +36,6 @@ class main {
 			'theme_files/styles/theme.css.scss',
 			'theme_files/modules.css',
 			'inc/headsection.inc',
-			// 'article.html.kflow',
-			// 'default.html.kflow',
-			// 'popup.html.kflow',
-			// 'top.html.kflow',
 		);
 
 		foreach ($templateFileList as $templateFile) {
@@ -51,6 +47,36 @@ class main {
 			$this->main->fs()->save_file(
 				$realpath_theme_root.$templateFile,
 				$templateSrc
+			);
+		}
+
+
+		$kflowFileList = array(
+			'article.html.kflow',
+			'default.html.kflow',
+			'popup.html.kflow',
+			'top.html.kflow',
+		);
+
+		foreach ($kflowFileList as $kflowFile) {
+
+			$kaleflower = new \kaleflower\kaleflower();
+			$kaleflower->load( $realpath_theme_root.$kflowFile );
+
+			// Contents modules for Kaleflower
+			$realpath_kflow_components_dir = $this->main->fs()->get_realpath($realpath_theme_root.'kflow/modules/');
+			if( is_dir($realpath_kflow_components_dir) ){
+				$kflow_component_files = $this->main->fs()->ls($realpath_kflow_components_dir);
+				foreach( $kflow_component_files as $kflow_component_file ){
+					if( is_file($realpath_kflow_components_dir.$kflow_component_file) ){
+						$kaleflower->load( $realpath_kflow_components_dir.$kflow_component_file );
+					}
+				}
+			}
+
+			$this->main->fs()->save_file(
+				$realpath_theme_root.$kflowFile,
+				$kaleflower->getXml()
 			);
 		}
 
