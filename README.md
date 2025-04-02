@@ -101,7 +101,7 @@ pickles2ThemeEditor.init(
 
 ## 更新履歴 - Change log
 
-### pickles2/lib-px2-theme-editor v0.2.13 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.2.13 (2025年4月3日)
 
 - テーマレイアウトの2重拡張子に対応した。
 - `px2style` の `.px2-viewport-fit` の変更に対応し、ビューポートにフィットさせる処理を追加した。
