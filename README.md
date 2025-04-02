@@ -106,7 +106,7 @@ pickles2ThemeEditor.init(
 - テーマテンプレート `Kaleflower` を追加した。
 - その他、いくつかの細かい修正。
 
-### pickles2/lib-px2-theme-editor v0.2.13 (リリース日未定)
+### pickles2/lib-px2-theme-editor v0.2.13 (2025年4月3日)
 
 - テーマレイアウトの2重拡張子に対応した。
 - `px2style` の `.px2-viewport-fit` の変更に対応し、ビューポートにフィットさせる処理を追加した。
