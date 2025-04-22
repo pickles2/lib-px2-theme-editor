@@ -9,7 +9,7 @@
 {% if _ENV.lang == "ja" %}
 <h1>ページのタイトル</h1>
 {% else %}
-<h1>Page title</h1>
+<h1>{% verbatim %}{{pageInfo.title_h1}}{% endverbatim %}</h1>
 {% endif %}
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
