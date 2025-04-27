@@ -23,6 +23,12 @@ list-style-type: none;
 margin: 0;
 padding: 0;
 }
+a::after {
+content: "&gt;";
+}
+span {
+font-weight: bold;
+}
 }</style>
 		<style class="breadcrumb__list" width="null" height="null"/>
 	</styles>
@@ -32,7 +38,7 @@ padding: 0;
 				<sitetitle/><globalnavi/>
 			</div>
 			
-			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li width="xppx"><span height="px" width="px">aaaaaa</span></li></breadcrumb><li><span>current page</span></li></ul></div><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
+			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li><span>{{ breadcrumbPageInfo.title }}</span></li></breadcrumb><li><span>{{ pageInfo.title_label }}</span></li></ul></div><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
 			
 			
 			<div class="footer"><p>Kaleflow Theme</p></div>
@@ -115,16 +121,15 @@ blockquote {
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-{% for pageInfo in _ENV.extra.breadcrumb %}
+<div style="display: contents;">
+{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
 {{ innerHTML | raw }}
-{% endfor %}
+{% verbatim %}{% endfor %}{% endverbatim %}
+</div>
 {% elseif _ENV.mode == 'finalize' %}
-<?php
-$breadcrumb_array = $px->site()->get_breadcrumb_array();
-foreach( $breadcrumb_array as $breadcrumb_array_pid ){
-	$pageInfo = $px->site()->get_page_info($breadcrumb_array_pid);
-?>{{ innerHTML | raw }}<?php
-} ?>
+{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
+{{ innerHTML | raw }}
+{% verbatim %}{% endfor %}{% endverbatim %}
 {% endif %}
 ]]></template>
 </component>

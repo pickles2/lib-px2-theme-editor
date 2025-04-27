@@ -102,16 +102,15 @@ blockquote {
 		<component name="breadcrumb" label="Breadcrumb" is-void-element="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-{% for pageInfo in _ENV.extra.breadcrumb %}
+<div style="display: contents;">
+{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
 {{ innerHTML | raw }}
-{% endfor %}
+{% verbatim %}{% endfor %}{% endverbatim %}
+</div>
 {% elseif _ENV.mode == 'finalize' %}
-<?php
-$breadcrumb_array = $px->site()->get_breadcrumb_array();
-foreach( $breadcrumb_array as $breadcrumb_array_pid ){
-	$pageInfo = $px->site()->get_page_info($breadcrumb_array_pid);
-?>{{ innerHTML | raw }}<?php
-} ?>
+{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
+{{ innerHTML | raw }}
+{% verbatim %}{% endfor %}{% endverbatim %}
 {% endif %}
 ]]></template>
 </component>
