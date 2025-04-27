@@ -57,7 +57,10 @@
 	<div class="theme-layouts__body">
 		<div class="theme-layouts__content">
 <div class="theme-back-to-pagetop">
-	<p><a href="#pagetop">このページの先頭へ戻る</a></p>
+	<p><a href="#pagetop"><?php
+		if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
+		} else { ?>Back to page top<?php
+		} ?></a></p>
 </div>
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
     	</div>
