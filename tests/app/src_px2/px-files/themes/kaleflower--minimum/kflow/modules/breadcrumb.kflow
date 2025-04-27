@@ -1,49 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kflow>
 	<components>
-		<component name="breadcrumb" label="Breadcrumb" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
-			<style>
-/**
- * パンくず
- */
-.theme-breadcrumb{
-	margin:0 0;
-
-	ul,
-	ul li{
-		margin: 0;
-		padding: 0 0.3em 0 0;
-		display: inline;
-		font-size: small;
-		list-style-type: none;
-	}
-	ul li:after{
-		content:' > ';
-		margin: 0 0.3em;
-	}
-	ul li:last-child:after{
-		content:'';
-		margin: 0;
-	}
-	ul li span{
-		font-weight:bold;
-	}
-
-}
-			</style>
+		<component name="breadcrumb" label="Breadcrumb" is-void-element="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-<div class="theme-breadcrumb">
-	<ul>
-		{% for pageInfo in _ENV.extra.breadcrumb %}
-			<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
-		{% endfor %}
-		<li><span>{{ _ENV.extra.pageInfo.title_label }}</span></li>
-	</ul>
-</div>
-
+{% for pageInfo in _ENV.extra.breadcrumb %}
+{{ innerHTML | raw }}
+{% endfor %}
 {% elseif _ENV.mode == 'finalize' %}
-<div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
+<?php
+$breadcrumb_array = $px->site()->get_breadcrumb_array();
+foreach( $breadcrumb_array as $breadcrumb_array_pid ){
+	$pageInfo = $px->site()->get_page_info($breadcrumb_array_pid);
+?>{{ innerHTML | raw }}<?php
+} ?>
 {% endif %}
 ]]></template>
 </component>
