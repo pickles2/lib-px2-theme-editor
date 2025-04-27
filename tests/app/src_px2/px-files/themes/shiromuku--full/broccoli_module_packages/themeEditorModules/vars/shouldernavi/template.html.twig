@@ -1,12 +1,13 @@
 {% if _ENV.mode == 'canvas' %}
+{% if _ENV.extra.shoulderMenu %}
 <ul>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
+{% for pageInfo in _ENV.extra.shoulderMenu %}
+	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+{% endfor %}
 </ul>
 {% endif %}
-{% if _ENV.mode == 'finalize' %}
+
+{% elseif _ENV.mode == 'finalize' %}
 <?php
 	$shoulder_menu = $px->site()->get_shoulder_menu();
 	if( is_array($shoulder_menu) && count($shoulder_menu) ){

@@ -1,6 +1,12 @@
+{% if _ENV.mode == 'canvas' %}
+<div class="theme-back-to-pagetop">
+	<p><a href="#pagetop">{% if _ENV.lang == "ja" %}このページの先頭へ戻る{% else %}Back to page top{% endif %}</a></p>
+</div>
+{% elseif _ENV.mode == 'finalize' %}
 <div class="theme-back-to-pagetop">
 	<p><a href="#pagetop"><?php
 		if ($px->lang() == "ja") { ?>このページの先頭へ戻る<?php
 		} else { ?>Back to page top<?php
 		} ?></a></p>
 </div>
+{% endif %}
