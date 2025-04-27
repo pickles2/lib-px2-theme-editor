@@ -28,6 +28,7 @@
 {% if _ENV.mode == 'canvas' %}
 {% if _ENV.extra.shoulderMenu %}
 <ul>
+	<li><a href="{{ _ENV.extra.topPageInfo.path }}">{{ _ENV.extra.topPageInfo.title_label }}</a></li>
 {% for pageInfo in _ENV.extra.shoulderMenu %}
 	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
 {% endfor %}
