@@ -9,7 +9,7 @@
 {% set linkto = '/' %}
 {% if htmlElement %}<{{ htmlElement }}>{% endif %}
 {% if linkto %}<a href="{{ linkto }}">{% endif %}
-{% if _ENV.mode == 'canvas' %}{% verbatim %}{{config.name}}{% endverbatim %}{% endif %}
+{% if _ENV.mode == 'canvas' %}{{_ENV.extra.config.name}}{% endif %}
 {% if _ENV.mode == 'finalize' %}<?= htmlspecialchars( $px->conf()->name ?? '' ); ?>{% endif %}
 {% if linkto %}</a>{% endif %}
 {% if htmlElement %}</{{ htmlElement }}>{% endif %}

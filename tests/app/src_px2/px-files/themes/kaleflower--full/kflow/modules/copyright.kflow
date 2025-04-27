@@ -6,7 +6,7 @@
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-<p style="text-align:center;">&copy;20XX Example.</p>
+<p style="text-align:center;">&copy;{{_ENV.extra.config.copyright}}.</p>
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
 <?php if( strlen($px->conf()->copyright ?? '') ){ ?>

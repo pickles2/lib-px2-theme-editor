@@ -129,12 +129,16 @@ blockquote {
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-<div class="theme-breadcrumb">{%
-    if _ENV.lang == "ja" %}<ul><li><a href="/">ホーム</a></li><li><strong>パンくず</strong></li></ul>{%
-    else %}<ul><li><a href="/">Home</a></li><li><strong>Topic</strong></li></ul>{%
-    endif %}</div>
-{% endif %}
-{% if _ENV.mode == 'finalize' %}
+<div class="theme-breadcrumb">
+	<ul>
+		{% for pageInfo in _ENV.extra.breadcrumb %}
+			<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+		{% endfor %}
+		<li><span>{{ _ENV.extra.pageInfo.title_label }}</span></li>
+	</ul>
+</div>
+
+{% elseif _ENV.mode == 'finalize' %}
 <div class="theme-breadcrumb"><?= $theme->mk_breadcrumb() ?></div>
 {% endif %}
 ]]></template>
@@ -144,7 +148,7 @@ blockquote {
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-<p style="text-align:center;">&copy;20XX Example.</p>
+<p style="text-align:center;">&copy;{{_ENV.extra.config.copyright}}.</p>
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
 <?php if( strlen($px->conf()->copyright ?? '') ){ ?>
@@ -158,21 +162,15 @@ blockquote {
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
+{% if _ENV.extra.globalMenu %}
 <ul>
-{% if _ENV.lang == "ja" %}
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-{% else %}
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-{% endif %}
+{% for pageInfo in _ENV.extra.globalMenu %}
+	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+{% endfor %}
 </ul>
 {% endif %}
-{% if _ENV.mode == 'finalize' %}
+
+{% elseif _ENV.mode == 'finalize' %}
 <?php
 	$global_menu = $px->site()->get_global_menu();
 	if( is_array($global_menu) && count($global_menu) ){
@@ -236,30 +234,16 @@ blockquote {
 <nav class="theme-common-navi">
 {% if _ENV.mode == 'canvas' %}
 
-{% if _ENV.lang == "ja" %}
-<p><a href="javascript:;">親ページ名</a></p>
+<p><a href="javascript:;">{{ _ENV.extra.categoryTop.title_label }}</a></p>
+{% if _ENV.extra.categorySubMenu %}
 <ul>
-<li><a href="javascript:;">子階層ページ1</a></li>
-<li><a href="javascript:;">子階層ページ2</a></li>
-<li><a href="javascript:;">子階層ページ3</a></li>
-<li><a href="javascript:;">子階層ページ4</a></li>
-<li><a href="javascript:;">子階層ページ5</a></li>
-<li><a href="javascript:;">子階層ページ6</a></li>
-</ul>
-{% else %}
-<p><a href="javascript:;">Parent page</a></p>
-<ul>
-<li><a href="javascript:;">Child page 1</a></li>
-<li><a href="javascript:;">Child page 2</a></li>
-<li><a href="javascript:;">Child page 3</a></li>
-<li><a href="javascript:;">Child page 4</a></li>
-<li><a href="javascript:;">Child page 5</a></li>
-<li><a href="javascript:;">Child page 6</a></li>
+{% for pageInfo in _ENV.extra.categorySubMenu %}
+	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+{% endfor %}
 </ul>
 {% endif %}
 
-{% endif %}
-{% if _ENV.mode == 'finalize' %}
+{% elseif _ENV.mode == 'finalize' %}
 <?php
 	$category_top_id = $px->site()->get_category_top();
 ?>
@@ -274,11 +258,7 @@ blockquote {
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
-{% if _ENV.lang == "ja" %}
-<h1>ページのタイトル</h1>
-{% else %}
-<h1>{% verbatim %}{{pageInfo.title_h1}}{% endverbatim %}</h1>
-{% endif %}
+<h1>{{_ENV.extra.pageInfo.title_h1}}</h1>
 {% endif %}
 {% if _ENV.mode == 'finalize' %}
 <h1><?= preg_replace('/\r\n|\r|\n/', '<br />', htmlspecialchars( $px->site()->get_current_page_info('title_h1') ?? '' )) ?></h1>
@@ -290,21 +270,15 @@ blockquote {
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
+{% if _ENV.extra.shoulderMenu %}
 <ul>
-{% if _ENV.lang == "ja" %}
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-{% else %}
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-{% endif %}
+{% for pageInfo in _ENV.extra.shoulderMenu %}
+	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+{% endfor %}
 </ul>
 {% endif %}
-{% if _ENV.mode == 'finalize' %}
+
+{% elseif _ENV.mode == 'finalize' %}
 <?php
 	$shoulder_menu = $px->site()->get_shoulder_menu();
 	if( is_array($shoulder_menu) && count($shoulder_menu) ){
@@ -326,7 +300,7 @@ blockquote {
 {% set linkto = '/' %}
 {% if htmlElement %}<{{ htmlElement }}>{% endif %}
 {% if linkto %}<a href="{{ linkto }}">{% endif %}
-{% if _ENV.mode == 'canvas' %}{% verbatim %}{{config.name}}{% endverbatim %}{% endif %}
+{% if _ENV.mode == 'canvas' %}{{_ENV.extra.config.name}}{% endif %}
 {% if _ENV.mode == 'finalize' %}<?= htmlspecialchars( $px->conf()->name ?? '' ); ?>{% endif %}
 {% if linkto %}</a>{% endif %}
 {% if htmlElement %}</{{ htmlElement }}>{% endif %}

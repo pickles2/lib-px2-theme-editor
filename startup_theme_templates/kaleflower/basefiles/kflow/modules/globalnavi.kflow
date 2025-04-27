@@ -6,21 +6,15 @@
 			</style>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
+{% if _ENV.extra.globalMenu %}
 <ul>
-{% if _ENV.lang == "ja" %}
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-	<li><a href="javascript:;">ページ名</a></li>
-{% else %}
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-	<li><a href="javascript:;">Page name</a></li>
-{% endif %}
+{% for pageInfo in _ENV.extra.globalMenu %}
+	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
+{% endfor %}
 </ul>
 {% endif %}
-{% if _ENV.mode == 'finalize' %}
+
+{% elseif _ENV.mode == 'finalize' %}
 <?php
 	$global_menu = $px->site()->get_global_menu();
 	if( is_array($global_menu) && count($global_menu) ){
