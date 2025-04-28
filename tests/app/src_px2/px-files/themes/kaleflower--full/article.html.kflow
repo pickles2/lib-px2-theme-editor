@@ -38,7 +38,7 @@ font-weight: bold;
 				<sitetitle/><globalnavi/>
 			</div>
 			
-			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li><a href="{{breadcrumbPageInfo.path}}">{{ breadcrumbPageInfo.title }}</a></li></breadcrumb><li><span>{{ pageInfo.title_label }}</span></li></ul></div><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
+			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li><a href="{{href(breadcrumbPageInfo.path)}}">{{ breadcrumbPageInfo.title }}</a></li></breadcrumb><li><span>{{ pageInfo.title_label }}</span></li></ul></div><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
 			
 			
 			<div class="footer"><p>Kaleflow Theme</p></div>
