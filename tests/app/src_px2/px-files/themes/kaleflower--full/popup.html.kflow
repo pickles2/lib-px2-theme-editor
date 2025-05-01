@@ -4,16 +4,19 @@
 		<config name="id" value="kf1928bb222858994f"/>
 		<config name="module-name-prefix" value="theme"/>
 		<config name="break-points">
+			<value name="lg" max-width="1200"/>
+			<value name="md" max-width="800"/>
+			<value name="sm" max-width="480"/>
 		</config>
 		<config name="color-palettes">
 		</config>
 	</configs>
 	<styles>
-		<style class="cont-horizontal" contents-direction="horizontal">gap: 10px;</style>
-		<style class="footer" width="null" height="null"/>
+		<style class="cont-horizontal" contents-direction="horizontal">gap: 10px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="footer" width="null" height="null"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="main" width="px" height="null">gap: 20px;
 margin: 0 auto;
-max-width: 900px;</style>
+max-width: 900px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="breadcrumb" width="null" height="null">ul {
 margin: 0;
 padding: 0;
@@ -29,8 +32,9 @@ content: "&gt;";
 span {
 font-weight: bold;
 }
-}</style>
-		<style class="breadcrumb__list" width="null" height="null"/>
+}<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="breadcrumb__list" width="null" height="null"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="copyright" width="null" height="null">text-align: center;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 	</styles>
 	<contents>
 		<content>
@@ -41,7 +45,7 @@ font-weight: bold;
 			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li><a href="{{href(breadcrumbPageInfo.path)}}">{{ breadcrumbPageInfo.title }}</a></li></breadcrumb><li><span>{{ pageInfo.title_label }}</span></li></ul></div><pagetitle/><bowl/></div><div width="20%"><localnavi/></div></div>
 			
 			
-			<div class="footer"><p>Kaleflow Theme</p></div>
+			<div class="footer"><div class="copyright">&amp;copy;{{ config.copyright }}</div></div>
 	</content>
 	</contents>
 	<assets>
@@ -128,20 +132,6 @@ blockquote {
 {% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
 {{ innerHTML | raw }}
 {% verbatim %}{% endfor %}{% endverbatim %}
-{% endif %}
-]]></template>
-</component>
-		<component name="copyright" label="Copyright" is-void-element="true" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
-			<style>
-			</style>
-			<template><![CDATA[
-{% if _ENV.mode == 'canvas' %}
-<p style="text-align:center;">&copy;{{_ENV.extra.config.copyright}}.</p>
-{% endif %}
-{% if _ENV.mode == 'finalize' %}
-<?php if( strlen($px->conf()->copyright ?? '') ){ ?>
-<p style="text-align:center;">&copy;<?= htmlspecialchars($px->conf()->copyright ?? ''); ?>.</p>
-<?php } ?>
 {% endif %}
 ]]></template>
 </component>

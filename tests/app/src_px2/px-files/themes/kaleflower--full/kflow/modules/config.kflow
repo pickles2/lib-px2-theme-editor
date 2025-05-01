@@ -2,5 +2,10 @@
 <kflow>
 	<configs>
 		<config name="module-name-prefix" value="theme" />
+		<config name="break-points">
+			<value name="lg" max-width="1200" />
+			<value name="md" max-width="800" />
+			<value name="sm" max-width="480" />
+		</config>
 	</configs>
 </kflow>

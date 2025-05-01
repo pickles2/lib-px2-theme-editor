@@ -55,7 +55,7 @@
         "phpunit/phpunit": "~9.5",
 		"tomk79/px2-error-reporter": "~0.1",
 		"tomk79/px2-serve": "^0.1",
-		"vlucas/phpdotenv": "~5.4.0"
+        "vlucas/phpdotenv": "~5.6.1"
     },
     "autoload": {
         "psr-4": {
