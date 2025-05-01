@@ -41,7 +41,21 @@ font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-p
 	<contents>
 		<content>
 			<div class="cont-horizontal">
-				<div class="site-title">{{ config.name }}</div><globalnavi/>
+				<div class="site-title">{{ config.name }}</div>
+				<div>
+					<ul>
+						<shouldernavi>
+						<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li>
+						</shouldernavi>
+					</ul>
+				</div>
+				<div>
+					<ul>
+						<globalnavi>
+						<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li>
+						</globalnavi>
+					</ul>
+				</div>
 			</div>
 			
 			<div contents-direction="horizontal" class="main">
@@ -61,7 +75,13 @@ font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-p
 					<div>
 						<p><a href="{{ href(categoryTop.path) }}">{{ categoryTop.title_label }}</a></p>
 					</div>
-					<localnavi/>
+					<div>
+						<ul>
+							<localnavi>
+							<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li>
+							</localnavi>
+						</ul>
+					</div>
 				</div>
 			</div>
 			
