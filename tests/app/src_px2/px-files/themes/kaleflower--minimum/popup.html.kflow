@@ -44,7 +44,26 @@ font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-p
 				<div class="site-title">{{ config.name }}</div><globalnavi/>
 			</div>
 			
-			<div contents-direction="horizontal" class="main"><div width="80%"><div class="breadcrumb"><ul contents-direction="horizontal" class="breadcrumb__list"><breadcrumb><li><a href="{{href(breadcrumbPageInfo.path)}}">{{ breadcrumbPageInfo.title }}</a></li></breadcrumb><li><span>{{ pageInfo.title_label }}</span></li></ul></div><h1>{{ pageInfo.title_h1 }}</h1><bowl/></div><div width="20%"><localnavi/></div></div>
+			<div contents-direction="horizontal" class="main">
+				<div width="80%">
+					<div class="breadcrumb">
+						<ul contents-direction="horizontal" class="breadcrumb__list">
+							<breadcrumb>
+							<li><a href="{{href(breadcrumbPageInfo.path)}}">{{ breadcrumbPageInfo.title }}</a></li>
+							</breadcrumb>
+							<li><span>{{ pageInfo.title_label }}</span></li>
+						</ul>
+					</div>
+					<h1>{{ pageInfo.title_h1 }}</h1>
+					<bowl/>
+				</div>
+				<div width="20%">
+					<div>
+						<p><a href="{{ href(categoryTop.path) }}">{{ categoryTop.title_label }}</a></p>
+					</div>
+					<localnavi/>
+				</div>
+			</div>
 			
 			
 			<div class="footer"><div class="copyright">&amp;copy;{{ config.copyright }}</div></div>
@@ -214,7 +233,6 @@ blockquote {
 <nav class="theme-common-navi">
 {% if _ENV.mode == 'canvas' %}
 
-<p><a href="javascript:;">{{ _ENV.extra.categoryTop.title_label }}</a></p>
 {% if _ENV.extra.categorySubMenu %}
 <ul>
 {% for pageInfo in _ENV.extra.categorySubMenu %}
@@ -227,7 +245,6 @@ blockquote {
 <?php
 	$category_top_id = $px->site()->get_category_top();
 ?>
-	<p><a href="<?= htmlspecialchars( $px->href($category_top_id) ?? '' ) ?>"><?= htmlspecialchars($px->site()->get_page_info($category_top_id, 'title_label') ?? '') ?></a></p>
 <?= $theme->mk_sub_menu( $category_top_id ) ?>
 {% endif %}
 </nav>
