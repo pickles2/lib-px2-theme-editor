@@ -5,27 +5,13 @@
 			<style>
 			</style>
 			<template><![CDATA[
-{% if _ENV.mode == 'canvas' %}
-{% if _ENV.extra.globalMenu %}
-<ul>
-{% for pageInfo in _ENV.extra.globalMenu %}
-	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
+{% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
-{% elseif _ENV.mode == 'finalize' %}
-<?php
-	$global_menu = $px->site()->get_global_menu();
-	if( is_array($global_menu) && count($global_menu) ){
-		echo( '<ul>'."\n" );
-		foreach( $global_menu as $page_id ){
-			echo( '<li>'.$px->mk_link( $page_id ).'</li>'."\n" );
-		}
-		echo( '</ul>'."\n" );
-	}
-?>
-{% endif %}
+{% verbatim %}{% for pageInfo in globalMenu %}{% endverbatim %}
+{{ innerHTML | raw }}
+{% verbatim %}{% endfor %}{% endverbatim %}
+
+{% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
 	</components>

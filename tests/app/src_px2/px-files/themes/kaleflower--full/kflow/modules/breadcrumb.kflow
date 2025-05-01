@@ -3,17 +3,13 @@
 	<components>
 		<component name="breadcrumb" label="Breadcrumb" is-void-element="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
-{% if _ENV.mode == 'canvas' %}
-<div style="display: contents;">
-{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
+{% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
+
+{% verbatim %}{% for pageInfo in breadcrumb %}{% endverbatim %}
 {{ innerHTML | raw }}
 {% verbatim %}{% endfor %}{% endverbatim %}
-</div>
-{% elseif _ENV.mode == 'finalize' %}
-{% verbatim %}{% for breadcrumbPageInfo in breadcrumb %}{% endverbatim %}
-{{ innerHTML | raw }}
-{% verbatim %}{% endfor %}{% endverbatim %}
-{% endif %}
+
+{% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
 	</components>

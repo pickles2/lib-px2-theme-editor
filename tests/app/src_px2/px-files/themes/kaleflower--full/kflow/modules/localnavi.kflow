@@ -48,24 +48,13 @@
 }
 			</style>
 			<template><![CDATA[
-<nav class="theme-common-navi">
-{% if _ENV.mode == 'canvas' %}
+{% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
-{% if _ENV.extra.categorySubMenu %}
-<ul>
-{% for pageInfo in _ENV.extra.categorySubMenu %}
-	<li><a href="{{ pageInfo.path }}">{{ pageInfo.title_label }}</a></li>
-{% endfor %}
-</ul>
-{% endif %}
+{% verbatim %}{% for pageInfo in categorySubMenu %}{% endverbatim %}
+{{ innerHTML | raw }}
+{% verbatim %}{% endfor %}{% endverbatim %}
 
-{% elseif _ENV.mode == 'finalize' %}
-<?php
-	$category_top_id = $px->site()->get_category_top();
-?>
-<?= $theme->mk_sub_menu( $category_top_id ) ?>
-{% endif %}
-</nav>
+{% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
 	</components>
