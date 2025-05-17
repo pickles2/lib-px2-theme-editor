@@ -12,12 +12,12 @@
 		</config>
 	</configs>
 	<styles>
-		<style class="cont-horizontal" contents-direction="horizontal">gap: 10px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="footer" width="null" height="null"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="main" width="px" height="null">gap: 20px;
+		<style class="cont-horizontal">display: flex; flex-direction: row; gap: 10px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="footer"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="main">gap: 20px;
 margin: 0 auto;
 max-width: 900px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="breadcrumb" width="null" height="null">ul {
+		<style class="breadcrumb">ul {
 margin: 0;
 padding: 0;
 gap: 10px;
@@ -33,9 +33,9 @@ span {
 font-weight: bold;
 }
 }<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="breadcrumb__list" width="null" height="null"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="copyright" width="null" height="null">text-align: center;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="site-title" width="null" height="null">font-weight: bold;
+		<style class="breadcrumb__list"><media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="copyright">text-align: center;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="site-title">font-weight: bold;
 font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 	</styles>
 	<contents>
@@ -58,10 +58,10 @@ font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-p
 				</div>
 			</div>
 			
-			<div contents-direction="horizontal" class="main">
-				<div width="80%">
+			<div class="main" style="display: flex; flex-direction: row;">
+				<div style="width: 80%;">
 					<div class="breadcrumb">
-						<ul contents-direction="horizontal" class="breadcrumb__list">
+						<ul class="breadcrumb__list" style="display: flex; flex-direction: row;">
 							<breadcrumb>
 							<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_breadcrumb }}</a></li>
 							</breadcrumb>
@@ -71,7 +71,7 @@ font-size: 22px;<media break-point="lg"/><media break-point="md"/><media break-p
 					<h1>{{ pageInfo.title_h1 }}</h1>
 					<bowl/>
 				</div>
-				<div width="20%">
+				<div style="width: 20%;">
 					<div>
 						<p><a href="{{ href(categoryTop.path) }}">{{ categoryTop.title_label }}</a></p>
 					</div>
