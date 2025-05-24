@@ -64,7 +64,7 @@ class main {
 			$kaleflower->load( $realpath_theme_root.$kflowFile );
 
 			// Contents modules for Kaleflower
-			$realpath_kflow_components_dir = $this->main->fs()->get_realpath($realpath_theme_root.'theme_settings/kflow/modules/');
+			$realpath_kflow_components_dir = $this->main->fs()->get_realpath($realpath_theme_root.'settings/kflow/modules/');
 			if( is_dir($realpath_kflow_components_dir) ){
 				$kflow_component_files = $this->main->fs()->ls($realpath_kflow_components_dir);
 				foreach( $kflow_component_files as $kflow_component_file ){
