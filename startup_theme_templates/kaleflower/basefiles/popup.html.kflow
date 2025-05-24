@@ -16,9 +16,12 @@
 flex-direction: row;
 gap: 10px;
 background-color: #ffffff;
+position: sticky;
+top: 0px;
+z-index: 100;
+<media break-point="lg"></media><media break-point="md"></media><media break-point="sm"/></style>
+		<style class="footer">background-color: #c7c7c7;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="footer"><media break-point="lg">background-color: #c7c7c7;
-</media><media break-point="md"/><media break-point="sm"/></style>
 		<style class="main">background-color: #f6f6f6;
 padding: 20px;
 box-sizing: border-box;
@@ -66,13 +69,13 @@ max-width: 900px;
 				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#xA;text-decoration: none;&#xA;&amp;:hover {&#xA;color: #999999;&#xA;}&#xA;">{{ config.name }}</a></div><div style="width: 55%;&#xA;"><div>
 					<ul style="display: flex;&#xA;gap: 10px;&#xA;padding: 0;&#xA;justify-content: flex-end;&#xA;">
 						<shouldernavi>
-						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;">{{ pageInfo.title_label }}</a></li>
+						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
 						</shouldernavi>
 					</ul>
 				</div><div>
 					<ul style="display: flex;&#xA;padding: 0;&#xA;gap: 10px;&#xA;flex-wrap: wrap;&#xA;width: 100%;&#xA;justify-content: flex-end;&#xA;">
 						<globalnavi>
-						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if pageInfo.id == currentPageInfo.id %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
+						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
 						</globalnavi>
 					</ul>
 				</div></div></div>
@@ -94,12 +97,12 @@ max-width: 900px;
 					<bowl/>
 				</div><div style="width: 20%;&#xA;">
 					<div style="text-align: center;&#xA;">
-						<p><a href="{{ href(categoryTop.path) }}" style="display: block;&#xA;">{{ categoryTop.title_label }}</a></p>
+						<p><a href="{{ href(categoryTop.path) }}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(categoryTop.id) %} current{% endif %}">{{ categoryTop.title_label }}</a></p>
 					</div>
 					<div>
 						<ul style="padding: 0px;&#xA;">
 							<localnavi>
-							<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;">{{ pageInfo.title_label }}</a></li>
+							<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
 							</localnavi>
 						</ul>
 					</div>
