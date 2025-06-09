@@ -10,6 +10,10 @@
         }
     ],
     "scripts":{
+		"build": [
+			"npm run prod",
+			"@php ./tests/app/src_px2/.px_execute.php \"/?PX=publish.run\""
+		],
 		"start": [
 			"@php ./tests/app/src_px2/.px_execute.php \"/?PX=serve\""
 		],
