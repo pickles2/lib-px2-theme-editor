@@ -81,6 +81,32 @@
                         },
                         "anchor": "",
                         "dec": ""
+                    },
+                    {
+                        "modId": "px2style:basics/text",
+                        "fields": {
+                            "main": {
+                                "src": "1. List item 1\n\t1. List item 1\n\t2. List item 2\n\t3. List item 3\n\t4. List item 4\n2. List item 2\n\t- Unordered List item 1\n\t\t1. List item 1\n\t\t2. List item 2\n\t\t3. List item 3\n\t\t4. List item 4\n\t- Unordered List item 2\n\t- Unordered List item 3\n\t- Unordered List item 4\n3. List item 3\n4. List item 4\n",
+                                "editor": "markdown"
+                            },
+                            "text-align": {
+                                "src": ""
+                            },
+                            "font-size": {
+                                "src": ""
+                            },
+                            "paragraph": {
+                                "src": "px2-p"
+                            }
+                        },
+                        "anchor": "",
+                        "dec": "",
+                        "locked": {
+                            "contents": false,
+                            "children": false,
+                            "move": false,
+                            "delete": false
+                        }
                     }
                 ]
             },
