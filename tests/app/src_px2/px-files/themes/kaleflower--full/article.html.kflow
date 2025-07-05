@@ -41,11 +41,11 @@ font-weight: bold;
 		<style class="copyright">text-align: center;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="site-title">font-weight: bold;
-font-size: 22px;
 width: 45%;
 display: flex;
 flex-direction: row;
 align-items: center;
+padding: 20px 0;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="footer__inner">width: 100%;
 max-width: 900px;
@@ -72,7 +72,7 @@ z-index: 100;
 	<contents>
 		<content>
 			<div class="header">
-				<div style="width: 100%;&#10;max-width: 900px;&#10;margin: 0 auto;&#10;display: flex;&#10;flex-direction: row;&#10;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#10;text-decoration: none;&#10;&amp;:hover {&#10;color: #999999;&#10;}&#10;">{{ config.name }}</a></div><div style="width: 55%;&#10;"><div>
+				<div style="width: 100%;&#10;max-width: 900px;&#10;margin: 0 auto;&#10;display: flex;&#10;flex-direction: row;&#10;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#10;text-decoration: none;&#10;&#10;font-size: 22px;&#10;margin: 0;&#10;padding: 0;&#10;&amp;:hover {&#10;color: #999999;&#10;}&#10;">{{ config.name }}</a></div><div style="width: 55%;&#10;"><div>
 					<ul style="display: flex;&#10;gap: 10px;&#10;padding: 0;&#10;justify-content: flex-end;&#10;">
 						<shouldernavi>
 						<li style="list-style-type: none;&#10;"><a href="{{href(pageInfo.path)}}" style="display: block;&#10;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>

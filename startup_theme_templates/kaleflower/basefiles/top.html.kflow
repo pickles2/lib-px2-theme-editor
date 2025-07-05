@@ -21,32 +21,15 @@ padding: 10px 20px;
 padding: 20px;
 box-sizing: border-box;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="breadcrumb">ul {
-margin: 0;
-padding: 0;
-gap: 10px;
-li {
-list-style-type: none;
-margin: 0;
-padding: 0;
-}
-a::after {
-content: "&gt;";
-}
-span {
-font-weight: bold;
-}
-}<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="breadcrumb__list">display: flex; flex-direction: row;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="copyright">text-align: center;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="site-title">font-weight: bold;
-font-size: 22px;
 width: 45%;
 display: flex;
 flex-direction: row;
 align-items: center;
-<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+padding: 20px 0;
+<media break-point="lg"/><media break-point="md"></media><media break-point="sm"/></style>
 		<style class="footer__inner">width: 100%;
 max-width: 900px;
 margin: 0 auto;
@@ -67,12 +50,12 @@ background-color: #f9f9f9;
 position: sticky;
 top: 0px;
 z-index: 100;
-<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+<media break-point="lg"/><media break-point="md"></media><media break-point="sm"/></style>
 	</styles>
 	<contents>
 		<content>
 			<div class="header">
-				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#xA;text-decoration: none;&#xA;&amp;:hover {&#xA;color: #999999;&#xA;}&#xA;">{{ config.name }}</a></div><div style="width: 55%;&#xA;"><div>
+				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><h1 style="color: #000000;&#xA;text-decoration: none;&#xA;font-size: 22px;&#xA;margin: 0;&#xA;padding: 0;&#xA;">{{ config.name }}</h1></div><div style="width: 55%;&#xA;"><div>
 					<ul style="display: flex;&#xA;gap: 10px;&#xA;padding: 0;&#xA;justify-content: flex-end;&#xA;">
 						<shouldernavi>
 						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
@@ -90,28 +73,10 @@ z-index: 100;
 			</div>
 			
 			<div class="main">
-				<div class="main__inner"><div style="width: 80%;&#xA;" style--sm="width: 100%;&#xA;">
-					<div class="breadcrumb">
-						<ul class="breadcrumb__list">
-							<breadcrumb>
-							<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_breadcrumb }}</a></li>
-							</breadcrumb>
-							<li><span>{{ pageInfo.title_breadcrumb }}</span></li>
-						</ul>
-					</div>
-					<h1>{{ currentPageInfo.title_h1 }}</h1>
+				<div class="main__inner"><div style="width: 100%;&#xA;" style--sm="width: 100%;&#xA;">
+					
+					
 					<bowl/><div style="margin-top: 3em;&#xA;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
-				</div><div style="width: 20%;&#xA;" style--sm="width: 100%;&#xA;">
-					<div style="text-align: center;&#xA;">
-						<p><a href="{{ href(categoryTop.path) }}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(categoryTop.id) %} current{% endif %}">{{ categoryTop.title_label }}</a></p>
-					</div>
-					<div>
-						<ul style="padding: 0px;&#xA;">
-							<localnavi>
-							<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
-							</localnavi>
-						</ul>
-					</div>
 				</div></div>
 				
 			</div>
