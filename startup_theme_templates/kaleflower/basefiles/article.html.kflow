@@ -37,7 +37,8 @@ span {
 font-weight: bold;
 }
 }<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
-		<style class="breadcrumb__list">display: flex; flex-direction: row;<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="breadcrumb__list">display: block;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="copyright">text-align: center;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 		<style class="site-title">font-weight: bold;
@@ -104,9 +105,9 @@ font-size: 0.8rem;
 					<div class="breadcrumb">
 						<ul class="breadcrumb__list">
 							<breadcrumb>
-							<li><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_breadcrumb }}</a></li>
+							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><a href="{{href(pageInfo.path)}}" style="&amp;::after {&#xA;content: &quot;&gt;&quot;;&#xA;text-decoration: none;&#xA;margin: 0 4px;&#xA;}&#xA;">{{ pageInfo.title_breadcrumb }}</a></li>
 							</breadcrumb>
-							<li><span>{{ pageInfo.title_breadcrumb }}</span></li>
+							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><span>{{ pageInfo.title_breadcrumb }}</span></li>
 						</ul>
 					</div>
 					<h1>{{ currentPageInfo.title_h1 }}</h1>
