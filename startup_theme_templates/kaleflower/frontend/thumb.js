@@ -13,7 +13,7 @@ module.exports = function( main, $ ){
 	 * サムネイルを更新する
 	 */
 	this.update = function($thumb, userOptions){
-        // console.log('Update thumb:', userOptions);
+        console.log('Update thumb:', userOptions);
 		$thumb.html( templates.thumb(userOptions) );
 		return;
 	}
