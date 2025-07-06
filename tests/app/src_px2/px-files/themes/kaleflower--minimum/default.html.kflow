@@ -67,6 +67,7 @@ background-color: #f9f9f9;
 position: sticky;
 top: 0px;
 z-index: 100;
+box-shadow: 0px 5px 15px #0004;
 <media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
 	</styles>
 	<contents>
@@ -100,7 +101,8 @@ z-index: 100;
 						</ul>
 					</div>
 					<h1>{{ currentPageInfo.title_h1 }}</h1>
-					<bowl/><div style="margin-top: 3em;&#10;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
+					<bowl/>
+					<div style="margin-top: 3em;&#10;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
 				</div><div style="width: 20%;&#10;" style--sm="width: 100%;&#10;">
 					<div style="text-align: center;&#10;">
 						<p><a href="{{ href(categoryTop.path) }}" style="display: block;&#10;" class=" {% if isPageInBreadcrumb(categoryTop.id) %} current{% endif %}">{{ categoryTop.title_label }}</a></p>
