@@ -56,23 +56,23 @@ box-shadow: 0px 5px 15px #0004;
 	<contents>
 		<content>
 			<div class="header">
-				<div style="width: 100%;&#10;max-width: 900px;&#10;margin: 0 auto;&#10;display: flex;&#10;flex-direction: row;&#10;"><div class="site-title"><span style="color: #000000;&#10;text-decoration: none;&#10;font-size: 22px;&#10;margin: 0;&#10;padding: 0;&#10;">{{ config.name }}</span></div><div style="width: 55%;&#10;"/></div>
+				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><span style="color: #000000;&#xA;text-decoration: none;&#xA;font-size: 22px;&#xA;margin: 0;&#xA;padding: 0;&#xA;">{{ config.name }}</span></div><div style="width: 55%;&#xA;"/></div>
 				
 				
 			</div>
 			
 			<div class="main">
-				<div class="main__inner"><div style="width: 100%;&#10;" style--sm="width: 100%;&#10;">
+				<div class="main__inner"><div style="width: 100%;&#xA;" style--sm="width: 100%;&#xA;">
 					
 					<h1>{{ currentPageInfo.title_h1 }}</h1>
 					<theme-bowl/>
-					<div style="margin-top: 3em;&#10;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
+					<div style="margin-top: 3em;&#xA;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
 				</div></div>
 				
 			</div>
 			
 			
-			<div class="footer"><div class="footer__inner"><div style="padding: 5px 0px;&#10;"><ul style="padding: 0;&#10;margin: 0;&#10;display: flex;&#10;justify-content: center;&#10;gap: 20px;&#10;flex-wrap: wrap;&#10;"><li style="list-style-type: none;&#10;"><a href="javascript: window.close();">close</a></li></ul></div><div class="copyright"><p>&amp;copy;{{ config.copyright }}</p></div></div></div>
+			<div class="footer"><div class="footer__inner"><div style="padding: 5px 0px;&#xA;"><ul style="padding: 0;&#xA;margin: 0;&#xA;display: flex;&#xA;justify-content: center;&#xA;gap: 20px;&#xA;flex-wrap: wrap;&#xA;"><li style="list-style-type: none;&#xA;"><a href="javascript: window.close();">close</a></li></ul></div><div class="copyright"><p>&amp;copy;{{ config.copyright }}</p></div></div></div>
 	</content>
 	</contents>
 	<assets>
