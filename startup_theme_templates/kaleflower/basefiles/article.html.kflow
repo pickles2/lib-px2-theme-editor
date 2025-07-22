@@ -85,15 +85,15 @@ font-size: 0.8rem;
 			<div class="header">
 				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#xA;text-decoration: none;&#xA;&#xA;font-size: 22px;&#xA;margin: 0;&#xA;padding: 0;&#xA;&amp;:hover {&#xA;color: #999999;&#xA;}&#xA;">{{ config.name }}</a></div><div style="width: 55%;&#xA;"><div>
 					<ul style="display: flex;&#xA;gap: 10px;&#xA;padding: 0;&#xA;justify-content: flex-end;&#xA;">
-						<shouldernavi>
+						<theme-shouldernavi>
 						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
-						</shouldernavi>
+						</theme-shouldernavi>
 					</ul>
 				</div><div>
 					<ul style="display: flex;&#xA;padding: 0;&#xA;gap: 10px;&#xA;flex-wrap: wrap;&#xA;width: 100%;&#xA;justify-content: flex-end;&#xA;">
-						<globalnavi>
+						<theme-globalnavi>
 						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
-						</globalnavi>
+						</theme-globalnavi>
 					</ul>
 				</div></div></div>
 				
@@ -104,24 +104,24 @@ font-size: 0.8rem;
 				<div class="main__inner"><div style="width: 100%;&#xA;" style--sm="width: 100%;&#xA;">
 					<div class="breadcrumb">
 						<ul class="breadcrumb__list">
-							<breadcrumb>
+							<theme-breadcrumb>
 							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><a href="{{href(pageInfo.path)}}" style="&amp;::after {&#xA;content: &quot;&gt;&quot;;&#xA;text-decoration: none;&#xA;margin: 0 4px;&#xA;}&#xA;">{{ pageInfo.title_breadcrumb }}</a></li>
-							</breadcrumb>
+							</theme-breadcrumb>
 							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><span>{{ pageInfo.title_breadcrumb }}</span></li>
 						</ul>
 					</div>
 					<h1>{{ currentPageInfo.title_h1 }}</h1>
 					<div class="article-property">
-						<div>Updated: {% if pageInfo.update_date %}{{ pageInfo.update_date }}{% else %}---{% endif %}</div>
+						<div><theme-update-date/></div>
 					</div>
-					<bowl/>
+					<theme-bowl/>
 					<div style="margin-top: 3em;&#xA;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
 				</div></div>
 				
 			</div>
-			
-			
-			<div class="footer"><div class="footer__inner"><div style="padding: 5px 0px;&#xA;"><ul style="padding: 0;&#xA;margin: 0;&#xA;display: flex;&#xA;justify-content: center;&#xA;gap: 20px;&#xA;flex-wrap: wrap;&#xA;"><globalnavi><li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></globalnavi></ul></div><div style="padding: 5px 0px;&#xA;"><ul style="padding: 0;&#xA;margin: 0;&#xA;display: flex;&#xA;justify-content: center;&#xA;gap: 20px;&#xA;flex-wrap: wrap;&#xA;"><shouldernavi><li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></shouldernavi></ul></div><div class="copyright"><p>&amp;copy;{{ config.copyright }}</p></div></div></div>
+
+
+			<div class="footer"><div class="footer__inner"><div style="padding: 5px 0px;&#xA;"><ul style="padding: 0;&#xA;margin: 0;&#xA;display: flex;&#xA;justify-content: center;&#xA;gap: 20px;&#xA;flex-wrap: wrap;&#xA;"><theme-globalnavi><li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></theme-globalnavi></ul></div><div style="padding: 5px 0px;&#xA;"><ul style="padding: 0;&#xA;margin: 0;&#xA;display: flex;&#xA;justify-content: center;&#xA;gap: 20px;&#xA;flex-wrap: wrap;&#xA;"><theme-shouldernavi><li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></theme-shouldernavi></ul></div><div class="copyright"><p>&amp;copy;{{ config.copyright }}</p></div></div></div>
 	</content>
 	</contents>
 	<assets>
@@ -129,7 +129,7 @@ font-size: 0.8rem;
 	<fields>
 	</fields>
 	<components>
-		<component name="bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 			<style>
 /**
  * コンテンツエリア
@@ -165,7 +165,7 @@ blockquote {
 {% endif %}
 ]]></template>
 </component>
-		<component name="breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -177,7 +177,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -189,7 +189,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -201,7 +201,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -213,7 +213,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 			<style>
 /**
  * 更新日

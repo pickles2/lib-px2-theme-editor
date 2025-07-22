@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kflow>
 	<components>
-		<component name="update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+		<component name="theme-update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<style>
 /**
  * 更新日

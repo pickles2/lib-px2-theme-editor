@@ -65,7 +65,7 @@ box-shadow: 0px 5px 15px #0004;
 				<div class="main__inner"><div style="width: 100%;&#xA;" style--sm="width: 100%;&#xA;">
 					
 					<h1>{{ currentPageInfo.title_h1 }}</h1>
-					<bowl/>
+					<theme-bowl/>
 					<div style="margin-top: 3em;&#xA;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
 				</div></div>
 				
@@ -80,7 +80,7 @@ box-shadow: 0px 5px 15px #0004;
 	<fields>
 	</fields>
 	<components>
-		<component name="bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 			<style>
 /**
  * コンテンツエリア
@@ -116,7 +116,7 @@ blockquote {
 {% endif %}
 ]]></template>
 </component>
-		<component name="breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -128,7 +128,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -140,7 +140,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -152,7 +152,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
@@ -164,7 +164,7 @@ blockquote {
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
 </component>
-		<component name="update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
+		<component name="theme-update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-class="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false" can-set-onclick-event="false" can-set-onsubmit-event="false">
 			<style>
 /**
  * 更新日
