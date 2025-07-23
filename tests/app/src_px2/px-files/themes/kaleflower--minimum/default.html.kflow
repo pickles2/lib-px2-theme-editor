@@ -1,14 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kflow>
 	<configs>
+		<config name="id" value="kf1928bb222858994f"/>
 		<config name="module-name-prefix" value="theme"/>
 		<config name="break-points">
 			<value name="lg" max-width="1200"/>
 			<value name="md" max-width="940"/>
 			<value name="sm" max-width="620"/>
 		</config>
+		<config name="color-palettes">
+		</config>
+		<config name="module-name" value=""/>
+		<config name="break-point-query-type" value="media-query"/>
 	</configs>
-<components><component name="theme-bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+	<styles>
+		<style class="footer">background-color: #eee;
+padding: 10px 20px;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="main">background-color: #f6f6f6;
+padding: 20px;
+box-sizing: border-box;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="breadcrumb">ul {
+margin: 0;
+padding: 0;
+gap: 10px;
+li {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+a::after {
+content: "&gt;";
+}
+span {
+font-weight: bold;
+}
+}<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="breadcrumb__list">display: block;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="copyright">text-align: center;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="site-title">font-weight: bold;
+width: 45%;
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 20px 0;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="footer__inner">width: 100%;
+max-width: 900px;
+margin: 0 auto;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+		<style class="main__inner">display: flex;
+flex-direction: row;
+gap: 20px;
+margin: 0 auto;
+width: 100%;
+max-width: 900px;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm">flex-direction: column;
+</media></style>
+		<style class="header">padding: 0px 20px;
+box-sizing: border-box;
+flex-direction: row;
+gap: 10px;
+background-color: #f9f9f9;
+position: sticky;
+top: 0px;
+z-index: 100;
+box-shadow: 0px 5px 15px #0004;
+<media break-point="lg"/><media break-point="md"/><media break-point="sm"/></style>
+	</styles>
+	<contents>
+		<content>
+			<div class="header">
+				<div style="width: 100%;&#xA;max-width: 900px;&#xA;margin: 0 auto;&#xA;display: flex;&#xA;flex-direction: row;&#xA;"><div class="site-title"><a href="{{href(topPageInfo.path)}}" style="color: #000000;&#xA;text-decoration: none;&#xA;&#xA;font-size: 22px;&#xA;margin: 0;&#xA;padding: 0;&#xA;&amp;:hover {&#xA;color: #999999;&#xA;}&#xA;">{{ config.name }}</a></div><div style="width: 55%;&#xA;"><div>
+					<ul style="display: flex;&#xA;gap: 10px;&#xA;padding: 0;&#xA;justify-content: flex-end;&#xA;">
+						<theme-shouldernavi>
+						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
+						</theme-shouldernavi>
+					</ul>
+				</div><div>
+					<ul style="display: flex;&#xA;padding: 0;&#xA;gap: 10px;&#xA;flex-wrap: wrap;&#xA;width: 100%;&#xA;justify-content: flex-end;&#xA;">
+						<theme-globalnavi>
+						<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
+						</theme-globalnavi>
+					</ul>
+				</div></div></div>
+				
+				
+			</div>
+			
+			<div class="main">
+				<div class="main__inner"><div style="width: 80%;&#xA;" style--sm="width: 100%;&#xA;">
+					<div class="breadcrumb">
+						<ul class="breadcrumb__list">
+							<theme-breadcrumb>
+							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><a href="{{href(pageInfo.path)}}" style="&amp;::after {&#xA;content: &quot;&gt;&quot;;&#xA;text-decoration: none;&#xA;margin: 0 4px;&#xA;}&#xA;">{{ pageInfo.title_breadcrumb }}</a></li>
+							</theme-breadcrumb>
+							<li style="display: inline;&#xA;margin-right: 10px;&#xA;"><span>{{ pageInfo.title_breadcrumb }}</span></li>
+						</ul>
+					</div>
+					<h1>{{ currentPageInfo.title_h1 }}</h1>
+					<theme-bowl/>
+					<div style="margin-top: 3em;&#xA;"><div class=" px2-text-align-right"><a href="#pagetop" class=" px2-a">Back to top</a></div></div>
+				</div><div style="width: 20%;&#xA;" style--sm="width: 100%;&#xA;">
+					<div style="text-align: center;&#xA;">
+						<p><a href="{{ href(categoryTop.path) }}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(categoryTop.id) %} current{% endif %}">{{ categoryTop.title_label }}</a></p>
+					</div>
+					<div>
+						<ul style="padding: 0px;&#xA;">
+							<theme-localnavi>
+							<li style="list-style-type: none;&#xA;"><a href="{{href(pageInfo.path)}}" style="display: block;&#xA;" class=" {% if isPageInBreadcrumb(pageInfo.id) %} current{% endif %}">{{ pageInfo.title_label }}</a></li>
+							</theme-localnavi>
+						</ul>
+					</div>
+				</div></div>
+				
+			</div>
+
+
+			<div class="footer"><div class="footer__inner"><div style="padding: 5px 0px;"><ul style="padding: 0;margin: 0;display: flex;justify-content: center;gap: 20px;flex-wrap: wrap;"><theme-globalnavi><li style="list-style-type: none;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></theme-globalnavi></ul></div><div style="padding: 5px 0px;"><ul style="padding: 0;margin: 0;display: flex;justify-content: center;gap: 20px;flex-wrap: wrap;"><theme-shouldernavi><li style="list-style-type: none;"><a href="{{href(pageInfo.path)}}">{{ pageInfo.title_label }}</a></li></theme-shouldernavi></ul></div><div class="copyright"><p>&amp;copy;{{ config.copyright }}</p></div></div></div>
+	</content>
+	</contents>
+	<assets>
+	</assets>
+	<fields>
+	</fields>
+	<components>
+		<component name="theme-bowl" label="Contents Area" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<style>
 /**
  * コンテンツエリア
@@ -42,7 +162,8 @@ blockquote {
 </div>
 {% endif %}
 ]]></template>
-</component><component name="theme-breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+</component>
+		<component name="theme-breadcrumb" label="Breadcrumb" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
@@ -52,7 +173,8 @@ blockquote {
 
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
-</component><component name="theme-globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+</component>
+		<component name="theme-globalnavi" label="Global navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
@@ -62,7 +184,8 @@ blockquote {
 
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
-</component><component name="theme-localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+</component>
+		<component name="theme-localnavi" label="Local navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
@@ -72,7 +195,8 @@ blockquote {
 
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
-</component><component name="theme-shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+</component>
+		<component name="theme-shouldernavi" label="Shoulder navigation" is-void-element="false" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}<div style="display: contents;">{% endif %}
 
@@ -82,7 +206,8 @@ blockquote {
 
 {% if _ENV.mode == 'canvas' %}</div>{% endif %}
 ]]></template>
-</component><component name="theme-update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
+</component>
+		<component name="theme-update-date" label="Update date" is-void-element="true" can-set-css="false" can-set-width="false" can-set-height="false" can-set-contents-direction="false" can-set-scrollable="false" can-be-layer="false">
 			<style>
 /**
  * 更新日
@@ -107,4 +232,6 @@ blockquote {
     } ?>: <?= htmlspecialchars( $px->site()->get_current_page_info('update_date') ?? '---' ); ?></p></div>
 {% endif %}
 ]]></template>
-</component></components></kflow>
+</component>
+	</components>
+</kflow>
