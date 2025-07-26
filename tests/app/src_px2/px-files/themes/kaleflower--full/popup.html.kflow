@@ -98,19 +98,22 @@ blockquote {
 	margin-left: 3px solid #999;
 }
 			</style>
+			<fields>
+				<field type="text" name="bowlName" label="Bowl name"/>
+			</fields>
 			<template><![CDATA[
 {% if _ENV.mode == 'canvas' %}
 <div class="contents">
 <div style="display:block; width:auto; background:#fdfdfd; color:#aaa; text-align:center; padding:10em 20%; border-radius: 12px; border: 4px dashed #aaa;">
 <p>{% if _ENV.lang == "ja" %}コンテンツエリア{% else %}CONTENTS AREA{% endif %}</p>
-<p>name: <strong>{{ bowlName }}</strong></p>
+<p>name: <strong>{{ attributes.bowlName }}</strong></p>
 </div>
 </div>
 {% endif %}
 
 {% if _ENV.mode == 'finalize' %}
-<div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by() ?? '') ?>="{{bowlName}}">
-<?= $px->bowl()->pull('{{bowlName}}') ?>
+<div class="contents" <?= htmlspecialchars($theme->get_attr_bowl_name_by() ?? '') ?>="{{ attributes.bowlName }}">
+<?= $px->bowl()->pull('{{ attributes.bowlName }}') ?>
 </div>
 {% endif %}
 ]]></template>
